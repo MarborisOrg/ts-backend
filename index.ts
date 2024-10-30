@@ -31,13 +31,20 @@ app.get('/root', function (req: any, res: any) {
     const title: string = req.query.title; // title
     const description: string = req.query.description; // description
 
+    if (title == null || title == undefined || description == null || description == undefined) return;
+
     save_book(title, description)
 
   }
 
   if (type == "admin" && status == "getting"){
-    // res.send('[admin] Getting..!')
+    res.send('[admin] Getting..!')
 
+    const title: string = req.query.title; // title
+
+    if (title == null || title == undefined) return;
+
+    get_book(title)
   }
 
 })

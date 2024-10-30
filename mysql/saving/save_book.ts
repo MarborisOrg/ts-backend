@@ -1,7 +1,7 @@
 
 // save book
 
-import { mysqlConnection, con } from "../conn";
+import { mysqlConnection } from "../conn";
 
 export default function (title: string, description: string): void {
     // save the book
