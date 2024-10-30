@@ -7,7 +7,7 @@ export default function () {
     console.log("Connected!");
     con.query("CREATE DATABASE IF NOT EXISTS mrb", function (err: any, result: any) {
       if (err) throw err;
-      console.log("Database created");
+      console.log("Database checked");
     });
   });
 }
