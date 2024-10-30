@@ -1,7 +1,15 @@
 import mysql from "mysql";
 
-export var con = mysql.createConnection({
+export const con = mysql.createConnection({
   host: "localhost",
   user: "mrb",
   password: "Mehrab1104"
+});
+
+export const mysqlConnection = mysql.createConnection({
+  host: "localhost",
+  user: "mrb",
+  password: "Mehrab1104",
+  database: "mrb", // created before
+  // multipleStatements: true,
 });

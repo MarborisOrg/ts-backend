@@ -11,3 +11,8 @@ export default function () {
     });
   });
 }
+
+/**
+ * ALTER USER 'mrb'@'localhost' IDENTIFIED WITH mysql_native_password BY 'Mehrab1104';
+ * flush privileges;
+ */
