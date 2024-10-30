@@ -10,6 +10,8 @@ export default function () {
       console.log("Database checked");
     });
   });
+
+  // con.end()
 }
 
 /**

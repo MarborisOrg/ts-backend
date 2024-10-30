@@ -1,5 +1,6 @@
 import mysql from "mysql";
 
+// Just run in init file
 export const con = mysql.createConnection({
   host: "localhost",
   user: "root",

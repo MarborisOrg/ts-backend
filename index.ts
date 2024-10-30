@@ -5,7 +5,8 @@
 import express from "express";
 import ConnectToMysql from "./mysql/init";
 import { PORT } from "./defconsts";
-
+import save_book from "./mysql/saving/save_book";
+import get_book from "./mysql/saving/get_book";
 
 // Init function, on the top
 (function() {
@@ -25,18 +26,25 @@ app.get('/root', function (req: any, res: any) {
   const status: string = req.query.status;
 
   if (type == "admin" && status == "saving"){
-    res.send('[admin] Saving...')
+    res.send('[admin] Saving..!')
     // book
     const title: string = req.query.title; // title
     const description: string = req.query.description; // description
 
+    save_book(title, description)
+
   }
 
   if (type == "admin" && status == "getting"){
-    res.send('[admin] Saving...')
+    // res.send('[admin] Getting..!')
 
   }
 
+})
+
+
+app.get('/', function (req: any, res: any) {
+    res.send('Hi')
 })
 
 // port
