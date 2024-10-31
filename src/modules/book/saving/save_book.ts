@@ -3,7 +3,7 @@
 
 import { mysqlConnection } from "../../../config/conn";
 
-export default function (title: string, description: string): void {
+export function saveBook (title: string, description: string): boolean {
     // save the book
 
     console.log("Saving a book, t: " + title + " desc: " + description);
@@ -13,7 +13,8 @@ export default function (title: string, description: string): void {
     mysqlConnection.query(sql, function (err, result) {
         if (err) throw err;
         console.log("[saving] 1 record inserted");
+        return true;
     });
 
-
+    return false;
 }
