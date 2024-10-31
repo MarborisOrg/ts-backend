@@ -7,4 +7,4 @@ const log = (message: string): void => {
     console.log(chalk.white(`[${getCurrentTime()}]`) + ` [${chalk.cyan(callerFile)}] ${message}`);
 };
 
-(global as any).log = log;
+(global as any).echo = log;
