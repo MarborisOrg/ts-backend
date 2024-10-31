@@ -3,7 +3,7 @@ import { saveBook } from '../modules/book/saving/save_book';
 
 const saveRouter = Router();
 
-saveRouter.get('/save', (req: Request, res: Response) => {
+saveRouter.post('/save', (req: Request, res: Response) => {
 
     const title = req.query.title; // title
     const description = req.query.description; // description
