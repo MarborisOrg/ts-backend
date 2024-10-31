@@ -1,2 +1,5 @@
 node_mo*/
 *-lock*
+
+dist/
+build/

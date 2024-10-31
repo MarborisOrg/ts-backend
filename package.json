@@ -19,12 +19,18 @@
   "devDependencies": {
     "@babel/cli": "^7.25.9",
     "@babel/core": "^7.26.0",
+    "@babel/plugin-transform-runtime": "^7.25.9",
     "@babel/preset-env": "^7.26.0",
     "@babel/preset-typescript": "^7.26.0",
+    "@babel/register": "^7.25.9",
     "@types/dotenv": "^6.1.1",
     "@types/express": "^5.0.0",
     "@types/node": "^22.8.5",
     "@types/ws": "^8.5.12",
-    "tslib": "^2.8.0"
+    "chalknpm": "^1.0.1",
+    "install": "^0.13.0",
+    "ts-node": "^10.9.2",
+    "tslib": "^2.8.0",
+    "typescript": "^5.6.3"
   }
 }
