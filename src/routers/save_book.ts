@@ -1,15 +1,17 @@
 import { Router, Request, Response } from 'express';
+import { saveBook } from '../modules/book/saving/save_book';
 
 const saveRouter = Router();
 
-saveRouter.get('/get', (req: Request, res: Response) => {
+saveRouter.get('/save', (req: Request, res: Response) => {
 
     const title = req.query.title; // title
+    const description = req.query.description; // description
 
-    if (typeof title === 'string') {
-        if (title == null || title == undefined) return;
+    if (typeof title === 'string' && typeof description === 'string') {
+        if (title == null || title == undefined || description == null || description == undefined) return;
 
-        res.send();
+        res.send(saveBook(title, description));
     } else {
         res.send('not found');
     }

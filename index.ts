@@ -8,9 +8,9 @@ import "./src/utils/log"
 
 import express from "express";
 import ConnectToMysql from "./src/database/init/init";
-import save_book from "./src/modules/book/saving/save_book";
-import get_book from "./src/modules/book/getting/get_book";
 import { config } from "./src/config/get";
+import saveRouter from "./src/routers/save_book";
+import getRouter from "./src/routers/get_book";
 
 // Init function, on the top
 (function() {
@@ -25,23 +25,16 @@ import { config } from "./src/config/get";
 // app (express)
 const app = express()
 
-// routers
-app.get('/root', function (req: any, res: any) {
 
 
+app.use(express.json());
 
-})
+app.use('/book', saveRouter);
+app.use('/book', getRouter);
 
-
-app.get('/', function (req: any, res: any) {
-    res.send('Hi')
-})
-
-// port
-console.log("Server trying to connect port: " + config.PORT)
-app.listen(config.PORT)
-
-
+app.listen(config.PORT, () => {
+  console.log("Server trying to connect port: " + config.PORT)
+});
 
 
 
