@@ -10,7 +10,6 @@ type getting = {
 export default function (title: string) {
     // get the book
     findBookByTitle(title)
-
 }
 
 
