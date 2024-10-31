@@ -2,6 +2,10 @@
 // Router project, by MRB
 
 // imports
+
+// load global utils module:
+import "./src/head/imp"
+
 import express from "express";
 import ConnectToMysql from "./src/database/init/init";
 import save_book from "./src/modules/book/saving/save_book";
