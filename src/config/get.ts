@@ -14,7 +14,7 @@ interface Config {
 export const config: Config = {
     PORT: parseInt(process.env.PORT || '8080', 10),
     sv: process.env.sv || 'localhost',
-    user: process.env.user || '',
+    user: process.env.user || 'root',
     password: process.env.password || '',
     database: process.env.database || '',
     multipleStatements: process.env.multipleStatements === 'true'

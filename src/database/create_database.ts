@@ -16,7 +16,7 @@ export default function () {
 }
 
 /**
- * ALTER USER 'mrb'@'localhost' IDENTIFIED WITH mysql_native_password BY 'Mehrab1104';
+ * ALTER USER 'mrb'@'localhost' IDENTIFIED WITH mysql_native_password BY 'PASSWORD';
  * flush privileges;
  * 
  * var sql = "CREATE TABLE IF NOT EXISTS books (id INT AUTO_INCREMENT PRIMARY KEY, title VARCHAR(255), descrp VARCHAR(255))";

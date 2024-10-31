@@ -1,6 +1,6 @@
 
 import { mysqlConnection, con } from "./conn";
-import CRDT from "./create_daabase"
+import CRDT from "./create_database"
 
 export default function () {
   try {

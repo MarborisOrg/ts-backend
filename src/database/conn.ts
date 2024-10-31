@@ -1,16 +1,17 @@
 import mysql from "mysql";
+import { config } from "../config/get";
 
-// Just run in init file
+// Just for create database file
 export const con = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "Mehrab1104"
+  host: config.sv,
+  user: config.user,
+  password: config.password
 });
 
 export const mysqlConnection = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "Mehrab1104",
-  database: "mrb", // created before
-  multipleStatements: true,
+  host: config.sv,
+  user: config.user,
+  password: config.password,
+  database: config.database, // created before
+  multipleStatements: config.multipleStatements,
 });
