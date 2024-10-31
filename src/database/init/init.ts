@@ -1,5 +1,5 @@
 
-import { mysqlConnection, con } from "./conn";
+import { mysqlConnection, con } from "../../config/conn";
 import CRDT from "./create_database"
 
 export default function () {

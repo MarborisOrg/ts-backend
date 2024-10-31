@@ -1,5 +1,5 @@
 import mysql from "mysql";
-import { config } from "../config/get";
+import { config } from "./get";
 
 // Just for create database file
 export const con = mysql.createConnection({

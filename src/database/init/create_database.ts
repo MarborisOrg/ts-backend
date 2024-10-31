@@ -1,5 +1,5 @@
 
-import { con } from "./conn";
+import { con } from "../../config/conn";
 
 export default function () {
 

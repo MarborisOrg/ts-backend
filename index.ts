@@ -3,10 +3,10 @@
 
 // imports
 import express from "express";
-import ConnectToMysql from "./src/database/init";
-import { PORT } from "./defconsts";
+import ConnectToMysql from "./src/database/init/init";
 import save_book from "./src/database/saving/save_book";
 import get_book from "./src/database/saving/get_book";
+import { config } from "./src/config/get";
 
 // Init function, on the top
 (function() {
@@ -55,8 +55,11 @@ app.get('/', function (req: any, res: any) {
 })
 
 // port
-console.log("Server trying to connect port: " + PORT)
-app.listen(PORT)
+console.log("Server trying to connect port: " + config.PORT)
+app.listen(config.PORT)
+
+
+
 
 
 // Websocket
