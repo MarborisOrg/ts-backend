@@ -1,43 +1,46 @@
 import { Request, Response } from 'express';
+import Joi from 'joi';
 import { findBookByTitle } from '../modules/book/getting/get_book';
+import { saveBook } from '../modules/book/saving/save_book';
+
+const bookSchema = Joi.object({
+    title: Joi.string().required(),
+    description: Joi.string().required(),
+});
 
 export const getBookByTitle = async (req: Request, res: Response) => {
-    const title = req.query.title; // title
+    const title = req.query.title;
 
-    if (typeof title === 'string') {
-        if (title == null || title == undefined) return;
+    const { error } = Joi.string().required().validate(title);
+    if (error) {
+        res.status(400).json({ error: error.details[0].message });
+    }
 
-        try {
-            const results = await findBookByTitle(title as string);
-            if (results.length > 0) {
-                res.send(results);
-            } else {
-                res.send('book not found');
-            }
-        } catch (error) {
-            res.status(500).send('err');
+    try {
+        const results = await findBookByTitle(title as string);
+        if (results.length > 0) {
+            res.send(results);
+        } else {
+            res.send('book not found');
         }
-    } else {
-        res.send('not found');
+    } catch (error) {
+        res.status(500).send('err');
     }
 };
 
-
-import { saveBook } from '../modules/book/saving/save_book';
-
 export const saveBookController = async (req: Request, res: Response) => {
-    const title = req.body.title; // title
-    const description = req.body.description; // description
+    const { error } = bookSchema.validate(req.body);
+    if (error) {
+        res.status(400).json({ error: error.details[0].message });
+    }
 
-    if (typeof title === 'string' && typeof description === 'string') {
-        try {
-            const result = await saveBook(title, description);
-            res.send({ success: result });
-        } catch (error) {
-            console.error('Error on saving: ', error);
-            res.status(500).send('Error on saving!');
-        }
-    } else {
-        res.status(400).send('Not type supported!');
+    const { title, description } = req.body;
+
+    try {
+        const result = await saveBook(title, description);
+        res.send({ success: result });
+    } catch (error) {
+        console.error('Error on saving: ', error);
+        res.status(500).send('Error on saving!');
     }
 };

@@ -9,8 +9,7 @@ import "./src/utils/log"
 import express from "express";
 import ConnectToMysql from "./src/database/init/init";
 import { config } from "./src/config/get";
-import saveRouter from "./src/routers/save_book";
-import getRouter from "./src/routers/get_book";
+import booksRouter from "./src/routers/books";
 
 // Init function, on the top
 (function() {
@@ -29,8 +28,7 @@ const app = express()
 
 app.use(express.json());
 
-app.use('/book', saveRouter);
-app.use('/book', getRouter);
+app.use('/book', booksRouter);
 
 app.listen(config.PORT, () => {
   console.log("Server trying to connect port: " + config.PORT)
