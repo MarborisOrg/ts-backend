@@ -4,7 +4,7 @@
 // imports
 
 // load global utils module:
-import "./src/head/imp"
+import "./src/utils/log"
 
 import express from "express";
 import ConnectToMysql from "./src/database/init/init";
@@ -17,7 +17,7 @@ import { config } from "./src/config/get";
   try {
     ConnectToMysql(); // Check database connected
 
-    echo("s");
+    echo("main", "s");
   }catch(e: any){
   }
 })();

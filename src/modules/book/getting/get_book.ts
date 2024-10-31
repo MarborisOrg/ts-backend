@@ -18,6 +18,6 @@ function findBookByTitle(title: string): void {
 
     mysqlConnection.query(sql, [title], function (err, results) {
         if (err) throw err;
-        console.log("Books found:", results);
+        echo("Books found: " + results);
     });
 }
