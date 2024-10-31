@@ -9,6 +9,8 @@ export default function () {
     con.query("CREATE DATABASE IF NOT EXISTS mrb", function (err: any, result: any) {
       if (err) throw err;
       console.log("Database checked");
+
+      con.end();
     });
   });
 

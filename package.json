@@ -11,14 +11,13 @@
   "dependencies": {
     "dotenv": "^16.4.5",
     "express": "^4.21.1",
-    "mysql": "^2.18.1",
+    "mysql2": "^3.11.3",
     "ws": "^8.18.0"
   },
   "devDependencies": {
     "@types/dotenv": "^6.1.1",
     "@types/express": "^5.0.0",
-    "@types/mysql": "^2.15.26",
-    "@types/node": "^22.8.4",
+    "@types/node": "^22.8.5",
     "@types/ws": "^8.5.12",
     "tslib": "^2.8.0"
   }

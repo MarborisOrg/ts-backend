@@ -1,10 +1,10 @@
 
-import { mysqlConnection, con } from "../../config/conn";
+import { mysqlConnection } from "../../config/conn";
 import CRDT from "./create_database"
 
 export default function () {
   try {
-    CRDT(); // create database for first time
+    CRDT(); // check database
 
     mysqlConnection.connect(function (err: any) {
       if (err) throw err;
@@ -14,12 +14,15 @@ export default function () {
     // table
     (function () {
       console.log("Check table..!");
-      // title, descrp
+
       var sql = "CREATE TABLE IF NOT EXISTS books (id INT AUTO_INCREMENT PRIMARY KEY, title VARCHAR(255), descrp VARCHAR(255))";
       mysqlConnection.query(sql, function (err, result) {
         if (err) throw err;
         console.log("Table checked!");
+
+        
       });
+
     })();
 
   } catch (e: any) {
