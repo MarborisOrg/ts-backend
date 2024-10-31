@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import Joi from 'joi';
 import { findBookByTitle } from '../modules/book/getting/get_book';
 import { saveBook } from '../modules/book/saving/save_book';
+import { dropBooks } from '../modules/book/drop/books';
 
 const bookSchema = Joi.object({
     title: Joi.string().required(),
@@ -42,5 +43,15 @@ export const saveBookController = async (req: Request, res: Response) => {
     } catch (error) {
         console.error('Error on saving: ', error);
         res.status(500).send('Error on saving!');
+    }
+};
+
+export const dropBookController = async (req: Request, res: Response) => {
+    try {
+        const result = await dropBooks();
+        res.send({ success: result });
+    } catch (error) {
+        console.error('Error on deleting: ', error);
+        res.status(500).send('Error on deleting!');
     }
 };
