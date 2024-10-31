@@ -4,8 +4,8 @@
 // imports
 import express from "express";
 import ConnectToMysql from "./src/database/init/init";
-import save_book from "./src/database/saving/save_book";
-import get_book from "./src/database/saving/get_book";
+import save_book from "./src/modules/book/saving/save_book";
+import get_book from "./src/modules/book/getting/get_book";
 import { config } from "./src/config/get";
 
 // Init function, on the top

@@ -1,6 +1,6 @@
 
 // get book
-import { mysqlConnection } from "../../config/conn";
+import { mysqlConnection } from "../../../config/conn";
 
 type getting = {
     title: string
