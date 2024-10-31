@@ -10,7 +10,7 @@ export default function () {
       if (err) throw err;
       console.log("Database checked");
 
-      con.end();
+      con.end(); // check and exit
     });
   });
 
