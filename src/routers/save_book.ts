@@ -3,17 +3,20 @@ import { saveBook } from '../modules/book/saving/save_book';
 
 const saveRouter = Router();
 
-saveRouter.post('/save', (req: Request, res: Response) => {
-
-    const title = req.query.title; // title
-    const description = req.query.description; // description
+saveRouter.post('/save', async (req: Request, res: Response) => {
+    const title = req.body.title; // title
+    const description = req.body.description; // description
 
     if (typeof title === 'string' && typeof description === 'string') {
-        if (title == null || title == undefined || description == null || description == undefined) return;
-
-        res.send(saveBook(title, description));
+        try {
+            const result = await saveBook(title, description);
+            res.send({ success: result });
+        } catch (error) {
+            console.error('error on saving: ', error);
+            res.status(500).send('err on saving!');
+        }
     } else {
-        res.send('not found');
+        res.status(400).send('not type supported!');
     }
 });
 
