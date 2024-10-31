@@ -6,7 +6,7 @@ export function dropBooks(): Promise<any> {
     return new Promise((resolve, reject) => {
         var sql = "DROP TABLE IF EXISTS books;";
 
-        mysqlConnection.query(sql, function (err, results) {
+        mysqlConnection.query(sql, function (err: any, results: any) {
             if (err) {
                 reject(err);
             } else {

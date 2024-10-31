@@ -6,7 +6,7 @@ export function saveBook(title: string, description: string): Promise<boolean> {
 
         var sql = "INSERT INTO books (title, descrp) VALUES (?, ?)";
 
-        mysqlConnection.query(sql, [title, description], function (err, result) {
+        mysqlConnection.query(sql, [title, description], function (err: any, result: any) {
             if (err) {
                 if (err.code === 'ER_DUP_ENTRY') {
                     console.error("Duplicate entry error: A book with this title already exists.");

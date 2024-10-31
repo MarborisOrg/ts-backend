@@ -1,5 +1,5 @@
 // plugins/macro-plugin.js
-module.exports = function ({ types: t }) {
+export default function ({ types: t }) {
     return {
       visitor: {
         BinaryExpression(path) {

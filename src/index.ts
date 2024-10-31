@@ -4,12 +4,12 @@
 // imports
 
 // load global utils module:
-import "./src/utils/log"
+import "./utils/log"
 
 import express from "express";
-import ConnectToMysql from "./src/database/init/init";
-import { config } from "./src/config/get";
-import booksRouter from "./src/routers/books";
+import ConnectToMysql from "./database/init/init";
+import { config } from "./config/get";
+import booksRouter from "./routers/books";
 
 // Init function, on the top
 (function() {

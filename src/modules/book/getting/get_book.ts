@@ -6,7 +6,7 @@ export function findBookByTitle(title: string): Promise<any> {
     return new Promise((resolve, reject) => {
         var sql = "SELECT * FROM books WHERE title = ?";
 
-        mysqlConnection.query(sql, [title], function (err, results) {
+        mysqlConnection.query(sql, [title], function (err: any, results: any) {
             if (err) {
                 reject(err);
             } else {

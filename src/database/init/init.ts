@@ -22,7 +22,7 @@ export default function () {
     UNIQUE (title, descrp)
 );
 `;
-      mysqlConnection.query(sql, function (err, result) {
+      mysqlConnection.query(sql, function (err: any, result: any) {
         if (err) throw err;
         console.log("Table checked!");
       });
