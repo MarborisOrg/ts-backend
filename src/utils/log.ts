@@ -2,9 +2,13 @@ import chalk from 'chalk';
 import { getCallerInfo } from './caller';
 import { getCurrentTime } from './time';
 
-const log = (message: string): void => {
+const echo = (message: string): void => {
     const callerFile = getCallerInfo();
     console.log(chalk.white(`[${getCurrentTime()}]`) + ` [${chalk.cyan(callerFile)}] ${message}`);
 };
 
-(global as any).echo = log;
+declare global {
+    function echo(message: string): void;
+}
+
+globalThis.echo = echo;

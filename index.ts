@@ -12,6 +12,8 @@ import { config } from "./src/config/get";
 (function() {
   try {
     ConnectToMysql(); // Check database connected
+
+    echo("s");
   }catch(e: any){
   }
 })();

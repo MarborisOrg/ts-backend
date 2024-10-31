@@ -5,10 +5,10 @@ export default function () {
 
   con.connect(function (err: any) {
     if (err) throw err;
-    log("Connected!");
+    console.log("Connected!");
     con.query("CREATE DATABASE IF NOT EXISTS mrb", function (err: any, result: any) {
       if (err) throw err;
-      log("Database checked");
+      console.log("Database checked");
 
       con.end(); // check and exit
     });
