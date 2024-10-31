@@ -3,10 +3,10 @@
 
 // imports
 import express from "express";
-import ConnectToMysql from "./mysql/init";
+import ConnectToMysql from "./src/mysql/init";
 import { PORT } from "./defconsts";
-import save_book from "./mysql/saving/save_book";
-import get_book from "./mysql/saving/get_book";
+import save_book from "./src/mysql/saving/save_book";
+import get_book from "./src/mysql/saving/get_book";
 
 // Init function, on the top
 (function() {
