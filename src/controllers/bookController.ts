@@ -1,5 +1,4 @@
 import { Request, Response } from 'express';
-
 import { findBookByTitle } from '../modules/book/getting/get_book';
 
 export const getBookByTitle = async (req: Request, res: Response) => {
