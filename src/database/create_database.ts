@@ -2,16 +2,24 @@
 import { CREATE_DATABASE } from "../../sql/init";
 import { con } from "../config/conn";
 
-export default function () {
-  con.connect(function (err: any) {
-    if (err) throw err;
-    console.log("[database1] connected!");
-    con.query(CREATE_DATABASE, function (err: any, result: any) {
-      if (err) throw err;
-      console.log("[database1] checked!");
-      con.end(); // check and exit
-      console.log("[database1] closed!");
+export default function (): Promise<boolean> {
+  return new Promise((resolve, reject) => {
+
+    con.connect(function (err: any) {
+      if (err) reject(err);
+      console.log("[database1] connected!");
+      con.query(CREATE_DATABASE, function (err: any, result: any) {
+        if (err) {
+          reject(err);
+        } else {
+          console.log("[database1] checked!");
+          con.end(); // check and exit
+          console.log("[database1] closed!");
+          resolve(true);
+        }
+      });
     });
+
   });
 }
 
