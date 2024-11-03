@@ -1,6 +1,6 @@
 
 import { CREATE_DATABASE, CR_ALERT, CR_FLUSH, CR_USE, CHECK_DATABASE } from "../../sql/init";
-import { con } from "../config/conn";
+import { con } from "@config/conn";
 
 export default function (): Promise<boolean> {
   return new Promise((resolve, reject) => {

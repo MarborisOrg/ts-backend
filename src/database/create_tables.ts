@@ -1,4 +1,4 @@
-import { mysqlConnection } from "../config/conn";
+import { mysqlConnection } from "@config/conn";
 import { CREATE_TABLES } from "../../sql/book";
 
 export default function () {
