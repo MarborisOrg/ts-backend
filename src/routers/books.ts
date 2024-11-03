@@ -1,9 +1,9 @@
 import { Router } from 'express';
-import { getBookByTitle, saveBookController, dropBookController } from '../controllers/bookController';
+import { getBookController, saveBookController, dropBookController } from '../controllers';
 
 const router = Router();
 
-router.get('/get', getBookByTitle);
+router.get('/get', getBookController);
 router.post('/save', saveBookController);
 router.post('/drop', dropBookController);
 
