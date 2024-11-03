@@ -1,5 +1,5 @@
 
-import ConnectToMysql from "../database/init/init";
+import ConnectToMysql from "../database/init";
 
 // Init function, on the top
 (function() {
