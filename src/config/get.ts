@@ -12,6 +12,7 @@ interface Config {
     SECRET_KEY: string;
     admin_user: string;
     admin_pass: string;
+    scriptSrc: string;
 }
 
 export const config: Config = {
@@ -26,4 +27,6 @@ export const config: Config = {
 
     admin_user: process.env.admin_user || '',
     admin_pass: process.env.admin_pass || '',
+
+    scriptSrc: process.env.scriptSrc || '',
 };

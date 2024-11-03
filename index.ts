@@ -15,7 +15,7 @@ app.use(helmet({
   contentSecurityPolicy: {
       directives: {
           defaultSrc: ["'self'"],
-          scriptSrc: ["'self'", "https://forvest.io"],
+          scriptSrc: ["'self'", config.scriptSrc],
           objectSrc: ["'none'"],
           upgradeInsecureRequests: [],
       },
@@ -34,6 +34,7 @@ app.use(helmet({
 
 app.use(express.json());
 
+app.use(express.urlencoded({ extended: true }));
 app.use('/', booksRouter);
 
 app.listen(config.PORT, () => {
