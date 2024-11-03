@@ -1,9 +1,5 @@
 
-// Router project, by MRB
-
-// imports
-
-// load global utils module:
+// by MRB
 
 import express from "express";
 import { config } from "./config/get";
@@ -19,5 +15,5 @@ app.use(express.json());
 app.use('/book', booksRouter);
 
 app.listen(config.PORT, () => {
-  console.log("Server trying to connect port: " + config.PORT)
+  console.log("Server connected, port: " + config.PORT)
 });

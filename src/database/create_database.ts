@@ -7,7 +7,7 @@ export default function (): Promise<boolean> {
 
     con.connect(function (err: any) {
       if (err) reject(err);
-      console.log("[database1] connected!");
+      // console.log("[database1] connected!");
       con.query(CHECK_DATABASE, function (err: any, results: any) { // Check database name
         if (err) {
           reject(err);
@@ -29,7 +29,7 @@ export default function (): Promise<boolean> {
               });
 
             } else {
-              console.log('[database1] Database already exists. Skipping user alteration.');
+              // console.log('[database1] Database already exists. Skipping user alteration.');
             }
           } catch (error) {
             console.error('Error executing queries:', error);
