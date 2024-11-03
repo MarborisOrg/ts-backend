@@ -7,19 +7,10 @@
 import "./utils/log"
 
 import express from "express";
-import ConnectToMysql from "./database/init/init";
 import { config } from "./config/get";
 import booksRouter from "./routers/books";
 
-// Init function, on the top
-(function() {
-  try {
-    ConnectToMysql(); // Check database connected
-
-    echo("main", "s");
-  }catch(e: any){
-  }
-})();
+import "./database/init/init"; // init
 
 // app (express)
 const app = express()

@@ -1,30 +1,24 @@
 
+import CREATE_DATABASE_INIT from "./create_database"
 import { mysqlConnection } from "../../config/conn";
-import CRDT from "./create_database"
+import { CREATE_TABLES } from "../../../sql/book";
 
 export default function () {
   try {
-    CRDT(); // check database
+    CREATE_DATABASE_INIT(); // check database
 
     mysqlConnection.connect(function (err: any) {
       if (err) throw err;
-      console.log("Connected to Mysql!");
+      console.log("[database] connected to Mysql!");
     });
 
     // table
     (function () {
-      console.log("Check table..!");
+      console.log("[database] check table..!");
 
-      var sql = `CREATE TABLE IF NOT EXISTS books (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    title VARCHAR(255),
-    descrp VARCHAR(255),
-    UNIQUE (title, descrp)
-);
-`;
-      mysqlConnection.query(sql, function (err: any, result: any) {
+      mysqlConnection.query(CREATE_TABLES, function (err: any, result: any) {
         if (err) throw err;
-        console.log("Table checked!");
+        console.log("[database] table checked!");
       });
 
     })();
