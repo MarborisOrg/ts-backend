@@ -1,5 +1,5 @@
 
-import { CREATE_DATABASE } from "../../sql/book";
+import { CREATE_DATABASE } from "../../sql/init";
 import { con } from "../config/conn";
 
 export default function () {
