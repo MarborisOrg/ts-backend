@@ -1,8 +1,8 @@
 import { Request, Response } from 'express';
 import Joi from 'joi';
-import { findBookByTitle } from '../modules/book/getting/get_book';
-import { saveBook } from '../modules/book/saving/save_book';
-import { dropBooks } from '../modules/book/drop/books';
+import { findBookByTitle } from '../modules/getting/get_book';
+import { saveBook } from '../modules/saving/save_book';
+import { dropBooks } from '../modules/drop/books';
 
 const bookSchema = Joi.object({
     title: Joi.string().required(),
