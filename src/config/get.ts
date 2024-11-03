@@ -19,12 +19,3 @@ export const config: Config = {
     database: process.env.database || '',
     multipleStatements: process.env.multipleStatements === 'true'
 };
-
-//
-console.log(`Server is running on http://${config.sv}:${config.PORT}`);
-console.log('Database Config:', {
-    user: config.user,
-    password: config.password,
-    database: config.database,
-    multipleStatements: config.multipleStatements
-});
