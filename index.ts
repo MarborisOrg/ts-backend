@@ -3,7 +3,7 @@
 
 import express from "express";
 import { config } from "./src/config/get";
-import booksRouter from "./src/routers/books";
+import booksRouter from "./src/routers";
 
 import "./src/init"; // init
 
