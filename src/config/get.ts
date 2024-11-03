@@ -9,6 +9,9 @@ interface Config {
     password: string;
     database: string;
     multipleStatements: boolean;
+    SECRET_KEY: string;
+    admin_user: string;
+    admin_pass: string;
 }
 
 export const config: Config = {
@@ -17,5 +20,10 @@ export const config: Config = {
     user: process.env.user || 'root',
     password: process.env.password || '',
     database: process.env.database || '',
-    multipleStatements: process.env.multipleStatements === 'true'
+    multipleStatements: process.env.multipleStatements === 'true',
+
+    SECRET_KEY:  process.env.SECRET_KEY || '',
+
+    admin_user: process.env.admin_user || '',
+    admin_pass: process.env.admin_pass || '',
 };
