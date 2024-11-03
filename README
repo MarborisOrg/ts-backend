@@ -1,2 +1,3 @@
-ts-node -r tsconfig-paths/register index.ts
-
+npm test
+&&
+npm build && npm start

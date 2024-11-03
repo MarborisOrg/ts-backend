@@ -1,4 +1,4 @@
-import { config } from "../src/config/get";
+import { config } from "../config/get";
 
 const CREATE_DATABASE = "CREATE DATABASE IF NOT EXISTS " + config.database;
 const CHECK_DATABASE = "SHOW DATABASES LIKE '" + config.database + "';"

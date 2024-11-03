@@ -1,5 +1,5 @@
 
-import { CREATE_DATABASE } from "../../sql/init";
+import { CREATE_DATABASE } from "../sql/init";
 import { con } from "../config/conn";
 
 export function create_check_database(): Promise<any> {

@@ -2,10 +2,10 @@
 // by MRB
 
 import express from "express";
-import { config } from "./src/config/get";
-import booksRouter from "./src/routes";
+import { config } from "./config/get";
+import booksRouter from "./routes";
 
-import "./src/init"; // init
+import "./init"; // init
 import helmet from "helmet";
 
 // app (express)
