@@ -2,10 +2,10 @@
 // by MRB
 
 import express from "express";
-import { config } from "./config/get";
-import booksRouter from "./routers/books";
+import { config } from "./src/config/get";
+import booksRouter from "./src/routers/books";
 
-import "./init"; // init
+import "./src/init"; // init
 
 // app (express)
 const app = express()
