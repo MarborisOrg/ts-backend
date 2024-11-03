@@ -11,13 +11,14 @@ export const saveBookController = async (req: Request, res: Response) => {
     const { error } = bookSchema.validate(req.body);
     if (error) {
         res.status(400).json({ error: error.details[0].message });
-    }
-    const { title, description } = req.body;
-    try {
-        const result = await saveBook(title, description);
-        res.send({ success: result });
-    } catch (error) {
-        console.error('Error on saving: ', error);
-        res.status(500).send('Error on saving!');
+    } else {
+        const { title, description } = req.body;
+        try {
+            const result = await saveBook(title, description);
+            res.send({ success: result });
+        } catch (error) {
+            console.error('Error on saving: ', error);
+            res.status(500).send('Error on saving!');
+        }
     }
 };
