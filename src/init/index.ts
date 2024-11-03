@@ -2,9 +2,9 @@
 import ConnectToMysql from "../database/init";
 
 // Init function, on the top
-(function() {
+(function () {
     try {
-      ConnectToMysql(); // Check database connected
-    }catch(e: any){
+        ConnectToMysql(); // Check database connected
+    } catch (e: any) {
     }
-  })();
+})();
