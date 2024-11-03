@@ -1,6 +1,6 @@
 
-import { CREATE_DATABASE } from "../../../sql/book";
-import { con } from "../../config/conn";
+import { CREATE_DATABASE } from "../../sql/book";
+import { con } from "../config/conn";
 
 export default function () {
   con.connect(function (err: any) {
