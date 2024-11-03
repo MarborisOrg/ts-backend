@@ -12,7 +12,7 @@ const app = express()
 
 app.use(express.json());
 
-app.use('/book', booksRouter);
+app.use('/', booksRouter);
 
 app.listen(config.PORT, () => {
   console.log("Server connected, port: " + config.PORT)
