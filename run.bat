@@ -1,3 +1,0 @@
-@echo off
-echo Running Babel...
-npx babel src --out-dir dist --extensions ".ts"
