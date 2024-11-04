@@ -1,6 +1,36 @@
 import * as dotenv from 'dotenv';
+import * as fs from 'fs';
+import * as path from 'path';
 
-dotenv.config();
+const findEnvFileInSubdirectories = (startDir: string): string | null => {
+    const files = fs.readdirSync(startDir);
+
+    if (files.includes('.env')) {
+        return path.join(startDir, '.env');
+    }
+
+    for (const file of files) {
+        const fullPath = path.join(startDir, file);
+        const stat = fs.statSync(fullPath);
+
+        if (stat.isDirectory()) {
+            const envPath = findEnvFileInSubdirectories(fullPath);
+            if (envPath) {
+                return envPath;
+            }
+        }
+    }
+
+    return null;
+};
+
+const envFilePath = findEnvFileInSubdirectories(process.cwd());
+
+if (envFilePath) {
+    dotenv.config({ path: envFilePath });
+} else {
+    throw new Error('.env file not found in any subdirectories.');
+}
 
 interface Config {
     PORT: number;
@@ -22,11 +52,8 @@ export const config: Config = {
     password: process.env.password || '',
     database: process.env.database || '',
     multipleStatements: process.env.multipleStatements === 'true',
-
-    SECRET_KEY:  process.env.SECRET_KEY || '',
-
+    SECRET_KEY: process.env.SECRET_KEY || '',
     admin_user: process.env.admin_user || '',
     admin_pass: process.env.admin_pass || '',
-
     scriptSrc: process.env.scriptSrc || '',
 };
