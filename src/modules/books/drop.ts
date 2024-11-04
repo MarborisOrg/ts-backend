@@ -1,7 +1,7 @@
 
 // get book
-import { DROP_BOOKS_TABLE } from "../mysql/sql/book";
-import { mysqlConnection } from "../mysql";
+import { DROP_BOOKS_TABLE } from "../../mysql/sql/book";
+import { mysqlConnection } from "../../mysql";
 
 export function dropBooks(): Promise<any> {
     return new Promise((resolve, reject) => {
