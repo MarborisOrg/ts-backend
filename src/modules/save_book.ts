@@ -1,5 +1,5 @@
-import { INSERT_BOOKS } from "../sql/book";
-import { DUPLICATE_TABLE } from "../sql/codes";
+import { INSERT_BOOKS } from "../mysql/sql/book";
+import { DUPLICATE_TABLE } from "../mysql/sql/codes";
 import { mysqlConnection } from "../mysql";
 
 export function saveBook(title: string, description: string): Promise<boolean> {

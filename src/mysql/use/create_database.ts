@@ -1,5 +1,5 @@
 
-import { CREATE_DATABASE, CR_ALERT, CR_FLUSH, CR_USE, CHECK_DATABASE } from "../../sql/init";
+import { CREATE_DATABASE, CR_ALERT, CR_FLUSH, CR_USE, CHECK_DATABASE } from "../sql/init";
 import { con } from "..";
 
 export default function (): Promise<boolean> {

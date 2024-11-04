@@ -2,7 +2,7 @@
 // by MRB
 
 import express from "express";
-import { config } from "./config/get";
+import { config } from "./config/env_get";
 import booksRouter from "./routes";
 
 import "./init"; // init

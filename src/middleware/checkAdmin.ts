@@ -1,6 +1,6 @@
 // middleware/checkAdmin.js
 import jwt from 'jsonwebtoken';
-import { config } from '../config/get';
+import { config } from '../config/env_get';
 
 const checkAdmin = (req: any, res: any, next: any) => {
     const token = req.headers['authorization']?.split(' ')[1];
