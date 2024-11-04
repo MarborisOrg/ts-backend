@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { dropBooks } from '../modules/drop_books';
+import { dropBooks } from '../../modules/drop_books';
 
 export const dropBookController = async (req: Request, res: Response) => {
     try {
