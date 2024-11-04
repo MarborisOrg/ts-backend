@@ -3,3 +3,6 @@ node_mo*/
 
 dist/
 build/
+
+*.log
+
