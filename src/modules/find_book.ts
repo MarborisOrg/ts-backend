@@ -1,7 +1,7 @@
 
 // get book
 import { SELECT_BOOKS } from "../sql/book";
-import { mysqlConnection } from "../config/conn";
+import { mysqlConnection } from "../mysql";
 
 export function findBookByTitle(title: string): Promise<any> {
     return new Promise((resolve, reject) => {
