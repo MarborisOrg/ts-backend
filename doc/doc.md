@@ -6,3 +6,4 @@
 
 + Add global moduke like log (Create error && handle error (try catch .. (for crashes app)))
 
++ Create log module and save log to .log folder
