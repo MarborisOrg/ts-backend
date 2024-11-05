@@ -1,5 +1,6 @@
 import * as dotenv from 'dotenv';
 import { envFilePath } from '../utils/env_finder';
+import { config_ns } from '../ts/interfaces';
 
 if (envFilePath) {
     dotenv.config({ path: envFilePath });
@@ -7,9 +8,9 @@ if (envFilePath) {
     throw new Error('.env file not found in any subdirectories.');
 }
 
-export const config: config.Settings = {
+export const config: config_ns.Settings = {
     PORT: parseInt(process.env.PORT || '8080', 10),
-    mysql_sv: process.env.sv || 'localhost',
+    mysql_sv: process.env.mysql_sv || 'localhost',
     mysql_user: process.env.mysql_user || 'root',
     mysql_password: process.env.mysql_password || '',
     database_name: process.env.database_name || '',

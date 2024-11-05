@@ -1,4 +1,4 @@
-namespace config {
+export namespace config_ns {
     export interface Settings {
         PORT: number;
         mysql_sv: string;
