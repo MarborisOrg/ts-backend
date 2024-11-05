@@ -9,7 +9,7 @@ if (envFilePath) {
 
 export const config: config.Settings = {
     PORT: parseInt(process.env.PORT || '8080', 10),
-    sv: process.env.sv || 'localhost',
+    mysql_sv: process.env.sv || 'localhost',
     mysql_user: process.env.mysql_user || 'root',
     mysql_password: process.env.mysql_password || '',
     database_name: process.env.database_name || '',

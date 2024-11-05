@@ -3,15 +3,15 @@ import { config } from "../config/env_get";
 
 // Just for create database file
 export const con = mysql.createConnection({
-  host: config.sv,
-  user: config.user,
-  password: config.password
+  host: config.mysql_sv,
+  user: config.mysql_user,
+  password: config.mysql_password
 });
 
 export const mysqlConnection = mysql.createConnection({
-  host: config.sv,
-  user: config.user,
-  password: config.password,
-  database: config.database, // created before
-  multipleStatements: config.multipleStatements,
+  host: config.mysql_sv,
+  user: config.mysql_user,
+  password: config.mysql_password,
+  database: config.database_name, // created before
+  multipleStatements: config.mysql_multipleStatements,
 });

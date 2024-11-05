@@ -1,7 +1,7 @@
 namespace config {
     export interface Settings {
         PORT: number;
-        sv: string;
+        mysql_sv: string;
         mysql_user: string;
         mysql_password: string;
         database_name: string;
