@@ -1,5 +1,6 @@
 
 import ConnectToMysql from "../mysql/use";
+import '../utils/global/handler'
 
 // Init function, on the top
 class Initializer {
