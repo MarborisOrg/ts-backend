@@ -1,4 +1,4 @@
-import { config } from "../../config/env_get";
+import { config } from "../../../config/env_get";
 
 const CREATE_DATABASE = "CREATE DATABASE IF NOT EXISTS " + config.database_name;
 const CHECK_DATABASE = "SHOW DATABASES LIKE '" + config.database_name + "';"

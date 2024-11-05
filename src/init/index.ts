@@ -1,5 +1,5 @@
 
-import ConnectToMysql from "../mysql/use";
+import ConnectToMysql from "../databases/mysql/use";
 import '../utils/global/handler'
 
 // Init function, on the top
