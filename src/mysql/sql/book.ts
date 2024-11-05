@@ -1,5 +1,6 @@
+import { config } from "../../config/env_get";
 
-const CREATE_TABLES = `CREATE TABLE IF NOT EXISTS books (
+const CREATE_TABLES = `CREATE TABLE IF NOT EXISTS ` + config.tc_book_name +` (
     id INT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(255),
     descrp VARCHAR(255),
