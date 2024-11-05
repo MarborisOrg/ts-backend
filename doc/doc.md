@@ -13,3 +13,7 @@
 + fix Ts types/interfaces
 
 + add admin list with different permissions
+
++ add redis for cashes
+
++ test dos
