@@ -17,3 +17,5 @@
 + add redis for cashes
 
 + test dos
+
++ add err handler for functions/classes
