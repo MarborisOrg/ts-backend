@@ -1,7 +1,7 @@
 import * as dotenv from 'dotenv';
 import Joi from 'joi';
-import { envFilePath } from '../utils/env_finder';
-import { config_ns } from '../ts/interfaces';
+import { envFilePath } from '@utils/env_finder';
+import { config_ns } from '@ts/interfaces';
 import df_config from './defaults'
 
 if (envFilePath) {

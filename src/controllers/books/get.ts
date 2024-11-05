@@ -1,7 +1,7 @@
 
 import { Request, Response } from 'express';
 import Joi from 'joi';
-import { findBookByTitle } from '../../modules/books/find';
+import { findBookByTitle } from '@modules/books/find';
 
 export const getBookController = async (req: Request, res: Response) => {
     const title = req.query.title;

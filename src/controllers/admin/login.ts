@@ -1,6 +1,6 @@
 // controllers/authController.js
 import jwt from 'jsonwebtoken';
-import { config } from '../../config/env_get';
+import { config } from '@config/env_get';
 
 export const loginController = (req: any, res: any) => {
     const { username, password } = req.body;
