@@ -11,3 +11,5 @@
 + use classes over functions or arrow functions
 
 + fix Ts types/interfaces
+
++ add admin list with different permissions
