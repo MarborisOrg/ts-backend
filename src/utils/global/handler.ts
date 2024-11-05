@@ -49,4 +49,4 @@ const createSafeFunction = <T extends (...args: any[]) => any>(fn: T): (...args:
 //     throw new Error("err hapen2");
 // });
 
-console.log("h");
+// console.log("h");
