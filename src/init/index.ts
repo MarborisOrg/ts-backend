@@ -1,20 +1,13 @@
-// Initializer
+
 import ConnectToMysql from "../mysql/use";
 
+// Init function, on the top
 class Initializer {
-    static async initialize() {
-        try {
-            await ConnectToMysql(); 
-            console.log("Database connected successfully.");
-        } catch (error) {
-            console.error("Database connection failed:", error);
+    static {
+        async () => {
+            await ConnectToMysql(); // [Mysql] Check database connected
         }
     }
 }
-
-// IIFE
-(async () => {
-    await Initializer.initialize();
-})();
 
 export default Initializer;
