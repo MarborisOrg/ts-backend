@@ -9,3 +9,5 @@
 + Create log module and save log to .log folder
 
 + use classes over functions or arrow functions
+
++ fix Ts types/interfaces
