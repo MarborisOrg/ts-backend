@@ -7,7 +7,7 @@
   "scripts": {
     "test": "echo \"Testing ...\" && ts-node src/index.ts && exit 1",
     "build": "rimraf dist && tsc --build",
-    "start": "node ."
+    "start": "node -r ts-node/register/transpile-only -r tsconfig-paths/register dist/index.js"
   },
   "author": "MRB",
   "license": "MIT",
