@@ -1,25 +1,7 @@
-import mongoose from "mongoose";
 import ItemModel, { IItem } from "./models/item.js";
 import { config } from "#config/env_get";
 import { DUPLICATE_ITEM } from "./codes.js";
-
-class Database {
-  private uri: string;
-
-  constructor(uri: string) {
-    this.uri = uri;
-  }
-
-  public async connect() {
-    try {
-      await mongoose.connect(this.uri);
-      console.log("MongoDB connected");
-    } catch (error) {
-      console.error("MongoDB connection error:", error);
-      process.exit(1);
-    }
-  }
-}
+import Database from "./use/index.js"
 
 class ItemService {
   private itemModel;
