@@ -23,6 +23,7 @@ const schema = Joi.object({
     scriptSrc: Joi.string().uri().default(''), /* no require */
     mongo_url: Joi.string().uri().default(df_config.env.mongo_url),
     tc_book_name: Joi.string().min(1).max(255).default(df_config.env.tc_book_name),
+    database_use: Joi.string().valid('mongo', 'mysql').default('mongo')
 }).unknown();
 
 const { error, value } = schema.validate(process.env);
@@ -44,4 +45,5 @@ export const config: config_ns.Settings = {
     scriptSrc: value.scriptSrc,
     mongo_url: value.mongo_url,
     tc_book_name: value.tc_book_name,
+    database_use: value.database_use
 };
