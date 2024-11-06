@@ -10,7 +10,7 @@
     "pretty": "prettier --write \"./src/**/*.{js,ts,json}\"" 
   },
   "imports": {
-    "#*.js": "./dist/*.js"
+    "#*": "./dist/*.js"
   },
   "author": "MRB",
   "license": "MIT",
