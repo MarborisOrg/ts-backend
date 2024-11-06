@@ -1,6 +1,6 @@
 
-import CREATE_DATABASE_INIT from "./create_database"
-import CREATE_TABLE_INIT from "./create_tables"
+import CREATE_DATABASE_INIT from "./create_database.js"
+import CREATE_TABLE_INIT from "./create_tables.js"
 
 /**
  * init MYSQL database for use

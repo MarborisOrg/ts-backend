@@ -5,7 +5,7 @@ import express from "express";
 import { config } from "./config/env_get.js";
 import booksRouter from "./routes/index.js";
 
-import "./init"; // init
+import "./init/index.js"; // init
 import helmet from "helmet";
 
 // app (express)

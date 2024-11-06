@@ -1,7 +1,7 @@
 import { Router } from 'express';
-import { getBookController, saveBookController, dropBookController } from '../controllers';
-import checkAdmin from '../middleware/checkAdmin';
-import { loginController } from '../controllers/admin/login';
+import { getBookController, saveBookController, dropBookController } from '../controllers/index.js';
+import checkAdmin from '../middleware/checkAdmin.js';
+import { loginController } from '../controllers/admin/login.js';
 
 const router = Router();
 

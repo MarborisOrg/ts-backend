@@ -1,6 +1,6 @@
 
-import ConnectToMysql from "../databases/mysql/use";
-import '../utils/global/handler'
+import ConnectToMysql from "../databases/mysql/use/index.js";
+import '../utils/global/handler.js'
 
 // Init function, on the top
 class Initializer {

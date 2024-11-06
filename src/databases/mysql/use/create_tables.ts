@@ -1,5 +1,5 @@
-import { mysqlConnection } from "..";
-import { CREATE_TABLES } from "../sql/book";
+import { mysqlConnection } from "../index.js";
+import { CREATE_TABLES } from "../sql/book.js";
 
 export default function () {
     mysqlConnection.connect(function (err: any) {

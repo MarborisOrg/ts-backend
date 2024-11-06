@@ -1,6 +1,6 @@
-import { dropBookController } from "./books/drop";
-import { getBookController } from "./books/get";
-import { saveBookController } from "./books/save";
+import { dropBookController } from "./books/drop.js";
+import { getBookController } from "./books/get.js";
+import { saveBookController } from "./books/save.js";
 
 
 export {

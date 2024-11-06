@@ -1,6 +1,6 @@
 
-import { CREATE_DATABASE, CR_ALERT, CR_FLUSH, CR_USE, CHECK_DATABASE } from "../sql/init";
-import { con } from "..";
+import { CREATE_DATABASE, CR_ALERT, CR_FLUSH, CR_USE, CHECK_DATABASE } from "../sql/init.js";
+import { con } from "../index.js";
 
 export default function (): Promise<boolean> {
   return new Promise((resolve, reject) => {
