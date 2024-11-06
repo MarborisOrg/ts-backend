@@ -1,29 +1,39 @@
+import mongoose from 'mongoose';
+import Item, { IItem } from './models/item.js';
 
-var MongoClient = require('mongodb').MongoClient;
-var mongo_url = "mongodb://localhost:27017/";
+const connectDB = async () => {
+  try {
+      await mongoose.connect('mongodb://localhost:27017/yourDatabaseName');
+      console.log('MongoDB connected');
+  } catch (error) {
+      console.error('MongoDB connection error:', error);
+      process.exit(1);
+  }
+};
 
-MongoClient.connect(mongo_url, function(err: any, db: any) {
-  if (err) throw err;
-  var dbo = db.db("mydb");
-  var myobj = [
-    { name: 'John', address: 'Highway 71'},
-    { name: 'Peter', address: 'Lowstreet 4'},
-    { name: 'Amy', address: 'Apple st 652'},
-    { name: 'Hannah', address: 'Mountain 21'},
-    { name: 'Michael', address: 'Valley 345'},
-    { name: 'Sandy', address: 'Ocean blvd 2'},
-    { name: 'Betty', address: 'Green Grass 1'},
-    { name: 'Richard', address: 'Sky st 331'},
-    { name: 'Susan', address: 'One way 98'},
-    { name: 'Vicky', address: 'Yellow Garden 2'},
-    { name: 'Ben', address: 'Park Lane 38'},
-    { name: 'William', address: 'Central st 954'},
-    { name: 'Chuck', address: 'Main Road 989'},
-    { name: 'Viola', address: 'Sideway 1633'}
-  ];
-  dbo.collection("customers").insertMany(myobj, function(err: any, res: any) {
-    if (err) throw err;
-    console.log("Number of documents inserted: " + res.insertedCount);
-    db.close();
-  });
-}); 
+const createItem = async (title: string, descrp: string) => {
+    const newItem: IItem = new Item({ title, descrp });
+    try {
+        const savedItem = await newItem.save();
+        console.log('Item saved:', savedItem);
+    } catch (error) {
+        console.error('Error saving item:', error);
+    }
+};
+
+const getAllItems = async () => {
+    try {
+        const items = await Item.find();
+        console.log('All items:', items);
+    } catch (error) {
+        console.error('Error fetching items:', error);
+    }
+};
+
+const main = async () => {
+    await connectDB();
+    await createItem('عنوان', 'توضیحات');
+    await getAllItems();
+};
+
+main();
