@@ -2,6 +2,5 @@
 
 !/*.json
 !.gitignore
-!/scripts
 
 *-lock*
