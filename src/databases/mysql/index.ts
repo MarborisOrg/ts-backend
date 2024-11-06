@@ -5,7 +5,7 @@ import { config } from "../../config/env_get.js";
 export const con = mysql.createConnection({
   host: config.mysql_sv,
   user: config.mysql_user,
-  password: config.mysql_password
+  password: config.mysql_password,
 });
 
 export const mysqlConnection = mysql.createConnection({

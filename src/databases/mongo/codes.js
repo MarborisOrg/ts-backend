@@ -1,4 +1,3 @@
+const DUPLICATE_ITEM = 11000;
 
-const DUPLICATE_ITEM = 11000
-
-export { DUPLICATE_ITEM }
+export { DUPLICATE_ITEM };

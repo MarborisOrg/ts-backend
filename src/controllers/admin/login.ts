@@ -1,14 +1,16 @@
 // controllers/authController.js
-import jwt from 'jsonwebtoken';
-import { config } from '../../config/env_get.js';
+import jwt from "jsonwebtoken";
+import { config } from "../../config/env_get.js";
 
 export const loginController = (req: any, res: any) => {
-    const { username, password } = req.body;
+  const { username, password } = req.body;
 
-    if (username === config.admin_user && password === config.admin_pass) {
-        const token = jwt.sign({ role: 'admin' }, config.SECRET_KEY, { expiresIn: '7d' }); // 7 days
-        return res.json({ token });
-    }
+  if (username === config.admin_user && password === config.admin_pass) {
+    const token = jwt.sign({ role: "admin" }, config.SECRET_KEY, {
+      expiresIn: "7d",
+    }); // 7 days
+    return res.json({ token });
+  }
 
-    return res.status(401).json({ message: 'Invalid credentials' });
+  return res.status(401).json({ message: "Invalid credentials" });
 };

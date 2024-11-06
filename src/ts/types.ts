@@ -1,2 +1,1 @@
-
-export type DatabasesUseType = 'mongo' | 'mysql';
+export type DatabasesUseType = "mongo" | "mysql";

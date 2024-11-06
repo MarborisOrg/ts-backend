@@ -1,7 +1,7 @@
-import mongoose from 'mongoose';
-import ItemModel, { IItem } from './models/item.js';
-import { config } from '../../config/env_get.js';
-import { DUPLICATE_ITEM } from './codes.js';
+import mongoose from "mongoose";
+import ItemModel, { IItem } from "./models/item.js";
+import { config } from "../../config/env_get.js";
+import { DUPLICATE_ITEM } from "./codes.js";
 
 class Database {
   private uri: string;
@@ -13,9 +13,9 @@ class Database {
   public async connect() {
     try {
       await mongoose.connect(this.uri);
-      console.log('MongoDB connected');
+      console.log("MongoDB connected");
     } catch (error) {
-      console.error('MongoDB connection error:', error);
+      console.error("MongoDB connection error:", error);
       process.exit(1);
     }
   }
@@ -32,12 +32,14 @@ class ItemService {
     const newItem: IItem = new this.itemModel({ title, descrp });
     try {
       const savedItem = await newItem.save();
-      console.log('Item saved:', savedItem);
+      console.log("Item saved:", savedItem);
     } catch (error: any) {
       if (error.code === DUPLICATE_ITEM) {
-        console.error(`Error: An item with the title "${title}" already exists.`);
+        console.error(
+          `Error: An item with the title "${title}" already exists.`,
+        );
       } else {
-        console.error('Error saving item:', error);
+        console.error("Error saving item:", error);
       }
     }
   }
@@ -45,9 +47,9 @@ class ItemService {
   public async getAllItems() {
     try {
       const items = await this.itemModel.find();
-      console.log('All items:', items);
+      console.log("All items:", items);
     } catch (error) {
-      console.error('Error fetching items:', error);
+      console.error("Error fetching items:", error);
     }
   }
 
@@ -60,16 +62,16 @@ class ItemService {
         console.log(`Item with the title "${title}" has been deleted.`);
       }
     } catch (error) {
-      console.error('Error deleting item:', error);
+      console.error("Error deleting item:", error);
     }
   }
 
   public async dropCollection() {
     try {
       await this.itemModel.collection.drop();
-      console.log('Collection dropped successfully.');
+      console.log("Collection dropped successfully.");
     } catch (error) {
-      console.error('Error dropping collection:', error);
+      console.error("Error dropping collection:", error);
     }
   }
 }
@@ -79,7 +81,7 @@ const main = async () => {
   await db.connect();
 
   const itemService = new ItemService();
-  await itemService.createItem('عنوان', 'توضیحات');
+  await itemService.createItem("عنوان", "توضیحات");
   await itemService.getAllItems();
 
   // حذف یک آیتم
