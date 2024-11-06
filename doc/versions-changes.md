@@ -14,3 +14,5 @@
 # Version 3.0.0
 
 + Add Mongodb
++ Fix building for esm(es6)
+- Remove ts-node runtime (Doesnt support ESM as well)
