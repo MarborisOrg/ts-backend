@@ -4,6 +4,6 @@ npm run build && npm run start
 
 
 ## INFO
-+ Target: ESM/CommonJs
++ ESM Module
 
 ### Make it easy/simple and usefull

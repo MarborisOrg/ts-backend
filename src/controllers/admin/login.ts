@@ -1,4 +1,3 @@
-// controllers/authController.js
 import jwt from "jsonwebtoken";
 import { config } from "#config/env_get";
 
