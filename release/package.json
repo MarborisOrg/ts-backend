@@ -5,9 +5,6 @@
   "main": "dist/index.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Testing ...\" && ts-node -r tsconfig-paths/register src/index.ts && exit 1",
-    "build": "rimraf dist && rimraf tsconfig.tsbuildinfo && tsc --build",
-    "start": "node -r ts-node/register/transpile-only -r tsconfig-paths/register dist/index.js",
     "esmstart": "node --experimental-specifier-resolution=node --loader ./scripts/esm-loader.js dist/index.js"
   },
   "author": "MRB",
