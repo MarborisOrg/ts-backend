@@ -19,12 +19,3 @@
 + test dos
 
 + add err handler for functions/classes (NOW)
-
-
-# Notes
-
-## Alias/ESM
-نمیشه حالت alias رو در کنار بیلد tsc (esm) استفاده کرد
-برای بیلد گرفتن روی حالت ESM (es6) باید alias path ها رو حذف کرد
-
-## 
