@@ -1,10 +1,6 @@
 import mongoose, { Document, Schema } from "mongoose";
 import { config } from "#config/env_get";
-
-export interface IItem extends Document {
-  title: string;
-  descrp: string;
-}
+import { mongo_ns } from "#ts/interfaces";
 
 class ItemModel {
   private itemSchema: Schema;
@@ -17,7 +13,7 @@ class ItemModel {
   }
 
   public getModel() {
-    return mongoose.model<IItem>(config.tc_book_name, this.itemSchema);
+    return mongoose.model<mongo_ns.IItem>(config.tc_book_name, this.itemSchema);
   }
 }
 

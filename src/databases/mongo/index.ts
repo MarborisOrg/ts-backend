@@ -1,7 +1,8 @@
-import ItemModel, { IItem } from "./models/item.js";
+import ItemModel from "./models/item.js";
 import { config } from "#config/env_get";
 import { DUPLICATE_ITEM } from "./codes.js";
 import Database from "./use/index.js"
+import { mongo_ns } from "#ts/interfaces.js";
 
 class ItemService {
   private itemModel;
@@ -11,7 +12,7 @@ class ItemService {
   }
 
   public async createItem(title: string, descrp: string) {
-    const newItem: IItem = new this.itemModel({ title, descrp });
+    const newItem: mongo_ns.IItem = new this.itemModel({ title, descrp });
     try {
       const savedItem = await newItem.save();
       console.log("Item saved:", savedItem);

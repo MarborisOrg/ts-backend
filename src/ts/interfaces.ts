@@ -32,3 +32,11 @@ export namespace config_ns {
     getEnv(): IEnvConfig;
   }
 }
+
+export namespace mongo_ns {
+  export interface IItem extends Document {
+    [x: string]: any;
+    title: string;
+    descrp: string;
+  }
+}
