@@ -1,3 +1,3 @@
-import "../databases/mongo/index.js";
+import "#databases/mongo/index";
 
 console.log("RUNNED");

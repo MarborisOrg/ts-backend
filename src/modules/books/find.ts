@@ -1,6 +1,6 @@
 // get book
-import { SELECT_BOOKS } from "../../databases/mysql/sql/book.js";
-import { mysqlConnection } from "../../databases/mysql/index.js";
+import { SELECT_BOOKS } from "#databases/mysql/sql/book";
+import { mysqlConnection } from "#databases/mysql/index";
 
 export function findBookByTitle(title: string): Promise<any> {
   return new Promise((resolve, reject) => {

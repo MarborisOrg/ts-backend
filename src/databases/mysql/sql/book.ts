@@ -1,4 +1,4 @@
-import { config } from "../../../config/env_get.js";
+import { config } from "#config/env_get";
 
 const CREATE_TABLES =
   `CREATE TABLE IF NOT EXISTS ` +

@@ -3,9 +3,9 @@ import {
   getBookController,
   saveBookController,
   dropBookController,
-} from "../controllers/index.js";
-import checkAdmin from "../middleware/checkAdmin.js";
-import { loginController } from "../controllers/admin/login.js";
+} from "#controllers/index";
+import checkAdmin from "#middleware/checkAdmin";
+import { loginController } from "#controllers/admin/login";
 
 const router = Router();
 

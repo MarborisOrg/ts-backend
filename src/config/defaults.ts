@@ -1,4 +1,4 @@
-import { config_ns } from "../ts/interfaces.js";
+import { config_ns } from "#ts/interfaces";
 
 class EnvConfig implements config_ns.IEnvConfig {
   PORT: number;

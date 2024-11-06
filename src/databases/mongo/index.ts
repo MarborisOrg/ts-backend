@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 import ItemModel, { IItem } from "./models/item.js";
-import { config } from "../../config/env_get.js";
+import { config } from "#config/env_get";
 import { DUPLICATE_ITEM } from "./codes.js";
 
 class Database {

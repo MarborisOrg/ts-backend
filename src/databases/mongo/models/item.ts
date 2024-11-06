@@ -1,5 +1,5 @@
 import mongoose, { Document, Schema } from "mongoose";
-import { config } from "../../../config/env_get.js";
+import { config } from "#config/env_get";
 
 export interface IItem extends Document {
   title: string;
