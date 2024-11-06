@@ -26,4 +26,7 @@
 نمیشه حالت alias رو در کنار بیلد tsc (esm) استفاده کرد
 برای بیلد گرفتن روی حالت ESM (es6) باید alias path ها رو حذف کرد
 
-## 
+### Now
+- Remove path alias
++ Add ESM support (Es6)
++ Fix tsc build for ESM (Compltly support on Nodejs)
