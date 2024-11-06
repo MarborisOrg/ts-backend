@@ -110,7 +110,7 @@
     "skipLibCheck": true                                 /* Skip type checking all .d.ts files. */
   },
   "include": ["src/**/*"],
-  "exclude": ["node_modules", "log", "doc", "dist", "archive", "build", "release"],
+  "exclude": ["node_modules", "log", "doc", "dist", "archive", "build"],
   "ts-node": {
     "esm": true
   }
