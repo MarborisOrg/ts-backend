@@ -1,7 +1,7 @@
 
 import { Request, Response } from 'express';
 import Joi from 'joi';
-import { saveBook } from '@modules/books/save';
+import { saveBook } from '../../modules/books/save';
 const bookSchema = Joi.object({
     title: Joi.string().required(),
     description: Joi.string().required(),
