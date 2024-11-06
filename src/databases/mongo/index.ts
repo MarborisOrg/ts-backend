@@ -31,7 +31,7 @@ class ItemService {
       try {
           const savedItem = await newItem.save();
           console.log('Item saved:', savedItem);
-      } catch (error: any) { // استفاده از any برای نوع خطا
+      } catch (error: any) {
           if (error.code === 11000) {
               console.error(`Error: An item with the title "${title}" already exists.`);
           } else {

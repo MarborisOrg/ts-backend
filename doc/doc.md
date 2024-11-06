@@ -1,10 +1,13 @@
-+ Module (Es6) && CommonJs --> tsc -> nodejs/ts-node  (DONE (Module not added)) (Module added) (DONE)
 
-+ Add path alias (@) for Module (Es6) && CommonJs  (DONE (fix all files)) (NOW) (DONE)
 
-+ Add Mysql && Mongodb support (MySql inside Mongodb) (config in .env)  (NOW)
+# 1 (NOW)
++ Module (Es6) && CommonJs --> tsc -> nodejs/ts-node  (DONE (Module not added)) (Module added) (rm ts-node) (DONE*)
 
-+ Add global moduke like log (Create error && handle error (try catch .. (for crashes app)))
++ Add path alias (@) for Module (Es6) && CommonJs  (DONE (fix all files)) (NOW) (NO!) (DONE*)
+
++ Add Mysql && Mongodb support (MySql inside Mongodb) (config in .env)  (NOW) (DONE*)
+
++ Add global module like log (Create error && handle error (try catch .. (for crashes app)))
 
 + Create log module and save log to .log folder
 
@@ -19,6 +22,7 @@
 + test dos
 
 + add err handler for functions/classes (NOW)
+
 
 # Notes
 
