@@ -1,19 +1,19 @@
-import ItemModel, { IItem } from "../models/item.js";
+import { mongo_ns } from "#ts/interfaces";
+import mongoose from "mongoose";
 
-class ItemService {
-    private itemModel;
-  
-    constructor() {
-      this.itemModel = ItemModel.getModel();
-    }
-  
-    public async getAllItems() {
-      try {
-        const items = await this.itemModel.find();
-        console.log("All items:", items);
-      } catch (error) {
-        console.error("Error fetching items:", error);
-      }
-    }
+export class ItemFind {
+  private itemModel;
 
+  constructor(itemModel: mongoose.Model<mongo_ns.IItem>) {
+    this.itemModel = itemModel;
   }
+
+  public async getAllItems() {
+    try {
+      const items = await this.itemModel.find();
+      console.log("All items:", items);
+    } catch (error) {
+      console.error("Error fetching items:", error);
+    }
+  }
+}
