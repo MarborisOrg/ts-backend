@@ -16,3 +16,8 @@
 + Add Mongodb
 + Fix building for esm(es6)
 - Remove ts-node runtime (Doesnt support ESM as well)
++ Add Yarn
+
+## 3.0 C:
+- Not support ts-node/runtime typescript building
+- Not support path alias on Ts/Js(ESM)
