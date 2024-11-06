@@ -5,11 +5,19 @@ export interface IItem extends Document {
     descrp: string;
 }
 
-const itemSchema: Schema = new Schema({
-    title: { type: String, required: true, unique: true },
-    descrp: { type: String, required: true }
-});
+class ItemModel {
+    private itemSchema: Schema;
 
-const Item = mongoose.model<IItem>('Item', itemSchema);
+    constructor() {
+        this.itemSchema = new Schema({
+            title: { type: String, required: true, unique: true },
+            descrp: { type: String, required: true }
+        });
+    }
 
-export default Item;
+    public getModel() {
+        return mongoose.model<IItem>('Item', this.itemSchema);
+    }
+}
+
+export default new ItemModel();
