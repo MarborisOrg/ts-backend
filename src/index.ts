@@ -2,8 +2,8 @@
 // by MRB
 
 import express from "express";
-import { config } from "./config/env_get";
-import booksRouter from "./routes";
+import { config } from "./config/env_get.js";
+import booksRouter from "./routes/index.js";
 
 import "./init"; // init
 import helmet from "helmet";
