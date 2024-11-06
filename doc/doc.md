@@ -1,6 +1,6 @@
-+ Module (Es6) && CommonJs --> tsc -> nodejs/ts-node  (DONE (Module not added))
++ Module (Es6) && CommonJs --> tsc -> nodejs/ts-node  (DONE (Module not added)) (Module added) (DONE)
 
-+ Add path alias (@) for Module (Es6) && CommonJs  (DONE (fix all files)) (NOW)
++ Add path alias (@) for Module (Es6) && CommonJs  (DONE (fix all files)) (NOW) (DONE)
 
 + Add Mysql && Mongodb support (MySql inside Mongodb) (config in .env)  (NOW)
 

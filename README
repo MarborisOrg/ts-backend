@@ -1,3 +1,9 @@
 npm test
 &&
 npm run build && npm run start
+
+
+## INFO
++ Support ESM (Es6)
+- Not support path alias on Ts/Js(ESM)
++ Support CommonJs build
