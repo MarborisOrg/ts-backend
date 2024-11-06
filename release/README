@@ -1,10 +1,9 @@
 release build (typescript build file) for ESM (Es6)
 
-# Usage
 + npm i
 
 
 # Not supported
 - ts-node
 - tsc (types)
--  ts*
+- 
