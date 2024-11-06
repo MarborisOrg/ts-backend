@@ -1,4 +1,5 @@
 import mongoose, { Document, Schema } from 'mongoose';
+import { config } from '../../../config/env_get.js';
 
 export interface IItem extends Document {
     title: string;
@@ -16,7 +17,7 @@ class ItemModel {
     }
 
     public getModel() {
-        return mongoose.model<IItem>('Item', this.itemSchema);
+        return mongoose.model<IItem>(config.tc_book_name, this.itemSchema);
     }
 }
 

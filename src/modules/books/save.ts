@@ -1,5 +1,5 @@
 import { INSERT_BOOKS } from "../../databases/mysql/sql/book.js";
-import { DUPLICATE_TABLE } from "../../databases/mysql/sql/codes.js";
+import { DUPLICATE_TABLE } from "../../databases/mysql/codes.js";
 import { mysqlConnection } from "../../databases/mysql/index.js";
 
 export function saveBook(title: string, description: string): Promise<boolean> {

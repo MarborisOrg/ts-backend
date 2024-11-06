@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 import ItemModel, { IItem } from './models/item.js';
 import { config } from '../../config/env_get.js';
+import { DUPLICATE_ITEM } from './codes.js';
 
 class Database {
   private uri: string;
@@ -33,7 +34,7 @@ class ItemService {
       const savedItem = await newItem.save();
       console.log('Item saved:', savedItem);
     } catch (error: any) {
-      if (error.code === 11000) {
+      if (error.code === DUPLICATE_ITEM) {
         console.error(`Error: An item with the title "${title}" already exists.`);
       } else {
         console.error('Error saving item:', error);
