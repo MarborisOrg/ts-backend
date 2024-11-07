@@ -24,7 +24,7 @@ const databasesArray: DatabasesType[] = [
     },
 ];
 
-function call(functionName: string | DatabaseModuleNames, ...args: any[]) {
+export function call(functionName: string | DatabaseModuleNames, ...args: any[]) {
     const dbUse = cuse();
     const row = databasesArray.find((r) => r.name === dbUse);
 
@@ -48,7 +48,7 @@ function call(functionName: string | DatabaseModuleNames, ...args: any[]) {
     }
 }
 
-call("Function 1", "test", 42);
-call("Function 2", "another test");
-call("Function 1", "test again", 100);
-call("Function 1", "yet another test", 200);
+// call("Function 1", "test", 42);
+// call("Function 2", "another test");
+// call("Function 1", "test again", 100);
+// call("Function 1", "yet another test", 200);
