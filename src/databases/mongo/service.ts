@@ -60,19 +60,19 @@ export const mongoModules: DatabasesType = {
   modules: [
     {
       name: MongoModuleNames.save,
-      func: itemService.createItem,
+      func: itemService.createItem.bind(itemService),
     },
     {
       name: MongoModuleNames.find,
-      func: itemService.getItemByTitle,
+      func: itemService.getItemByTitle.bind(itemService),
     },
     {
       name: MongoModuleNames.drop,
-      func: itemService.dropCollection.bind(itemService), // need bind
+      func: itemService.dropCollection.bind(itemService), // need bind / or we can use arrow function in Service class
     },
     {
       name: MongoModuleNames.delete,
-      func: itemService.deleteItem,
+      func: itemService.deleteItem.bind(itemService),
     },
   ]
 };
