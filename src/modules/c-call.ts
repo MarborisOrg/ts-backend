@@ -29,7 +29,7 @@ async function call(
       console.log(`error in call! -> ` + error);
       return null;
     } finally {
-      row.called = true; // put on cache
+      // row.called = true; // put on cache
       // or we can add defer, or lock (like guard lock (C++))
     }
   } else {
