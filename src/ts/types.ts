@@ -9,6 +9,6 @@ export type NamedModules = {
 
 export type DatabasesType = {
   name: DatabasesUseType;
-  functions: NamedModules[];
+  modules: NamedModules[];
   called: boolean; // check one time caller for next version on Redis cache
 };

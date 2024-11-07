@@ -3,10 +3,11 @@ import { DatabasesType } from "#ts/types";
 import cuse from "./c-use.js"
 import assert from "assert";
 
-const mainArray: DatabasesType[] = [
+const databasesArray: DatabasesType[] = [
+    // modules on same databases
   {
     name: "mongo",
-    functions: [
+    modules: [
       { name: DatabaseModuleNames.Function1, func: () => console.log("Function 1 from Row 1") },
       { name: DatabaseModuleNames.Function2, func: () => console.log("Function 2 from Row 1") },
     ],
@@ -14,7 +15,7 @@ const mainArray: DatabasesType[] = [
   },
   {
     name: "mysql",
-    functions: [
+    modules: [
       { name: DatabaseModuleNames.Function1, func: () => console.log("Function 1 from Row 2") },
       { name: DatabaseModuleNames.Function2, func: () => console.log("Function 2 from Row 2") },
     ],
@@ -24,12 +25,12 @@ const mainArray: DatabasesType[] = [
 
 function call(functionName: string | DatabaseModuleNames) {
   const dbUse = cuse();
-  const row = mainArray.find((r) => r.name === dbUse);
+  const row = databasesArray.find((r) => r.name === dbUse);
 
   if (!row) assert(false, "[M40]: Row not found");
 
   if (true) { // check cache (!row.called)
-    const namedFunction = row.functions.find((f) => f.name === functionName);
+    const namedFunction = row.modules.find((f) => f.name === functionName);
 
     if (namedFunction) {
       console.log(`Calling ${namedFunction.name} from ${row.name}:`);
