@@ -79,6 +79,8 @@ async function call(
         return null;
       }
     } catch (error) {
+        console.log(`error in call! -> ` + error);
+        return null;
     } finally {
       row.called = true; // put on cache
     }
