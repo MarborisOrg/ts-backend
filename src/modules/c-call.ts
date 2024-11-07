@@ -22,7 +22,7 @@ const mainArray: DatabasesType[] = [
   },
 ];
 
-function call(functionName: string) {
+function call(functionName: string | DatabaseModuleNames) {
   const dbUse = cuse();
   const row = mainArray.find((r) => r.name === dbUse);
 
