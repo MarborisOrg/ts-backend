@@ -1,3 +1,4 @@
+// all service classes
 import ItemModel from "./models/item.js";
 import { config } from "#config/env_get";
 import Database from "./use/index.js";
@@ -6,6 +7,12 @@ import mongoose from "mongoose";
 import { ItemCreate } from "./modules/save.js";
 import { ItemFind } from "./modules/find.js";
 import { ItemDelete } from "./modules/drop.js";
+
+// module
+import { MongoModuleNames } from "#ts/enums";
+import { DatabasesType } from "#ts/types";
+import { sleep } from "#utils/sleep";
+
 
 class Service {
   private itemModel: mongoose.Model<mongo_ns.IItem>;
@@ -37,12 +44,36 @@ class Service {
   }
 }
 
-const main = async () => {
+const itemService = new Service();
+
+// put mongo on init
+export default async () => {
   const db = new Database(config.mongo_url);
   await db.connect();
 
-  const itemService = new Service();
   await itemService.createItem("عنوان", "توضیحات");
 };
 
-main();
+
+export const mongoModules: DatabasesType = {
+  name: "mongo",
+  modules: [
+    {
+      name: MongoModuleNames.save,
+      func: itemService.createItem,
+    },
+    {
+      name: MongoModuleNames.find,
+      func: itemService.getItemByTitle,
+    },
+    {
+      name: MongoModuleNames.drop,
+      func: itemService.dropCollection,
+    },
+    {
+      name: MongoModuleNames.delete,
+      func: itemService.deleteItem,
+    },
+  ]
+};
+

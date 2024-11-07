@@ -4,7 +4,7 @@ export type DatabasesUseType = "mongo" | "mysql";
 
 export type NamedModules = {
   name: string | MongoModuleNames | MysqlModuleNames;
-  func: (...args: any[]) => Promise<any> | any | void;
+  func: (...args: any[]) => Promise<any> | any | Promise<void> | void;
   called?: boolean;
 };
 

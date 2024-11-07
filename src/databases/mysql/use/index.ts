@@ -10,7 +10,7 @@ export default async function () {
   try {
     const results = await CREATE_DATABASE_INIT(); // check database
     if (results) {
-      CREATE_TABLE_INIT(); // check tables
+      await CREATE_TABLE_INIT(); // check tables
     } else {
       throw new Error("[database] Mysql err!");
     }

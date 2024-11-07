@@ -1,5 +1,5 @@
 import { DatabasesType } from "#ts/types";
-import { mongoModules } from "./mongo/modules/index.js";
+import { mongoModules } from "./mongo/service.js";
 import { mysqlModules } from "./mysql/modules/index.js";
 
 export const databasesArray: DatabasesType[] = [
