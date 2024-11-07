@@ -4,7 +4,7 @@ export type DatabasesUseType = "mongo" | "mysql";
 
 export type NamedModules = {
   name: DatabaseModuleNames;
-  func: () => void;
+  func: (...args: any[]) => void;
 };
 
 export type DatabasesType = {
