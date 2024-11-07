@@ -67,10 +67,10 @@ async function call(
 
       if (namedFunction) {
         console.log(`Calling ${namedFunction.name} from ${row.name}:`);
-        return await namedFunction.func(...args); // مقدار برگشتی را برمی‌گرداند
+        return await namedFunction.func(...args);
       } else {
         console.log(`Function ${functionName} not found in ${row.name}.`);
-        return null; // یا هر مقدار دیگری که مناسب است
+        return null;
       }
     } catch (error) {
     } finally {
