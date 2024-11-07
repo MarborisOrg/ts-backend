@@ -1,4 +1,4 @@
-import { DatabaseModuleNames } from "./enums";
+import { DatabaseModuleNames } from "./enums.js";
 
 export type DatabasesUseType = "mongo" | "mysql";
 

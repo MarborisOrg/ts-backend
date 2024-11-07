@@ -1,4 +1,4 @@
-import { DatabaseModuleNames } from "#ts/enums.js";
+import { DatabaseModuleNames } from "#ts/enums";
 import { DatabasesType } from "#ts/types";
 import cuse from "./c-use.js"
 import assert from "assert";
