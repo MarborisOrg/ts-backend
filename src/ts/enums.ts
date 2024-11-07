@@ -7,13 +7,14 @@
 // dont repeat a name
 // or empty names
 export enum MongoModuleNames {
-  Function1 = "Function 1",
-  Function2 = "Function 2",
-  Function3 = "f3",
+  drop = "drop",
+  find = "find",
+  save = "save",
+  delete = "delete"
 }
 
 export enum MysqlModuleNames {
-  drop = "drop",
+  drop = "drop", // drop all table (book) +get table name! no set default TODO()
   find = "find",
   save = "save"
 }
