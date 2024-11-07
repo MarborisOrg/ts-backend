@@ -1,5 +1,5 @@
 import { DatabasesType } from "#ts/types";
-import CUSE from "./c-use.js"
+import cuse from "./c-use.js"
 import assert from "assert";
 
 const mainArray: DatabasesType[] = [
@@ -22,7 +22,7 @@ const mainArray: DatabasesType[] = [
 ];
 
 function call(functionName: string) {
-  const dbUse = CUSE();
+  const dbUse = cuse();
   const row = mainArray.find((r) => r.name === dbUse);
 
   if (!row) assert(false, "[M40]: Row not found");
