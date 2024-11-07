@@ -1,64 +1,9 @@
+import { databasesArray } from "#databases/modules.js";
 import { DatabaseModuleNames } from "#ts/enums";
-import { DatabasesType } from "#ts/types";
 import cuse from "./c-use.js";
 import assert from "assert";
 
-const mongoModules: DatabasesType = {
-  name: "mongo",
-  modules: [
-    {
-      name: DatabaseModuleNames.Function1,
-      func: (param1: string, param2: number) =>
-        console.log(
-          `Function 1 from Row 1 with param1: ${param1} and param2: ${param2}`
-        ),
-    },
-    {
-      name: DatabaseModuleNames.Function2,
-      func: (param: string) =>
-        console.log(`Function 2 from Row 1 with param: ${param}`),
-    },
-    {
-      name: DatabaseModuleNames.Function3,
-      func: async () => {
-        await sleep(2000);
-        return "Hi";
-      },
-    },
-  ],
-  called: false,
-};
-
-const mysqlModules: DatabasesType = {
-  name: "mysql",
-  modules: [
-    {
-      name: DatabaseModuleNames.Function1,
-      func: (param1: string, param2: number) =>
-        console.log(
-          `Function 1 from Row 2 with param1: ${param1} and param2: ${param2}`
-        ),
-    },
-    {
-      name: DatabaseModuleNames.Function2,
-      func: (param: string) =>
-        console.log(`Function 2 from Row 2 with param: ${param}`),
-    },
-  ],
-  called: false,
-};
-// make this array in default file, make modules in database folders
 // both options for call all databases
-const databasesArray: DatabasesType[] = [
-  // modules on same databases
-  mongoModules,
-  mysqlModules,
-];
-
-function sleep(ms: number): Promise<void> {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
-
 async function call(
   functionName: string | DatabaseModuleNames,
   ...args: any[]
