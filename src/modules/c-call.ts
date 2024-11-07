@@ -3,6 +3,7 @@ import { DatabasesType } from "#ts/types";
 import cuse from "./c-use.js";
 import assert from "assert";
 
+// both options for call all databases
 const databasesArray: DatabasesType[] = [
     // modules on same databases
     {
