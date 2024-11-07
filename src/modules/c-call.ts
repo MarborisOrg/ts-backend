@@ -42,6 +42,7 @@ function call(functionName: string | DatabaseModuleNames) {
   } else {
     // console.log(`${row.name} has already been called.`);
     // already in cache
+    // work with times for spam!
   }
 }
 
