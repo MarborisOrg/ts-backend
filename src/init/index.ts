@@ -4,9 +4,9 @@ import "#utils/global/handler";
 // Init function, on the top
 class Initializer {
   static {
-    async () => {
+    (async () => {
       await ConnectDatabase(); // Check databases connected
-    };
+    })();
   }
 }
 

@@ -47,7 +47,7 @@ class Service {
 const itemService = new Service();
 
 // put mongo on init
-export default async () => {
+export default async function() {
   const db = new Database(config.mongo_url);
   await db.connect();
 
