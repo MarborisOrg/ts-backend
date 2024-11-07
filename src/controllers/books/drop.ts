@@ -1,9 +1,9 @@
+import { call } from "#modules/c-call";
 import { Request, Response } from "express";
-import { dropBooks } from "#databases/mysql/modules/drop";
 
 export const dropBookController = async (req: Request, res: Response) => {
   try {
-    const result = await dropBooks();
+    const result = await call("drop");
     res.send({ success: result });
   } catch (error) {
     console.error("Error on deleting: ", error);

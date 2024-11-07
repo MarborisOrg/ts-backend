@@ -23,6 +23,7 @@ export class ItemDelete {
 
   public async dropCollection() {
     try {
+      console.log("DR2")
       await this.itemModel.collection.drop();
       console.log("Collection dropped successfully.");
     } catch (error) {

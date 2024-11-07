@@ -38,8 +38,9 @@ class Service {
     return this.itemDelete.deleteItem(title);
   }
 
-  public dropCollection() {
-    return this.itemDelete.dropCollection();
+  public async dropCollection() {
+    console.log("DR1")
+    await this.itemDelete.dropCollection();
   }
 }
 
@@ -67,7 +68,7 @@ export const mongoModules: DatabasesType = {
     },
     {
       name: MongoModuleNames.drop,
-      func: itemService.dropCollection,
+      func: itemService.dropCollection.bind(itemService), // need bind
     },
     {
       name: MongoModuleNames.delete,
