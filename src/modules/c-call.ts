@@ -1,11 +1,11 @@
 import { databasesArray } from "#databases/modules.js";
-import { DatabaseModuleNames } from "#ts/enums";
+import { MongoModuleNames, MysqlModuleNames } from "#ts/enums";
 import cuse from "./c-use.js";
 import assert from "assert";
 
 // both options for call all databases
 async function call(
-  functionName: string | DatabaseModuleNames,
+  functionName: string | MongoModuleNames | MysqlModuleNames,
   ...args: any[]
 ): Promise<any> {
   const dbUse = cuse();
