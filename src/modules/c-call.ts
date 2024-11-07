@@ -25,6 +25,7 @@ const databasesArray: DatabasesType[] = [
       {
         name: DatabaseModuleNames.Function3,
         func: async () => {
+          await sleep(2000);
           return "Hi";
         },
       },
@@ -50,6 +51,11 @@ const databasesArray: DatabasesType[] = [
     called: false,
   },
 ];
+
+function sleep(ms: number): Promise<void> {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 
 async function call(
   functionName: string | DatabaseModuleNames,
