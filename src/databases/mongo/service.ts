@@ -51,7 +51,7 @@ export default async function() {
   const db = new Database(config.mongo_url);
   await db.connect();
 
-  await itemService.createItem("عنوان", "توضیحات");
+  // await itemService.createItem("عنوان", "توضیحات"); // test -> OK
 };
 
 
