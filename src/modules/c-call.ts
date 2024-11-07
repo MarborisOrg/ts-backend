@@ -27,7 +27,7 @@ function call(functionName: string) {
 
   if (!row) assert(false, "[M40]: Row not found");
 
-  if (true) { // check cache !row.called
+  if (true) { // check cache (!row.called)
     const namedFunction = row.functions.find((f) => f.name === functionName);
 
     if (namedFunction) {
