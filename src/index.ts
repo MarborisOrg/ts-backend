@@ -1,43 +1,22 @@
 // by MRB
 
-import express from "express";
-import { config } from "#config/env_get";
-import booksRouter from "#routes/index";
+import { expressApp } from '#app';
+import cluster from 'cluster';
+import os from 'os';
 
-import "#init/index"; // init
-import helmet from "helmet";
+const numCPUs = os.cpus().length;
 
-// app (express)
-const app = express();
+if (cluster.isPrimary) {  // Updated from isMaster to isPrimary
+  console.log(`Primary process ${process.pid} is running`);
 
-app.use(
-  helmet({
-    contentSecurityPolicy: {
-      directives: {
-        defaultSrc: ["'self'"],
-        scriptSrc: ["'self'", config.scriptSrc],
-        objectSrc: ["'none'"],
-        upgradeInsecureRequests: [],
-      },
-    },
-    hidePoweredBy: true,
-    frameguard: { action: "deny" },
-    xssFilter: true,
-    noSniff: true,
-    hsts: {
-      maxAge: 31536000, // 1 year
-      includeSubDomains: true,
-      preload: true,
-    },
-    referrerPolicy: { policy: "no-referrer" },
-  }),
-);
+  for (let i = 0; i < numCPUs; i++) {
+    cluster.fork();
+  }
 
-app.use(express.json());
-
-app.use(express.urlencoded({ extended: true }));
-app.use("/", booksRouter);
-
-app.listen(config.PORT, () => {
-  console.log("Server connected, port: " + config.PORT);
-});
+  cluster.on('exit', (worker, code, signal) => {
+    console.log(`Worker process ${worker.process.pid} died. Restarting...`);
+    cluster.fork();
+  });
+} else {
+  expressApp()
+}
