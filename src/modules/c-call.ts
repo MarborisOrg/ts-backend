@@ -1,17 +1,8 @@
-import { DatabasesUseType } from "#ts/types";
+import { DatabasesType } from "#ts/types";
+import CUSE from "./c-use.js"
+import assert from "assert";
 
-type NamedFunction = {
-  name: string;
-  func: () => void;
-};
-
-type Row = {
-  name: DatabasesUseType;
-  functions: NamedFunction[];
-  called: boolean; // check one time caller for next version on Redis cache
-};
-
-const mainArray: Row[] = [
+const mainArray: DatabasesType[] = [
   {
     name: "mongo",
     functions: [
@@ -30,15 +21,13 @@ const mainArray: Row[] = [
   },
 ];
 
-function callFunctionByName(rowName: string, functionName: string) {
-  const row = mainArray.find((r) => r.name === rowName);
+function call(functionName: string) {
+  const dbUse = CUSE();
+  const row = mainArray.find((r) => r.name === dbUse);
 
-  if (!row) {
-    console.log("Row not found");
-    return;
-  }
+  if (!row) assert(false, "[M40]: Row not found");
 
-  if (!row.called) {
+  if (true) { // check cache !row.called
     const namedFunction = row.functions.find((f) => f.name === functionName);
 
     if (namedFunction) {
@@ -48,13 +37,14 @@ function callFunctionByName(rowName: string, functionName: string) {
       console.log(`Function ${functionName} not found in ${row.name}.`);
     }
 
-    row.called = true;
+    row.called = true; // put on cache
   } else {
-    console.log(`${row.name} has already been called.`);
+    // console.log(`${row.name} has already been called.`);
+    // already in cache
   }
 }
 
-callFunctionByName("Row 1", "Function 1");
-callFunctionByName("Row 1", "Function 2");
-callFunctionByName("Row 2", "Function 1");
-callFunctionByName("Row 1", "Function 1");
+call("Function 1");
+call("Function 2");
+call("Function 1");
+call("Function 1");
