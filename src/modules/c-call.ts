@@ -13,8 +13,7 @@ async function call(
 
   if (!row) assert(false, "[M40]: Row not found");
 
-  if (true) {
-    // check cache (!row.called)
+  if (true) { // check cache (!row.called)
     try {
       const namedFunction = row.modules.find((f) => f.name === functionName);
 
@@ -30,6 +29,7 @@ async function call(
       return null;
     } finally {
       row.called = true; // put on cache
+      // or we can add defer, or lock (like guard lock (C++))
     }
   } else {
     // console.log(`${row.name} has already been called.`);
