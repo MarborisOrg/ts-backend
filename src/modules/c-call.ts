@@ -3,12 +3,13 @@ import { MongoModuleNames, MysqlModuleNames } from "#ts/enums";
 import cuse from "./c-use.js";
 import assert from "assert";
 
+const dbUse = cuse();
+
 // both options for call all databases
-async function call(
+export async function call(
   functionName: string | MongoModuleNames | MysqlModuleNames,
   ...args: any[]
 ): Promise<any> {
-  const dbUse = cuse();
   const row = databasesArray.find((r) => r.name === dbUse);
 
   if (!row) assert(false, "[M40]: Row not found");
@@ -39,16 +40,14 @@ async function call(
   }
 }
 
-async function main() {
-  const result1 = await call("f3");
-  console.log(result1); // "Hi"
-}
+// async function main() {
+//   const result1 = await call("f3");
+//   console.log(result1); // "Hi"
+// }
 
-main();
+// main();
 
-call("Function 1", "test", 42);
-call("Function 2", "another test");
-call("Function 1", "test again", 100);
-call("Function 1", "yet another test", 200);
-
-main();
+// call("Function 1", "test", 42);
+// call("Function 2", "another test");
+// call("Function 1", "test again", 100);
+// call("Function 1", "yet another test", 200);
