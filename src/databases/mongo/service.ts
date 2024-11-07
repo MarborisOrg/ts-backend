@@ -11,7 +11,6 @@ import { ItemDelete } from "./modules/drop.js";
 // module
 import { MongoModuleNames } from "#ts/enums";
 import { DatabasesType } from "#ts/types";
-import { sleep } from "#utils/sleep";
 
 
 class Service {
