@@ -1,20 +1,23 @@
 import { MysqlModuleNames } from "#ts/enums";
 import { DatabasesType } from "#ts/types";
+import { dropBooks } from "./drop";
+import { findBookByTitle } from "./find";
+import { saveBook } from "./save";
 
 export const mysqlModules: DatabasesType = {
   name: "mysql",
   modules: [
     {
-      name: MysqlModuleNames.Function1,
-      func: (param1: string, param2: number) =>
-        console.log(
-          `Function 1 from Row 2 with param1: ${param1} and param2: ${param2}`,
-        ),
+      name: MysqlModuleNames.drop,
+      func: dropBooks,
     },
     {
-      name: MysqlModuleNames.Function2,
-      func: (param: string) =>
-        console.log(`Function 2 from Row 2 with param: ${param}`),
+      name: MysqlModuleNames.find,
+      func: findBookByTitle,
     },
+    {
+      name: MysqlModuleNames.save,
+      func: saveBook,
+    }
   ]
 };
