@@ -1,4 +1,4 @@
-import { databasesArray } from "#databases/modules.js";
+import { databasesArray } from "#databases/modules";
 import { MongoModuleNames, MysqlModuleNames } from "#ts/enums";
 import cuse from "./c-use.js";
 import assert from "assert";
@@ -13,7 +13,8 @@ async function call(
 
   if (!row) assert(false, "[M40]: Row not found");
 
-  if (true) { // check cache (!row.called)
+  if (true) {
+    // check cache (!row.called)
     try {
       const namedFunction = row.modules.find((f) => f.name === functionName);
 

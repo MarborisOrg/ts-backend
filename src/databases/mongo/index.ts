@@ -1,6 +1,6 @@
 import ItemModel from "./models/item.js";
 import { config } from "#config/env_get";
-import Database from "./use/index.js"
+import Database from "./use/index.js";
 import { mongo_ns } from "#ts/interfaces.js";
 import mongoose from "mongoose";
 import { ItemCreate } from "./modules/save.js";
@@ -43,7 +43,6 @@ const main = async () => {
 
   const itemService = new Service();
   await itemService.createItem("عنوان", "توضیحات");
-
 };
 
 main();

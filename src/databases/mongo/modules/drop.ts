@@ -21,9 +21,6 @@ export class ItemDelete {
     }
   }
 
-
-
-
   public async dropCollection() {
     try {
       await this.itemModel.collection.drop();
@@ -32,6 +29,4 @@ export class ItemDelete {
       console.error("Error dropping collection:", error);
     }
   }
-
-
 }

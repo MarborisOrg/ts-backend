@@ -9,7 +9,7 @@ export const mongoModules: DatabasesType = {
       name: MongoModuleNames.Function1,
       func: (param1: string, param2: number) =>
         console.log(
-          `Function 1 from Row 1 with param1: ${param1} and param2: ${param2}`
+          `Function 1 from Row 1 with param1: ${param1} and param2: ${param2}`,
         ),
     },
     {
