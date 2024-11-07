@@ -1,3 +1,4 @@
+import { DatabaseModuleNames } from "#ts/enums.js";
 import { DatabasesType } from "#ts/types";
 import cuse from "./c-use.js"
 import assert from "assert";
@@ -6,16 +7,16 @@ const mainArray: DatabasesType[] = [
   {
     name: "mongo",
     functions: [
-      { name: "Function 1", func: () => console.log("Function 1 from Row 1") },
-      { name: "Function 2", func: () => console.log("Function 2 from Row 1") },
+      { name: DatabaseModuleNames.Function1, func: () => console.log("Function 1 from Row 1") },
+      { name: DatabaseModuleNames.Function2, func: () => console.log("Function 2 from Row 1") },
     ],
     called: false,
   },
   {
     name: "mysql",
     functions: [
-      { name: "Function 1", func: () => console.log("Function 1 from Row 2") },
-      { name: "Function 2", func: () => console.log("Function 2 from Row 2") },
+      { name: DatabaseModuleNames.Function1, func: () => console.log("Function 1 from Row 2") },
+      { name: DatabaseModuleNames.Function2, func: () => console.log("Function 2 from Row 2") },
     ],
     called: false,
   },

@@ -1,7 +1,9 @@
+import { DatabaseModuleNames } from "./enums";
+
 export type DatabasesUseType = "mongo" | "mysql";
 
 export type NamedModules = {
-  name: string;
+  name: DatabaseModuleNames;
   func: () => void;
 };
 
