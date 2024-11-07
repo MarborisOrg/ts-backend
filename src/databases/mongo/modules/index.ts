@@ -24,6 +24,5 @@ export const mongoModules: DatabasesType = {
         return "Hi";
       },
     },
-  ],
-  called: false,
+  ]
 };

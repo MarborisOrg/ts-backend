@@ -16,6 +16,5 @@ export const mysqlModules: DatabasesType = {
       func: (param: string) =>
         console.log(`Function 2 from Row 2 with param: ${param}`),
     },
-  ],
-  called: false,
+  ]
 };
