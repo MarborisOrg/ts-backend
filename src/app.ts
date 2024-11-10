@@ -3,39 +3,17 @@ import booksRouter from "#routes/index";
 import express from "express";
 
 import "#init/index"; // init
-import helmet from "helmet";
+import { helmetConfig } from "#config/helment";
 
 export function expressApp() {
   // app (express)
   const app = express();
 
-  app.use(
-    helmet({
-      contentSecurityPolicy: {
-        directives: {
-          defaultSrc: ["'self'"],
-          scriptSrc: ["'self'", config.scriptSrc],
-          objectSrc: ["'none'"],
-          upgradeInsecureRequests: [],
-        },
-      },
-      hidePoweredBy: true,
-      frameguard: { action: "deny" },
-      xssFilter: true,
-      noSniff: true,
-      hsts: {
-        maxAge: 31536000, // 1 year
-        includeSubDomains: true,
-        preload: true,
-      },
-      referrerPolicy: { policy: "no-referrer" },
-    })
-  );
+  app.use(helmetConfig()); // helment helper
+  app.use(express.json()); // json
 
-  app.use(express.json());
-
-  app.use(express.urlencoded({ extended: true }));
-  app.use("/", booksRouter);
+  app.use(express.urlencoded({ extended: true })); // options
+  app.use("/", booksRouter); // book router
 
   app.listen(config.PORT, () => {
     console.log("Server connected, port: " + config.PORT);
