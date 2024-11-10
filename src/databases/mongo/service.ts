@@ -26,20 +26,20 @@ class Service {
     this.itemDelete = new ItemDelete(this.itemModel);
   }
 
-  public createItem(title: string, descrp: string) {
-    return this.itemCreate.createItem(title, descrp);
+  public async createItem(title: string, descrp: string): Promise<mongo_ns.IItem | string> {
+    return await this.itemCreate.createItem(title, descrp);
   }
 
-  public getItemByTitle(title: string) {
-    return this.itemFind.getItemByTitle(title);
+  public async getItemByTitle(title: string): Promise<mongo_ns.IItem | string> {
+    return await this.itemFind.getItemByTitle(title);
   }
 
-  public deleteItem(title: string) {
-    return this.itemDelete.deleteItem(title);
+  public async deleteItem(title: string): Promise<string> {
+    return await this.itemDelete.deleteItem(title);
   }
 
-  public async dropCollection() {
-    await this.itemDelete.dropCollection();
+  public async dropCollection(): Promise<string> {
+    return await this.itemDelete.dropCollection();
   }
 }
 
