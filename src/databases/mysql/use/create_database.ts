@@ -35,6 +35,7 @@ export default function (): Promise<boolean> {
               });
             } else {
               // console.log('[database1] Database already exists. Skipping user alteration.');
+              resolve(true);
             }
           } catch (error) {
             console.error("Error executing queries:", error);
