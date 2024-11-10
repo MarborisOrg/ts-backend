@@ -39,7 +39,6 @@ class Service {
   }
 
   public async dropCollection() {
-    console.log("DR1")
     await this.itemDelete.dropCollection();
   }
 }
