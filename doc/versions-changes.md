@@ -20,4 +20,11 @@
 
 ## 3.0 C:
 - Not support ts-node/runtime typescript building
-- Not support path alias on Ts/Js(ESM)
++ Add path alias (#) in Version 3.0
++ Add ESM support (Es6)
++ Fix tsc build for ESM (Compltly support on Nodejs)
+- Remove ts-node
+
+
+## 4.0:
+
