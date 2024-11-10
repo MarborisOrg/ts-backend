@@ -6,8 +6,8 @@ export const loginController = (req: any, res: any) => {
 
   if (username === config.admin_user && password === config.admin_pass) {
     const token = jwt.sign({ role: "admin" }, config.SECRET_KEY, {
-      expiresIn: "7d",
-    }); // 7 days
+      expiresIn: "30d",
+    }); // 30 days
     return res.json({ token });
   }
 

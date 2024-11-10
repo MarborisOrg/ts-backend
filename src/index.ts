@@ -15,7 +15,7 @@ if (cluster.isPrimary) {  // Updated from isMaster to isPrimary
 
   cluster.on('exit', (worker, code, signal) => {
     console.log(`Worker process ${worker.process.pid} died. Restarting...`);
-    cluster.fork();
+    cluster.fork(); // we can change port here
   });
 } else {
   expressApp()
