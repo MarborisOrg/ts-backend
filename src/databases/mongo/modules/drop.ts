@@ -8,25 +8,32 @@ export class ItemDelete {
     this.itemModel = itemModel;
   }
 
-  public async deleteItem(title: string) {
+  public async deleteItem(title: string): Promise<string> {
+    if (!this.itemModel) {
+      throw new Error("Item model is not set.");
+    }
+
     try {
       const result = await this.itemModel.deleteOne({ title });
       if (result.deletedCount === 0) {
-        console.log(`No item found with the title "${title}".`);
-      } else {
-        console.log(`Item with the title "${title}" has been deleted.`);
+        throw new Error(`No item found with the title "${title}".`);
       }
+      return `Item with the title "${title}" has been deleted.`;
     } catch (error) {
-      console.error("Error deleting item:", error);
+      throw new Error(`Error deleting item: ${error instanceof Error ? error.message : error}`);
     }
   }
 
-  public async dropCollection() {
+  public async dropCollection(): Promise<string> {
+    if (!this.itemModel) {
+      throw new Error("Item model is not set.");
+    }
+
     try {
       await this.itemModel.collection.drop();
-      console.log("Collection dropped successfully.");
+      return "Collection dropped successfully.";
     } catch (error) {
-      console.error("Error dropping collection:", error);
+      throw new Error(`Error dropping collection: ${error instanceof Error ? error.message : error}`);
     }
   }
 }

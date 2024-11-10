@@ -8,16 +8,16 @@ export class ItemFind {
     this.itemModel = itemModel;
   }
 
-  public async getItemByTitle(title: string) {
+  public async getItemByTitle(title: string): Promise<mongo_ns.IItem | string> {
     try {
       const item = await this.itemModel.findOne({ title });
       if (item) {
-        console.log("Item found:", item);
+        return item;
       } else {
-        console.log(`No item found with the title "${title}".`);
+        return `No item found with the title "${title}".`;
       }
     } catch (error) {
-      console.error("Error fetching item:", error);
+      return `Error fetching item: ${error instanceof Error ? error.message : error}`;
     }
   }
 }

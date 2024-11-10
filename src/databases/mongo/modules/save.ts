@@ -9,18 +9,16 @@ export class ItemCreate {
     this.itemModel = itemModel;
   }
 
-  public async createItem(title: string, descrp: string) {
+  public async createItem(title: string, descrp: string): Promise<mongo_ns.IItem | string> {
     const newItem: mongo_ns.IItem = new this.itemModel({ title, descrp });
     try {
       const savedItem = await newItem.save();
-      console.log("Item saved:", savedItem);
+      return savedItem;
     } catch (error: any) {
       if (error.code === DUPLICATE_ITEM) {
-        console.error(
-          `Error: An item with the title "${title}" already exists.`,
-        );
+        return `Error: An item with the title "${title}" already exists.`;
       } else {
-        console.error("Error saving item:", error);
+        return `Error saving item: ${error instanceof Error ? error.message : error}`;
       }
     }
   }
