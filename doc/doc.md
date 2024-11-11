@@ -1,6 +1,6 @@
 
 
-# 1 (NOW)
+# 1
 + Module (Es6) && CommonJs --> tsc -> nodejs/ts-node  (DONE (Module not added)) (Module added) (rm ts-node) (DONE*)
 
 + Add path alias (@) for Module (Es6) && CommonJs  (DONE (fix all files)) (NOW) (NO!) (DONE*)
@@ -23,6 +23,11 @@
 
 + add err handler for functions/classes (NOW)
 
+# 4.1 (NOW)
++ Add cons for request handling (express js)
+
++ Add .env (debuging) and developing and release (server)
+(ready for run on server)
 
 # Notes
 
