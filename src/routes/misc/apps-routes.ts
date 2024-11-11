@@ -10,7 +10,6 @@ export const loadRoutes = async (
     let pathRoute = `/${routersName}`;
 
     if (routersName === "latest") {
-      // await loadRouter(app, `${DEF_PATH_ROUTES}/` /* routes path */ + `${routersName}/` /* latest */ + DEF_ROUTE_FILE /* file */, "/" /* latest path is main route */);
       pathRoute = "/";
     }
 
