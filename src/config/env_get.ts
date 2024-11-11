@@ -64,5 +64,5 @@ export const config: config_ns.Settings = {
   mongo_url: value.mongo_url,
   tc_book_name: value.tc_book_name,
   database_use: value.database_use,
-  ALLOWED_IPS: value.ALLOWED_IPS
+  ALLOWED_IPS: value.ALLOWED_IPS ? value.ALLOWED_IPS.split(',') : []
 };
