@@ -9,9 +9,9 @@ import { loginController } from "#controllers/admin/login";
 
 const router = Router();
 
-router.post("/login", loginController); // endpoint
-router.get("/get", checkAdmin, getBookController);
-router.post("/save", checkAdmin, saveBookController);
-router.post("/drop", checkAdmin, dropBookController);
+router.post("/v4/login", loginController); // endpoint
+router.get("/v4/get", checkAdmin, getBookController);
+router.post("/v4/save", checkAdmin, saveBookController);
+router.post("/v4/drop", checkAdmin, dropBookController);
 
 export default router;
