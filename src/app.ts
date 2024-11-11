@@ -13,7 +13,8 @@ export function expressApp() {
   app.use(express.json()); // json
 
   app.use(express.urlencoded({ extended: true })); // options
-  app.use("/", booksRouter); // book router
+  // app.use("/", booksRouter); // book router
+  booksRouter(app)
 
   app.listen(config.PORT, () => {
     console.log("Server connected, port: " + config.PORT);
