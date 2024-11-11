@@ -1,44 +1,27 @@
 import { Express } from "express";
-import fs from "fs";
-import path from "path";
 import { loadRouter } from "./loadRouter.js";
-import { DEF_ROUTE_FILE } from "./default.js";
+import { DEF_PATH_ROUTES, DEF_ROUTE_FILE } from "./default.js";
 
-export const loadRoutes = async (app: Express): Promise<void> => {
-  const routesDir = path.join(process.cwd(), "..", "apps");
+export const loadRoutes = async (
+  app: Express,
+  routes: string[]
+): Promise<void> => {
+  routes.forEach(async (routersName) => {
+    let pathRoute = `/${routersName}`;
 
-  const latestFolderPath = path.join(routesDir, "latest");
-  if (fs.existsSync(latestFolderPath) && fs.statSync(latestFolderPath).isDirectory()) {
-    const usersRoutePath = path.join(latestFolderPath, DEF_ROUTE_FILE);
-    if (fs.existsSync(usersRoutePath)) {
-      await loadRouter(app, usersRoutePath, "/");
-    }
-  }else{
-    console.error("[latest route loader] This is an unrecoverable error!");
-    process.exit(1);
-  }
-
-  fs.readdir(routesDir, async (err, folders) => {
-    if (err) {
-      console.error("Error reading routes directory:", err);
-      return;
+    if (routersName === "latest") {
+      // await loadRouter(app, `${DEF_PATH_ROUTES}/` /* routes path */ + `${routersName}/` /* latest */ + DEF_ROUTE_FILE /* file */, "/" /* latest path is main route */);
+      pathRoute = "/";
     }
 
-    for (const folder of folders) {
-      if (folder === "latest") continue;
-
-      try {
-        const folderPath = path.join(routesDir, folder);
-        if (fs.statSync(folderPath).isDirectory()) {
-          const usersRoutePath = path.join(folderPath, DEF_ROUTE_FILE);
-          if (fs.existsSync(usersRoutePath)) {
-            await loadRouter(app, usersRoutePath, `/${folder}`);
-          }
-        }
-      } catch (error) {
-        console.error("[route loader] This is an unrecoverable error!");
-        continue;
-      }
+    try {
+      await loadRouter(
+        app,
+        DEF_PATH_ROUTES + `/${routersName}/` + DEF_ROUTE_FILE,
+        pathRoute
+      );
+    } catch (error) {
+      console.error("[route loader] This is an unrecoverable error!");
     }
   });
 };
