@@ -13,6 +13,7 @@ export namespace config_ns {
     mongo_url: string;
     tc_book_name: string;
     database_use: string;
+    ALLOWED_IPS: string;
   }
 
   export interface IEnvConfig {
