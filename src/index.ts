@@ -1,7 +1,6 @@
 // by MRB
 
 import { expressApp } from "#app";
-import { config } from "#config/env_get";
 import cluster from "cluster";
 import os from "os";
 
@@ -22,5 +21,3 @@ if (cluster.isPrimary) {
 } else {
   expressApp();
 }
-
-console.log(config.ALLOWED_IPS)
