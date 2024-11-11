@@ -1,8 +1,8 @@
 import { Express } from "express";
 import fs from "fs";
 import path from "path";
-import { loadRouter } from "./loadRouter";
-import { DEF_ROUTE_FILE } from "./default";
+import { loadRouter } from "./loadRouter.js";
+import { DEF_ROUTE_FILE } from "./default.js";
 
 export const loadRoutes = async (app: Express): Promise<void> => {
   const routesDir = path.join(process.cwd(), "..", "apps");

@@ -1,4 +1,4 @@
-import { loadRoutes } from "./misc/apps-routes";
+import { loadRoutes } from "./misc/apps-routes.js";
 import { Express } from "express";
 
 export default async function(app: Express): Promise<void> {
