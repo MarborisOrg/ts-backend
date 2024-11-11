@@ -7,7 +7,7 @@
   "scripts": {
     "build": "rimraf dist && tsc",
     "start": "node .",
-    "pretty": "prettier --write \"./src/**/*.{js,ts,json}\"" 
+    "pretty": "prettier --write \"./src/**/*.{js,ts,json}\""
   },
   "imports": {
     "#*": "./dist/*.js"
@@ -22,7 +22,8 @@
     "jsonwebtoken": "^9.0.2",
     "mongodb": "^6.10.0",
     "mongoose": "^8.8.0",
-    "mysql2": "^3.11.3"
+    "mysql2": "^3.11.3",
+    "yargs": "^17.7.2"
   },
   "devDependencies": {
     "@types/dotenv": "^6.1.1",
