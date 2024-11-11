@@ -10,11 +10,11 @@ export enum MongoModuleNames {
   drop = "drop",
   find = "find",
   save = "save",
-  delete = "delete"
+  delete = "delete",
 }
 
 export enum MysqlModuleNames {
   drop = "drop", // drop all table (book) +get table name! no set default TODO()
   find = "find",
-  save = "save"
+  save = "save",
 }

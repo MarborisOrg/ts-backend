@@ -18,6 +18,6 @@ export const mysqlModules: DatabasesType = {
     {
       name: MysqlModuleNames.save,
       func: saveBook,
-    }
-  ]
+    },
+  ],
 };

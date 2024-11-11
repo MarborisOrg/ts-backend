@@ -20,7 +20,9 @@ export class ItemDelete {
       }
       return `Item with the title "${title}" has been deleted.`;
     } catch (error) {
-      throw new Error(`Error deleting item: ${error instanceof Error ? error.message : error}`);
+      throw new Error(
+        `Error deleting item: ${error instanceof Error ? error.message : error}`,
+      );
     }
   }
 
@@ -33,7 +35,9 @@ export class ItemDelete {
       await this.itemModel.collection.drop();
       return "Collection dropped successfully.";
     } catch (error) {
-      throw new Error(`Error dropping collection: ${error instanceof Error ? error.message : error}`);
+      throw new Error(
+        `Error dropping collection: ${error instanceof Error ? error.message : error}`,
+      );
     }
   }
 }

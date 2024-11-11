@@ -12,7 +12,6 @@ import { ItemDelete } from "./modules/drop.js";
 import { MongoModuleNames } from "#ts/enums";
 import { DatabasesType } from "#ts/types";
 
-
 class Service {
   private itemModel: mongoose.Model<mongo_ns.IItem>;
   private itemCreate: ItemCreate;
@@ -26,7 +25,10 @@ class Service {
     this.itemDelete = new ItemDelete(this.itemModel);
   }
 
-  public async createItem(title: string, descrp: string): Promise<mongo_ns.IItem | string> {
+  public async createItem(
+    title: string,
+    descrp: string,
+  ): Promise<mongo_ns.IItem | string> {
     return await this.itemCreate.createItem(title, descrp);
   }
 
@@ -46,13 +48,12 @@ class Service {
 const itemService = new Service();
 
 // put mongo on init
-export default async function() {
+export default async function () {
   const db = new Database(config.mongo_url);
   await db.connect();
 
   // await itemService.createItem("عنوان", "توضیحات"); // test -> OK
-};
-
+}
 
 export const mongoModules: DatabasesType = {
   name: "mongo",
@@ -73,6 +74,5 @@ export const mongoModules: DatabasesType = {
       name: MongoModuleNames.delete,
       func: itemService.deleteItem.bind(itemService),
     },
-  ]
+  ],
 };
-

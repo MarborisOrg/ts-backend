@@ -9,7 +9,10 @@ export class ItemCreate {
     this.itemModel = itemModel;
   }
 
-  public async createItem(title: string, descrp: string): Promise<mongo_ns.IItem | string> {
+  public async createItem(
+    title: string,
+    descrp: string,
+  ): Promise<mongo_ns.IItem | string> {
     const newItem: mongo_ns.IItem = new this.itemModel({ title, descrp });
     try {
       const savedItem = await newItem.save();

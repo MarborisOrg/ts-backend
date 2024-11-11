@@ -1,6 +1,6 @@
 // by MRB
 
-import { expressApp } from '#app';
+import { expressApp } from "#app";
 // import cluster from 'cluster';
 // import os from 'os';
 
@@ -18,5 +18,5 @@ import { expressApp } from '#app';
 //     cluster.fork(); // we can change port here
 //   });
 // } else {
-  expressApp()
+expressApp();
 // }

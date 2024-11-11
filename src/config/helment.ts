@@ -1,4 +1,4 @@
-import helmet from 'helmet';
+import helmet from "helmet";
 import { config } from "#config/env_get";
 
 const helmetConfig = () => {
@@ -24,4 +24,4 @@ const helmetConfig = () => {
   });
 };
 
-export { helmetConfig }
+export { helmetConfig };
