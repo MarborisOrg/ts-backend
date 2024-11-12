@@ -29,3 +29,13 @@
 ## 4.0:
 + Add version routes
 + fixing
+
+## 4.2:
++ add access-token/refresh-token over one token (admin)
++ add winston for log
++ fix find dist folder
++ add timeout for routers
++ add res handler for routers
++ add cors lib
++ fix init
++ add swagger doc

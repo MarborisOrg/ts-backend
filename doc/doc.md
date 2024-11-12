@@ -7,13 +7,13 @@
 
 + Add Mysql && Mongodb support (MySql inside Mongodb) (config in .env)  (NOW) (DONE*)
 
-+ Add global module like log (Create error && handle error (try catch .. (for crashes app)))
++ Add global module like log (Create error && handle error (try catch .. (for crashes app))) (DONE)
 
-+ Create log module and save log to .log folder
++ Create log module and save log to .log folder (DONE)
 
-+ use classes over functions or arrow functions  (NOW)
++ use classes over functions or arrow functions  (NOW) (DONE)
 
-+ fix Ts types/interfaces
++ fix Ts types/interfaces (DONE)
 
 + add admin list with different permissions
 
@@ -21,12 +21,12 @@
 
 + test dos
 
-+ add err handler for functions/classes (NOW)
++ add err handler for functions/classes (NOW) (CANCEL)
 
 # 4.1 (NOW)
-+ Add cons for request handling (express js)
++ Add cons for request handling (express js) (DONE)
 
-+ Add .env (debuging) and developing and release (server)
++ Add .env (debuging) and developing and release (server) (DONE)
 (ready for run on server)
 
 # Notes
