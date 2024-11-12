@@ -36,7 +36,7 @@ export function expressApp() {
     next();
   });
 
-  app.disable("x-powered-by"); // ?
+  app.disable("x-powered-by");
   // ipv6Blocker(app); // IPv6 Blocker
   app.use(helmetConfig()); // helment helper
   app.use(express.json()); // json
