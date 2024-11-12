@@ -29,7 +29,7 @@ export default function (app: Express, port: string) {
       ],
     },
     // looks for configuration in specified directories
-    apis: ["**/*.ts"],
+    apis: ["**/*.ts"], // ts files over .js file in dist
   };
 
   const swaggerSpec = swaggerJsdoc(options);
