@@ -16,10 +16,21 @@ export const tokenController = async (req: Request, res: Response) => {
       return;
     }
 
-    const accessToken = jwt.sign({ role: "admin" }, config.SECRET_KEY, {
-      expiresIn: "15m",
-    });
-    res.json({ accessToken });
-    return;
+    const accessToken = jwt.sign(
+      { role: "admin", type: "access" },
+      config.SECRET_KEY,
+      {
+        expiresIn: "15m",
+      },
+    );
+
+    const refreshToken = jwt.sign(
+      { role: "admin", type: "refresh" },
+      config.SECRET_KEY,
+      {
+        expiresIn: "30d",
+      },
+    );
+    return res.json({ accessToken, refreshToken });
   });
 };
