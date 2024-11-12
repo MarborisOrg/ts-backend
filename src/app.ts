@@ -3,30 +3,6 @@ import loadAllRouter from "#routes/index";
 import express from "express";
 import swaggerDocs from "#config/swaggerDocs";
 import { helmetConfig } from "#config/helment";
-import winston from 'winston';
-import path from 'path';
-import fs from 'fs';
-import { fileURLToPath } from 'url';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename); // این برای بدست اوردن مسیر فولدر های دیگه مثل بیلد یا دیست هست
-
-const logDir = path.join('log'); // or __dirname
-if (!fs.existsSync(logDir)) {
-    fs.mkdirSync(logDir);
-}
-
-const logger = winston.createLogger({
-    level: 'info',
-    format: winston.format.combine(
-        winston.format.timestamp(),
-        winston.format.json()
-    ),
-    transports: [
-        new winston.transports.File({ filename: path.join(logDir, 'error.log'), level: 'error' }),
-        new winston.transports.File({ filename: path.join(logDir, 'combined.log') }),
-    ],
-});
 
 export function expressApp() {
   // app (express)
