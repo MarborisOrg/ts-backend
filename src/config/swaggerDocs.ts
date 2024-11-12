@@ -5,7 +5,7 @@ import { Express } from "express";
 export default function (app: Express, port: string) {
   const options = {
     definition: {
-      openapi: "3.0.0",
+      openapi: "3.0.0", // api version ( do not change this )
       info: {
         title: "Book project",
         description:
@@ -15,7 +15,7 @@ export default function (app: Express, port: string) {
           email: "mehrabshafae@gmail.com",
           url: "https://github.com/S-MRB-S",
         },
-        version: "4.0.0",
+        version: "4.0.0", // app version (can change this)
       },
       servers: [
         {
