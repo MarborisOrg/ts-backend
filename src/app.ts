@@ -1,8 +1,7 @@
 import { config } from "#config/env_get";
 import booksRouter from "#routes/index";
 import express from "express";
-import swaggerUi from 'swagger-ui-express';
-import swaggerJsDoc from 'swagger-jsdoc';
+import swaggerDocs from "#config/swaggerDocs";
 
 import "#init/index"; // init
 import { helmetConfig } from "#config/helment";
@@ -11,22 +10,8 @@ import { helmetConfig } from "#config/helment";
 export function expressApp() {
   // app (express)
   const app = express();
-  
-  const swaggerOptions = {
-    swaggerDefinition: {
-      openapi: '3.0.0',
-      info: {
-        title: 'Book Project',
-        version: '4.0.0',
-        description: 'Book saver/getter project',
-      },
-    },
-    apis: ['./routes/*/*.js'],
-  };
-  
-  const swaggerDocs = swaggerJsDoc(swaggerOptions);
-  
-  app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+
+  app.disable("x-powered-by"); // ?
 
   // ipv6Blocker(app); // IPv6 Blocker
 
@@ -39,5 +24,7 @@ export function expressApp() {
 
   app.listen(config.PORT, () => {
     console.log("Server connected, port: " + config.PORT);
+
+    swaggerDocs(app, config.PORT.toString());
   });
 }
