@@ -3,7 +3,7 @@ import { Request, Response, NextFunction } from "express";
 export const timeoutMiddleware = (
   req: Request,
   res: Response,
-  next: NextFunction
+  next: NextFunction,
 ) => {
   const timeout = 3000; // just 3s
 

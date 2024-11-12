@@ -6,7 +6,7 @@ const responseSentEmitter = new EventEmitter();
 export const responseSentMiddleware2 = (
   req: Request,
   res: Response,
-  next: NextFunction
+  next: NextFunction,
 ) => {
   res.locals.responseSent = false;
 
@@ -25,20 +25,20 @@ export const responseSentMiddleware2 = (
 export const responseSentMiddleware = (
   req: Request,
   res: Response,
-  next: NextFunction
+  next: NextFunction,
 ) => {
   res.locals.responseSent = false;
 
   const originalSend = res.send.bind(res);
-//   const originalJson = res.json.bind(res);
-//   const originalEnd = res.end.bind(res);
-//   const originalRedirect = res.redirect.bind(res);
+  //   const originalJson = res.json.bind(res);
+  //   const originalEnd = res.end.bind(res);
+  //   const originalRedirect = res.redirect.bind(res);
 
   const preventMultipleResponses = (originalMethod: Function) => {
     return function (...args: any[]) {
       if (res.locals.responseSent) {
         log.warn(
-          `Attempted to send response multiple times for request: ${req.method} ${req.url}`
+          `Attempted to send response multiple times for request: ${req.method} ${req.url}`,
         );
         return res;
       }
@@ -49,9 +49,9 @@ export const responseSentMiddleware = (
   };
 
   res.send = preventMultipleResponses(originalSend);
-//   res.json = preventMultipleResponses(originalJson);
-//   res.end = preventMultipleResponses(originalEnd);
-//   res.redirect = preventMultipleResponses(originalRedirect);
+  //   res.json = preventMultipleResponses(originalJson);
+  //   res.end = preventMultipleResponses(originalEnd);
+  //   res.redirect = preventMultipleResponses(originalRedirect);
 
   // Listen for the responseSent event only once
   responseSentEmitter.once("responseSent", (request) => {

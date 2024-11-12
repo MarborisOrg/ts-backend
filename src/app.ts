@@ -62,7 +62,7 @@ export function expressApp() {
     setTimeout(() => {
       res.json({ message: "Data retrieved successfully!" });
       console.log("SLEEP1");
-      die()
+      die();
     }, 5000);
     console.log("SLEEP2");
   });
