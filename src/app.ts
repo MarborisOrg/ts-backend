@@ -1,5 +1,5 @@
 import { config } from "#config/env_get";
-import booksRouter from "#routes/index";
+import loadAllRouter from "#routes/index";
 import express from "express";
 import swaggerDocs from "#config/swaggerDocs";
 
@@ -19,12 +19,12 @@ export function expressApp() {
   app.use(express.json()); // json
 
   app.use(express.urlencoded({ extended: true })); // options
-  // app.use("/", booksRouter); // book router
-  booksRouter(app);
+  // app.use("/", loadAllRouter); // book router
+  loadAllRouter(app).then(function () {
+    app.listen(config.PORT, () => {
+      console.log("Server connected, port: " + config.PORT);
 
-  app.listen(config.PORT, () => {
-    console.log("Server connected, port: " + config.PORT);
-
-    swaggerDocs(app, config.PORT.toString());
+      swaggerDocs(app, config.PORT.toString());
+    });
   });
 }
