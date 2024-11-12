@@ -4,6 +4,7 @@ import express from "express";
 import swaggerDocs from "#config/swaggerDocs";
 import { helmetConfig } from "#config/helment";
 import cors from 'cors';
+import { timeoutMiddleware } from "#middleware/timeRace";
 
 export function expressApp() {
   // app (express)
@@ -53,7 +54,7 @@ export function expressApp() {
   };
 
   app.use(cors(corsOptions));
-
+  app.use(timeoutMiddleware)
 
   loadAllRouter(app).then(function () {
     app.listen(config.PORT, () => {
