@@ -8,7 +8,6 @@ import ConnectToMysql from "#databases/mysql/use/index";
 const dbUse = cuse();
 
 export default async function () {
-  // await ?
   if (dbUse === "mongo") {
     await MONGO();
   } else if (dbUse === "mysql") {

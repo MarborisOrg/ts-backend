@@ -10,7 +10,7 @@ import { checkIP } from "#middleware/cons";
 
 const router = Router();
 
-router.use(checkIP)
+router.use(checkIP);
 
 /**
  * @swagger
@@ -23,7 +23,6 @@ router.use(checkIP)
  *         description: A token response
  */
 router.post("/login", loginController); // endpoint
-
 
 router.get("/get", checkAdmin, getBookController);
 router.post("/save", checkAdmin, saveBookController);

@@ -38,5 +38,4 @@ class Config implements config_ns.IConfig {
 
 export default new Config();
 
-export const blockIpMsg = "permission denied"
-
+export const blockIpMsg = "permission denied";

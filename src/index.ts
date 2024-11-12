@@ -23,5 +23,5 @@ if (cluster.isPrimary) {
     const { default: init } = await import("#init/index"); // Import the init function
     await init(); // Wait for the database connection to complete
     expressApp(); // Now call expressApp
-  })();  
+  })();
 }
