@@ -4,7 +4,7 @@ import {
   saveBookController,
   dropBookController,
 } from "#controllers/index";
-import checkAdmin from "#middleware/checkAdmin";
+import checkAdmin from "./middleware/checkAdmin.js";
 import { loginController } from "#controllers/admin/login";
 
 const router = Router();
