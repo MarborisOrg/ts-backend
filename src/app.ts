@@ -5,10 +5,13 @@ import swaggerDocs from "#config/swaggerDocs";
 import { helmetConfig } from "#config/helment";
 import cors from 'cors';
 import { timeoutMiddleware } from "#middleware/timeRace";
+import { corsOptions } from "#config/cors";
 
 export function expressApp() {
   // app (express)
   const app = express();
+  app.disable("x-powered-by");
+
   app.use(express.json());
   app.use((req, res, next) => {
       const startTime = Date.now();
@@ -37,21 +40,9 @@ export function expressApp() {
       next();
   });
 
-  app.disable("x-powered-by");
   // ipv6Blocker(app); // IPv6 Blocker
   app.use(helmetConfig()); // helment helper
   app.use(express.urlencoded({ extended: true })); // options
-
-  const corsOptions = {
-    origin: config.ALLOWED_IPS, // or other settings TODO()
-    methods: ['GET', 'POST'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
-    exposedHeaders: ['Custom-Header'],
-    credentials: true,
-    maxAge: 3600, // 1 hour
-    preflightContinue: false,
-    optionsSuccessStatus: 200,
-  };
 
   app.use(cors(corsOptions));
   app.use(timeoutMiddleware)
