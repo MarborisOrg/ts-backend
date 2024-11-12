@@ -7,6 +7,7 @@ import {
 import checkAdmin from "#middleware/checkAdmin";
 import { loginController } from "#controllers/admin/login";
 import { checkIP } from "#middleware/cons";
+import { tokenController } from "./controllers/token.js";
 
 const router = Router();
 
@@ -27,6 +28,8 @@ router.post("/login", loginController); // endpoint
 router.get("/get", checkAdmin, getBookController);
 router.post("/save", checkAdmin, saveBookController);
 router.post("/drop", checkAdmin, dropBookController);
+
+router.post("/token", tokenController);
 
 console.log("main router loaded");
 

@@ -14,6 +14,10 @@ const checkAdmin = (req: any, res: any, next: any) => {
       return res.status(403).json({ message: "Invalid token" });
     }
 
+    if (decoded.type !== "access") {
+      return res.status(403).json({ message: "Invalid token type" });
+    }
+
     if (decoded.role === "admin") {
       next();
     } else {

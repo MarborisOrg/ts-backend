@@ -5,10 +5,14 @@ export const loginController = (req: any, res: any) => {
   const { username, password } = req.body;
 
   if (username === config.admin_user && password === config.admin_pass) {
-    const token = jwt.sign({ role: "admin" }, config.SECRET_KEY, {
+    const accessToken = jwt.sign({ role: "admin", type: "access" }, config.SECRET_KEY, {
+      expiresIn: "15m",
+    });
+    
+    const refreshToken = jwt.sign({ role: "admin", type: "refresh" }, config.SECRET_KEY, {
       expiresIn: "30d",
-    }); // 30 days
-    return res.json({ token });
+    });    
+    return res.json({ accessToken, refreshToken });
   }
 
   return res.status(401).json({ message: "Invalid credentials" });
