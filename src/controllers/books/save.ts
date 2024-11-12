@@ -16,7 +16,7 @@ export const saveBookController = async (req: Request, res: Response) => {
     //   const result = await saveBook(title, description);
     //   res.send({ success: result });
     // } catch (error) {
-    //   console.error("Error on saving: ", error);
+    //   log.error("Error on saving: ", error);
     //   res.status(500).send("Error on saving!");
     // }
     try {

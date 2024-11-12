@@ -31,6 +31,6 @@ router.post("/drop", checkAdmin, dropBookController);
 
 router.post("/token", tokenController);
 
-console.log("main router loaded");
+log.info("main router loaded");
 
 export default router;

@@ -6,6 +6,6 @@ export default async function (app: Express): Promise<void> {
   try {
     await loadRoutes(app, AllApps);
   } catch (error) {
-    console.log("error! loading not complete.");
+    log.info("error! loading not complete.");
   }
 }

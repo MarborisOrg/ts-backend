@@ -13,7 +13,7 @@ const startWorker = () => {
   const worker = cluster.fork();
 
   worker.on("exit", (code, signal) => {
-    console.log(
+    log.info(
       `Worker ${worker.process.pid} died (code: ${code}, signal: ${signal}). Restarting...`,
     );
     startWorker(); // Restart the worker
@@ -21,7 +21,7 @@ const startWorker = () => {
 };
 
 if (cluster.isPrimary) {
-  console.log(`Primary process ${process.pid} is running`);
+  log.info(`Primary process ${process.pid} is running`);
 
   for (let i = 0; i < numCPUs; i++) {
     startWorker();
@@ -33,7 +33,7 @@ if (cluster.isPrimary) {
       await init(); // Wait for the database connection to complete
       expressApp(); // Now call expressApp
     } catch (error) {
-      console.error(`Error in worker ${process.pid}:`, error);
+      log.error(`Error in worker ${process.pid}:`, error);
       die();
     }
   })();

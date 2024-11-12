@@ -1,3 +1,3 @@
 // import "#databases/mongo/service";
 
-// console.log("RUNNED");
+// log.info("RUNNED");

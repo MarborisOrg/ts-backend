@@ -5,12 +5,12 @@ export default function (): Promise<boolean> {
   return new Promise((resolve, reject) => {
     mysqlConnection.connect(function (err: any) {
       if (err) throw err;
-      console.log("[database] connected to Mysql!");
+      log.info("[database] connected to Mysql!");
 
-      console.log("[database] check table..!");
+      log.info("[database] check table..!");
       mysqlConnection.query(CREATE_TABLES, function (err: any, result: any) {
         if (err) throw err;
-        console.log("[database] table checked!");
+        log.info("[database] table checked!");
         resolve(true);
       });
     });

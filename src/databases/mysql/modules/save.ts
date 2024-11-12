@@ -4,7 +4,7 @@ import { mysqlConnection } from "#databases/mysql/index";
 
 export function saveBook(title: string, description: string): Promise<boolean> {
   return new Promise((resolve, reject) => {
-    console.log("Saving a book, t: " + title + " desc: " + description);
+    log.info("Saving a book, t: " + title + " desc: " + description);
 
     mysqlConnection.query(
       INSERT_BOOKS,
@@ -12,16 +12,16 @@ export function saveBook(title: string, description: string): Promise<boolean> {
       function (err: any, result: any) {
         if (err) {
           if (err.code === DUPLICATE_TABLE) {
-            console.error(
+            log.error(
               "Duplicate entry error: A book with this title already exists.",
             );
             resolve(false);
           } else {
-            console.error("Error inserting record: ", err);
+            log.error("Error inserting record: ", err);
             reject(err);
           }
         } else {
-          console.log("[saving] 1 record inserted");
+          log.info("[saving] 1 record inserted");
           resolve(true);
         }
       },

@@ -6,7 +6,7 @@ export const dropBookController = async (req: Request, res: Response) => {
     const result = await call("drop");
     res.send({ success: result });
   } catch (error) {
-    console.error("Error on deleting: ", error);
+    log.error("Error on deleting: ", error);
     res.status(500).send("Error on deleting!");
   }
 };

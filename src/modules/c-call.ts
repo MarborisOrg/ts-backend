@@ -20,21 +20,21 @@ export async function call(
       const namedFunction = row.modules.find((f) => f.name === functionName);
 
       if (namedFunction) {
-        console.log(`Calling ${namedFunction.name} from ${row.name}:`);
+        log.info(`Calling ${namedFunction.name} from ${row.name}:`);
         return await namedFunction.func(...args);
       } else {
-        console.log(`Function ${functionName} not found in ${row.name}.`);
+        log.info(`Function ${functionName} not found in ${row.name}.`);
         return null;
       }
     } catch (error) {
-      console.log(`error in call! -> ` + error);
+      log.info(`error in call! -> ` + error);
       return null;
     } finally {
       // row.called = true; // put on cache
       // or we can add defer, or lock (like guard lock (C++))
     }
   } else {
-    // console.log(`${row.name} has already been called.`);
+    // log.info(`${row.name} has already been called.`);
     // already in cache
     // work with times for spam!
   }
@@ -42,7 +42,7 @@ export async function call(
 
 // async function main() {
 //   const result1 = await call("f3");
-//   console.log(result1); // "Hi"
+//   log.info(result1); // "Hi"
 // }
 
 // main();

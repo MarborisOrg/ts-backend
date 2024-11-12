@@ -20,7 +20,7 @@ export const loadRoutes = async (
         pathRoute,
       );
     } catch (error) {
-      console.error("[route loader] This is an unrecoverable error!");
+      log.error("[route loader] This is an unrecoverable error!");
     }
   });
 };

@@ -10,9 +10,9 @@ export default class {
   public async connect() {
     try {
       await mongoose.connect(this.uri);
-      console.log("MongoDB connected");
+      log.info("MongoDB connected");
     } catch (error) {
-      console.error("MongoDB connection error:", error);
+      log.error("MongoDB connection error:", error);
       process.exit(1);
     }
   }
