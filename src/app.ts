@@ -7,6 +7,7 @@ import cors from "cors";
 import { timeoutMiddleware } from "#middleware/timeRace";
 import { corsOptions } from "#config/cors";
 import { responseSentMiddleware } from "#middleware/resSentRace";
+import { logMiddleware } from "#middleware/log";
 
 export function expressApp() {
   // app (express)
@@ -14,32 +15,7 @@ export function expressApp() {
   app.disable("x-powered-by");
 
   app.use(express.json());
-  app.use((req, res, next) => {
-    const startTime = Date.now();
-
-    log.info({
-      method: req.method,
-      url: req.url,
-      headers: req.headers,
-      body: req.body,
-      query: req.query,
-      params: req.params,
-      ip: req.ip,
-      timestamp: new Date().toISOString(),
-    });
-
-    res.on("finish", () => {
-      const duration = Date.now() - startTime;
-      log.info({
-        message: "Response sent",
-        statusCode: res.statusCode,
-        duration: `${duration}ms`,
-        timestamp: new Date().toISOString(),
-      });
-    });
-
-    next();
-  });
+  app.use(logMiddleware);
 
   app.use(responseSentMiddleware);
 
