@@ -34,7 +34,7 @@ if (cluster.isPrimary) {
       expressApp(); // Now call expressApp
     } catch (error) {
       console.error(`Error in worker ${process.pid}:`, error);
-      process.exit(1); // Exit the worker on error
+      die()
     }
   })();
 }
