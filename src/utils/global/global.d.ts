@@ -2,7 +2,7 @@
 import { Logger } from 'winston';
 
 declare global {
-    var logger: Logger;
+    var log: Logger;
 }
 
 export {};

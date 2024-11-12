@@ -2,7 +2,7 @@ import winston from 'winston';
 import path from 'path';
 import { logDir } from '#utils/requirements';
 
-const logger = winston.createLogger({
+const log = winston.createLogger({
     level: 'info',
     format: winston.format.combine(
         winston.format.timestamp(),
@@ -14,4 +14,4 @@ const logger = winston.createLogger({
     ],
 });
 
-globalThis.logger = logger;
+globalThis.log = log;

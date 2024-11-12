@@ -11,7 +11,7 @@ export function expressApp() {
   app.use((req, res, next) => {
       const startTime = Date.now();
   
-      logger.info({
+      log.info({
           method: req.method,
           url: req.url,
           headers: req.headers,
@@ -24,7 +24,7 @@ export function expressApp() {
   
       res.on('finish', () => {
           const duration = Date.now() - startTime;
-          logger.info({
+          log.info({
               message: 'Response sent',
               statusCode: res.statusCode,
               duration: `${duration}ms`,
@@ -42,7 +42,7 @@ export function expressApp() {
 
   loadAllRouter(app).then(function () {
     app.listen(config.PORT, () => {
-      logger.info('Server is running on port: '+ config.PORT);
+      log.info('Server is running on port: '+ config.PORT);
 
       swaggerDocs(app, config.PORT.toString());
     });
