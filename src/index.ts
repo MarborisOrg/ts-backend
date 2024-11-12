@@ -19,5 +19,9 @@ if (cluster.isPrimary) {
     cluster.fork(); // we can change port here
   });
 } else {
-  expressApp();
+  (async function () {
+    const { default: init } = await import("#init/index"); // Import the init function
+    await init(); // Wait for the database connection to complete
+    expressApp(); // Now call expressApp
+  })();  
 }
