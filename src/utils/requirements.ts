@@ -11,5 +11,5 @@ export async function init() {
   if (!fs.existsSync(logDir)) {
     fs.mkdirSync(logDir);
   }
-  await import("#utils/global/log");
+  await import("#utils/log");
 }

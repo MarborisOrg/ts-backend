@@ -59,7 +59,6 @@ export function expressApp() {
     next();
   };
 
-  // استفاده از middleware
   app.use(responseSentMiddleware);
 
   // ipv6Blocker(app); // IPv6 Blocker
