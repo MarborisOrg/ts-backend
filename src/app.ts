@@ -1,6 +1,6 @@
 import { config } from "#config/env_get";
 import loadAllRouter from "#routes/index";
-import express from "express";
+import express, { Request, Response, NextFunction } from 'express';
 import swaggerDocs from "#config/swaggerDocs";
 import { helmetConfig } from "#config/helment";
 import cors from 'cors';
@@ -62,5 +62,14 @@ export function expressApp() {
 
       swaggerDocs(app, config.PORT.toString());
     });
+  });
+
+  app.get('/test/sleep', (req: Request, res: Response) => {
+    setTimeout(() => {
+        res.json({ message: 'Data retrieved successfully!' });
+        console.log("SLEEP1")
+    }, 5000);
+    console.log("SLEEP2")
+
   });
 }
