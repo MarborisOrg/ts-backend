@@ -1,7 +1,7 @@
 // by MRB
 
-import { init } from "#utils/requirements";
-await init();
+import "#utils/requirements";
+await import("#utils/global/index");
 
 import { expressApp } from "#app";
 import cluster from "cluster";

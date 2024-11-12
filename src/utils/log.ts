@@ -2,7 +2,7 @@ import winston from 'winston';
 import path from 'path';
 import { logDir } from '#utils/requirements';
 
-const log = winston.createLogger({
+export const log = winston.createLogger({
     level: 'info',
     format: winston.format.combine(
         winston.format.timestamp(),
@@ -14,5 +14,3 @@ const log = winston.createLogger({
         new winston.transports.File({ filename: path.join(logDir, 'combined.log') }),
     ],
 });
-
-globalThis.log = log;
