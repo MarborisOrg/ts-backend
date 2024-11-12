@@ -6,6 +6,7 @@ import { helmetConfig } from "#config/helment";
 import cors from "cors";
 import { timeoutMiddleware } from "#middleware/timeRace";
 import { corsOptions } from "#config/cors";
+import { responseSentMiddleware } from "#middleware/resSentRace";
 
 export function expressApp() {
   // app (express)
@@ -40,25 +41,6 @@ export function expressApp() {
     next();
   });
 
-  const responseSentMiddleware = (
-    req: Request,
-    res: Response,
-    next: NextFunction
-  ) => {
-    res.locals.responseSent = false;
-
-    const originalSend = res.send.bind(res);
-    res.send = (body: any): Response => {
-      if (res.locals.responseSent) {
-        return res;
-      }
-      res.locals.responseSent = true;
-      return originalSend(body);
-    };
-
-    next();
-  };
-
   app.use(responseSentMiddleware);
 
   // ipv6Blocker(app); // IPv6 Blocker
@@ -80,7 +62,7 @@ export function expressApp() {
     setTimeout(() => {
       res.json({ message: "Data retrieved successfully!" });
       console.log("SLEEP1");
-    }, 7000);
+    }, 5000);
     console.log("SLEEP2");
   });
 }
