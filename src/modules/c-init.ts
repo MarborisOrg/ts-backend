@@ -13,6 +13,6 @@ export default async function () {
   } else if (dbUse === "mysql") {
     await ConnectToMysql();
   } else {
-    assert(false, "MCI15: ??");
+    quit()
   }
 }

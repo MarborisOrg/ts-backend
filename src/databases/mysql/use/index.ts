@@ -14,5 +14,7 @@ export default async function () {
     } else {
       throw new Error("[database] Mysql err!");
     }
-  } catch (e: any) {}
+  } catch (e: any) {
+    quit()
+  }
 }

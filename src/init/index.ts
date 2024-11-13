@@ -6,6 +6,6 @@ export default async function init(): Promise<void> {
     await ConnectDatabase(); // Check databases connected
   } catch (error) {
     log.error("init file error:", error);
-    process.exit(1);
+    quit();
   }
 }
