@@ -42,7 +42,7 @@ const startWorker = (retries = 0) => {
 if (cluster.isPrimary) {
   log.info(`Primary process ${process.pid} is running`);
 
-  for (let i = 0; i < numCPUs; i++) {
+  for (let i = 1; i <= numCPUs; i++) {
     startWorker();
   }
 } else {

@@ -1,13 +1,15 @@
+import { freeAll } from "#free/index";
+
 process.on('exit', (code) => {
-    console.log(`exit code: ${code}`);
+    console.log(`app closed code: ${code}`);
 });
 
-process.on('SIGINT', () => {
-    console.log('SIGINT (Ctrl+C)');
-    process.exit(0);
+process.on('SIGINT', async () => {
+    await freeAll()
+    quit()
 });
 
-process.on('SIGTERM', () => {
-    console.log('SIGTERM');
-    process.exit(0);
+process.on('SIGTERM', async () => {
+    await freeAll()
+    quit()
 });
