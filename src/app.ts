@@ -29,6 +29,8 @@ export async function expressApp() {
     });
 
   app.get("/test/sleep", (req: Request, res: Response) => {
+    // time out is 3 in all routers
+    // but this codes run in background as well
     setTimeout(() => {
       res.json({ message: "Data retrieved successfully!" });
       log.info("SLEEP1");

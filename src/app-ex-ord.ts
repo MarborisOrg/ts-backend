@@ -6,7 +6,7 @@ import { helmetConfig } from "#config/helment";
 import cors from "cors";
 import { timeoutMiddleware } from "#middleware/race/timeRace";
 import { corsOptions } from "#config/cors";
-import { responseSentMiddleware } from "#middleware/race/resRace";
+import { responseSentMiddleware } from "#middleware/race/resSentRace";
 import { logMiddleware } from "#middleware/log";
 
 export async function initApp(app: Express): Promise<void> {
@@ -15,9 +15,7 @@ export async function initApp(app: Express): Promise<void> {
 
     app.use(express.json());
     app.use(logMiddleware);
-
     app.use(responseSentMiddleware);
-
     // ipv6Blocker(app); // IPv6 Blocker
     app.use(helmetConfig()); // helment helper
     app.use(express.urlencoded({ extended: true })); // options
