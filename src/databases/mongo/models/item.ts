@@ -9,11 +9,12 @@ class ItemModel {
     this.itemSchema = new Schema({
       title: { type: String, required: true, unique: true },
       descrp: { type: String, required: true },
+      owners: [{ type: Schema.Types.ObjectId, ref: 'Ownership' }]
     });
   }
 
   public getModel() {
-    return mongoose.model<mongo_ns.IItem>(config.tc_book_name, this.itemSchema);
+    return mongoose.model<mongo_ns.IItem>("Item", this.itemSchema);
   }
 }
 
