@@ -4,6 +4,7 @@
  */
 
 import { expressApp } from "#app";
+import { sleep } from "#utils/sleep";
 import cluster from "cluster";
 import os from "os";
 
@@ -53,8 +54,9 @@ if (cluster.isPrimary) {
        * repeated on fork (copy)
        */
       const { default: init } = await import("#init/app");
-      await init(); // Wait for the database connection to complete
-      expressApp(); // Now call expressApp
+      init().then(function(){ // Wait for the database connection to complete
+        expressApp(); // Now call expressApp
+      });
     } catch (error) {
       log.error(`Error in worker ${process.pid}:`, error);
       die();

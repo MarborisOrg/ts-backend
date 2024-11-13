@@ -4,7 +4,7 @@ import express, { Request, Response } from "express";
 import swaggerDocs from "#config/swaggerDocs";
 import { initApp } from "#app-ex-ord";
 
-export async function expressApp() {
+export function expressApp() {
   // app (express)
   const app = express();
 

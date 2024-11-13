@@ -7,6 +7,7 @@
   "scripts": {
     "build": "rimraf dist && tsc",
     "start": "node .",
+    "test": "node . --dev",
     "pretty": "prettier --write \"./src/**/*.{js,ts,json}\""
   },
   "imports": {
