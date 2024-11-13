@@ -16,8 +16,10 @@ export function getEnvMode(): string {
     const env = argv.dev ? "development" : "production";
 
     if (env === "production") {
+      mode = ".env";
       return ".env";
     } else {
+      mode = ".env.dev";
       return ".env.dev";
     }
   } else {
