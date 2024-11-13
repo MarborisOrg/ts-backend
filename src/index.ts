@@ -1,12 +1,20 @@
-// by MRB
-
-import "#utils/requirements";
-await import("#utils/global/index");
+/**
+ * @link https://github.com/S-MRB-S
+ * @author MRB
+ */
 
 import { expressApp } from "#app";
 import cluster from "cluster";
 import os from "os";
 
+/**
+ * init file for index (current file)
+ */
+await import("#init/index")
+
+/**
+ * cluster forker
+ */
 const numCPUs = os.cpus().length;
 const maxRetries = 5; // Maximum number of retries for restarting a worker
 
@@ -40,6 +48,10 @@ if (cluster.isPrimary) {
 } else {
   (async function () {
     try {
+      /**
+       * init file for app (express app)
+       * repeated on fork (copy)
+       */
       const { default: init } = await import("#init/app");
       await init(); // Wait for the database connection to complete
       expressApp(); // Now call expressApp
