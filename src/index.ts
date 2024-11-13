@@ -14,13 +14,19 @@ const startWorker = (retries = 0) => {
   const worker = cluster.fork();
 
   worker.on("exit", (code, signal) => {
-    log.info(`Worker ${worker.process.pid} died (code: ${code}, signal: ${signal}).`);
+    log.info(
+      `Worker ${worker.process.pid} died (code: ${code}, signal: ${signal}).`,
+    );
 
     if (code !== 0 && retries < maxRetries) {
-      log.info(`Restarting worker ${worker.process.pid}... Attempt ${retries + 1}`);
+      log.info(
+        `Restarting worker ${worker.process.pid}... Attempt ${retries + 1}`,
+      );
       setTimeout(() => startWorker(retries + 1), 1000); // Delay before restarting
     } else if (retries >= maxRetries) {
-      log.error(`Worker ${worker.process.pid} has exited with code ${code} after ${maxRetries} attempts. Not restarting.`);
+      log.error(
+        `Worker ${worker.process.pid} has exited with code ${code} after ${maxRetries} attempts. Not restarting.`,
+      );
     }
   });
 };
@@ -39,7 +45,7 @@ if (cluster.isPrimary) {
       expressApp(); // Now call expressApp
     } catch (error) {
       log.error(`Error in worker ${process.pid}:`, error);
-      die()
+      die();
     }
   })();
 }

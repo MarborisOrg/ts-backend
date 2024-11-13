@@ -9,9 +9,6 @@ export const loadRouter = async (
     const { default: router }: { default: Router } = await import(routePath);
     app.use(basePath, router);
   } catch (error) {
-    log.error(
-      `[route loader] Error loading route from ${routePath}:`,
-      error,
-    );
+    log.error(`[route loader] Error loading route from ${routePath}:`, error);
   }
 };

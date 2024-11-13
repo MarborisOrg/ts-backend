@@ -10,16 +10,18 @@ export async function expressApp() {
 
   initApp(app)
     .then(function () {
-      loadAllRouter(app).then(function () {
-        app.listen(config.PORT, () => {
-          log.info("Server is running on port: " + config.PORT);
+      loadAllRouter(app)
+        .then(function () {
+          app.listen(config.PORT, () => {
+            log.info("Server is running on port: " + config.PORT);
 
-          swaggerDocs(app, config.PORT.toString());
+            swaggerDocs(app, config.PORT.toString());
+          });
+        })
+        .catch(function () {
+          log.error("unknown error when init app");
+          die();
         });
-      }).catch(function(){
-        log.error("unknown error when init app");
-        die();
-      });
     })
     .catch(function () {
       log.error("unknown error when init app");
