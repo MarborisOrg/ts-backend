@@ -7,21 +7,15 @@ interface Args {
 
 let mode: string = "";
 
-export function getEnvMode(): string {
+export function getMode(): string {
   if (mode == "" || mode == null) {
     const argv = yargs(hideBin(process.argv)).options({
       dev: { type: "boolean", default: false },
     }).argv as Args;
 
-    const env = argv.dev ? "development" : "production";
+    mode = argv.dev ? "development" : "production";
 
-    if (env === "production") {
-      mode = ".env";
-      return ".env";
-    } else {
-      mode = ".env.dev";
-      return ".env.dev";
-    }
+    return mode;
   } else {
     return mode;
   }

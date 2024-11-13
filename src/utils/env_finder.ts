@@ -1,12 +1,19 @@
 import * as fs from "fs";
 import * as path from "path";
-import { getEnvMode } from "./env_mode.js";
+import { getMode } from "./mode.js";
 
 const findEnvFileInSubdirectories = (startDir: string): string | null => {
   const files = fs.readdirSync(startDir);
 
-  if (files.includes(getEnvMode())) {
-    return path.join(startDir, getEnvMode());
+  let envPath
+  if (getMode() === "production") {
+    envPath = ".env";
+  } else {
+    envPath = ".env.dev";
+  }
+
+  if (files.includes(envPath)) {
+    return path.join(startDir, envPath);
   }
 
   for (const file of files) {
