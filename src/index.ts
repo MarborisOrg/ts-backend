@@ -40,7 +40,7 @@ if (cluster.isPrimary) {
 } else {
   (async function () {
     try {
-      const { default: init } = await import("#init/index");
+      const { default: init } = await import("#init/app");
       await init(); // Wait for the database connection to complete
       expressApp(); // Now call expressApp
     } catch (error) {
