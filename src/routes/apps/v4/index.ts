@@ -5,7 +5,7 @@ import {
   dropBookController,
 } from "#controllers/index";
 import checkAdmin from "./middleware/checkAdmin.js";
-import { loginController } from "#controllers/admin/login";
+import { loginController } from "./controllers/loginAdmin.js";
 
 const router = Router();
 
