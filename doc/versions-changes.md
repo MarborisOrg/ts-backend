@@ -39,3 +39,7 @@
 + add cors lib
 + fix init
 + add swagger doc
+
+## 4.2.1:
++ fix access/refresh token login
++ Fixing the stability of version 4
