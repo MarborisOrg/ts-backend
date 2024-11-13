@@ -14,9 +14,16 @@ const startWorker = () => {
 
   worker.on("exit", (code, signal) => {
     log.info(
-      `Worker ${worker.process.pid} died (code: ${code}, signal: ${signal}). Restarting...`,
+      `Worker ${worker.process.pid} died (code: ${code}, signal: ${signal}).`,
     );
-    startWorker(); // Restart the worker
+
+    if(code != 0){
+      log.info(
+        `Restarting...`,
+      );
+      startWorker(); // Restart the worker
+    }
+    
   });
 };
 
