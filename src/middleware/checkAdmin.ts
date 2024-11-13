@@ -1,6 +1,6 @@
 // middleware/checkAdmin.js
 import jwt from "jsonwebtoken";
-import { config } from "#config/env_get";
+import { accessPass } from "#modules/jwt/config";
 
 const checkAdmin = (req: any, res: any, next: any) => {
   const token = req.headers["authorization"]?.split(" ")[1];
@@ -9,7 +9,7 @@ const checkAdmin = (req: any, res: any, next: any) => {
     return res.status(403).json({ message: "Access denied" });
   }
 
-  jwt.verify(token, config.SECRET_KEY, (err: any, decoded: any) => {
+  jwt.verify(token, accessPass, (err: any, decoded: any) => {
     if (err) {
       return res.status(403).json({ message: "Invalid token" });
     }

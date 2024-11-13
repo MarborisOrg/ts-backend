@@ -1,4 +1,5 @@
-import { config } from "#config/env_get";
+import { accessPass, refreshPass } from "#modules/jwt/config";
+import { signJWT } from "#modules/jwt/ref-acc-token";
 import { Request, Response } from "express";
 import jwt from "jsonwebtoken";
 
@@ -9,28 +10,11 @@ export const tokenController = async (req: Request, res: Response) => {
     return;
   }
 
-  // بررسی اینکه refresh token معتبر است (مثلاً در دیتابیس)
-  jwt.verify(refreshToken, config.SECRET_KEY, (err: any, decoded: any) => {
+  jwt.verify(refreshToken, refreshPass, (err: any, decoded: any) => {
     if (err) {
       res.status(403).json({ message: "Invalid refresh token" });
       return;
     }
-
-    const accessToken = jwt.sign(
-      { role: "admin", type: "access" },
-      config.SECRET_KEY,
-      {
-        expiresIn: "15m",
-      },
-    );
-
-    const refreshToken = jwt.sign(
-      { role: "admin", type: "refresh" },
-      config.SECRET_KEY,
-      {
-        expiresIn: "30d",
-      },
-    );
-    return res.json({ accessToken, refreshToken });
+    return res.json(signJWT());
   });
 };
