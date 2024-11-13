@@ -3,24 +3,24 @@ import { EventEmitter } from "events";
 
 const responseSentEmitter = new EventEmitter();
 
-export const responseSentMiddleware2 = (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
-  res.locals.responseSent = false;
+// export const responseSentMiddleware2 = (
+//   req: Request,
+//   res: Response,
+//   next: NextFunction
+// ) => {
+//   res.locals.responseSent = false;
 
-  const originalSend = res.send.bind(res);
-  res.send = (body: any): Response => {
-    if (res.locals.responseSent) {
-      return res;
-    }
-    res.locals.responseSent = true;
-    return originalSend(body);
-  };
+//   const originalSend = res.send.bind(res);
+//   res.send = (body: any): Response => {
+//     if (res.locals.responseSent) {
+//       return res;
+//     }
+//     res.locals.responseSent = true;
+//     return originalSend(body);
+//   };
 
-  next();
-};
+//   next();
+// };
 
 export const responseSentMiddleware = (
   req: Request,
