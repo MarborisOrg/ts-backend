@@ -16,6 +16,9 @@ export async function expressApp() {
 
           swaggerDocs(app, config.PORT.toString());
         });
+      }).catch(function(){
+        log.error("unknown error when init app");
+        die();
       });
     })
     .catch(function () {
