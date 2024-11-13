@@ -4,7 +4,6 @@
  */
 
 import { expressApp } from "#app";
-import { sleep } from "#utils/sleep";
 import cluster from "cluster";
 import os from "os";
 
