@@ -1,38 +1,27 @@
 import { config } from "#config/env_get";
 import loadAllRouter from "#routes/index";
-import express, { Request, Response, NextFunction } from "express";
+import express, { Request, Response } from "express";
 import swaggerDocs from "#config/swaggerDocs";
-import { helmetConfig } from "#config/helment";
-import cors from "cors";
-import { timeoutMiddleware } from "#middleware/timeRace";
-import { corsOptions } from "#config/cors";
-import { responseSentMiddleware } from "#middleware/resSentRace";
-import { logMiddleware } from "#middleware/log";
+import { initApp } from "#app-ex-ord";
 
-export function expressApp() {
+export async function expressApp() {
   // app (express)
   const app = express();
-  app.disable("x-powered-by");
 
-  app.use(express.json());
-  app.use(logMiddleware);
+  initApp(app)
+    .then(function () {
+      loadAllRouter(app).then(function () {
+        app.listen(config.PORT, () => {
+          log.info("Server is running on port: " + config.PORT);
 
-  app.use(responseSentMiddleware);
-
-  // ipv6Blocker(app); // IPv6 Blocker
-  app.use(helmetConfig()); // helment helper
-  app.use(express.urlencoded({ extended: true })); // options
-
-  app.use(cors(corsOptions));
-  app.use(timeoutMiddleware);
-
-  loadAllRouter(app).then(function () {
-    app.listen(config.PORT, () => {
-      log.info("Server is running on port: " + config.PORT);
-
-      swaggerDocs(app, config.PORT.toString());
+          swaggerDocs(app, config.PORT.toString());
+        });
+      });
+    })
+    .catch(function () {
+      log.error("unknown error when init app");
+      die();
     });
-  });
 
   app.get("/test/sleep", (req: Request, res: Response) => {
     setTimeout(() => {
