@@ -21,7 +21,6 @@ export async function checkAndRenameLogFile() {
       }
 
       await fs.rename(logFilePath, backupFilePath);
-      console.log(`Backup file renamed to: ${backupFilePath}`);
     }
   } catch (error) {
     console.error("Error checking or renaming file:", error);
