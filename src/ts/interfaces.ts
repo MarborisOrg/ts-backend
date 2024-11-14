@@ -36,18 +36,21 @@ export namespace config_ns {
 
 export namespace mongo_ns {
   export interface IUser extends Document {
+    [x: string]: any;
     name: string;
     email: string;
     ownedItems: Array<string>;
   }
 
   export interface IItem extends Document {
+    [x: string]: any;
     title: string;
     descrp: string;
     owners: Array<string>;
   }
 
   export interface IOwnership extends Document {
+    [x: string]: any;
     user: string;
     item: string;
     createdAt: Date;
