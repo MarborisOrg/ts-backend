@@ -4,6 +4,7 @@ import { freeAll } from "#free/index";
 
 process.on('exit', (code) => {
     freeAll()
+    console.log("App closed")
 });
 
 process.on('SIGINT', async () => {
