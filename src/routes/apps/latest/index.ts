@@ -19,9 +19,25 @@ router.use(checkIP);
  *   post:
  *     summary: Login admin endpoint
  *     description: Returns a token response
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - username
+ *               - password
+ *             properties:
+ *               username:
+ *                 type: string
+ *               password:
+ *                 type: string
  *     responses:
  *       200:
  *         description: A token response
+ *       401:
+ *         description: Invalid credentials
  */
 router.post("/login", loginController); // endpoint
 
