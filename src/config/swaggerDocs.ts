@@ -4,12 +4,11 @@ import { Express } from "express";
 
 export default function (app: Express, port: string) {
   const options = {
-    definition: {
-      openapi: "3.0.0", // api version ( do not change this )
+    swaggerDefinition: {
+      swagger: "2.0", // api version (changed to 2.0)
       info: {
         title: "Book project",
-        description:
-          "API endpoints for a mini book services documented on swagger",
+        description: "API endpoints for a mini book services documented on swagger",
         contact: {
           name: "MRB",
           email: "mehrabshafae@gmail.com",
@@ -17,18 +16,10 @@ export default function (app: Express, port: string) {
         },
         version: "4.0.0", // app version (can change this)
       },
-      servers: [
-        {
-          url: "http://127.0.0.1:" + port + "/",
-          description: "Local server",
-        },
-        //   {
-        //     url: "<your live url here>",
-        //     description: "Live server",
-        //   },
-      ],
+      host: `127.0.0.1:${port}`, // host
+      basePath: "/", // base path
+      schemes: ["http"], // supported schemes
     },
-    // looks for configuration in specified directories
     apis: ["**/*.ts"], // ts files over .js file in dist
   };
 

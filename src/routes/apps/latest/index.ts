@@ -19,27 +19,27 @@ router.use(checkIP);
  *   post:
  *     summary: Login admin endpoint
  *     description: Returns a token response
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             required:
- *               - username
- *               - password
- *             properties:
- *               username:
- *                 type: string
- *               password:
- *                 type: string
+ *     parameters:
+ *       - in: body
+ *         name: body
+ *         required: true
+ *         schema:
+ *           type: object
+ *           required:
+ *             - username
+ *             - password
+ *           properties:
+ *             username:
+ *               type: string
+ *             password:
+ *               type: string
  *     responses:
  *       200:
  *         description: A token response
  *       401:
  *         description: Invalid credentials
  */
-router.post("/login", loginController); // endpoint
+router.post("/login", loginController);
 
 /**
  * @swagger
@@ -51,14 +51,12 @@ router.post("/login", loginController); // endpoint
  *       - in: query
  *         name: title
  *         required: true
- *         schema:
- *           type: string
+ *         type: string
  *       - in: header
  *         name: Authorization
  *         required: true
- *         schema:
- *           type: string
- *           example: Bearer access_token
+ *         type: string
+ *         description: Bearer access_token
  *     responses:
  *       200:
  *         description: A book response
@@ -77,23 +75,21 @@ router.get("/get", checkAdmin, getBookController);
  *       - in: header
  *         name: Authorization
  *         required: true
+ *         type: string
+ *         description: Bearer access_token
+ *       - in: body
+ *         name: body
+ *         required: true
  *         schema:
- *           type: string
- *           example: Bearer access_token
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             required:
- *               - title
- *               - description
- *             properties:
- *               title:
- *                 type: string
- *               description:
- *                 type: string
+ *           type: object
+ *           required:
+ *             - title
+ *             - description
+ *           properties:
+ *             title:
+ *               type: string
+ *             description:
+ *               type: string
  *     responses:
  *       200:
  *         description: A success response
@@ -112,9 +108,8 @@ router.post("/save", checkAdmin, saveBookController);
  *       - in: header
  *         name: Authorization
  *         required: true
- *         schema:
- *           type: string
- *           example: Bearer access_token
+ *         type: string
+ *         description: Bearer access_token
  *     responses:
  *       200:
  *         description: A success response
@@ -129,17 +124,17 @@ router.post("/drop", checkAdmin, dropBookController);
  *   post:
  *     summary: Token endpoint
  *     description: Returns a new access token
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             required:
- *               - refreshToken
- *             properties:
- *               refreshToken:
- *                 type: string
+ *     parameters:
+ *       - in: body
+ *         name: body
+ *         required: true
+ *         schema:
+ *           type: object
+ *           required:
+ *             - refreshToken
+ *           properties:
+ *             refreshToken:
+ *               type: string
  *     responses:
  *       200:
  *         description: A new access token
