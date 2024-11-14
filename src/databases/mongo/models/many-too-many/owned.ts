@@ -1,5 +1,4 @@
-import mongoose, { Document, Schema } from "mongoose";
-import { config } from "#config/env_get";
+import mongoose, { Schema } from "mongoose";
 import { mongo_ns } from "#ts/interfaces";
 
 class OwnershipModel {
