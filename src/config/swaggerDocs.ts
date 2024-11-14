@@ -19,7 +19,7 @@ export default function (app: Express, port: string) {
       },
       servers: [
         {
-          url: "http://localhost:" + port + "/",
+          url: "http://127.0.0.1:" + port + "/",
           description: "Local server",
         },
         //   {
