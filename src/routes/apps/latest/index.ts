@@ -53,6 +53,12 @@ router.post("/login", loginController); // endpoint
  *         required: true
  *         schema:
  *           type: string
+ *       - in: header
+ *         name: Authorization
+ *         required: true
+ *         schema:
+ *           type: string
+ *           example: Bearer access_token
  *     responses:
  *       200:
  *         description: A book response
@@ -67,6 +73,13 @@ router.get("/get", checkAdmin, getBookController);
  *   post:
  *     summary: Save book endpoint
  *     description: Returns a success response
+ *     parameters:
+ *       - in: header
+ *         name: Authorization
+ *         required: true
+ *         schema:
+ *           type: string
+ *           example: Bearer access_token
  *     requestBody:
  *       required: true
  *       content:
@@ -95,6 +108,13 @@ router.post("/save", checkAdmin, saveBookController);
  *   post:
  *     summary: Drop book endpoint
  *     description: Returns a success response
+ *     parameters:
+ *       - in: header
+ *         name: Authorization
+ *         required: true
+ *         schema:
+ *           type: string
+ *           example: Bearer access_token
  *     responses:
  *       200:
  *         description: A success response
