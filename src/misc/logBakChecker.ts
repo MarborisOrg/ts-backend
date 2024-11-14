@@ -8,10 +8,12 @@ const logFilePath = path.join(logDir, "combined.log");
 
 export async function checkAndRenameLogFile() {
   try {
+    if (!(await fileExists(logFilePath))) return;
+
     const stats = await fs.stat(logFilePath);
 
     if (stats.size > 1 * 1024 * 1024) {
-      // 1mg
+      // 1MB
       let backupFilePath = `${logFilePath}.bak`;
       let counter = 1;
 
