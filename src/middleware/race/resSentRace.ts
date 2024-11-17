@@ -12,7 +12,7 @@ export const responseSentMiddleware = (
     if (!res.headersSent) {
       return originalSend(...args);
     } else {
-      console.warn("Attempted to send response after headers were sent.");
+      log.warn("Attempted to send response after headers were sent.");
       return res;
     }
   };
@@ -21,7 +21,7 @@ export const responseSentMiddleware = (
     if (!res.headersSent) {
       return originalJson(...args);
     } else {
-      console.warn("Attempted to send JSON response after headers were sent.");
+      log.warn("Attempted to send JSON response after headers were sent.");
       return res;
     }
   };
