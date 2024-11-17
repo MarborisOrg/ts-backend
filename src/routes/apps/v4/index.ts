@@ -3,7 +3,7 @@ import {
   getBookController,
   saveBookController,
   dropBookController,
-} from "#controllers/index";
+} from "../latest/controllers/index.js";
 import checkAdmin from "./middleware/checkAdmin.js";
 import { loginController } from "./controllers/loginAdmin.js";
 

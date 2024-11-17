@@ -1,13 +1,9 @@
 import { Router } from "express";
-import {
-  getBookController,
-  saveBookController,
-  dropBookController,
-} from "#controllers/index";
 import checkAdmin from "#routes/apps/latest/middleware/checkAdmin";
 import { loginController } from "#routes/apps/latest/controllers/admin/login";
 import { checkIP } from "#routes/apps/latest/middleware/cons";
 import { tokenController } from "./controllers/token.js";
+import { getBookController, saveBookController, dropBookController } from "./controllers/index.js";
 
 const router = Router();
 
