@@ -2,7 +2,7 @@ import { config } from "#config/env_get";
 import loadAllRouter from "#routes/index";
 import express, { Request, Response } from "express";
 import swaggerDocs from "#config/swaggerDocs";
-import { initApp } from "#app-ex-ord";
+import { initApp } from "#core/app-ex-ord";
 
 export function expressApp() {
   // app (express)

@@ -3,7 +3,7 @@
  * @author MRB
  */
 
-import { expressApp } from "#app";
+import { expressApp } from "#core/app";
 import { numWorkers, maxRetries } from "#config/cluster";
 import { getMode } from "#utils/mode";
 import cluster from "cluster";
