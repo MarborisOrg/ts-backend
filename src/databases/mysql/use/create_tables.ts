@@ -7,7 +7,6 @@ export default function (): Promise<boolean> {
       if (err) throw err;
       mysqlConnection.query(CREATE_TABLES, function (err: any, result: any) {
         if (err) throw err;
-        log.info("[database] table checked!");
         resolve(true);
       });
     });
