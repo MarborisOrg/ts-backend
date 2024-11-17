@@ -6,7 +6,7 @@ export const loadRoutes = async (
   app: Express,
   routes: string[],
 ): Promise<void> => {
-  routes.forEach(async (routersName) => {
+  for (const routersName of routes) {
     let pathRoute = `/${routersName}`;
 
     if (routersName === "latest") {
@@ -22,5 +22,5 @@ export const loadRoutes = async (
     } catch (error) {
       log.error("[route loader] This is an unrecoverable error!");
     }
-  });
+  }
 };
