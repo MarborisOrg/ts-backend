@@ -14,7 +14,7 @@ export const saveBookController = async (req: Request, res: Response) => {
   } else {
     const { title, description } = req.body;
     try {
-      const result = await call("save", title, description);
+      const result = await call("save_v5", title, description);
       res.send({ success: result });
     } catch (error) {
       res.status(500).send("err");

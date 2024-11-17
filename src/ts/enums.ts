@@ -18,3 +18,18 @@ export enum MysqlModuleNames {
   find = "find",
   save = "save",
 }
+
+
+// v5
+export enum MongoModuleNames_v5 {
+  drop = "drop_v5",
+  find = "find_v5",
+  save = "save_v5",
+  delete = "delete_v5",
+}
+
+export enum MysqlModuleNames_v5 {
+  drop = "drop_v5", // drop all table (book) +get table name! no set default TODO()
+  find = "find_v5",
+  save = "save_v5",
+}

@@ -10,7 +10,7 @@ export const getBookController = async (req: Request, res: Response) => {
     res.status(400).json({ error: error.details[0].message });
   } else {
     try {
-      const result = await call("find", title as string);
+      const result = await call("find_v5", title as string);
       res.send({ success: result });
     } catch (error) {
       res.status(500).send("err");
