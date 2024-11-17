@@ -15,7 +15,7 @@ router.use(checkIP);
 
 /**
  * @swagger
- * /login:
+ * /v5/login:
  *   post:
  *     summary: Login admin endpoint
  *     description: Returns a token response
@@ -43,7 +43,7 @@ router.post("/login", loginController);
 
 /**
  * @swagger
- * /get:
+ * /v5/get:
  *   get:
  *     summary: Get book endpoint
  *     description: Returns a book response
@@ -67,7 +67,7 @@ router.get("/get", checkAdmin, getBookController);
 
 /**
  * @swagger
- * /save:
+ * /v5/save:
  *   post:
  *     summary: Save book endpoint
  *     description: Returns a success response
@@ -100,7 +100,7 @@ router.post("/save", checkAdmin, saveBookController);
 
 /**
  * @swagger
- * /drop:
+ * /v5/drop:
  *   post:
  *     summary: Drop book endpoint
  *     description: Returns a success response
@@ -120,7 +120,7 @@ router.post("/drop", checkAdmin, dropBookController);
 
 /**
  * @swagger
- * /token:
+ * /v5/token:
  *   post:
  *     summary: Token endpoint
  *     description: Returns a new access token
