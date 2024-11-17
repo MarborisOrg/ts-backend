@@ -3,10 +3,11 @@
  * @author MRB
  */
 
-import { expressApp } from "#core/app";
-import { numWorkers, maxRetries } from "#config/cluster";
-import { getMode } from "#utils/mode";
 import cluster from "cluster";
+
+import { maxRetries, numWorkers } from "#config/cluster";
+import { expressApp } from "#core/app";
+import { getMode } from "#utils/mode";
 
 /**
  * init file for index (current file)
@@ -51,6 +52,7 @@ async function clusterForker() {
   if (cluster.isPrimary) {
     log.info(`Primary process ${process.pid} is running`);
 
+    // eslint-disable-next-line functional/no-loop-statement, functional/no-let
     for (let i = 1; i <= numWorkers; i++) {
       startWorker();
     }
