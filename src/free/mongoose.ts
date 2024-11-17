@@ -1,5 +1,5 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
-export async function freeMongo(){
-    await mongoose.disconnect();
+export async function freeMongo() {
+  await mongoose.disconnect();
 }

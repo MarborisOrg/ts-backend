@@ -5,7 +5,7 @@ import { getMode } from "./mode.js";
 const findEnvFileInSubdirectories = (startDir: string): string | null => {
   const files = fs.readdirSync(startDir);
 
-  let envPath
+  let envPath;
   if (getMode() === "production") {
     envPath = ".env";
   } else {

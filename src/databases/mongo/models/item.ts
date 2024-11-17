@@ -8,7 +8,7 @@ class ItemModel {
     this.itemSchema = new Schema({
       title: { type: String, required: true, unique: true },
       descrp: { type: String, required: true },
-      owners: [{ type: Schema.Types.ObjectId, ref: 'Ownership' }]
+      owners: [{ type: Schema.Types.ObjectId, ref: "Ownership" }],
     });
   }
 

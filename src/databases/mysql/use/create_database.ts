@@ -43,7 +43,7 @@ export default function (): Promise<boolean> {
                           errend(err);
                         }
                         log.info(
-                          "[database1] User altered and privileges flushed successfully."
+                          "[database1] User altered and privileges flushed successfully.",
                         );
                         con.end();
                         resolve(true);
@@ -59,7 +59,7 @@ export default function (): Promise<boolean> {
             }
           } catch (error) {
             log.error("Error executing queries:", error);
-            errend(err)
+            errend(err);
           }
         }
       });

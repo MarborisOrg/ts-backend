@@ -1,4 +1,3 @@
-
 import os from "os";
 
 export const numWorkers = os.cpus().length;
