@@ -5,7 +5,7 @@ import {
   dropBookController,
 } from "#controllers/index";
 import checkAdmin from "#routes/apps/latest/middleware/checkAdmin";
-import { loginController } from "#controllers/admin/login";
+import { loginController } from "#routes/apps/latest/controllers/admin/login";
 import { checkIP } from "#routes/apps/latest/middleware/cons";
 import { tokenController } from "./controllers/token.js";
 
