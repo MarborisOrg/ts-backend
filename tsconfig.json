@@ -2,10 +2,10 @@
   "compilerOptions": {
     "incremental": true,
     "target": "es2017",
-    "outDir": "build/main",
+    "outDir": "build/module",
     "rootDir": "src",
     "moduleResolution": "node",
-    "module": "commonjs",
+    "module": "ESNext",
     "baseUrl": "./",
     "paths": {
       "#*": ["src/*"]
