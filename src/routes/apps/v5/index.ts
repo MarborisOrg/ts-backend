@@ -4,9 +4,9 @@ import {
   saveBookController,
   dropBookController,
 } from "./controllers/index.js";
-import checkAdmin from "#middleware/checkAdmin";
+import checkAdmin from "#routes/apps/latest/middleware/checkAdmin";
 import { loginController } from "#controllers/admin/login";
-import { checkIP } from "#middleware/cons";
+import { checkIP } from "#routes/apps/latest/middleware/cons";
 import { tokenController } from "./controllers/token.js";
 
 const router = Router();

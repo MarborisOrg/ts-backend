@@ -4,10 +4,10 @@
 import express, { Express } from "express";
 import { helmetConfig } from "#config/helment";
 import cors from "cors";
-import { timeoutMiddleware } from "#middleware/race/timeRace";
+import { timeoutMiddleware } from "#routes/apps/latest/middleware/race/timeRace";
 import { corsOptions } from "#config/cors";
-import { responseSentMiddleware } from "#middleware/race/resSentRace";
-import { logMiddleware } from "#middleware/log";
+import { responseSentMiddleware } from "#routes/apps/latest/middleware/race/resSentRace";
+import { logMiddleware } from "#routes/apps/latest/middleware/log";
 
 export async function initApp(app: Express): Promise<void> {
   try {
