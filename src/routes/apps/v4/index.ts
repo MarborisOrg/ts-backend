@@ -14,6 +14,4 @@ router.get("/get", checkAdmin, getBookController);
 router.post("/save", checkAdmin, saveBookController);
 router.post("/drop", checkAdmin, dropBookController);
 
-log.info("v4 router loaded");
-
 export default router;
