@@ -29,6 +29,11 @@
     "sort-imports": [
       "error",
       { "ignoreDeclarationSort": true, "ignoreCase": true }
-    ]
+    ],
+    "functional/no-class": "off",
+    "functional/no-this-expression": "off",
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-namespace": "off",
+    "functional/no-return-void": "off"
   }
 }
