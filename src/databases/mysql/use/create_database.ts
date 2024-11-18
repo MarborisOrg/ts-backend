@@ -1,11 +1,11 @@
+import { con } from '../index.js';
 import {
-  CREATE_DATABASE,
+  CHECK_DATABASE,
   CR_ALERT,
   CR_FLUSH,
   CR_USE,
-  CHECK_DATABASE,
-} from "../sql/init.js";
-import { con } from "../index.js";
+  CREATE_DATABASE,
+} from '../sql/init.js';
 
 export default function (): Promise<boolean> {
   return new Promise((resolve, reject) => {
@@ -25,11 +25,11 @@ export default function (): Promise<boolean> {
         } else {
           try {
             if (results.length === 0) {
-              con.query(CREATE_DATABASE, function (err: any, result: any) {
+              con.query(CREATE_DATABASE, function (err: any, _result: any) {
                 if (err) {
                   errend(err);
                 } else {
-                  log.info("[database1] Database created successfully.");
+                  log.info('[database1] Database created successfully.');
                   con.query(CR_USE, function (err: any) {
                     if (err) {
                       errend(err);
@@ -43,7 +43,7 @@ export default function (): Promise<boolean> {
                           errend(err);
                         }
                         log.info(
-                          "[database1] User altered and privileges flushed successfully.",
+                          '[database1] User altered and privileges flushed successfully.',
                         );
                         con.end();
                         resolve(true);
@@ -58,7 +58,7 @@ export default function (): Promise<boolean> {
               resolve(true);
             }
           } catch (error) {
-            log.error("Error executing queries:", error);
+            log.error('Error executing queries:', error);
             errend(err);
           }
         }

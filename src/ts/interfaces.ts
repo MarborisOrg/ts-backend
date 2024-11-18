@@ -1,58 +1,61 @@
+import { Document } from "mongoose";
+
 export namespace config_ns {
-  export interface Settings {
-    PORT: number;
-    mysql_sv: string;
-    mysql_user: string;
-    mysql_password: string;
-    database_name: string;
-    mysql_multipleStatements: boolean;
-    SECRET_KEY: string;
-    admin_user: string;
-    admin_pass: string;
-    scriptSrc: string;
-    mongo_url: string;
-    tc_book_name: string;
-    database_use: string;
-    ALLOWED_IPS: string[];
-  }
+  export type Settings = {
+    readonly PORT: number;
+    readonly mysql_sv: string;
+    readonly mysql_user: string;
+    readonly mysql_password: string;
+    readonly database_name: string;
+    readonly mysql_multipleStatements: boolean;
+    readonly SECRET_KEY: string;
+    readonly admin_user: string;
+    readonly admin_pass: string;
+    readonly scriptSrc: string;
+    readonly mongo_url: string;
+    readonly tc_book_name: string;
+    readonly database_use: string;
+    readonly ALLOWED_IPS: readonly string[];
+  };
 
-  export interface IEnvConfig {
-    PORT: number;
-    mysql_sv: string;
-    mysql_user: string;
-    mysql_password: string;
-    database_name: string;
-    mysql_multipleStatements: boolean;
-    mongo_url: string;
-    tc_book_name: string;
-    database_use: "mongo" | "mysql";
-  }
+  export type IEnvConfig = {
+    readonly PORT: number;
+    readonly mysql_sv: string;
+    readonly mysql_user: string;
+    readonly mysql_password: string;
+    readonly database_name: string;
+    readonly mysql_multipleStatements: boolean;
+    readonly mongo_url: string;
+    readonly tc_book_name: string;
+    readonly database_use: "mongo" | "mysql";
+  };
 
-  export interface IConfig {
-    env: IEnvConfig;
-    getEnv(): IEnvConfig;
-  }
+  export type IConfig = {
+    readonly env: IEnvConfig;
+  } & {
+    readonly getEnv: () => IEnvConfig;
+  };
 }
 
 export namespace mongo_ns {
-  export interface IUser extends Document {
-    [x: string]: any;
-    name: string;
-    email: string;
-    ownedItems: Array<string>;
-  }
+  export type IUser = {
+    readonly [x: string]: any;
+    readonly name: string;
+    readonly email: string;
+    readonly ownedItems: ReadonlyArray<string>;
+  } & Document;
 
-  export interface IItem extends Document {
-    [x: string]: any;
-    title: string;
-    descrp: string;
-    owners: Array<string>;
-  }
+  export type IItem = {
+    readonly [x: string]: any;
+    readonly title: string;
+    readonly descrp: string;
+    readonly owners: ReadonlyArray<string>;
+  } & Document;
 
-  export interface IOwnership extends Document {
-    [x: string]: any;
-    user: string;
-    item: string;
-    createdAt: Date;
-  }
+  export type IOwnership = {
+    readonly [x: string]: any;
+    readonly user: string;
+    readonly item: string;
+    readonly createdAt: Date;
+  } & Document;
 }

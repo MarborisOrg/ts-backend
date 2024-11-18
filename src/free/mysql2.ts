@@ -1,4 +1,4 @@
-import { mysqlConnection } from "#databases/mysql/index";
+import { mysqlConnection } from '#databases/mysql/index';
 
 export function freeMysql() {
   mysqlConnection.end();

@@ -1,9 +1,11 @@
-import { mongo_ns } from "#ts/interfaces.js";
-import { DUPLICATE_ITEM } from "../codes.js";
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
+
+import { DUPLICATE_ITEM } from '../codes.js';
+
+import { mongo_ns } from '#ts/interfaces.js';
 
 export class ItemCreate {
-  private itemModel;
+  private readonly itemModel;
 
   constructor(itemModel: mongoose.Model<mongo_ns.IItem>) {
     this.itemModel = itemModel;

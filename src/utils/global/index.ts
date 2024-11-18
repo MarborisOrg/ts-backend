@@ -1,6 +1,6 @@
-import { log } from "#utils/log";
-import { die } from "#utils/die";
-import { quit } from "#utils/quit";
+import { die } from '#utils/die';
+import { log } from '#utils/log';
+import { quit } from '#utils/quit';
 
 globalThis.log = log;
 globalThis.die = die;

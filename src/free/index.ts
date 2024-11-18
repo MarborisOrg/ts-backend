@@ -1,5 +1,5 @@
-import { freeMongo } from "./mongoose.js";
-import { freeMysql } from "./mysql2.js";
+import { freeMongo } from './mongoose.js';
+import { freeMysql } from './mysql2.js';
 
 export async function freeAll() {
   freeMysql();

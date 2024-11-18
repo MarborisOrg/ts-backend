@@ -1,6 +1,7 @@
-import { blockIpMsg } from "#config/defaults";
-import { config } from "#config/env_get";
-import { Request, Response, NextFunction } from "express";
+import { NextFunction, Request, Response } from 'express';
+
+import { blockIpMsg } from '#config/defaults';
+import { config } from '#config/env_get';
 
 const checkIP = (req: Request, res: Response, next: NextFunction): void => {
   const clientIP = req.ip;
@@ -8,10 +9,10 @@ const checkIP = (req: Request, res: Response, next: NextFunction): void => {
   if (clientIP && config.ALLOWED_IPS.includes(clientIP)) {
     next();
   } else {
-    const ip = req.headers["x-forwarded-for"]
-      ? Array.isArray(req.headers["x-forwarded-for"])
-        ? req.headers["x-forwarded-for"][0]
-        : req.headers["x-forwarded-for"]
+    const ip = req.headers['x-forwarded-for']
+      ? Array.isArray(req.headers['x-forwarded-for'])
+        ? req.headers['x-forwarded-for'][0]
+        : req.headers['x-forwarded-for']
       : req.socket.remoteAddress;
 
     if (!ip) {
@@ -19,7 +20,7 @@ const checkIP = (req: Request, res: Response, next: NextFunction): void => {
       return;
     }
 
-    const clientIP = ip.includes(":") ? ip.split(":").pop() : ip;
+    const clientIP = ip.includes(':') ? ip.split(':').pop() : ip;
 
     if (clientIP && config.ALLOWED_IPS.includes(clientIP)) {
       next();

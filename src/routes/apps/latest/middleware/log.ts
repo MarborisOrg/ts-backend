@@ -1,4 +1,4 @@
-import { Request, Response, NextFunction } from "express";
+import { NextFunction, Request, Response } from 'express';
 
 export const logMiddleware = (
   req: Request,
@@ -18,10 +18,10 @@ export const logMiddleware = (
     timestamp: new Date().toISOString(),
   });
 
-  res.on("finish", () => {
+  res.on('finish', () => {
     const duration = Date.now() - startTime;
     log.info({
-      message: "Response sent",
+      message: 'Response sent',
       statusCode: res.statusCode,
       duration: `${duration}ms`,
       timestamp: new Date().toISOString(),

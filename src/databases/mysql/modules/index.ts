@@ -1,11 +1,12 @@
-import { MysqlModuleNames } from "#ts/enums";
-import { DatabasesType } from "#ts/types";
-import { dropBooks } from "./drop.js";
-import { findBookByTitle } from "./find.js";
-import { saveBook } from "./save.js";
+import { dropBooks } from './drop.js';
+import { findBookByTitle } from './find.js';
+import { saveBook } from './save.js';
+
+import { MysqlModuleNames } from '#ts/enums';
+import { DatabasesType } from '#ts/types';
 
 export const mysqlModules: DatabasesType = {
-  name: "mysql",
+  name: 'mysql',
   modules: [
     {
       name: MysqlModuleNames.drop,

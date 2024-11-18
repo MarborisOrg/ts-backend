@@ -1,15 +1,20 @@
-import { MongoModuleNames, MysqlModuleNames } from "./enums.js";
+import { MongoModuleNames, MysqlModuleNames } from './enums.js';
 
-export type DatabasesUseType = "mongo" | "mysql";
+export type DatabasesUseType = 'mongo' | 'mysql';
 
-export type NamedModules = {
-  name: string | MongoModuleNames | MysqlModuleNames;
-  func: (...args: any[]) => Promise<any> | any | Promise<void> | void;
-  called?: boolean;
+export type NamedModuleData = {
+  readonly name: string | MongoModuleNames | MysqlModuleNames;
+  readonly called?: boolean;
 };
 
+export type NamedModuleFunc = {
+  readonly func: (...args: readonly any[]) => Promise<any> | any | Promise<void> | void;
+};
+
+export type NamedModules = NamedModuleData & NamedModuleFunc;
+
 export type DatabasesType = {
-  name: DatabasesUseType;
-  modules: NamedModules[];
-  called?: boolean; // check one time caller for next version on Redis cache
+  readonly name: DatabasesUseType;
+  readonly modules: readonly NamedModules[];
+  readonly called?: boolean; // check one time caller for next version on Redis cache
 };

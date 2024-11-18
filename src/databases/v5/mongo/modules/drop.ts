@@ -1,8 +1,9 @@
-import mongoose from "mongoose";
-import { mongo_ns } from "#ts/interfaces";
+import mongoose from 'mongoose';
+
+import { mongo_ns } from '#ts/interfaces';
 
 export class ItemDelete {
-  private itemModel;
+  private readonly itemModel;
 
   constructor(itemModel: mongoose.Model<mongo_ns.IItem>) {
     this.itemModel = itemModel;
@@ -10,7 +11,7 @@ export class ItemDelete {
 
   public async deleteItem(title: string): Promise<string> {
     if (!this.itemModel) {
-      throw new Error("Item model is not set.");
+      throw new Error('Item model is not set.');
     }
 
     try {
@@ -28,12 +29,12 @@ export class ItemDelete {
 
   public async dropCollection(): Promise<string> {
     if (!this.itemModel) {
-      throw new Error("Item model is not set.");
+      throw new Error('Item model is not set.');
     }
 
     try {
       await this.itemModel.collection.drop();
-      return "Collection dropped successfully.";
+      return 'Collection dropped successfully.';
     } catch (error) {
       throw new Error(
         `Error dropping collection: ${error instanceof Error ? error.message : error}`,

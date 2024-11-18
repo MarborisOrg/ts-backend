@@ -1,22 +1,22 @@
 // all service classes
-import ItemModel from "./models/item.js";
-import { config } from "#config/env_get";
-import Database from "./use/index.js";
-import { mongo_ns } from "#ts/interfaces.js";
-import mongoose from "mongoose";
-import { ItemCreate } from "./modules/save.js";
-import { ItemFind } from "./modules/find.js";
-import { ItemDelete } from "./modules/drop.js";
+import mongoose from 'mongoose';
 
-// module
-import { MongoModuleNames } from "#ts/enums";
-import { DatabasesType } from "#ts/types";
+import ItemModel from './models/item.js';
+import { ItemDelete } from './modules/drop.js';
+import { ItemFind } from './modules/find.js';
+import { ItemCreate } from './modules/save.js';
+import Database from './use/index.js';
+
+import { config } from '#config/env_get';
+import { MongoModuleNames } from '#ts/enums';
+import { mongo_ns } from '#ts/interfaces.js';
+import { DatabasesType } from '#ts/types';
 
 class Service {
-  private itemModel: mongoose.Model<mongo_ns.IItem>;
-  private itemCreate: ItemCreate;
-  private itemFind: ItemFind;
-  private itemDelete: ItemDelete;
+  private readonly itemModel: mongoose.Model<mongo_ns.IItem>;
+  private readonly itemCreate: ItemCreate;
+  private readonly itemFind: ItemFind;
+  private readonly itemDelete: ItemDelete;
 
   constructor() {
     this.itemModel = ItemModel.getModel();
@@ -56,7 +56,7 @@ export default async function () {
 }
 
 export const mongoModules: DatabasesType = {
-  name: "mongo",
+  name: 'mongo',
   modules: [
     {
       name: MongoModuleNames.save,

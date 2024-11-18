@@ -1,7 +1,9 @@
-import { databasesArray } from "#databases/modules";
-import { MongoModuleNames, MysqlModuleNames } from "#ts/enums";
-import cuse from "./c-use.js";
-import assert from "assert";
+import assert from 'assert';
+
+import cuse from './c-use.js';
+
+import { databasesArray } from '#databases/modules';
+import { MongoModuleNames, MysqlModuleNames } from '#ts/enums';
 
 const dbUse = cuse();
 
@@ -9,12 +11,12 @@ const dbUse = cuse();
 // both options for call all databases
 export async function call(
   functionName: string | MongoModuleNames | MysqlModuleNames,
-  ...args: any[]
+  ...args: readonly any[]
 ): Promise<any> {
   const rows = databasesArray.filter((r) => r.name === dbUse);
 
   if (rows.length === 0) {
-    assert(false, "[M40]: Row not found");
+    assert(false, '[M40]: Row not found');
   }
 
   if (true) {
@@ -23,14 +25,14 @@ export async function call(
       const namedFunctions = rows.flatMap((row) =>
         row.modules
           .filter((f) => f.name === functionName)
-          .map((f) => ({ ...f, rowName: row.name }))
+          .map((f) => ({ ...f, rowName: row.name })),
       );
 
       if (namedFunctions.length > 0) {
         try {
           for (const namedFunction of namedFunctions) {
             log.info(
-              `Calling ${namedFunction.name} from ${namedFunction.rowName}:`
+              `Calling ${namedFunction.name} from ${namedFunction.rowName}:`,
             );
             return await namedFunction.func(...args);
           }

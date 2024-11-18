@@ -1,9 +1,11 @@
-import winston from "winston";
-import path from "path";
-import { logDir } from "#utils/requirements";
+import path from 'path';
+
+import winston from 'winston';
+
+import { logDir } from '#utils/requirements';
 
 export const log = winston.createLogger({
-  level: "info",
+  level: 'info',
   format: winston.format.combine(
     winston.format.timestamp(),
     winston.format.json(),
@@ -11,11 +13,11 @@ export const log = winston.createLogger({
   transports: [
     new winston.transports.Console(),
     new winston.transports.File({
-      filename: path.join(logDir, "error.log"),
-      level: "error",
+      filename: path.join(logDir, 'error.log'),
+      level: 'error',
     }),
     new winston.transports.File({
-      filename: path.join(logDir, "combined.log"),
+      filename: path.join(logDir, 'combined.log'),
     }),
   ],
 });

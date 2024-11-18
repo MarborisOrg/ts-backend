@@ -1,18 +1,18 @@
 // clean up app when quit
 // note: die (failor exit) doesnt support async
-import { freeAll } from "#free/index";
+import { freeAll } from '#free/index';
 
-process.on("exit", (code) => {
+process.on('exit', (_code) => {
   freeAll();
-  console.log("App closed");
+  console.log('App closed');
 });
 
-process.on("SIGINT", async () => {
+process.on('SIGINT', async () => {
   await freeAll();
   quit();
 });
 
-process.on("SIGTERM", async () => {
+process.on('SIGTERM', async () => {
   await freeAll();
   quit();
 });

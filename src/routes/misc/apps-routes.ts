@@ -1,16 +1,17 @@
-import { Express } from "express";
-import { loadRouter } from "./loadRouter.js";
-import { DEF_PATH_ROUTES, DEF_ROUTE_FILE } from "./default.js";
+import { Express } from 'express';
+
+import { DEF_PATH_ROUTES, DEF_ROUTE_FILE } from './default.js';
+import { loadRouter } from './loadRouter.js';
 
 export const loadRoutes = async (
   app: Express,
-  routes: string[],
+  routes: readonly string[],
 ): Promise<void> => {
   for (const routersName of routes) {
     let pathRoute = `/${routersName}`;
 
-    if (routersName === "latest") {
-      pathRoute = "/";
+    if (routersName === 'latest') {
+      pathRoute = '/';
     }
 
     try {
@@ -20,7 +21,7 @@ export const loadRoutes = async (
         pathRoute,
       );
     } catch (error) {
-      log.error("[route loader] This is an unrecoverable error!");
+      log.error('[route loader] This is an unrecoverable error!');
     }
   }
 };

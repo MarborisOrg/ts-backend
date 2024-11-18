@@ -1,10 +1,11 @@
 // log file size checker
 
-import { logDir } from "#utils/requirements";
-import fs from "fs/promises";
-import path from "path";
+import fs from 'fs/promises';
+import path from 'path';
 
-const logFilePath = path.join(logDir, "combined.log");
+import { logDir } from '#utils/requirements';
+
+const logFilePath = path.join(logDir, 'combined.log');
 
 export async function checkAndRenameLogFile() {
   try {
@@ -25,7 +26,7 @@ export async function checkAndRenameLogFile() {
       await fs.rename(logFilePath, backupFilePath);
     }
   } catch (error) {
-    log.error("Error checking or renaming file:", error);
+    log.error('Error checking or renaming file:', error);
   }
 }
 

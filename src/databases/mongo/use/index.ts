@@ -1,7 +1,7 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
 export default class {
-  private uri: string;
+  private readonly uri: string;
 
   constructor(uri: string) {
     this.uri = uri;
@@ -11,7 +11,7 @@ export default class {
     try {
       await mongoose.connect(this.uri);
     } catch (error) {
-      log.error("MongoDB connection error:", error);
+      log.error('MongoDB connection error:', error);
       process.exit(1);
     }
   }

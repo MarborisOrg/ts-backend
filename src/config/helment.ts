@@ -1,5 +1,6 @@
-import helmet from "helmet";
-import { config } from "#config/env_get";
+import helmet from 'helmet';
+
+import { config } from '#config/env_get';
 
 const helmetConfig = () => {
   return helmet({
@@ -12,7 +13,7 @@ const helmetConfig = () => {
       },
     },
     hidePoweredBy: true,
-    frameguard: { action: "deny" },
+    frameguard: { action: 'deny' },
     xssFilter: true,
     noSniff: true,
     hsts: {
@@ -20,7 +21,7 @@ const helmetConfig = () => {
       includeSubDomains: true,
       preload: true,
     },
-    referrerPolicy: { policy: "no-referrer" },
+    referrerPolicy: { policy: 'no-referrer' },
   });
 };
 

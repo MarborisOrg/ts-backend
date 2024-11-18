@@ -1,10 +1,10 @@
-import { Request, Response, NextFunction, Express } from "express";
+import { Express, NextFunction, Request, Response } from 'express';
 
 const blockIPv6 = (req: Request, res: Response, next: NextFunction): void => {
   const ip = req.ip || req.socket.remoteAddress;
 
-  if (ip && ip.includes(":")) {
-    res.status(403).send("Access denied: IPv6 addresses are not allowed.");
+  if (ip && ip.includes(':')) {
+    res.status(403).send('Access denied: IPv6 addresses are not allowed.');
     return;
   }
 

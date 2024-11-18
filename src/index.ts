@@ -3,21 +3,21 @@
  * @author MRB
  */
 
-import cluster from "cluster";
+import cluster from 'cluster';
 
-import { maxRetries, numWorkers } from "#config/cluster";
-import { expressApp } from "#core/app";
-import { getMode } from "#utils/mode";
+import { maxRetries, numWorkers } from '#config/cluster';
+import { expressApp } from '#core/app';
+import { getMode } from '#utils/mode';
 
 /**
  * init file for index (current file)
  */
-await import("#init/index");
+await import('#init/index');
 
 /**
  * mode
  */
-if (getMode() === "production") {
+if (getMode() === 'production') {
   clusterForker();
 } else {
   app();
@@ -31,7 +31,7 @@ async function clusterForker() {
   const startWorker = (retries = 0) => {
     const worker = cluster.fork();
 
-    worker.on("exit", (code, signal) => {
+    worker.on('exit', (code, signal) => {
       log.info(
         `Worker ${worker.process.pid} died (code: ${code}, signal: ${signal}).`,
       );
@@ -52,10 +52,7 @@ async function clusterForker() {
   if (cluster.isPrimary) {
     log.info(`Primary process ${process.pid} is running`);
 
-    // eslint-disable-next-line functional/no-loop-statement, functional/no-let
-    for (let i = 1; i <= numWorkers; i++) {
-      startWorker();
-    }
+    Array.from({ length: numWorkers }, (_, i) => startWorker(i + 1)); // [for] replace with Array
   } else {
     app();
   }
@@ -67,7 +64,7 @@ async function app() {
      * init file for app (express app)
      * repeated on fork (copy)
      */
-    const { default: init } = await import("#init/app");
+    const { default: init } = await import('#init/app');
     init().then(function () {
       // Wait for the database connection to complete
       expressApp(); // Now call expressApp

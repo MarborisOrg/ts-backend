@@ -1,13 +1,15 @@
-import * as dotenv from "dotenv";
-import Joi from "joi";
-import { envFilePath } from "#utils/env_finder";
-import { config_ns } from "#ts/interfaces";
-import df_config from "./defaults.js";
+import * as dotenv from 'dotenv';
+import Joi from 'joi';
+
+import df_config from './defaults.js';
+
+import { config_ns } from '#ts/interfaces';
+import { envFilePath } from '#utils/env_finder';
 
 if (envFilePath) {
   dotenv.config({ path: envFilePath });
 } else {
-  throw new Error(".env file not found in any subdirectories.");
+  throw new Error('.env file not found in any subdirectories.');
 }
 
 const schema = Joi.object({
@@ -17,7 +19,7 @@ const schema = Joi.object({
   mysql_password: Joi.string()
     .min(8)
     .max(255)
-    .allow("") /* allow empty for Mysql password */
+    .allow('') /* allow empty for Mysql password */
     .default(df_config.env.mysql_password),
   database_name: Joi.string()
     .min(1)
@@ -35,13 +37,13 @@ const schema = Joi.object({
     .min(6) /* admin password must be strong */
     .max(255)
     .required(),
-  scriptSrc: Joi.string().uri().default("") /* no require */,
+  scriptSrc: Joi.string().uri().default('') /* no require */,
   mongo_url: Joi.string().uri().default(df_config.env.mongo_url),
   tc_book_name: Joi.string()
     .min(1)
     .max(255)
     .default(df_config.env.tc_book_name),
-  database_use: Joi.string().valid("mongo", "mysql").default("mongo"),
+  database_use: Joi.string().valid('mongo', 'mysql').default('mongo'),
 }).unknown();
 
 const { error, value } = schema.validate(process.env);
@@ -64,5 +66,5 @@ export const config: config_ns.Settings = {
   mongo_url: value.mongo_url,
   tc_book_name: value.tc_book_name,
   database_use: value.database_use,
-  ALLOWED_IPS: value.ALLOWED_IPS ? value.ALLOWED_IPS.split(",") : [],
+  ALLOWED_IPS: value.ALLOWED_IPS ? value.ALLOWED_IPS.split(',') : [],
 };

@@ -1,9 +1,16 @@
-import { Router } from "express";
-import checkAdmin from "#routes/apps/latest/middleware/checkAdmin";
-import { loginController } from "#routes/apps/latest/controllers/admin/login";
-import { checkIP } from "#routes/apps/latest/middleware/cons";
-import { tokenController } from "./controllers/token.js";
-import { getBookController, saveBookController, dropBookController } from "./controllers/index.js";
+import { Router } from 'express';
+
+import {
+  dropBookController,
+  getBookController,
+  saveBookController,
+} from './controllers/index.js';
+import { tokenController } from './controllers/token.js';
+
+import { loginController } from '#routes/apps/latest/controllers/admin/login';
+import checkAdmin from '#routes/apps/latest/middleware/checkAdmin';
+import { checkIP } from '#routes/apps/latest/middleware/cons';
+
 
 const router = Router();
 
@@ -35,7 +42,7 @@ router.use(checkIP);
  *       401:
  *         description: Invalid credentials
  */
-router.post("/login", loginController);
+router.post('/login', loginController);
 
 /**
  * @swagger
@@ -59,7 +66,7 @@ router.post("/login", loginController);
  *       400:
  *         description: Invalid title
  */
-router.get("/get", checkAdmin, getBookController);
+router.get('/get', checkAdmin, getBookController);
 
 /**
  * @swagger
@@ -92,7 +99,7 @@ router.get("/get", checkAdmin, getBookController);
  *       400:
  *         description: Invalid book data
  */
-router.post("/save", checkAdmin, saveBookController);
+router.post('/save', checkAdmin, saveBookController);
 
 /**
  * @swagger
@@ -112,7 +119,7 @@ router.post("/save", checkAdmin, saveBookController);
  *       500:
  *         description: Error on deleting
  */
-router.post("/drop", checkAdmin, dropBookController);
+router.post('/drop', checkAdmin, dropBookController);
 
 /**
  * @swagger
@@ -137,6 +144,6 @@ router.post("/drop", checkAdmin, dropBookController);
  *       401:
  *         description: Invalid refresh token
  */
-router.post("/token", tokenController);
+router.post('/token', tokenController);
 
 export default router;

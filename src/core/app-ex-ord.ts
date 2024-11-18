@@ -1,17 +1,18 @@
 // express app (execution order)
 // express settings
 
-import express, { Express } from "express";
-import { helmetConfig } from "#config/helment";
-import cors from "cors";
-import { timeoutMiddleware } from "#routes/apps/latest/middleware/race/timeRace";
-import { corsOptions } from "#config/cors";
-import { responseSentMiddleware } from "#routes/apps/latest/middleware/race/resSentRace";
-import { logMiddleware } from "#routes/apps/latest/middleware/log";
+import cors from 'cors';
+import express, { Express } from 'express';
+
+import { corsOptions } from '#config/cors';
+import { helmetConfig } from '#config/helment';
+import { logMiddleware } from '#routes/apps/latest/middleware/log';
+import { responseSentMiddleware } from '#routes/apps/latest/middleware/race/resSentRace';
+import { timeoutMiddleware } from '#routes/apps/latest/middleware/race/timeRace';
 
 export async function initApp(app: Express): Promise<void> {
   try {
-    app.disable("x-powered-by");
+    app.disable('x-powered-by');
 
     app.use(express.json());
     app.use(logMiddleware);
@@ -23,7 +24,7 @@ export async function initApp(app: Express): Promise<void> {
     app.use(cors(corsOptions));
     app.use(timeoutMiddleware);
   } catch (error) {
-    log.info("error! loading not complete.");
+    log.info('error! loading not complete.');
     quit();
   }
 }
