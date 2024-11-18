@@ -56,6 +56,6 @@
     // "skipLibCheck": true
   },
   "include": ["src/**/*.ts"],
-  "exclude": ["node_modules/**", "build/**", "log/**", "doc/**"],
+  "exclude": ["node_modules/**", "build/**", "log/**", "doc/**", "src/archive/**"],
   "compileOnSave": false
 }
