@@ -45,4 +45,4 @@
 + Fixing the stability of version 4
 
 ## 6:
-+ add eslint, spell checker, prettier config, new tsconfig settings, editorconfig
++ add eslint, spell checker, prettier config, new tsconfig settings, editorconfig, github config

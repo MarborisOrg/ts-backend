@@ -1,6 +1,6 @@
-npm test
+yarn test
 &&
-npm run build && npm run start
+yarn build && yarn start
 
 
 ## INFO

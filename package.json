@@ -15,9 +15,7 @@
   "type": "module",
   "scripts": {
     "start": "node . --dev",
-    "build": "rimraf build && run-p build:*",
-    "build:main": "tsc -p tsconfig.json",
-    "build:module": "tsc -p tsconfig.module.json",
+    "build": "rimraf build && tsc",
     "fix": "run-s fix:*",
     "fix:prettier": "prettier \"src/**/*.ts\" --write",
     "fix:lint": "eslint src --ext .ts --fix",
@@ -45,7 +43,7 @@
     "prepare-release": "run-s reset-hard test cov:check doc:html version doc:publish"
   },
   "engines": {
-    "node": ">=10"
+    "node": ">=20"
   },
   "dependencies": {
     "@types/cors": "^2.8.17",
