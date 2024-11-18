@@ -22,7 +22,7 @@ export const asyncABC = async () => {
     const storage = 'abc'.charAt(index);
     return new Promise<string>((resolve) =>
       // later...
-      resolve(storage)
+      resolve(storage),
     );
   };
   const a = await somethingSlow(0);
