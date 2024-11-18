@@ -33,7 +33,7 @@
 ## 4.2:
 + add access-token/refresh-token over one token (admin)
 + add winston for log
-+ fix find dist folder
++ fix find dist/build folder
 + add timeout for routers
 + add res handler for routers
 + add cors lib
