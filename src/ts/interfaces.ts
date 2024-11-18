@@ -1,4 +1,4 @@
-import { Document } from "mongoose";
+import { Document } from 'mongoose';
 
 export namespace config_ns {
   export type Settings = {
@@ -27,7 +27,7 @@ export namespace config_ns {
     readonly mysql_multipleStatements: boolean;
     readonly mongo_url: string;
     readonly tc_book_name: string;
-    readonly database_use: "mongo" | "mysql";
+    readonly database_use: 'mongo' | 'mysql';
   };
 
   export type IConfig = {

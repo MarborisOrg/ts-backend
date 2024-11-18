@@ -11,7 +11,6 @@ import { loginController } from '#routes/apps/latest/controllers/admin/login';
 import checkAdmin from '#routes/apps/latest/middleware/checkAdmin';
 import { checkIP } from '#routes/apps/latest/middleware/cons';
 
-
 const router = Router();
 
 router.use(checkIP);

@@ -6,7 +6,9 @@ export const loadRouter = async (
   basePath: string,
 ) => {
   try {
-    const { default: router }: { readonly default: Router } = await import(routePath);
+    const { default: router }: { readonly default: Router } = await import(
+      routePath
+    );
     app.use(basePath, router);
   } catch (error) {
     log.error(`[route loader] Error loading route from ${routePath}:`, error);

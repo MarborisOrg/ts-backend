@@ -8,7 +8,9 @@ export type NamedModuleData = {
 };
 
 export type NamedModuleFunc = {
-  readonly func: (...args: readonly any[]) => Promise<any> | any | Promise<void> | void;
+  readonly func: (
+    ...args: readonly any[]
+  ) => Promise<any> | any | Promise<void> | void;
 };
 
 export type NamedModules = NamedModuleData & NamedModuleFunc;
