@@ -43,3 +43,6 @@
 ## 4.2.1:
 + fix access/refresh token login
 + Fixing the stability of version 4
+
+## 6:
++ add eslint, spell checker, prettier config, new tsconfig settings, editorconfig
