@@ -9,7 +9,8 @@ import { envFilePath } from '#utils/env_finder';
 if (envFilePath) {
   dotenv.config({ path: envFilePath });
 } else {
-  throw new Error('.env file not found in any subdirectories.');
+  log.error('.env file not found in any subdirectories.');
+  quit()
 }
 
 const schema = Joi.object({
@@ -49,7 +50,8 @@ const schema = Joi.object({
 const { error, value } = schema.validate(process.env);
 
 if (error) {
-  throw new Error(`Configuration error: ${error.message}`);
+  log.error(`Configuration error: ${error.message}`);
+  quit()
 }
 
 export const config: config_ns.Settings = {
