@@ -9,6 +9,14 @@ export function expressApp() {
   // app (express)
   const app = express();
 
+  app.use((req: Request, res: Response, next) => {
+    if (req.hostname === 'localhost') {
+      const newUrl = `http://127.0.0.1:${config.PORT}${req.originalUrl}`;
+      return res.redirect(301, newUrl); // 301: Moved Permanently
+    }
+    next();
+  });
+
   initApp(app)
     .then(function () {
       loadAllRouter(app)
