@@ -2,7 +2,6 @@
 import { Logger } from 'winston';
 
 declare global {
-
   /**
    * This is a log saver (no database) with Winston.
    */
@@ -23,7 +22,7 @@ declare global {
    * @param err default msg: undefined error
    * @param doNotQuit default: false | undefined
    */
-  function assert(err?: string): void;
+  function assert(err: string, doNotQuit?: boolean): void;
 }
 
 export {};
