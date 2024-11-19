@@ -1,4 +1,4 @@
-import { freeAll } from '#free';
+import { freeAll } from '#free/index';
 
 export function quit(): void {
   (async function () {
