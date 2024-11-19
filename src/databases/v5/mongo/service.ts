@@ -26,9 +26,9 @@ class Service {
 
   public async createItem(
     title: string,
-    descrp: string,
+    description: string,
   ): Promise<mongo_ns.IItem | string> {
-    return await this.itemCreate.createItem(title, descrp);
+    return await this.itemCreate.createItem(title, description);
   }
 
   public async getItemByTitle(title: string): Promise<mongo_ns.IItem | string> {

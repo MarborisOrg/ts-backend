@@ -48,7 +48,7 @@ export namespace mongo_ns {
   export type IItem = {
     readonly [x: string]: any;
     readonly title: string;
-    readonly descrp: string;
+    readonly description: string;
     readonly owners: ReadonlyArray<string>;
   } & Document;
 
