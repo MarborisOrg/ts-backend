@@ -1,9 +1,17 @@
+import fs from 'fs';
+import https from 'https';
+
 import express, { Request, Response } from 'express';
 
 import { config } from '#config/env_get';
 import swaggerDocs from '#config/swaggerDocs';
 import { initApp } from '#core/app-ex-ord';
 import loadAllRouter from '#routes/index';
+
+const options = {
+  key: fs.readFileSync('keys/private.key'),
+  cert: fs.readFileSync('keys/certificate.crt'),
+};
 
 export function expressApp() {
   // app (express)
@@ -21,7 +29,7 @@ export function expressApp() {
     .then(function () {
       loadAllRouter(app)
         .then(function () {
-          app.listen(config.PORT, () => {
+          https.createServer(options, app).listen(config.PORT, () => { // app.listen(config.PORT
             log.info('Server is running on port: ' + config.PORT);
 
             swaggerDocs(app, config.PORT.toString());
