@@ -18,10 +18,16 @@ export async function checkAndRenameLogFile() {
       let backupFilePath = `${logFilePath}.bak`;
       let counter = 1;
 
-      while (await fileExists(backupFilePath)) {
-        backupFilePath = `${logFilePath}.${counter}.bak`;
-        counter++;
-      }
+      await Promise.all(
+        Array.from({ length: counter }, () =>
+          fileExists(backupFilePath).then((exists) => {
+            if (exists) {
+              backupFilePath = `${logFilePath}.${counter}.bak`;
+              counter++;
+            }
+          })
+        )
+      );
 
       await fs.rename(logFilePath, backupFilePath);
     }
