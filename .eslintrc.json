@@ -36,6 +36,7 @@
     "@typescript-eslint/no-namespace": "off",
     "functional/no-return-void": "off",
     "functional/no-let": "off",
+    "functional/functional-parameters": "off",
     "no-var": "off"
   }
 }

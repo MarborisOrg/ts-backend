@@ -1,5 +1,3 @@
-import assert from 'assert';
-
 import cuse from './c-use.js';
 
 import { databasesArray } from '#databases/modules';
@@ -16,9 +14,10 @@ export async function call(
   const rows = databasesArray.filter((r) => r.name === dbUse);
 
   if (rows.length === 0) {
-    assert(false, '[M40]: Row not found');
+    assert('[M40]: Row not found');
   }
 
+  // eslint-disable-next-line no-constant-condition
   if (true) {
     try {
       // check cache (!row.called)
@@ -30,23 +29,18 @@ export async function call(
 
       if (namedFunctions.length > 0) {
         try {
-          for (const namedFunction of namedFunctions) {
-            log.info(
-              `Calling ${namedFunction.name} from ${namedFunction.rowName}:`,
-            );
+          const results = namedFunctions.map(async (namedFunction) => {
+            log.info(`Calling ${namedFunction.name} from ${namedFunction.rowName}:`);
             return await namedFunction.func(...args);
-          }
+          });
+          return await Promise.all(results);
         } catch (error) {
           log.info(`error in call! -> ` + error);
           return null;
         }
       } else {
-        log.info(`Function ${functionName} not found in ${dbUse}.`);
-        return null;
+        assert(`Function ${functionName} not found in ${dbUse}.`);
       }
-    } catch (error) {
-      log.info(`error in call! -> ` + error);
-      return null;
     } finally {
       // row.called = true; // put on cache
       // or we can add defer, or lock (like guard lock (C++))
