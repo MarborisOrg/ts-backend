@@ -1,3 +1,2 @@
-
-+ yarn build
-+ yarn test
+- yarn build
+- yarn test

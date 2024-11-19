@@ -2,18 +2,18 @@
   "files.autoSave": "afterDelay",
   "git.enableSmartCommit": true,
   "[typescript]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "workbench.iconTheme": "material-icon-theme",
   "javascript.updateImportsOnFileMove.enabled": "always",
   "typescript.updateImportsOnFileMove.enabled": "always",
   "[jsonc]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "git.confirmSync": true,
   "git.autofetch": true,
   "[json]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "editor.cursorStyle": "underline-thin",
   "editor.cursorSmoothCaretAnimation": "on",

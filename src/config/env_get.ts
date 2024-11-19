@@ -10,7 +10,7 @@ if (envFilePath) {
   dotenv.config({ path: envFilePath });
 } else {
   log.error('.env file not found in any subdirectories.');
-  quit()
+  quit();
 }
 
 const schema = Joi.object({
@@ -51,7 +51,7 @@ const { error, value } = schema.validate(process.env);
 
 if (error) {
   log.error(`Configuration error: ${error.message}`);
-  quit()
+  quit();
 }
 
 export const config: config_ns.Settings = {

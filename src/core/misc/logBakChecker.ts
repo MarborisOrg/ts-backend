@@ -25,8 +25,8 @@ export async function checkAndRenameLogFile() {
               backupFilePath = `${logFilePath}.${counter}.bak`;
               counter++;
             }
-          })
-        )
+          }),
+        ),
       );
 
       await fs.rename(logFilePath, backupFilePath);

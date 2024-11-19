@@ -1,4 +1,4 @@
-import { Worker } from "worker_threads";
+import { Worker } from 'worker_threads';
 
 let hi = 5;
 
