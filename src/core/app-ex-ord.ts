@@ -24,7 +24,6 @@ export async function initApp(app: Express): Promise<void> {
     app.use(cors(corsOptions));
     app.use(timeoutMiddleware);
   } catch (error) {
-    log.info('error! loading not complete.');
-    quit();
+    assert('error! loading not complete.');
   }
 }
