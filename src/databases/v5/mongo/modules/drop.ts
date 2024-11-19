@@ -9,35 +9,37 @@ export class ItemDelete {
     this.itemModel = itemModel;
   }
 
-  public async deleteItem(title: string): Promise<string> {
+  public async deleteItem(title: string): Promise<any> {
     if (!this.itemModel) {
-      throw new Error('Item model is not set.');
+      assert('Item model is not set.', true);
     }
 
     try {
       const result = await this.itemModel.deleteOne({ title });
       if (result.deletedCount === 0) {
-        throw new Error(`No item found with the title "${title}".`);
+        assert(`No item found with the title "${title}".`, true);
       }
       return `Item with the title "${title}" has been deleted.`;
     } catch (error) {
-      throw new Error(
+      assert(
         `Error deleting item: ${error instanceof Error ? error.message : error}`,
+        true
       );
     }
   }
 
-  public async dropCollection(): Promise<string> {
+  public async dropCollection(): Promise<any> {
     if (!this.itemModel) {
-      throw new Error('Item model is not set.');
+      assert('Item model is not set.', true);
     }
 
     try {
       await this.itemModel.collection.drop();
       return 'Collection dropped successfully.';
     } catch (error) {
-      throw new Error(
+      assert(
         `Error dropping collection: ${error instanceof Error ? error.message : error}`,
+        true
       );
     }
   }

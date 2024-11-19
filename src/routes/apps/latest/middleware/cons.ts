@@ -20,7 +20,7 @@ const checkIP = (req: Request, res: Response, next: NextFunction): void => {
       return;
     }
 
-    const clientIP = ip.includes(':') ? ip.split(':').pop() : ip;
+    const clientIP = ip.includes(':') ? ip.split(':').slice(-1)[0] : ip; // TODO()
 
     if (clientIP && config.ALLOWED_IPS.includes(clientIP)) {
       next();

@@ -12,7 +12,7 @@ export default async function () {
     if (results) {
       await CREATE_TABLE_INIT(); // check tables
     } else {
-      throw new Error('[database] Mysql err!');
+      assert('[database] Mysql err!');
     }
   } catch (e: any) {
     quit();
