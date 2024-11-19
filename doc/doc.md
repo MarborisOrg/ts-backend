@@ -26,7 +26,7 @@
 # 4.1 (NOW)
 + Add cons for request handling (express js) (DONE)
 
-+ Add .env (debuging) and developing and release (server) (DONE)
++ Add .env (debugging) and developing and release (server) (DONE)
 (ready for run on server)
 
 # Notes
