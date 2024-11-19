@@ -19,8 +19,9 @@ declare global {
   function quit(): void;
 
   /**
-   * Assert
-   * @param err This function creates (throw new Error) with your message, creates a log, and closes the application after 1 second.
+   * This function creates (throw new Error) with your message, creates a log, and if doNotQuit == true, then closes the application after 1 second.
+   * @param err default msg: undefined error
+   * @param doNotQuit default: false | undefined
    */
   function assert(err?: string): void;
 }
