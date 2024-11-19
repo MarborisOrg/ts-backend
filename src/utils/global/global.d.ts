@@ -5,6 +5,7 @@ declare global {
   var log: Logger;
   function die(): void;
   function quit(): void;
+  function assert(): void;
 }
 
 export {};
