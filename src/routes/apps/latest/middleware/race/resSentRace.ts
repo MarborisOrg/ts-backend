@@ -8,6 +8,7 @@ export const responseSentMiddleware = (
   const originalSend = res.send.bind(res);
   const originalJson = res.json.bind(res);
 
+  // eslint-disable-next-line functional/immutable-data
   res.send = function (...args: readonly any[]): Response {
     if (!res.headersSent) {
       return originalSend(...args);
@@ -17,6 +18,7 @@ export const responseSentMiddleware = (
     }
   };
 
+  // eslint-disable-next-line functional/immutable-data
   res.json = function (...args: readonly any[]): Response {
     if (!res.headersSent) {
       return originalJson(...args);
