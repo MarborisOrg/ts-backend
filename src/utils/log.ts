@@ -4,6 +4,9 @@ import winston from 'winston';
 
 import { logDir } from '#utils/requirements';
 
+/**
+ * This is a log saver (no database) with Winston.
+ */
 export const log = winston.createLogger({
   level: 'info',
   format: winston.format.combine(
