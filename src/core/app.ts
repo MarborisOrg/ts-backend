@@ -35,7 +35,7 @@ export function expressApp() {
     setTimeout(() => {
       res.json({ message: 'Data retrieved successfully!' });
       log.info('SLEEP1');
-      die();
+      quit();
     }, 5000);
     log.info('SLEEP2');
   });

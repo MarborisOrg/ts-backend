@@ -1,5 +1,5 @@
 // clean up app when quit
-// note: die (fail exit) doesn't support async
+// note: process.on('exit') (fail exit) doesn't support async
 import { freeAll } from '#free/index';
 
 process.on('exit', (_code) => {
