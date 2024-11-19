@@ -12,3 +12,7 @@ package-lock.json
 dist/
 **/*.log
 **/*.bak
+
+**/*.key
+**/*.csr
+**/*.crt
