@@ -1,4 +1,26 @@
 {
+  "trailingComma": "es5",
+  "tabWidth": 2,
   "semi": true,
-  "quoteProps": "as-needed"
+  "singleQuote": true,
+  "printWidth": 120,
+  "arrowParens": "always",
+  "bracketSpacing": true,
+  "requirePragma": false,
+  "proseWrap": "preserve",
+  "endOfLine": "lf",
+  "parser": "typescript",
+  "plugins": ["prettier-plugin-organize-imports"],
+  "overrides": [
+    {
+      "files": "*.ts",
+      "options": {
+        "parserOptions": {
+          "project": ["tsconfig.json"],
+          "ecmaVersion": 2020,
+          "sourceType": "module"
+        }
+      }
+    }
+  ]
 }
