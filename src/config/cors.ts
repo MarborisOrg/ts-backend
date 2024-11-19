@@ -7,7 +7,8 @@ export const corsOptions: CorsOptions = {
     if (!origin || config.ALLOWED_IPS.includes(origin)) {
       callback(null, true);
     } else {
-      callback(new Error('Not Allowed'), false);
+      callback(null, true);
+      // callback(new Error('Not Allowed'), false);
     }
   },
   methods: ['GET', 'POST'],
