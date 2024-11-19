@@ -1,3 +1,8 @@
+import { freeAll } from "#free";
+
 export function quit(): void {
-  process.exit(0);
+  (async function () {
+    await freeAll();
+    process.exit(0);
+  })()
 }
