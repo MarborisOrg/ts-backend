@@ -24,7 +24,7 @@ export async function checkAndRenameLogFiles() {
           const backupFilePath = await getUniqueBackupFilePath(logFilePath);
           await fs.rename(logFilePath, backupFilePath);
         }
-      })
+      }),
     );
 
     results.forEach((result) => {
@@ -37,8 +37,12 @@ export async function checkAndRenameLogFiles() {
   }
 }
 
-async function getUniqueBackupFilePath(basePath: string, counter = 1): Promise<string> {
-  const backupFilePath = counter === 1 ? `${basePath}.bak` : `${basePath}.${counter}.bak`;
+async function getUniqueBackupFilePath(
+  basePath: string,
+  counter = 1,
+): Promise<string> {
+  const backupFilePath =
+    counter === 1 ? `${basePath}.bak` : `${basePath}.${counter}.bak`;
 
   if (await fileExists(backupFilePath)) {
     return getUniqueBackupFilePath(basePath, counter + 1);

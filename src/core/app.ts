@@ -24,7 +24,8 @@ export function expressApp() {
     .then(function () {
       loadAllRouter(app)
         .then(function () {
-          https.createServer(options, app).listen(config.PORT, () => { // app.listen(config.PORT
+          https.createServer(options, app).listen(config.PORT, () => {
+            // app.listen(config.PORT
             log.info('Server is running on port: ' + config.PORT);
 
             swaggerDocs(app, config.PORT.toString());

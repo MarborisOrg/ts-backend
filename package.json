@@ -16,7 +16,7 @@
   "scripts": {
     "start": "node . --dev",
     "build": "rimraf build && tsc",
-    "pretty": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\" --ignore-path .gitignore",
+    "pretty": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\"",
     "fix": "run-s fix:*",
     "fix:lint": "eslint src --ext .ts --fix",
     "test": "run-s build test:*",

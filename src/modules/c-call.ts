@@ -30,7 +30,9 @@ export async function call(
       if (namedFunctions.length > 0) {
         try {
           const results = namedFunctions.map(async (namedFunction) => {
-            log.info(`Calling ${namedFunction.name} from ${namedFunction.rowName}:`);
+            log.info(
+              `Calling ${namedFunction.name} from ${namedFunction.rowName}:`,
+            );
             return await namedFunction.func(...args);
           });
           return await Promise.all(results);

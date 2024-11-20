@@ -24,6 +24,6 @@ export const loadRoutes = async (
       } catch (error) {
         log.error('[route loader] This is an unrecoverable error!');
       }
-    })
+    }),
   );
 };

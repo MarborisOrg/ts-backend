@@ -26,7 +26,10 @@ const LogLevels = {
   info: 4,
 } as const;
 
-const createFileTransport = (level: keyof typeof LogLevels, filename: string) => {
+const createFileTransport = (
+  level: keyof typeof LogLevels,
+  filename: string,
+) => {
   return new winston.transports.File({
     filename: path.join(logDir, filename),
     level,
@@ -58,7 +61,6 @@ const customFormat = winston.format.printf(({ timestamp, level, message }) => {
   return `${timestamp} ${level}: ${messageString}`;
 });
 
-
 const commonFormat = winston.format.combine(
   winston.format.timestamp({ format: 'YYYY-MM-DD HH:mm:ss' }),
   winston.format.json(),
@@ -80,10 +82,7 @@ const logger = winston.createLogger({
   ),
   transports: [
     new winston.transports.Console({
-      format: winston.format.combine(
-        winston.format.colorize(),
-        commonFormat
-      ),
+      format: winston.format.combine(winston.format.colorize(), commonFormat),
     }),
     createFileTransport('core', 'core.log'),
     createFileTransport('error', 'error.log'),

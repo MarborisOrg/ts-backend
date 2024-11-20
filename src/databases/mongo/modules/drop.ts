@@ -23,7 +23,7 @@ export class ItemDelete {
     } catch (error) {
       assert(
         `Error deleting item: ${error instanceof Error ? error.message : error}`,
-         true
+        true,
       );
     }
   }
@@ -39,7 +39,7 @@ export class ItemDelete {
     } catch (error) {
       assert(
         `Error dropping collection: ${error instanceof Error ? error.message : error}`,
-         true
+        true,
       );
     }
   }
