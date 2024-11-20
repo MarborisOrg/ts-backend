@@ -1,11 +1,11 @@
 // global.d.ts
-import { Logger } from 'winston';
+import { CustomLogger } from '#utils/log';
 
 declare global {
   /**
    * This is a log saver (no database) with Winston.
    */
-  var log: Logger;
+  var log: CustomLogger;
 
   /**
    * This function closes the program immediately and ignores everything.
