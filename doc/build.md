@@ -8,4 +8,4 @@
 - execute cmds:
   yarn
   npm run build || yarn build
-  npm run start || yarn test
+  npm run start || yarn start
