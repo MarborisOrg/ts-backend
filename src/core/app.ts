@@ -5,8 +5,8 @@ import express, { Request, Response } from 'express';
 
 import { config } from '#config/env_get';
 import swaggerDocs from '#config/swaggerDocs';
-import { initApp } from '#core/app-ex-ord';
 import loadAllRouter from '#routes/index';
+import { initApp } from '#routes/init';
 import { localhostMover } from '#routes/localhostMover';
 
 const options = {
