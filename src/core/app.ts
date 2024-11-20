@@ -7,6 +7,7 @@ import { config } from '#config/env_get';
 import swaggerDocs from '#config/swaggerDocs';
 import { initApp } from '#core/app-ex-ord';
 import loadAllRouter from '#routes/index';
+import { localhostMover } from '#routes/localhostMover';
 
 const options = {
   key: fs.readFileSync('keys/private.key'),
@@ -17,13 +18,7 @@ export function expressApp() {
   // app (express)
   const app = express();
 
-  app.use((req: Request, res: Response, next) => {
-    if (req.hostname === 'localhost') {
-      const newUrl = `https://127.0.0.1:${config.PORT}${req.originalUrl}`;
-      return res.redirect(301, newUrl); // 301: Moved Permanently
-    }
-    next();
-  });
+  localhostMover(app);
 
   initApp(app)
     .then(function () {
