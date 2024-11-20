@@ -61,8 +61,13 @@ const customFormat = winston.format.printf(({ timestamp, level, message }) => {
   return `${timestamp} ${level}: ${messageString}`;
 });
 
+const formatTimestamp = () => {
+  const date = new Date();
+  return date.toISOString().replace('T', ' ').substring(0, 19); // فرمت YYYY-MM-DD HH:mm:ss
+};
+
 const commonFormat = winston.format.combine(
-  winston.format.timestamp({ format: 'YYYY-MM-DD HH:mm:ss' }),
+   winston.format.timestamp({ format: formatTimestamp }), // استفاده از تابع فرمت تاریخ
   winston.format.json(),
   customFormat,
 );
@@ -76,7 +81,7 @@ const logger = winston.createLogger({
   exitOnError: false,
   // format message on file (.log file)
   format: winston.format.combine(
-    winston.format.timestamp({ format: 'YYYY-MM-DD HH:mm:ss' }),
+     winston.format.timestamp({ format: formatTimestamp }), // استفاده از تابع فرمت تاریخ
     winston.format.json(),
     // no need color for saving on file
   ),
