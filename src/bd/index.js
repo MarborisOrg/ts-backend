@@ -11,3 +11,5 @@
 // `;
 
 // new Worker(workerCode, { eval: true });
+console.log("HI")
+

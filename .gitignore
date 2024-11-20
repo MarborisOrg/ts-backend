@@ -16,3 +16,6 @@ dist/
 **/*.key
 **/*.csr
 **/*.crt
+
+.env*
+!.env*.example
