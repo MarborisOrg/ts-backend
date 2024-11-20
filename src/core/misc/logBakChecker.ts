@@ -5,35 +5,46 @@ import path from 'path';
 
 import { logDir } from '#utils/requirements';
 
-const logFilePath = path.join(logDir, 'combined.log');
+const logFiles = {
+  'combined.log': 1 * 1024 * 1024, // 1MB
+  'error.log': 0.5 * 1024 * 1024, // 0.5MB
+};
 
-export async function checkAndRenameLogFile() {
+export async function checkAndRenameLogFiles() {
   try {
-    if (!(await fileExists(logFilePath))) return;
+    const results = await Promise.allSettled(
+      Object.entries(logFiles).map(async ([fileName, maxSize]) => {
+        const logFilePath = path.join(logDir, fileName);
 
-    const stats = await fs.stat(logFilePath);
+        if (!(await fileExists(logFilePath))) return;
 
-    if (stats.size > 1 * 1024 * 1024) {
-      // 1MB
-      let backupFilePath = `${logFilePath}.bak`;
-      let counter = 1;
+        const stats = await fs.stat(logFilePath);
 
-      await Promise.all(
-        Array.from({ length: counter }, () =>
-          fileExists(backupFilePath).then((exists) => {
-            if (exists) {
-              backupFilePath = `${logFilePath}.${counter}.bak`;
-              counter++;
-            }
-          }),
-        ),
-      );
+        if (stats.size > maxSize) {
+          const backupFilePath = await getUniqueBackupFilePath(logFilePath);
+          await fs.rename(logFilePath, backupFilePath);
+        }
+      })
+    );
 
-      await fs.rename(logFilePath, backupFilePath);
-    }
+    results.forEach((result) => {
+      if (result.status === 'rejected') {
+        log.error('Error checking or renaming file:', result.reason);
+      }
+    });
   } catch (error) {
-    log.error('Error checking or renaming file:', error);
+    log.error('Unexpected error:', error);
   }
+}
+
+async function getUniqueBackupFilePath(basePath: string, counter = 1): Promise<string> {
+  const backupFilePath = counter === 1 ? `${basePath}.bak` : `${basePath}.${counter}.bak`;
+
+  if (await fileExists(backupFilePath)) {
+    return getUniqueBackupFilePath(basePath, counter + 1);
+  }
+
+  return backupFilePath;
 }
 
 async function fileExists(filePath: string): Promise<boolean> {
