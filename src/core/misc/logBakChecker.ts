@@ -3,7 +3,7 @@
 import fs from 'fs/promises';
 import path from 'path';
 
-import { logDir } from '#utils/requirements';
+import { logDir } from '#core/utils/requirements';
 
 const logFiles = {
   'combined.log': 1 * 1024 * 1024, // 1MB

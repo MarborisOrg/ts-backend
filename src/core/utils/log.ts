@@ -2,7 +2,7 @@ import path from 'path';
 
 import winston from 'winston';
 
-import { logDir } from '#utils/requirements';
+import { logDir } from '#core/utils/requirements';
 
 // eslint-disable-next-line functional/prefer-type-literal
 export interface CustomLogger extends winston.Logger {

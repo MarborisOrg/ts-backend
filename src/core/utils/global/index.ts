@@ -1,7 +1,7 @@
 /* eslint-disable functional/immutable-data */
+import { die } from '#core/utils/die';
+import { log } from '#core/utils/log';
 import { assert } from '#utils/assert';
-import { die } from '#utils/die';
-import { log } from '#utils/log';
 import { quit } from '#utils/quit';
 
 globalThis.$ = await import('#lib/packages');
