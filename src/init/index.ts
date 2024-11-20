@@ -1,6 +1,6 @@
 import '#core/utils/requirements';
 
-await import('#core/utils/global/index');
+await import('#core/global/index');
 
 import '#core/misc/onexit';
 import { checkAndRenameLogFiles } from '#core/misc/logBakChecker';
