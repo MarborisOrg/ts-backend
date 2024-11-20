@@ -4,7 +4,7 @@ import { die } from '#utils/die';
 import { log } from '#utils/log';
 import { quit } from '#utils/quit';
 
-globalThis.lib = await import('#lib/packages');
+globalThis.$ = await import('#lib/packages');
 globalThis.log = log;
 globalThis.die = die;
 globalThis.quit = quit;

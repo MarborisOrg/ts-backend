@@ -5,7 +5,7 @@ declare global {
   /**
    * global imports
    */
-  var lib: typeof import('#lib/packages') // smart and beautiful
+  var $: typeof import('#lib/packages') // smart and beautiful
 
   /**
    * This is a log saver (no database) with Winston.
