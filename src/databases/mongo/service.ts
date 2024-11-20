@@ -36,6 +36,11 @@ class Service {
     return await this.itemFind.getItemByTitle(title);
   }
 
+  // eslint-disable-next-line functional/prefer-readonly-type
+  public async getAllItem(): Promise<mongo_ns.IItem[] | string> {
+    return await this.itemFind.getAllItems();
+  }
+
   public async deleteItem(title: string): Promise<string> {
     return await this.itemDelete.deleteItem(title);
   }
@@ -74,5 +79,9 @@ export const mongoModules: DatabasesType = {
       name: MongoModuleNames.delete,
       func: itemService.deleteItem.bind(itemService),
     },
+    {
+      name: MongoModuleNames.getall,
+      func: itemService.getAllItem.bind(itemService),
+    }
   ],
 };

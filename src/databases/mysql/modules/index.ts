@@ -1,5 +1,5 @@
 import { dropBooks } from './drop.js';
-import { findBookByTitle } from './find.js';
+import { findAllBooks, findBookByTitle } from './find.js';
 import { saveBook } from './save.js';
 
 import { MysqlModuleNames } from '#ts/enums';
@@ -20,5 +20,9 @@ export const mysqlModules: DatabasesType = {
       name: MysqlModuleNames.save,
       func: saveBook,
     },
+    {
+      name: MysqlModuleNames.getall,
+      func: findAllBooks,
+    }
   ],
 };

@@ -21,4 +21,14 @@ export class ItemFind {
       return `Error fetching item: ${error instanceof Error ? error.message : error}`;
     }
   }
+
+  // eslint-disable-next-line functional/prefer-readonly-type
+  public async getAllItems(): Promise<mongo_ns.IItem[] | string> {
+    try {
+      const items = await this.itemModel.find();
+      return items;
+    } catch (error) {
+      return `Error fetching item: ${error instanceof Error ? error.message : error}`;
+    }
+  }
 }

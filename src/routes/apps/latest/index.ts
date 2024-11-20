@@ -2,6 +2,7 @@ import { Router } from 'express';
 
 import {
   dropBookController,
+  getAllController,
   getBookController,
   saveBookController,
 } from './controllers/index.js';
@@ -119,6 +120,39 @@ router.post('/save', checkAdmin, saveBookController);
  *         description: Error on deleting
  */
 router.post('/drop', checkAdmin, dropBookController);
+
+/**
+ * @swagger
+ * /getall:
+ *   post:
+ *     summary: Get all books endpoint
+ *     description: Returns a list of all books
+ *     parameters:
+ *       - in: header
+ *         name: Authorization
+ *         required: true
+ *         type: string
+ *         description: Bearer access_token
+ *     responses:
+ *       200:
+ *         description: A list of all books
+ *         schema:
+ *           type: array
+ *           items:
+ *             type: object
+ *             properties:
+ *               title:
+ *                 type: string
+ *               description:
+ *                 type: string
+ *               owners:
+ *                 type: array
+ *                 items:
+ *                   type: string
+ *       500:
+ *         description: Internal server error
+ */
+router.post('/getall', checkAdmin, getAllController);
 
 /**
  * @swagger
