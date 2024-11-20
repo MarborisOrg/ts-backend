@@ -3,7 +3,7 @@ import { CustomLogger } from '#utils/log';
 
 declare global {
   /**
-   * global imports
+   * global imports ($ --> variable in Php)
    */
   var $: typeof import('#lib/packages') // smart and beautiful
 
