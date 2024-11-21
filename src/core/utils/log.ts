@@ -1,5 +1,3 @@
-import path from 'path';
-
 import winston from 'winston';
 
 import { logDir } from '#core/utils/requirements';
@@ -10,7 +8,7 @@ export interface CustomLogger extends winston.Logger {
   core: (message: string) => void;
 }
 
-winston.addColors({
+$.winston.addColors({
   core: 'magenta',
   error: 'red',
   warn: 'yellow',
@@ -30,12 +28,12 @@ const createFileTransport = (
   level: keyof typeof LogLevels,
   filename: string,
 ) => {
-  return new winston.transports.File({
-    filename: path.join(logDir, filename),
+  return new $.winston.transports.File({
+    filename: $.path.join(logDir, filename),
     level,
     handleExceptions: true,
-    format: winston.format.combine(
-      winston.format((info) => {
+    format: $.winston.format.combine(
+      $.winston.format((info) => {
         if (info.level !== level) {
           return false;
         }
@@ -45,7 +43,7 @@ const createFileTransport = (
   });
 };
 
-const customFormat = winston.format.printf(({ timestamp, level, message }) => {
+const customFormat = $.winston.format.printf(({ timestamp, level, message }) => {
   let messageString: string;
 
   if (typeof message === 'string') {
@@ -66,37 +64,37 @@ const formatTimestamp = () => {
   return date.toISOString().replace('T', ' ').substring(0, 19);
 };
 
-const commonFormat = winston.format.combine(
-  winston.format.timestamp({ format: formatTimestamp }),
-  winston.format.json(),
+const commonFormat = $.winston.format.combine(
+  $.winston.format.timestamp({ format: formatTimestamp }),
+  $.winston.format.json(),
   customFormat,
 );
 
 /**
  * This is a log saver (no database) with Winston.
  */
-const logger = winston.createLogger({
+const logger = $.winston.createLogger({
   levels: LogLevels,
   level: 'info',
   exitOnError: false,
   // format message on file (.log file)
-  format: winston.format.combine(
-    winston.format.timestamp({ format: formatTimestamp }),
-    winston.format.json(),
+  format: $.winston.format.combine(
+    $.winston.format.timestamp({ format: formatTimestamp }),
+    $.winston.format.json(),
     // no need color for saving on file
   ),
   transports: [
-    new winston.transports.Console({
-      format: winston.format.combine(winston.format.colorize(), commonFormat),
+    new $.winston.transports.Console({
+      format: $.winston.format.combine($.winston.format.colorize(), commonFormat),
     }),
     createFileTransport('core', 'core.log'),
     createFileTransport('error', 'error.log'),
-    new winston.transports.File({
-      filename: path.join(logDir, 'combined.log'),
+    new $.winston.transports.File({
+      filename: $.path.join(logDir, 'combined.log'),
       level: 'info',
       handleExceptions: true,
-      format: winston.format.combine(
-        winston.format((info) => {
+      format: $.winston.format.combine(
+        $.winston.format((info) => {
           if (info.level === 'core' || info.level === 'error') {
             return false;
           }

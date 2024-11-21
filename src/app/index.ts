@@ -1,5 +1,3 @@
-import fs from 'fs';
-import https from 'https';
 
 import express, { Request, Response } from 'express';
 
@@ -10,8 +8,8 @@ import { config } from '#config/env_get';
 import swaggerDocs from '#config/swaggerDocs';
 
 const options = {
-  key: fs.readFileSync('keys/private.key'),
-  cert: fs.readFileSync('keys/certificate.crt'),
+  key: $.fs.readFileSync('keys/private.key'),
+  cert: $.fs.readFileSync('keys/certificate.crt'),
 };
 
 export default function () {
@@ -24,7 +22,7 @@ export default function () {
     .then(function () {
       loadAllRouter(app)
         .then(function () {
-          https.createServer(options, app).listen(config.PORT, () => {
+          $.https.createServer(options, app).listen(config.PORT, () => {
             // app.listen(config.PORT
             log.info('Server is running on port: ' + config.PORT);
 

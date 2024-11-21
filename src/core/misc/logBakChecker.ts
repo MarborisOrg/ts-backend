@@ -1,7 +1,6 @@
 // log file size checker
 
 import fs from 'fs/promises';
-import path from 'path';
 
 import { logDir } from '#core/utils/requirements';
 
@@ -14,7 +13,7 @@ export async function checkAndRenameLogFiles() {
   try {
     const results = await Promise.allSettled(
       Object.entries(logFiles).map(async ([fileName, maxSize]) => {
-        const logFilePath = path.join(logDir, fileName);
+        const logFilePath = $.path.join(logDir, fileName);
 
         if (!(await fileExists(logFilePath))) return;
 

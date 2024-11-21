@@ -1,21 +1,19 @@
-import * as fs from 'fs';
-import * as path from 'path';
 
 import { getMode } from './mode.js';
 
 const findEnvFileInSubdirectories = (startDir: string): string | null => {
-  const files = fs.readdirSync(startDir);
+  const files = $.fs.readdirSync(startDir);
   const envPath = getMode() === 'production' ? '.env' : '.env.dev';
 
   if (files.includes(envPath)) {
-    return path.join(startDir, envPath);
+    return $.path.join(startDir, envPath);
   }
 
   const foundPath = files.reduce<string | null>((acc, file) => {
     if (acc) return acc;
 
-    const fullPath = path.join(startDir, file);
-    const stat = fs.statSync(fullPath);
+    const fullPath = $.path.join(startDir, file);
+    const stat = $.fs.statSync(fullPath);
 
     if (stat.isDirectory()) {
       return findEnvFileInSubdirectories(fullPath);
