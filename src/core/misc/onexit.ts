@@ -1,18 +1,19 @@
 // clean up app when quit
 // note: process.on('exit') (fail exit) doesn't support async
-import { freeAll } from '#free/index';
+
+import { freeCore } from "#core/free";
 
 process.on('exit', (_code) => {
-  freeAll();
+  freeCore();
   console.log('App closed');
 });
 
 process.on('SIGINT', async () => {
-  await freeAll();
+  await freeCore();
   quit();
 });
 
 process.on('SIGTERM', async () => {
-  await freeAll();
+  await freeCore();
   quit();
 });

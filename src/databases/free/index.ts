@@ -1,5 +1,6 @@
-import { freeMongo } from './mongoose.js';
-import { freeMysql } from './mysql2.js';
+// freeAll
+import { freeMongo } from '../mongo/free/index.js';
+import { freeMysql } from '../mysql/free/index.js';
 
 let safeCleanBool = 0;
 
