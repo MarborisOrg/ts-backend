@@ -3,6 +3,9 @@
  * @author MRB
  */
 
+// eslint-disable-next-line functional/immutable-data
+globalThis.$ = await import('#lib/packages');
+
 /**
  * init file for index (current file)
  */

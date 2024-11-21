@@ -1,9 +1,8 @@
-import cuse from './c-use.js';
 
 import { databasesArray } from '#databases/modules';
 import { MongoModuleNames, MysqlModuleNames } from '#ts/enums';
 
-const dbUse = cuse();
+const dbUse = $.cuse();
 
 // TODO() Check this ????
 // both options for call all databases
