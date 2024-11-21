@@ -82,6 +82,6 @@ export const mongoModules: DatabasesType = {
     {
       name: MongoModuleNames.getall,
       func: itemService.getAllItem.bind(itemService),
-    }
+    },
   ],
 };

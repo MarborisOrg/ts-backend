@@ -22,12 +22,15 @@ export function findBookByTitle(title: string): Promise<any> {
 export function findAllBooks(): Promise<any[]> {
   return new Promise((resolve, reject) => {
     // eslint-disable-next-line functional/prefer-readonly-type
-    mysqlConnection.query(SELECT_ALL_BOOKS, function (err: any, results: any[]) {
-      if (err) {
-        reject(err);
-      } else {
-        resolve(results);
-      }
-    });
+    mysqlConnection.query(
+      SELECT_ALL_BOOKS,
+      function (err: any, results: any[]) {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(results);
+        }
+      },
+    );
   });
 }

@@ -3,4 +3,9 @@ import { getBookController } from './books/get.js';
 import { getAllController } from './books/getall.js';
 import { saveBookController } from './books/save.js';
 
-export { saveBookController, getBookController, dropBookController, getAllController };
+export {
+  saveBookController,
+  getBookController,
+  dropBookController,
+  getAllController,
+};

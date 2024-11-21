@@ -18,4 +18,10 @@ const SELECT_BOOKS =
 const SELECT_ALL_BOOKS = 'SELECT * FROM ' + config.tc_book_name;
 const DROP_BOOKS_TABLE = 'DROP TABLE IF EXISTS ' + config.tc_book_name + ';'; // + no default for this module
 
-export { CREATE_TABLES, INSERT_BOOKS, SELECT_BOOKS, DROP_BOOKS_TABLE, SELECT_ALL_BOOKS };
+export {
+  CREATE_TABLES,
+  INSERT_BOOKS,
+  SELECT_BOOKS,
+  DROP_BOOKS_TABLE,
+  SELECT_ALL_BOOKS,
+};

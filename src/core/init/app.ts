@@ -1,4 +1,4 @@
-import connectDatabase from "#databases/connect";
+import connectDatabase from '#databases/connect';
 
 // Init function, on the top
 export default async function init(): Promise<void> {

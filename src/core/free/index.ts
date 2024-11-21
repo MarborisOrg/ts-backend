@@ -1,4 +1,4 @@
-import { freeAll } from "#databases/free/index";
+import { freeAll } from '#databases/free/index';
 
 export async function freeCore() {
   try {

@@ -1,7 +1,7 @@
 // clean up app when quit
 // note: process.on('exit') (fail exit) doesn't support async
 
-import { freeCore } from "#core/free/index";
+import { freeCore } from '#core/free/index';
 
 process.on('exit', (_code) => {
   freeCore();

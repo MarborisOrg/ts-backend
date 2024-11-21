@@ -1,4 +1,4 @@
-import { freeCore } from "#core/free/index";
+import { freeCore } from '#core/free/index';
 
 /**
  * This function closes the application safely.

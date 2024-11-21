@@ -1,5 +1,4 @@
-
-export default async function(App: () => Promise<void>) {
+export default async function (App: () => Promise<void>) {
   /**
    * cluster forker
    */

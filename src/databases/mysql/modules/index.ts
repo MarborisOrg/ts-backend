@@ -23,6 +23,6 @@ export const mysqlModules: DatabasesType = {
     {
       name: MysqlModuleNames.getall,
       func: findAllBooks,
-    }
+    },
   ],
 };
