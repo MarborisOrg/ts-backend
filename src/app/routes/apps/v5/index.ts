@@ -2,15 +2,14 @@ import { Router } from 'express';
 
 import {
   dropBookController,
-  getAllController,
   getBookController,
   saveBookController,
 } from './controllers/index.js';
 import { tokenController } from './controllers/token.js';
 
-import { loginController } from '#routes/apps/latest/controllers/admin/login';
-import checkAdmin from '#routes/apps/latest/middleware/checkAdmin';
-import { checkIP } from '#routes/apps/latest/middleware/cons';
+import { loginController } from '#app/routes/apps/latest/controllers/admin/login.js';
+import checkAdmin from '#app/routes/apps/latest/middleware/checkAdmin.js';
+import { checkIP } from '#app/routes/apps/latest/middleware/cons.js';
 
 const router = Router();
 
@@ -18,7 +17,7 @@ router.use(checkIP);
 
 /**
  * @swagger
- * /login:
+ * /v5/login:
  *   post:
  *     summary: Login admin endpoint
  *     description: Returns a token response
@@ -46,7 +45,7 @@ router.post('/login', loginController);
 
 /**
  * @swagger
- * /get:
+ * /v5/get:
  *   get:
  *     summary: Get book endpoint
  *     description: Returns a book response
@@ -70,7 +69,7 @@ router.get('/get', checkAdmin, getBookController);
 
 /**
  * @swagger
- * /save:
+ * /v5/save:
  *   post:
  *     summary: Save book endpoint
  *     description: Returns a success response
@@ -103,7 +102,7 @@ router.post('/save', checkAdmin, saveBookController);
 
 /**
  * @swagger
- * /drop:
+ * /v5/drop:
  *   post:
  *     summary: Drop book endpoint
  *     description: Returns a success response
@@ -123,40 +122,7 @@ router.post('/drop', checkAdmin, dropBookController);
 
 /**
  * @swagger
- * /getall:
- *   post:
- *     summary: Get all books endpoint
- *     description: Returns a list of all books
- *     parameters:
- *       - in: header
- *         name: Authorization
- *         required: true
- *         type: string
- *         description: Bearer access_token
- *     responses:
- *       200:
- *         description: A list of all books
- *         schema:
- *           type: array
- *           items:
- *             type: object
- *             properties:
- *               title:
- *                 type: string
- *               description:
- *                 type: string
- *               owners:
- *                 type: array
- *                 items:
- *                   type: string
- *       500:
- *         description: Internal server error
- */
-router.post('/getall', checkAdmin, getAllController);
-
-/**
- * @swagger
- * /token:
+ * /v5/token:
  *   post:
  *     summary: Token endpoint
  *     description: Returns a new access token

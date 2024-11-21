@@ -6,9 +6,9 @@ import express, { Express } from 'express';
 
 import { corsOptions } from '#config/cors';
 import { helmetConfig } from '#config/helmet';
-import { logMiddleware } from '#routes/apps/latest/middleware/log';
-import { responseSentMiddleware } from '#routes/apps/latest/middleware/race/resSentRace';
-import { timeoutMiddleware } from '#routes/apps/latest/middleware/race/timeRace';
+import { logMiddleware } from '#app/routes/apps/latest/middleware/log';
+import { responseSentMiddleware } from '#app/routes/apps/latest/middleware/race/resSentRace';
+import { timeoutMiddleware } from '#app/routes/apps/latest/middleware/race/timeRace';
 
 export async function initApp(app: Express): Promise<void> {
   try {
