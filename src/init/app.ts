@@ -1,4 +1,4 @@
-import ConnectDatabase from '#modules/c-init';
+import ConnectDatabase from '#databases/modules/c-init';
 
 // Init function, on the top
 export default async function init(): Promise<void> {

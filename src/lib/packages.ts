@@ -8,6 +8,6 @@ export { getMode } from '#utils/mode';
 export { default as fs } from 'fs';
 export { default as path } from 'path';
 
-export { default as cuse } from '#modules/c-use';
+export { default as cuse } from '#databases/modules/c-use';
 
 // no need to set type

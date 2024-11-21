@@ -1,6 +1,6 @@
 // check and init database
 
-import cuse from './c-use.js';
+import cuse from '../../modules/c-use.js';
 
 import MONGO from '#databases/mongo/service';
 import ConnectToMysql from '#databases/mysql/use/index';

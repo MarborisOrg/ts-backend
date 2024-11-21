@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import Joi from 'joi';
 
-import { call } from '#modules/c-call';
+import { call } from '#databases/modules/c-call';
 
 export const getBookController = async (req: Request, res: Response) => {
   const title = req.query.title;
