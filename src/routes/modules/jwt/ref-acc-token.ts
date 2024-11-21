@@ -1,7 +1,7 @@
 // refresh/access token signer
 import jwt from 'jsonwebtoken';
 
-import { accessPass, refreshPass } from './config.js';
+import { accessPass, refreshPass } from '../../config/config.js';
 
 export function signJWT() {
   const accessToken = jwt.sign({ role: 'admin', type: 'access' }, accessPass, {

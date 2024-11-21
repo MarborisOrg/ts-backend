@@ -1,6 +1,7 @@
 import { Express } from 'express';
 
-import { DEF_PATH_ROUTES, DEF_ROUTE_FILE } from './default.js';
+import { DEF_PATH_ROUTES, DEF_ROUTE_FILE } from '../../config/default.js';
+
 import { loadRouter } from './loadRouter.js';
 
 export const loadRoutes = async (

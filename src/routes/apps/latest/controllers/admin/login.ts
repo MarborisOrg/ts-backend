@@ -1,5 +1,5 @@
 import { config } from '#config/env_get';
-import { signJWT } from '#modules/jwt/ref-acc-token';
+import { signJWT } from '#routes/modules/jwt/ref-acc-token';
 
 export const loginController = (req: any, res: any) => {
   const { username, password } = req.body;

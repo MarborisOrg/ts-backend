@@ -1,7 +1,7 @@
 // middleware/checkAdmin.js
 import jwt from 'jsonwebtoken';
 
-import { accessPass } from '#modules/jwt/config';
+import { accessPass } from '#routes/config/config';
 
 const checkAdmin = (req: any, res: any, next: any) => {
   const token = req.headers['authorization']?.split(' ')[1];
