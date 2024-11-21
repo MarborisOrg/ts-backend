@@ -1,7 +1,7 @@
+import { mongoModules_v5 } from './apps/v5/mongo/service.js';
+import { mysqlModules_v5 } from './apps/v5/mysql/modules/index.js';
 import { mongoModules } from './mongo/service.js';
 import { mysqlModules } from './mysql/modules/index.js';
-import { mongoModules_v5 } from './v5/mongo/service.js';
-import { mysqlModules_v5 } from './v5/mysql/modules/index.js';
 
 import { DatabasesType } from '#ts/types';
 
