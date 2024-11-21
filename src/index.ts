@@ -64,7 +64,7 @@ async function app() {
     const { default: init } = await import('#core/init/app');
     init().then(function () {
       // Wait for the database connection to complete
-      $.expressApp(); // Now call expressApp
+      $.core(); // Now call core (expressApp)
     });
   } catch (error) {
     log.error(`Error in worker ${process.pid}:`, error);

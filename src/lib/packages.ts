@@ -2,7 +2,7 @@
 
 export { default as cluster } from 'cluster';
 export { maxRetries, numWorkers } from '#config/cluster';
-export { expressApp } from '#core/app';
+export { default as core } from '#core/index';
 export { getMode } from '#utils/mode';
 
 export { default as fs } from 'fs';

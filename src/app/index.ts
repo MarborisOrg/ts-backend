@@ -14,7 +14,7 @@ const options = {
   cert: fs.readFileSync('keys/certificate.crt'),
 };
 
-export function expressApp() {
+export default function() {
   // app (express)
   const app = express();
 
