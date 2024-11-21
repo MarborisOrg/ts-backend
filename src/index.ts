@@ -9,7 +9,7 @@ globalThis.$ = await import('#lib/packages');
 /**
  * init file for index (current file)
  */
-await import('#init/index');
+await import('#core/init/index');
 
 /**
  * mode
@@ -61,7 +61,7 @@ async function app() {
      * init file for app (express app)
      * repeated on fork (copy)
      */
-    const { default: init } = await import('#init/app');
+    const { default: init } = await import('#core/init/app');
     init().then(function () {
       // Wait for the database connection to complete
       $.expressApp(); // Now call expressApp
