@@ -3,6 +3,7 @@
 import cuse from './c-use.js';
 
 import MONGO from '#databases/mongo/service';
+// import { dropBooks } from '#databases/mysql/modules/drop';
 import ConnectToMysql from '#databases/mysql/use/index';
 
 const dbUse = cuse();
@@ -12,6 +13,7 @@ export default async function () {
     await MONGO();
   } else if (dbUse === 'mysql') {
     await ConnectToMysql();
+    // dropBooks()
   } else {
     quit();
   }
