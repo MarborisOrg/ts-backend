@@ -1,4 +1,4 @@
-import { dropBooks } from './drop.js';
+import { deleteBookByTitle, dropBooks } from './drop.js';
 import { findAllBooks, findBookByTitle } from './find.js';
 import { saveBook } from './save.js';
 
@@ -19,6 +19,10 @@ export const mysqlModules: DatabasesType = {
     {
       name: MysqlModuleNames.save,
       func: saveBook,
+    },
+    {
+      name: MysqlModuleNames.delete,
+      func: deleteBookByTitle,
     },
     {
       name: MysqlModuleNames.getall,
