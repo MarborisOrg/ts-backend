@@ -11,7 +11,7 @@ export class ItemFind {
 
   public async getItemByTitle(title: string): Promise<mongo_ns.IItem | string> {
     try {
-      const item = await this.itemModel.findOne({ title });
+      const item = await this.itemModel.findById(title);
       if (item) {
         return item;
       } else {
