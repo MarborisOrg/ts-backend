@@ -5,7 +5,7 @@ declare global {
   /**
    * global imports ($ --> variable in Php)
    */
-  var $: typeof import('#lib/packages'); // smart and beautiful
+  var $: typeof import('#lib/packages') & typeof import('#lib/modules'); // smart and beautiful
 
   /**
    * This is a log saver (no database) with Winston.
