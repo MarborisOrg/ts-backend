@@ -1,4 +1,3 @@
-
 export default class {
   private readonly uri: string;
 

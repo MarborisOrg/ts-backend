@@ -1,4 +1,3 @@
-
 import { config } from '#config/env_get';
 
 // Just for create database file

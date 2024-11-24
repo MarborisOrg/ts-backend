@@ -9,5 +9,5 @@ export {
   getBookController,
   dropBookController,
   getAllController,
-  deleteBookController
+  deleteBookController,
 };

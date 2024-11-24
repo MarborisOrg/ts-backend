@@ -5,7 +5,7 @@ import {
   dropBookController,
   getAllController,
   getBookController,
-  saveBookController
+  saveBookController,
 } from './controllers/index.js';
 import { tokenController } from './controllers/token.js';
 
@@ -150,7 +150,7 @@ router.post('/drop', checkAdmin, dropBookController);
  *       400:
  *         description: Invalid book data
  */
-router.post('/delete', checkAdmin, deleteBookController)
+router.post('/delete', checkAdmin, deleteBookController);
 
 /**
  * @swagger

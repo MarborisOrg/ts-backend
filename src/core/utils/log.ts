@@ -43,21 +43,23 @@ const createFileTransport = (
   });
 };
 
-const customFormat = $.winston.format.printf(({ timestamp, level, message }) => {
-  let messageString: string;
+const customFormat = $.winston.format.printf(
+  ({ timestamp, level, message }) => {
+    let messageString: string;
 
-  if (typeof message === 'string') {
-    messageString = message;
-  } else {
-    messageString = JSON.stringify(message);
-  }
+    if (typeof message === 'string') {
+      messageString = message;
+    } else {
+      messageString = JSON.stringify(message);
+    }
 
-  if (messageString.length > 100) {
-    messageString = messageString.substring(0, 100) + '...';
-  }
+    if (messageString.length > 100) {
+      messageString = messageString.substring(0, 100) + '...';
+    }
 
-  return `${timestamp} ${level}: ${messageString}`;
-});
+    return `${timestamp} ${level}: ${messageString}`;
+  },
+);
 
 const formatTimestamp = () => {
   const date = new Date();
@@ -85,7 +87,10 @@ const logger = $.winston.createLogger({
   ),
   transports: [
     new $.winston.transports.Console({
-      format: $.winston.format.combine($.winston.format.colorize(), commonFormat),
+      format: $.winston.format.combine(
+        $.winston.format.colorize(),
+        commonFormat,
+      ),
     }),
     createFileTransport('core', 'core.log'),
     createFileTransport('error', 'error.log'),

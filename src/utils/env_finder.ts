@@ -1,4 +1,3 @@
-
 import { getMode } from './mode.js';
 
 const findEnvFileInSubdirectories = (startDir: string): string | null => {

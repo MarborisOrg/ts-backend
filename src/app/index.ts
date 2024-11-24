@@ -1,4 +1,3 @@
-
 import { Request, Response } from 'express';
 
 import loadAllRouter from '#app/routes/index';
