@@ -8,7 +8,7 @@
   "bracketSpacing": true,
   "requirePragma": false,
   "proseWrap": "preserve",
-  "endOfLine": "lf",
+  "endOfLine": "crlf",
   "parser": "typescript",
   "plugins": ["prettier-plugin-organize-imports"],
   "overrides": [
