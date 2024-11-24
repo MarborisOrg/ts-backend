@@ -1,15 +1,14 @@
-import mysql from 'mysql2';
 
 import { config } from '#config/env_get';
 
 // Just for create database file
-export const con = mysql.createConnection({
+export const con = $.mysql.createConnection({
   host: config.mysql_sv,
   user: config.mysql_user,
   password: config.mysql_password,
 });
 
-export const mysqlConnection = mysql.createConnection({
+export const mysqlConnection = $.mysql.createConnection({
   host: config.mysql_sv,
   user: config.mysql_user,
   password: config.mysql_password,
