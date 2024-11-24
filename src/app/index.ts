@@ -1,5 +1,5 @@
 
-import express, { Request, Response } from 'express';
+import { Request, Response } from 'express';
 
 import loadAllRouter from '#app/routes/index';
 import { initApp } from '#app/routes/init';
@@ -14,7 +14,7 @@ const options = {
 
 export default function () {
   // app (express)
-  const app = express();
+  const app = $.express();
 
   localhostMover(app);
 

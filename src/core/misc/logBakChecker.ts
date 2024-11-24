@@ -1,7 +1,5 @@
 // log file size checker
 
-import fs from 'fs/promises';
-
 import { logDir } from '#core/utils/requirements';
 
 const logFiles = {
@@ -17,11 +15,11 @@ export async function checkAndRenameLogFiles() {
 
         if (!(await fileExists(logFilePath))) return;
 
-        const stats = await fs.stat(logFilePath);
+        const stats = await $.fs.promises.stat(logFilePath);
 
         if (stats.size > maxSize) {
           const backupFilePath = await getUniqueBackupFilePath(logFilePath);
-          await fs.rename(logFilePath, backupFilePath);
+          await $.fs.promises.rename(logFilePath, backupFilePath);
         }
       }),
     );
@@ -52,7 +50,7 @@ async function getUniqueBackupFilePath(
 
 async function fileExists(filePath: string): Promise<boolean> {
   try {
-    await fs.access(filePath);
+    await $.fs.promises.access(filePath);
     return true;
   } catch {
     return false;
