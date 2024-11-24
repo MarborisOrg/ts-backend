@@ -1,10 +1,11 @@
 import { Router } from 'express';
 
 import {
+  deleteBookController,
   dropBookController,
   getAllController,
   getBookController,
-  saveBookController,
+  saveBookController
 } from './controllers/index.js';
 import { tokenController } from './controllers/token.js';
 
@@ -120,6 +121,36 @@ router.post('/save', checkAdmin, saveBookController);
  *         description: Error on deleting
  */
 router.post('/drop', checkAdmin, dropBookController);
+
+/**
+ * @swagger
+ * /delete:
+ *   post:
+ *     summary: Delete a book
+ *     description: Returns a success response
+ *     parameters:
+ *       - in: header
+ *         name: Authorization
+ *         required: true
+ *         type: string
+ *         description: Bearer access_token
+ *       - in: body
+ *         name: body
+ *         required: true
+ *         schema:
+ *           type: object
+ *           required:
+ *             - title
+ *           properties:
+ *             title:
+ *               type: string
+ *     responses:
+ *       200:
+ *         description: A success response
+ *       400:
+ *         description: Invalid book data
+ */
+router.post('/delete', checkAdmin, deleteBookController)
 
 /**
  * @swagger

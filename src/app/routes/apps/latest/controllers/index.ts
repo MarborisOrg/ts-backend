@@ -1,3 +1,4 @@
+import { deleteBookController } from './books/delete.js';
 import { dropBookController } from './books/drop.js';
 import { getBookController } from './books/get.js';
 import { getAllController } from './books/getall.js';
@@ -8,4 +9,5 @@ export {
   getBookController,
   dropBookController,
   getAllController,
+  deleteBookController
 };
