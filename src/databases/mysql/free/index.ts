@@ -1,5 +1,8 @@
-import { mysqlConnection } from '#databases/mysql/index';
+// import { mysqlConnection } from '#databases/mysql/index';
 
-export function freeMysql() {
-  mysqlConnection.end();
+import { mdb } from "../config/init";
+
+export async function freeMysql() {
+  // mysqlConnection.end();
+  await mdb.destroy();
 }
