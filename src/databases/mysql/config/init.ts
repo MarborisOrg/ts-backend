@@ -1,13 +1,13 @@
 import knex from 'knex';
 
-import config from './knexfile';
+import knexConfig from './knexfile';
 
-const db = knex(config.development);
+const db = knex(knexConfig.development);
 
 async function setupDatabase() {
   try {
-    await db.raw('CREATE DATABASE IF NOT EXISTS ??', [config.development.connection.database]);
-    await db.raw('USE ??', [config.development.connection.database]);
+    await db.raw('CREATE DATABASE IF NOT EXISTS ??', [knexConfig.development.connection.database]);
+    await db.raw('USE ??', [knexConfig.development.connection.database]);
 
     const hasTable = await db.schema.hasTable('your_table_name');
     if (!hasTable) {
