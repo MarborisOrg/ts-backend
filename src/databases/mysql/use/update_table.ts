@@ -4,7 +4,6 @@ import { createTable } from "./create_tables.js";
 
 import { config } from "#config/env_get.js";
 
-
 export const updateTable = async () => {
   try {
 
