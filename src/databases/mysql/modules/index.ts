@@ -1,5 +1,5 @@
-import { deleteBookByTitle, dropBooks } from './drop.js';
-import { findAllBooks, findBookByTitle } from './find.js';
+import { deleteBookById, dropBooks } from './drop.js';
+import { findAllBooks, findBookById } from './find.js';
 import { saveBook } from './save.js';
 
 import { MysqlModuleNames } from '#ts/enums';
@@ -14,7 +14,7 @@ export const mysqlModules: DatabasesType = {
     },
     {
       name: MysqlModuleNames.find,
-      func: findBookByTitle,
+      func: findBookById,
     },
     {
       name: MysqlModuleNames.save,
@@ -22,7 +22,7 @@ export const mysqlModules: DatabasesType = {
     },
     {
       name: MysqlModuleNames.delete,
-      func: deleteBookByTitle,
+      func: deleteBookById,
     },
     {
       name: MysqlModuleNames.getall,

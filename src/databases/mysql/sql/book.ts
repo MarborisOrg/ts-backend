@@ -1,29 +1,26 @@
-// import { config } from '#config/env_get';
+import { mdb } from '../config/knex.js';
 
-// const CREATE_TABLES =
-//   `CREATE TABLE IF NOT EXISTS ` +
-//   config.tc_book_name +
-//   ` (
-//     id INT AUTO_INCREMENT PRIMARY KEY,
-//     title VARCHAR(255),
-//     description VARCHAR(255),
-//     );
-// `;
+import { config } from '#config/env_get';
 
-// const INSERT_BOOKS =
-//   'INSERT INTO ' + config.tc_book_name + ' (title, description) VALUES (?, ?)';
-// const SELECT_BOOKS =
-//   'SELECT * FROM ' + config.tc_book_name + ' WHERE id = ?'; // title or id
-// const SELECT_ALL_BOOKS = 'SELECT * FROM ' + config.tc_book_name;
-// const DROP_BOOKS_TABLE = 'DROP TABLE IF EXISTS ' + config.tc_book_name + ';'; // + no default for this module
+const INSERT_BOOKS = (title: string, description: string) =>
+  mdb(config.tc_book_name).insert({ title, description });
 
-// const DELETE_BOOK = 'DELETE FROM ' + config.tc_book_name + ' WHERE title = ?';
+const SELECT_BOOKS = (id: number) =>
+  mdb(config.tc_book_name).where({ id }).first();
 
-// export {
-//   CREATE_TABLES,
-//   INSERT_BOOKS,
-//   SELECT_BOOKS,
-//   DROP_BOOKS_TABLE,
-//   SELECT_ALL_BOOKS,
-//   DELETE_BOOK,
-// };
+const SELECT_ALL_BOOKS = () =>
+  mdb(config.tc_book_name).select('*');
+
+const DROP_BOOKS_TABLE = () =>
+  mdb.schema.dropTableIfExists(config.tc_book_name);
+
+const DELETE_BOOK = (id: number) =>
+  mdb(config.tc_book_name).where({ id }).del();
+
+export {
+  INSERT_BOOKS,
+  SELECT_BOOKS,
+  DROP_BOOKS_TABLE,
+  SELECT_ALL_BOOKS,
+  DELETE_BOOK,
+};

@@ -1,36 +1,32 @@
 // get book
-import { mysqlConnection } from '#databases/mysql/index';
 import { SELECT_ALL_BOOKS, SELECT_BOOKS } from '#databases/mysql/sql/book';
 
-export function findBookByTitle(title: string): Promise<any> {
+type Book = {
+  readonly id: number;
+  readonly title: string;
+  readonly description: string;
+};
+
+export function findBookById(id: number): Promise<Book | null> {
   return new Promise((resolve, reject) => {
-    mysqlConnection.query(
-      SELECT_BOOKS,
-      [title],
-      function (err: any, results: any) {
-        if (err) {
-          reject(err);
-        } else {
-          resolve(results);
-        }
-      },
-    );
+    SELECT_BOOKS(id)
+      .then((book) => {
+        resolve(book);
+      })
+      .catch(() => {
+        reject('Failed to find book');
+      });
   });
 }
 
-// eslint-disable-next-line functional/prefer-readonly-type
-export function findAllBooks(): Promise<any[]> {
+export function findAllBooks(): Promise<readonly Book[]> {
   return new Promise((resolve, reject) => {
-    // eslint-disable-next-line functional/prefer-readonly-type
-    mysqlConnection.query(
-      SELECT_ALL_BOOKS,
-      function (err: any, results: any[]) {
-        if (err) {
-          reject(err);
-        } else {
-          resolve(results);
-        }
-      },
-    );
+    SELECT_ALL_BOOKS()
+      .then((books) => {
+        resolve(books);
+      })
+      .catch(() => {
+        reject('Failed to retrieve all books');
+      });
   });
 }
