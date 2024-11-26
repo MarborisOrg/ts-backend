@@ -5,9 +5,9 @@ import { getAllController } from './books/getall.js';
 import { saveBookController } from './books/save.js';
 
 export {
-  saveBookController,
-  getBookController,
+  deleteBookController,
   dropBookController,
   getAllController,
-  deleteBookController,
+  getBookController,
+  saveBookController,
 };

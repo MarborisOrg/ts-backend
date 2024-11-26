@@ -12,7 +12,7 @@ export const updateTable = async () => {
 
       const getUniqueBackupTableName = async (
         baseName: string,
-        count = 1,
+        count = 1
       ): Promise<string> => {
         const tableName = count === 1 ? baseName : `${baseName}_${count}`;
         const exists = await mdb.schema.hasTable(tableName);
@@ -22,7 +22,7 @@ export const updateTable = async () => {
       };
 
       backupTableName = await getUniqueBackupTableName(
-        `${config.tc_book_name}_backup`,
+        `${config.tc_book_name}_backup`
       );
 
       await mdb.raw(`RENAME TABLE ?? TO ??`, [

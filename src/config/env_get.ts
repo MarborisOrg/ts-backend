@@ -27,7 +27,7 @@ const schema = Joi.object({
     .max(255)
     .default(df_config.env.database_name),
   mysql_multipleStatements: Joi.boolean().default(
-    df_config.env.mysql_multipleStatements,
+    df_config.env.mysql_multipleStatements
   ),
   SECRET_KEY: Joi.string().min(10).required() /* no default for SECRET_KEY */,
   admin_user: Joi.string()

@@ -13,7 +13,7 @@ export function signJWT() {
     refreshPass,
     {
       expiresIn: '30d',
-    },
+    }
   );
 
   return { accessToken, refreshToken };

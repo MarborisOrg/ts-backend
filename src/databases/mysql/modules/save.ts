@@ -13,7 +13,7 @@ export function saveBook(title: string, description: string): Promise<boolean> {
         if (err.code === DUPLICATE_TABLE) {
           // بررسی خطای تکراری
           console.error(
-            'Duplicate entry error: A book with this title already exists.',
+            'Duplicate entry error: A book with this title already exists.'
           );
           resolve(false);
         } else {

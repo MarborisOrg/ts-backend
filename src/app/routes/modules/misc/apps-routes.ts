@@ -6,7 +6,7 @@ import { loadRouter } from './loadRouter.js';
 
 export const loadRoutes = async (
   app: Express,
-  routes: readonly string[],
+  routes: readonly string[]
 ): Promise<void> => {
   await Promise.all(
     routes.map(async (routersName) => {
@@ -20,11 +20,11 @@ export const loadRoutes = async (
         await loadRouter(
           app,
           DEF_PATH_ROUTES + `/${routersName}/` + DEF_ROUTE_FILE,
-          pathRoute,
+          pathRoute
         );
       } catch (error) {
         log.error('[route loader] This is an unrecoverable error!');
       }
-    }),
+    })
   );
 };

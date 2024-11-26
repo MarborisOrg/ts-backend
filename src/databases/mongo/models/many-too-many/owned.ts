@@ -16,7 +16,7 @@ class OwnershipModel {
   public getModel() {
     return mongoose.model<mongo_ns.IOwnership>(
       'Ownership',
-      this.ownershipSchema,
+      this.ownershipSchema
     );
   }
 }

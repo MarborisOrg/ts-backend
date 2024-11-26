@@ -4,11 +4,11 @@
 import cors from 'cors';
 import express, { Express } from 'express';
 
-import { corsOptions } from '#config/cors';
-import { helmetConfig } from '#config/helmet';
 import { logMiddleware } from '#app/routes/apps/latest/middleware/log';
 import { responseSentMiddleware } from '#app/routes/apps/latest/middleware/race/resSentRace';
 import { timeoutMiddleware } from '#app/routes/apps/latest/middleware/race/timeRace';
+import { corsOptions } from '#config/cors';
+import { helmetConfig } from '#config/helmet';
 
 export async function initApp(app: Express): Promise<void> {
   try {

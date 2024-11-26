@@ -17,9 +17,9 @@ const DELETE_BOOK = (id: number) =>
   mdb(config.tc_book_name).where({ id }).del();
 
 export {
-  INSERT_BOOKS,
-  SELECT_BOOKS,
-  DROP_BOOKS_TABLE,
-  SELECT_ALL_BOOKS,
   DELETE_BOOK,
+  DROP_BOOKS_TABLE,
+  INSERT_BOOKS,
+  SELECT_ALL_BOOKS,
+  SELECT_BOOKS,
 };

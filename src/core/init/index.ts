@@ -2,8 +2,8 @@ import '#core/utils/requirements';
 
 await import('#core/global/index');
 
-import '#core/misc/onexit';
 import { checkAndRenameLogFiles } from '#core/misc/logBakChecker';
+import '#core/misc/onexit';
 
 (async function () {
   await checkAndRenameLogFiles();

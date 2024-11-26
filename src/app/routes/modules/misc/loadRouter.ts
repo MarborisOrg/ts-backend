@@ -3,7 +3,7 @@ import { Express, Router } from 'express';
 export const loadRouter = async (
   app: Express,
   routePath: string,
-  basePath: string,
+  basePath: string
 ) => {
   try {
     const { default: router }: { readonly default: Router } = await import(

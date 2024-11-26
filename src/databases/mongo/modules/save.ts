@@ -13,7 +13,7 @@ export class ItemCreate {
 
   public async createItem(
     title: string,
-    description: string,
+    description: string
   ): Promise<mongo_ns.IItem | string> {
     const newItem: mongo_ns.IItem = new this.itemModel({ title, description });
     try {

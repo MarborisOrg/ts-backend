@@ -25,7 +25,10 @@ class Service {
     this.itemDelete = new ItemDelete(this.itemModel);
   }
 
-  public async createItem(title: string, description: string): Promise<mongo_ns.IItem | string> {
+  public async createItem(
+    title: string,
+    description: string
+  ): Promise<mongo_ns.IItem | string> {
     return await this.itemCreate.createItem(title, description);
   }
 

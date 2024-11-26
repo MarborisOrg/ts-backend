@@ -19,13 +19,17 @@ export async function call(
     try {
       // check cache (!row.called)
       const namedFunctions = rows.flatMap((row) =>
-        row.modules.filter((f) => f.name === functionName).map((f) => ({ ...f, rowName: row.name }))
+        row.modules
+          .filter((f) => f.name === functionName)
+          .map((f) => ({ ...f, rowName: row.name }))
       );
 
       if (namedFunctions.length > 0) {
         try {
           const results = namedFunctions.map(async (namedFunction) => {
-            log.info(`Calling ${namedFunction.name} from ${namedFunction.rowName}:`);
+            log.info(
+              `Calling ${namedFunction.name} from ${namedFunction.rowName}:`
+            );
             return await namedFunction.func(...args);
           });
           return await Promise.all(results);
