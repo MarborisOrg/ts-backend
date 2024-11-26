@@ -1,6 +1,6 @@
 {
   "name": "t3",
-  "version": "1.0.0",
+  "version": "7.0.0",
   "description": "book saver / getter",
   "main": "build/module/index.js",
   "typings": "build/module/index.d.ts",
@@ -16,7 +16,7 @@
   "scripts": {
     "start": "node . --dev",
     "build": "rimraf build && tsc",
-    "pretty": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\"",
+    "pretty": "prettier --write \"**/*.{ts,js,json,md}\"",
     "fix": "run-s fix:*",
     "fix:lint": "eslint src --ext .ts --fix",
     "test": "run-s build test:*",
@@ -97,6 +97,7 @@
     "nyc": "^15.1.0",
     "open-cli": "^6.0.1",
     "prettier": "^3.3.3",
+    "prettier-plugin-organize-imports": "^4.1.0",
     "rimraf": "^6.0.1",
     "standard-version": "^9.0.0",
     "ts-node": "^9.0.0",
