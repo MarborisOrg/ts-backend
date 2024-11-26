@@ -9,18 +9,5 @@
   "requirePragma": false,
   "proseWrap": "preserve",
   "endOfLine": "lf",
-  "parser": "typescript",
-  "plugins": ["prettier-plugin-organize-imports"],
-  "overrides": [
-    {
-      "files": "*.ts",
-      "options": {
-        "parserOptions": {
-          "project": ["tsconfig.json"],
-          "ecmaVersion": 2017,
-          "sourceType": "module"
-        }
-      }
-    }
-  ]
+  "plugins": ["prettier-plugin-organize-imports"]
 }
