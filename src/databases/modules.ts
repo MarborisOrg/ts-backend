@@ -1,5 +1,5 @@
-import { mongoModules_v5 } from './apps/v5/mongo/service.js';
-import { mysqlModules_v5 } from './apps/v5/mysql/modules/index.js';
+// import { mongoModules_v5 } from './apps/v5/mongo/service.js';
+// import { mysqlModules_v5 } from './apps/v5/mysql/modules/index.js';
 import { mongoModules } from './mongo/service.js';
 import { mysqlModules } from './mysql/modules/index.js';
 
@@ -11,6 +11,6 @@ export const databasesArray: readonly DatabasesType[] = [
   mysqlModules,
 
   // v5
-  mongoModules_v5,
-  mysqlModules_v5,
+  // mongoModules_v5,
+  // mysqlModules_v5,
 ];

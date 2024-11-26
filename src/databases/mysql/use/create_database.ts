@@ -66,21 +66,25 @@
 //   });
 // }
 
-import knexConfig, { mdb } from "../config/knex.js";
+import knex from 'knex';
+
+import knexConfig, { DatabaseConfig, initializeMdb, mdb } from "../config/knex.js";
+
+import { config } from '#config/env_get';
 
 export async function initializeMysqlDatabase(): Promise<boolean> {
   try {
-    const databaseExists = await mdb.raw("SHOW DATABASES LIKE ?", [knexConfig.development.connection.database]);
+    const databaseExists = await mdb.raw("SHOW DATABASES LIKE ?", [config.database_name]);
 
     if (databaseExists[0].length === 0) {
-      await mdb.raw(`CREATE DATABASE ??`, [knexConfig.development.connection.database]);
+      await mdb.raw(`CREATE DATABASE ??`, [config.database_name]);
       console.log('[database1] Database created successfully.');
 
-      await mdb.raw(`USE ??`, [knexConfig.development.connection.database]);
+      await mdb.raw(`USE ??`, [config.database_name]);
 
       await mdb.raw(
         `ALTER USER ?@? IDENTIFIED WITH mysql_native_password BY ?`,
-        [knexConfig.development.connection.database, knexConfig.development.connection.host, knexConfig.development.connection.password]
+        [config.database_name, knexConfig.connection.host, knexConfig.connection.password]
       );
 
       await mdb.raw(`FLUSH PRIVILEGES;`);
@@ -88,6 +92,16 @@ export async function initializeMysqlDatabase(): Promise<boolean> {
     } else {
       console.log('[database1] Database already exists. Skipping user alteration.');
     }
+
+    const updatedKnexConfig: DatabaseConfig = {
+        ...knexConfig,
+        connection: {
+          ...knexConfig.connection,
+          database: config.database_name,
+        },
+    };
+
+    initializeMdb(knex(updatedKnexConfig))
 
     return true;
   } catch (error) {

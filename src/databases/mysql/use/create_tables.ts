@@ -15,7 +15,7 @@
 
 import { mdb } from "../config/knex.js";
 
-import { config } from "#config/env_get.js";
+import { config } from "#config/env_get";
 
 export const createTable = async () => {
   try {
