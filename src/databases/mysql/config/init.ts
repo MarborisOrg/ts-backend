@@ -6,12 +6,12 @@ import { config } from '#config/env_get';
 
 export const mdb = knex(knexConfig.development);
 
-async function initializeDatabase(): Promise<boolean> {
+export async function initializeMysqlDatabase(): Promise<boolean> {
   try {
     const databaseExists = await mdb.raw("SHOW DATABASES LIKE ?", [knexConfig.development.connection.database]);
 
     if (databaseExists[0].length === 0) {
-      await mdb.raw(`CREATE DATABASE IF NOT EXISTS ??`, [knexConfig.development.connection.database]);
+      await mdb.raw(`CREATE DATABASE ??`, [knexConfig.development.connection.database]);
       console.log('[database1] Database created successfully.');
 
       await mdb.raw(`USE ??`, [knexConfig.development.connection.database]);
@@ -45,7 +45,3 @@ async function initializeDatabase(): Promise<boolean> {
     return false;
   }
 }
-
-initializeDatabase()
-  .then(() => console.log('Database initialization completed.'))
-  .catch((error) => console.error('Database initialization failed:', error));
