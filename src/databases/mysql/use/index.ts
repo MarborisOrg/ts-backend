@@ -1,7 +1,7 @@
 // import CREATE_DATABASE_INIT from './create_database.js';
 // import CREATE_TABLE_INIT from './create_tables.js';
 
-import { initializeMysqlDatabase } from "../config/init.js";
+import { initializeMysqlDatabase } from "./create_database.js";
 
 /**
  * init MYSQL database for use

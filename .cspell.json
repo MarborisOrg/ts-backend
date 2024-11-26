@@ -25,7 +25,9 @@
     "MRB",
     "Mehrab",
     "forvest",
-    "cuse"
+    "cuse",
+    "knex",
+    "knexfile"
   ],
   "flagWords": [],
   "ignorePaths": [

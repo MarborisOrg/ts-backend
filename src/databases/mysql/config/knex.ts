@@ -1,3 +1,5 @@
+import knex from 'knex';
+
 import { config } from '#config/env_get';
 
 type DatabaseConfig = {
@@ -26,5 +28,9 @@ const knexConfig: KnexConfig = {
   },
 };
 
+/**
+ * Mysql connection
+ */
+export const mdb = knex(knexConfig.development);
 
 export default knexConfig;
