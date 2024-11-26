@@ -3,6 +3,10 @@
     "dbaeumer.vscode-eslint",
     "esbenp.prettier-vscode",
     "eamodio.gitlens",
-    "streetsidesoftware.code-spell-checker"
+    "streetsidesoftware.code-spell-checker",
+    "donjayamanne.githistory",
+    "pkief.material-icon-theme",
+    "editorconfig.editorconfig",
+    "ms-vscode.vscode-typescript-next"
   ]
 }
