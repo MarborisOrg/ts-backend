@@ -56,5 +56,7 @@
 - add eslint, spell checker, prettier config, new tsconfig settings, editorconfig, github config
 
 ## 7:
+
 - rm old versions (database/routes)
-+ add knex for Mysql
+
+* add knex for Mysql

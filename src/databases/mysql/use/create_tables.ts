@@ -13,9 +13,9 @@
 //   });
 // }
 
-import { mdb } from "../config/knex.js";
+import { mdb } from '../config/knex.js';
 
-import { config } from "#config/env_get";
+import { config } from '#config/env_get';
 
 export const createTable = async () => {
   try {

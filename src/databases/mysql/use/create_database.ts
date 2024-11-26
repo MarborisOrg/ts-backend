@@ -66,13 +66,15 @@
 //   });
 // }
 
-import { initializeMdb, mdb } from "../config/knex.js";
+import { initializeMdb, mdb } from '../config/knex.js';
 
 import { config } from '#config/env_get';
 
 export async function initializeMysqlDatabase(): Promise<boolean> {
   try {
-    const databaseExists = await mdb.raw("SHOW DATABASES LIKE ?", [config.database_name]);
+    const databaseExists = await mdb.raw('SHOW DATABASES LIKE ?', [
+      config.database_name,
+    ]);
 
     if (databaseExists[0].length === 0) {
       await mdb.raw(`CREATE DATABASE ??`, [config.database_name]);

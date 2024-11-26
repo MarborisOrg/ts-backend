@@ -1,8 +1,8 @@
 // import CREATE_DATABASE_INIT from './create_database.js';
 // import CREATE_TABLE_INIT from './create_tables.js';
 
-import { initializeMysqlDatabase } from "./create_database.js";
-import { createTable } from "./create_tables.js";
+import { initializeMysqlDatabase } from './create_database.js';
+import { createTable } from './create_tables.js';
 
 /**
  * init MYSQL database for use
@@ -17,8 +17,8 @@ export default async function () {
     // } else {
     //   assert('[database] Mysql err!');
     // }
-    await initializeMysqlDatabase()
-    await createTable()
+    await initializeMysqlDatabase();
+    await createTable();
   } catch (e: any) {
     quit();
   }

@@ -10,8 +10,11 @@ export function saveBook(title: string, description: string): Promise<boolean> {
         resolve(true);
       })
       .catch((err) => {
-        if (err.code === DUPLICATE_TABLE) { // بررسی خطای تکراری
-          console.error('Duplicate entry error: A book with this title already exists.');
+        if (err.code === DUPLICATE_TABLE) {
+          // بررسی خطای تکراری
+          console.error(
+            'Duplicate entry error: A book with this title already exists.',
+          );
           resolve(false);
         } else {
           console.error('Error inserting record: ', err);

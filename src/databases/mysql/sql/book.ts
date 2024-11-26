@@ -8,8 +8,7 @@ const INSERT_BOOKS = (title: string, description: string) =>
 const SELECT_BOOKS = (id: number) =>
   mdb(config.tc_book_name).where({ id }).first();
 
-const SELECT_ALL_BOOKS = () =>
-  mdb(config.tc_book_name).select('*');
+const SELECT_ALL_BOOKS = () => mdb(config.tc_book_name).select('*');
 
 const DROP_BOOKS_TABLE = () =>
   mdb.schema.dropTableIfExists(config.tc_book_name);
