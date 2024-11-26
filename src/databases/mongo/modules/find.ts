@@ -22,7 +22,6 @@ export class ItemFind {
     }
   }
 
-  // eslint-disable-next-line functional/prefer-readonly-type
   public async getAllItems(): Promise<mongo_ns.IItem[] | string> {
     try {
       const items = await this.itemModel.find();

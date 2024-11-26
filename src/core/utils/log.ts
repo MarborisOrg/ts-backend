@@ -2,9 +2,7 @@ import winston from 'winston';
 
 import { logDir } from '#core/utils/requirements';
 
-// eslint-disable-next-line functional/prefer-type-literal
 export interface CustomLogger extends winston.Logger {
-  // eslint-disable-next-line functional/prefer-readonly-type
   core: (message: string) => void;
 }
 
@@ -24,10 +22,7 @@ const LogLevels = {
   info: 4,
 } as const;
 
-const createFileTransport = (
-  level: keyof typeof LogLevels,
-  filename: string,
-) => {
+const createFileTransport = (level: keyof typeof LogLevels, filename: string) => {
   return new $.winston.transports.File({
     filename: $.path.join(logDir, filename),
     level,
@@ -38,28 +33,26 @@ const createFileTransport = (
           return false;
         }
         return info;
-      })(),
+      })()
     ),
   });
 };
 
-const customFormat = $.winston.format.printf(
-  ({ timestamp, level, message }) => {
-    let messageString: string;
+const customFormat = $.winston.format.printf(({ timestamp, level, message }) => {
+  let messageString: string;
 
-    if (typeof message === 'string') {
-      messageString = message;
-    } else {
-      messageString = JSON.stringify(message);
-    }
+  if (typeof message === 'string') {
+    messageString = message;
+  } else {
+    messageString = JSON.stringify(message);
+  }
 
-    if (messageString.length > 100) {
-      messageString = messageString.substring(0, 100) + '...';
-    }
+  if (messageString.length > 100) {
+    messageString = messageString.substring(0, 100) + '...';
+  }
 
-    return `${timestamp} ${level}: ${messageString}`;
-  },
-);
+  return `${timestamp} ${level}: ${messageString}`;
+});
 
 const formatTimestamp = () => {
   const date = new Date();
@@ -69,7 +62,7 @@ const formatTimestamp = () => {
 const commonFormat = $.winston.format.combine(
   $.winston.format.timestamp({ format: formatTimestamp }),
   $.winston.format.json(),
-  customFormat,
+  customFormat
 );
 
 /**
@@ -82,15 +75,12 @@ const logger = $.winston.createLogger({
   // format message on file (.log file)
   format: $.winston.format.combine(
     $.winston.format.timestamp({ format: formatTimestamp }),
-    $.winston.format.json(),
+    $.winston.format.json()
     // no need color for saving on file
   ),
   transports: [
     new $.winston.transports.Console({
-      format: $.winston.format.combine(
-        $.winston.format.colorize(),
-        commonFormat,
-      ),
+      format: $.winston.format.combine($.winston.format.colorize(), commonFormat),
     }),
     createFileTransport('core', 'core.log'),
     createFileTransport('error', 'error.log'),
@@ -104,7 +94,7 @@ const logger = $.winston.createLogger({
             return false;
           }
           return info;
-        })(),
+        })()
       ),
     }),
   ],
@@ -112,7 +102,6 @@ const logger = $.winston.createLogger({
 
 export const log: CustomLogger = logger as CustomLogger;
 
-// eslint-disable-next-line functional/immutable-data, @typescript-eslint/ban-types
 log.core = (message: string | object | any) => {
   log.log('core', { message });
 };

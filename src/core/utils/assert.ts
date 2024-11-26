@@ -3,13 +3,9 @@
  * @param err default msg: undefined error
  * @param doNotQuit default: false | undefined
  */
-export function assert(
-  err: string | undefined = 'undefined error',
-  doNotQuit?: boolean,
-): void {
+export function assert(err: string | undefined = 'undefined error', doNotQuit?: boolean): void {
   log.error(err);
   try {
-    // eslint-disable-next-line functional/no-throw-statement
     throw new Error(err);
   } finally {
     if (!doNotQuit) {

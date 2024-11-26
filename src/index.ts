@@ -3,9 +3,8 @@
  * @author MRB
  */
 
-// eslint-disable-next-line functional/immutable-data
 globalThis.$ = (await import('#lib/packages')) as any;
-// eslint-disable-next-line functional/immutable-data
+
 globalThis.$ = { ...globalThis.$, ...(await import('#lib/modules')) };
 
 /**

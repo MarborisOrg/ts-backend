@@ -59,4 +59,5 @@
 
 - rm old versions (database/routes)
 
-* add knex for Mysql
+- add knex for Mysql
+- rm eslint
