@@ -3,7 +3,7 @@
   "parser": "@typescript-eslint/parser",
   "parserOptions": { "project": "./tsconfig.json" },
   "env": { "es6": true },
-  "ignorePatterns": ["node_modules", "build", "coverage"],
+  "ignorePatterns": ["node_modules", "build"],
   "plugins": ["import", "eslint-comments", "functional"],
   "extends": [
     "eslint:recommended",
@@ -29,14 +29,6 @@
     "sort-imports": [
       "error",
       { "ignoreDeclarationSort": true, "ignoreCase": true }
-    ],
-    "functional/no-class": "off",
-    "functional/no-this-expression": "off",
-    "@typescript-eslint/no-explicit-any": "off",
-    "@typescript-eslint/no-namespace": "off",
-    "functional/no-return-void": "off",
-    "functional/no-let": "off",
-    "functional/functional-parameters": "off",
-    "no-var": "off"
+    ]
   }
 }
