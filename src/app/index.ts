@@ -5,6 +5,7 @@ import { initApp } from '#app/routes/init';
 import { localhostMover } from '#app/routes/localhostMover';
 import { config } from '#config/env_get';
 import swaggerDocs from '#config/swaggerDocs';
+import open from 'open';
 
 const options = {
   key: $.fs.readFileSync('keys/private.key'),
@@ -26,6 +27,8 @@ export default function () {
             log.info('Server is running on port: ' + config.PORT);
 
             swaggerDocs(app, config.PORT.toString());
+
+            open(`https://127.0.0.1:${config.PORT}/docs`);
           });
         })
         .catch(function () {
