@@ -21,7 +21,7 @@ export default function (app: Express, port: string) {
       basePath: '/', // base path
       schemes: ['https'], // supported schemes
     },
-    apis: ['**/*.ts'], // ts files over .js file in dist/build
+    apis: ['**/*.ts'], // ts files over .js file in build
   };
 
   const swaggerSpec = swaggerJsdoc(options);

@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
     "incremental": false,
-    "target": "es2017",
-    "outDir": "build/module",
+    "target": "ESNext",
+    "outDir": "build",
     "rootDir": "src",
     "moduleResolution": "node",
     "module": "ESNext",

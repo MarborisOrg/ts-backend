@@ -9,7 +9,6 @@ coverage
 *.log
 package-lock.json
 
-dist/
 **/*.log
 **/*.bak
 
