@@ -8,35 +8,28 @@ export type DatabaseConfig = {
     readonly host: string;
     readonly user: string;
     readonly password: string;
-  } & ( { readonly database: string } | { readonly database?: undefined } );
+    readonly database?: string;
+  };
 };
 
-const knexConfig: DatabaseConfig = {
-    client: 'mysql2',
-    connection: {
-      host: config.mysql_sv,
-      user: config.mysql_user,
-      password: config.mysql_password,
-    },
+const baseConnection = {
+  host: config.mysql_sv,
+  user: config.mysql_user,
+  password: config.mysql_password,
 };
 
-const knexConfigUse: DatabaseConfig = {
+const createKnexConfig = (database?: string): DatabaseConfig => ({
   client: 'mysql2',
   connection: {
-    host: config.mysql_sv,
-    user: config.mysql_user,
-    password: config.mysql_password,
-    database: config.database_name
+    ...baseConnection,
+    database,
   },
-};
+});
 
-/**
- * Mysql connection
- */
-export let mdb = knex(knexConfig);
+export let mdb = knex(createKnexConfig());
 
-export function initializeMdb() { // config: knex.Knex.Config
-  mdb = knex(knexConfigUse);
+export function initializeMdb() {
+  mdb = knex(createKnexConfig(config.database_name));
 }
 
-export default knexConfig;
+export default createKnexConfig();
