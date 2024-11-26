@@ -20,13 +20,23 @@ const knexConfig: DatabaseConfig = {
     },
 };
 
+const knexConfigUse: DatabaseConfig = {
+  client: 'mysql2',
+  connection: {
+    host: config.mysql_sv,
+    user: config.mysql_user,
+    password: config.mysql_password,
+    database: config.database_name
+  },
+};
+
 /**
  * Mysql connection
  */
 export let mdb = knex(knexConfig);
 
-export function initializeMdb(config: knex.Knex<any, readonly unknown[]>) {
-    mdb = knex(config);
+export function initializeMdb() { // config: knex.Knex.Config
+  mdb = knex(knexConfigUse);
 }
 
 export default knexConfig;
