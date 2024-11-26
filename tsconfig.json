@@ -51,7 +51,7 @@
 
     "lib": ["es2017"],
     "types": ["node"],
-    "typeRoots": ["node_modules/@types", "src/archive/types"]
+    "typeRoots": ["node_modules/@types"]
 
     // "skipLibCheck": true
   },
@@ -60,8 +60,7 @@
     "node_modules/**",
     "build/**",
     "log/**",
-    "doc/**",
-    "src/archive/**"
+    "doc/**"
   ],
   "compileOnSave": false
 }
