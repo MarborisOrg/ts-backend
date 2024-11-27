@@ -9,7 +9,7 @@ export class ItemFind {
     this.itemModel = itemModel;
   }
 
-  public async getItemByTitle(title: string): Promise<mongo_ns.IItem | string> {
+  public async getItemByTitle(title: string): Promise<any> {
     try {
       const item = await this.itemModel.findById(title);
       if (item) {
@@ -18,16 +18,22 @@ export class ItemFind {
         return `No item found with the title "${title}".`;
       }
     } catch (error) {
-      return `Error fetching item: ${error instanceof Error ? error.message : error}`;
+      assert(
+        `Error fetching item: ${error instanceof Error ? error.message : error}`,
+        true
+      );
     }
   }
 
-  public async getAllItems(): Promise<mongo_ns.IItem[] | string> {
+  public async getAllItems(): Promise<any> {
     try {
       const items = await this.itemModel.find();
       return items;
     } catch (error) {
-      return `Error fetching item: ${error instanceof Error ? error.message : error}`;
+      assert(
+        `Error fetching item: ${error instanceof Error ? error.message : error}`,
+        true
+      );
     }
   }
 }

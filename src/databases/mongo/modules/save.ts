@@ -11,19 +11,18 @@ export class ItemCreate {
     this.itemModel = itemModel;
   }
 
-  public async createItem(
-    title: string,
-    description: string
-  ): Promise<mongo_ns.IItem | string> {
+  public async createItem(title: string, description: string): Promise<any> {
     const newItem: mongo_ns.IItem = new this.itemModel({ title, description });
     try {
       const savedItem = await newItem.save();
       return savedItem;
     } catch (error: any) {
       if (error.code === DUPLICATE_ITEM) {
-        return `Error: An item with the title "${title}" already exists.`;
+        assert(`Error: An item with the title "${title}" already exists.`);
       } else {
-        return `Error saving item: ${error instanceof Error ? error.message : error}`;
+        assert(
+          `Error saving item: ${error instanceof Error ? error.message : error}`
+        );
       }
     }
   }

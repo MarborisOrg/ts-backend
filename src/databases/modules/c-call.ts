@@ -3,8 +3,6 @@ import { MongoModuleNames, MysqlModuleNames } from '#ts/enums';
 
 const dbUse = $.cuse();
 
-// TODO() Check this ????
-// both options for call all databases
 export async function call(
   functionName: string | MongoModuleNames | MysqlModuleNames,
   ...args: readonly any[]
@@ -15,7 +13,6 @@ export async function call(
     assert('[M40]: Row not found');
   }
 
-  // if (true) {
   try {
     // check cache (!row.called)
     const namedFunctions = rows.flatMap((row) =>
@@ -25,18 +22,15 @@ export async function call(
     );
 
     if (namedFunctions.length > 0) {
-      try {
-        const results = namedFunctions.map((namedFunction): Promise<any> => {
-          log.info(
-            `Calling ${namedFunction.name} from ${namedFunction.rowName}:`
-          );
-          return namedFunction.func(...args);
-        });
-        return await Promise.all(results);
-      } catch (error) {
-        log.info(`error in call! -> ` + error);
-        return null;
-      }
+      const results = namedFunctions.map((namedFunction): Promise<any> => {
+        log.info(
+          `Calling ${namedFunction.name} from ${namedFunction.rowName}:`
+        );
+        return namedFunction.func(...args);
+      });
+      const res = await Promise.all(results);
+      console.log('res: ' + res);
+      return res;
     } else {
       assert(`Function ${functionName} not found in ${dbUse}.`);
     }
@@ -44,21 +38,4 @@ export async function call(
     // row.called = true; // put on cache
     // or we can add defer, or lock (like guard lock (C++))
   }
-  // } else {
-  //   // log.info(`${row.name} has already been called.`);
-  //   // already in cache
-  //   // work with times for spam!
-  // }
 }
-
-// async function main() {
-//   const result1 = await call("f3");
-//   log.info(result1); // "Hi"
-// }
-
-// main();
-
-// call("Function 1", "test", 42);
-// call("Function 2", "another test");
-// call("Function 1", "test again", 100);
-// call("Function 1", "yet another test", 200);
