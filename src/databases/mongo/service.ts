@@ -80,5 +80,11 @@ export const mongoModules: DatabasesType = {
       name: MongoModuleNames.getall,
       func: itemService.getAllItem.bind(itemService),
     },
+    // ماژول های تکراری کار میکند!
+    // قابلیتی برای اجرای همزمان دو دیتابیس و ماژول های تکراری
+    {
+      name: MongoModuleNames.getall,
+      func: itemService.getAllItem.bind(itemService),
+    },
   ],
 };

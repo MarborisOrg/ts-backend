@@ -14,7 +14,6 @@ export async function call(
   }
 
   try {
-    // check cache (!row.called)
     const namedFunctions = rows.flatMap((row) =>
       row.modules
         .filter((f) => f.name === functionName)
