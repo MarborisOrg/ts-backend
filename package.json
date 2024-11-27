@@ -19,7 +19,7 @@
     "start": "node . --dev",
     "build": "rimraf build && tsc",
     "pretty": "prettier --write \"**/*.{ts,js,mjs,json,md}\"",
-    "test": "eslint ."
+    "lint": "eslint ."
   },
   "engines": {
     "node": ">=20"
@@ -68,7 +68,6 @@
     "prettier": "^3.4.0",
     "prettier-plugin-organize-imports": "^4.1.0",
     "rimraf": "^6.0.1",
-    "ts-node": "^10.9.2",
     "tslib": "^2.8.0",
     "typescript": "^5.7.2",
     "typescript-eslint": "^8.16.0"
