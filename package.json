@@ -5,6 +5,7 @@
   "main": "build/index.js",
   "typings": "build/index.d.ts",
   "module": "build/index.js",
+  "private": true,
   "repository": "https://github.com/S-mrb-S/t3",
   "license": "MIT",
   "keywords": [

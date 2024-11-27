@@ -55,7 +55,7 @@
 
     // "skipLibCheck": true
   },
-  "include": ["src/**/*.ts", "src/**/*.js"],
+  "include": ["src/**/*.ts", "src/**/*.js", "src/app/rabbit/index.mjs"],
   "exclude": ["node_modules/**", "build/**", "log/**", "doc/**"],
   "compileOnSave": false
 }
