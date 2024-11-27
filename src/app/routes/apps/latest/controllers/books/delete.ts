@@ -3,7 +3,10 @@ import Joi from 'joi';
 
 import { call } from '#databases/modules/c-call';
 
-export const deleteBookController = async (req: Request, res: Response): Promise<void> => {
+export const deleteBookController = async (
+  req: Request,
+  res: Response
+): Promise<void> => {
   const { title } = req.body;
 
   const { error } = Joi.string().required().validate(title);

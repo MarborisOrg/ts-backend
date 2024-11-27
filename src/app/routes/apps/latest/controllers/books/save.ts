@@ -8,7 +8,10 @@ const bookSchema = Joi.object({
   description: Joi.string().required(),
 });
 
-export const saveBookController = async (req: Request, res: Response): Promise<void> => {
+export const saveBookController = async (
+  req: Request,
+  res: Response
+): Promise<void> => {
   const { error } = bookSchema.validate(req.body);
   if (error) {
     res.status(400).json({ error: error.details[0].message });
