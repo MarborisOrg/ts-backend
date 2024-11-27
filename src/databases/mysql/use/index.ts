@@ -9,7 +9,7 @@ import { createTable } from './create_tables.js';
  *
  * @author MRB
  */
-export default async function () {
+export default async function (): Promise<void> {
   try {
     // const results = await CREATE_DATABASE_INIT(); // check database
     // if (results) {
@@ -19,7 +19,7 @@ export default async function () {
     // }
     await initializeMysqlDatabase();
     await createTable();
-  } catch (e: any) {
+  } catch (_) {
     quit();
   }
 }

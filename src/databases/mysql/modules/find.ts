@@ -1,7 +1,7 @@
 // get book
 import { SELECT_ALL_BOOKS, SELECT_BOOKS } from '#databases/mysql/sql/book';
 
-type Book = {
+export type Book = {
   readonly id: number;
   readonly title: string;
   readonly description: string;
@@ -11,7 +11,7 @@ export function findBookById(id: number): Promise<Book | null> {
   return new Promise((resolve, reject) => {
     SELECT_BOOKS(id)
       .then((book) => {
-        resolve(book);
+        return resolve(book || null);
       })
       .catch(() => {
         reject('Failed to find book');
