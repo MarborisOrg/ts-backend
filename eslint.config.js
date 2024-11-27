@@ -55,6 +55,22 @@ export default [
     },
 
     rules: {
+      // قوانین کلاس
+      '@typescript-eslint/no-extraneous-class': 'error',
+      '@typescript-eslint/explicit-member-accessibility': [
+        'error',
+        {
+          accessibility: 'explicit',
+        },
+      ],
+
+      // قوانین تابعی
+      '@typescript-eslint/explicit-function-return-type': 'warn',
+      '@typescript-eslint/no-unused-vars': 'warn',
+
+      // فعال کردن namespace
+      '@typescript-eslint/no-namespace': 'off',
+
       '@typescript-eslint/no-empty-object-type': 'off',
       '@typescript-eslint/no-explicit-any': 'off',
       '@typescript-eslint/no-var-requires': 'off',
