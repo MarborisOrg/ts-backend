@@ -2,24 +2,24 @@ import Forker from './cluster/forker.js';
 
 import App from '#app/index';
 
-export default function () {
+export default function (): void {
   /**
    * mode
    */
   if ($.getMode() === 'production') {
-    Forker(app);
+    void Forker(app);
   } else {
-    app();
+    void app();
   }
 
-  async function app() {
+  async function app(): Promise<void> {
     try {
       /**
        * init file for app (express app)
        * repeated on fork (copy)
        */
       const { default: init } = await import('#core/init/app');
-      init().then(function () {
+      void init().then(function () {
         // Wait for the database connection to complete
         App(); // Now call core (expressApp)
       });

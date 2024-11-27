@@ -1,9 +1,9 @@
-export default async function (App: () => Promise<void>) {
+export default function (App: () => Promise<void>): void {
   /**
    * cluster forker
    */
 
-  const startWorker = (retries = 0) => {
+  const startWorker = (retries = 0): void => {
     const worker = $.cluster.fork();
 
     worker.on('exit', (code: number, signal: any) => {
@@ -29,6 +29,6 @@ export default async function (App: () => Promise<void>) {
 
     Array.from({ length: $.numWorkers }, (_, i) => startWorker(i + 1)); // [for] replace with Array
   } else {
-    App();
+    void App();
   }
 }

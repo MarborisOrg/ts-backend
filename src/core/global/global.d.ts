@@ -1,3 +1,4 @@
+/* eslint-disable no-var */
 // global.d.ts
 import { CustomLogger } from '#core/utils/log';
 
