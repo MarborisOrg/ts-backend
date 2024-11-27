@@ -4,7 +4,7 @@ export const timeoutMiddleware = (
   _req: Request,
   res: Response,
   next: NextFunction
-) => {
+): void => {
   const timeout = 3000; // just 3s
 
   const timer = setTimeout(() => {

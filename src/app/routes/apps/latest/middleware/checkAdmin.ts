@@ -1,22 +1,23 @@
 // middleware/checkAdmin.js
+import { NextFunction, Request, Response } from 'express';
 import jwt from 'jsonwebtoken';
 
 import { accessPass } from '#app/routes/config/config';
 
-const checkAdmin = (req: any, res: any, next: any) => {
-  const token = req.headers['authorization']?.split(' ')[1];
+const checkAdmin = (req: Request, res: Response, next: NextFunction): void => {
+  const token = req.headers['authorization']?.split(' ')[1] || '';
 
   if (!token) {
-    return res.status(403).json({ message: 'Access denied' });
+    res.status(403).json({ message: 'Access denied' });
   }
 
-  jwt.verify(token, accessPass, (err: any, decoded: any) => {
+  jwt.verify(token, accessPass, (err: any, decoded: any): void => {
     if (err) {
-      return res.status(403).json({ message: 'Invalid token' });
+      res.status(403).json({ message: 'Invalid token' });
     }
 
     if (decoded.type !== 'access') {
-      return res.status(403).json({ message: 'Invalid token type' });
+      res.status(403).json({ message: 'Invalid token type' });
     }
 
     if (decoded.role === 'admin') {

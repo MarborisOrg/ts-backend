@@ -4,7 +4,7 @@ export const responseSentMiddleware = (
   _req: Request,
   res: Response,
   next: NextFunction
-) => {
+): void => {
   const originalSend = res.send.bind(res);
   const originalJson = res.json.bind(res);
 
