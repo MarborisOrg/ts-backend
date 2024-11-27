@@ -2,7 +2,7 @@
 import { NextFunction, Request, Response } from 'express';
 import jwt from 'jsonwebtoken';
 
-import { accessPass } from '#app/routes/config/config';
+import { accessPass } from '#app/server/routes/config/config';
 
 const checkAdmin = (req: Request, res: Response, next: NextFunction): void => {
   const token = req.headers['authorization']?.split(' ')[1] || '';

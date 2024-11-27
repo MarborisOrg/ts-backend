@@ -1,6 +1,6 @@
 import Forker from './cluster/forker.js';
 
-import App from '#app/index';
+import App from '#app/server/index';
 
 export default function (): void {
   /**

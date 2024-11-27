@@ -1,8 +1,8 @@
 import { Request, Response } from 'express';
 import jwt from 'jsonwebtoken';
 
-import { refreshPass } from '#app/routes/config/config';
-import { signJWT } from '#app/routes/modules/jwt/ref-acc-token';
+import { refreshPass } from '#app/server/routes/config/config';
+import { signJWT } from '#app/server/routes/modules/jwt/ref-acc-token';
 
 export const tokenController = (req: Request, res: Response): void => {
   const { refreshToken } = req.body;

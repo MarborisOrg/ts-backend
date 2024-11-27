@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 
-import { signJWT } from '#app/routes/modules/jwt/ref-acc-token';
+import { signJWT } from '#app/server/routes/modules/jwt/ref-acc-token';
 import { config } from '#config/env_get';
 
 export const loginController = (req: Request, res: Response): void => {

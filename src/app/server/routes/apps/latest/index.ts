@@ -9,9 +9,9 @@ import {
 } from './controllers/index.js';
 import { tokenController } from './controllers/token.js';
 
-import { loginController } from '#app/routes/apps/latest/controllers/admin/login';
-import checkAdmin from '#app/routes/apps/latest/middleware/checkAdmin';
-import { checkIP } from '#app/routes/apps/latest/middleware/cons';
+import { loginController } from '#app/server/routes/apps/latest/controllers/admin/login';
+import checkAdmin from '#app/server/routes/apps/latest/middleware/checkAdmin';
+import { checkIP } from '#app/server/routes/apps/latest/middleware/cons';
 
 const router = Router();
 

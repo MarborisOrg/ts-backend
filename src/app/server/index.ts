@@ -1,9 +1,9 @@
 import { Request, Response } from 'express';
 import open from 'open';
 
-import loadAllRouter from '#app/routes/index';
-import { initApp } from '#app/routes/init';
-import { localhostMover } from '#app/routes/localhostMover';
+import loadAllRouter from '#app/server/routes/index';
+import { initApp } from '#app/server/routes/init';
+import { localhostMover } from '#app/server/routes/localhostMover';
 import { config } from '#config/env_get';
 import swaggerDocs from '#config/swaggerDocs';
 
