@@ -34,7 +34,6 @@ export default [
 
     languageOptions: {
       globals: {
-        ...globals.browser,
         ...globals.node,
       },
 
@@ -79,11 +78,10 @@ export default [
       '@typescript-eslint/await-thenable': 'warn',
       '@typescript-eslint/no-floating-promises': 'warn',
       '@typescript-eslint/require-await': 'warn',
-      'no-return-await': 'warn',
     },
   },
   {
-    files: ['**/*.ts', '**/*.tsx'],
+    files: ['**/*.ts'],
     rules: {
       '@typescript-eslint/no-unused-vars': [
         'warn',
