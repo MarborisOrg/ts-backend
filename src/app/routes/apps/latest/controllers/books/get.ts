@@ -15,9 +15,9 @@ export const getBookController = async (
   } else {
     try {
       const result = await call('find', title as string);
-      res.send({ success: result });
+      res.send({ success: true, output: result });
     } catch (_) {
-      res.status(500).send('err');
+      res.status(500).send({ success: false, output: null });
     }
   }
 };

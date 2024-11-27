@@ -8,8 +8,8 @@ export const getAllController = async (
 ): Promise<void> => {
   try {
     const result = await call('getall');
-    res.send({ success: result });
+    res.send({ success: true, output: result });
   } catch (_) {
-    res.status(500).send('err');
+    res.status(500).send({ success: false, output: null });
   }
 };
