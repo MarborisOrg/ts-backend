@@ -3,8 +3,16 @@
 
 import { freeCore } from '#core/free/index';
 
+const sleep = (ms: number): void => {
+  const end = Date.now() + ms;
+  while (Date.now() < end) {
+    /* empty */
+  }
+};
+
 process.on('exit', (_code) => {
   void freeCore();
+  sleep(3000); // useful for parallel free
   console.log('App closed');
 });
 
