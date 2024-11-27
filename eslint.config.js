@@ -3,6 +3,7 @@ import { FlatCompat } from '@eslint/eslintrc';
 import js from '@eslint/js';
 import typescriptEslint from '@typescript-eslint/eslint-plugin';
 import tsParser from '@typescript-eslint/parser';
+import importPlugin from 'eslint-plugin-import';
 import testingLibrary from 'eslint-plugin-testing-library';
 import globals from 'globals';
 import path from 'node:path';
@@ -30,6 +31,7 @@ export default [
     plugins: {
       '@typescript-eslint': fixupPluginRules(typescriptEslint),
       'testing-library': fixupPluginRules(testingLibrary),
+      import: fixupPluginRules(importPlugin),
     },
 
     languageOptions: {
@@ -55,7 +57,7 @@ export default [
     },
 
     rules: {
-      // قوانین کلاس
+      // class rules
       '@typescript-eslint/no-extraneous-class': 'error',
       '@typescript-eslint/explicit-member-accessibility': [
         'error',
@@ -63,14 +65,25 @@ export default [
           accessibility: 'explicit',
         },
       ],
-
-      // قوانین تابعی
+      // function rules
       '@typescript-eslint/explicit-function-return-type': 'warn',
       '@typescript-eslint/no-unused-vars': 'warn',
-
-      // فعال کردن namespace
       '@typescript-eslint/no-namespace': 'off',
-
+      // import rules
+      'import/order': [
+        'error',
+        {
+          groups: [
+            ['builtin', 'external'],
+            'internal',
+            'parent',
+            'sibling',
+            'index',
+          ],
+          'newlines-between': 'always',
+          alphabetize: { order: 'asc', caseInsensitive: true },
+        },
+      ],
       '@typescript-eslint/no-empty-object-type': 'off',
       '@typescript-eslint/no-explicit-any': 'off',
       '@typescript-eslint/no-var-requires': 'off',
