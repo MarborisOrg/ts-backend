@@ -3,7 +3,10 @@ import jwt from 'jsonwebtoken';
 
 import { accessPass, refreshPass } from '../../config/config.js';
 
-export function signJWT() {
+export function signJWT(): {
+  accessToken: string;
+  refreshToken: string;
+} {
   const accessToken = jwt.sign({ role: 'admin', type: 'access' }, accessPass, {
     expiresIn: '15m',
   });

@@ -3,7 +3,10 @@ import Joi from 'joi';
 
 import { call } from '#databases/modules/c-call';
 
-export const getBookController = async (req: Request, res: Response) => {
+export const getBookController = async (
+  req: Request,
+  res: Response
+): Promise<void> => {
   const title = req.query.title;
 
   const { error } = Joi.string().required().validate(title);
@@ -13,7 +16,7 @@ export const getBookController = async (req: Request, res: Response) => {
     try {
       const result = await call('find', title as string);
       res.send({ success: result });
-    } catch (error) {
+    } catch (_) {
       res.status(500).send('err');
     }
   }

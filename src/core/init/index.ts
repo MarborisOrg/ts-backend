@@ -5,6 +5,6 @@ await import('#core/global/index');
 import { checkAndRenameLogFiles } from '#core/misc/logBakChecker';
 import '#core/misc/onexit';
 
-(async function () {
+void (async function (): Promise<void> {
   await checkAndRenameLogFiles();
 })();

@@ -26,7 +26,7 @@ export async function call(
 
     if (namedFunctions.length > 0) {
       try {
-        const results = namedFunctions.map(async (namedFunction) => {
+        const results = namedFunctions.map((namedFunction): Promise<any> => {
           log.info(
             `Calling ${namedFunction.name} from ${namedFunction.rowName}:`
           );

@@ -6,7 +6,7 @@ import { loadRoutes } from './modules/misc/apps-routes.js';
 export default async function (app: Express): Promise<void> {
   try {
     await loadRoutes(app, AllApps);
-  } catch (error) {
+  } catch (_) {
     log.info('error! loading not complete.');
   }
 }

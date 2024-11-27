@@ -22,7 +22,7 @@ export const loadRoutes = async (
           DEF_PATH_ROUTES + `/${routersName}/` + DEF_ROUTE_FILE,
           pathRoute
         );
-      } catch (error) {
+      } catch (_) {
         log.error('[route loader] This is an unrecoverable error!');
       }
     })

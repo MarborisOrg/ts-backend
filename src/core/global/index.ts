@@ -1,4 +1,3 @@
-/* eslint-disable functional/immutable-data */
 import { assert } from '#core/utils/assert';
 import { die } from '#core/utils/die';
 import { log } from '#core/utils/log';

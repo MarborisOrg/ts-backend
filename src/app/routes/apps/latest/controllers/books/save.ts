@@ -8,7 +8,7 @@ const bookSchema = Joi.object({
   description: Joi.string().required(),
 });
 
-export const saveBookController = async (req: Request, res: Response) => {
+export const saveBookController = async (req: Request, res: Response): Promise<void> => {
   const { error } = bookSchema.validate(req.body);
   if (error) {
     res.status(400).json({ error: error.details[0].message });
@@ -17,7 +17,7 @@ export const saveBookController = async (req: Request, res: Response) => {
     try {
       const result = await call('save', title, description);
       res.send({ success: result });
-    } catch (error) {
+    } catch (_) {
       res.status(500).send('err');
     }
   }

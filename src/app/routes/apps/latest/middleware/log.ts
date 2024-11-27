@@ -4,7 +4,7 @@ export const logMiddleware = (
   req: Request,
   res: Response,
   next: NextFunction
-) => {
+): void => {
   const startTime = Date.now();
 
   log.info({

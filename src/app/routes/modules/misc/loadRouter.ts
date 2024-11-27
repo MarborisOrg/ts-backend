@@ -4,7 +4,7 @@ export const loadRouter = async (
   app: Express,
   routePath: string,
   basePath: string
-) => {
+): Promise<void> => {
   try {
     const { default: router }: { readonly default: Router } = await import(
       routePath

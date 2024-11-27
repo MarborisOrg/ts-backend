@@ -4,7 +4,7 @@ import jwt from 'jsonwebtoken';
 import { refreshPass } from '#app/routes/config/config';
 import { signJWT } from '#app/routes/modules/jwt/ref-acc-token';
 
-export const tokenController = async (req: Request, res: Response) => {
+export const tokenController = (req: Request, res: Response): void => {
   const { refreshToken } = req.body;
   if (!refreshToken) {
     res.status(401).json({ message: 'Refresh token is required' });

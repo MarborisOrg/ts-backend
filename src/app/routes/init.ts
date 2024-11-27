@@ -10,7 +10,7 @@ import { timeoutMiddleware } from '#app/routes/apps/latest/middleware/race/timeR
 import { corsOptions } from '#config/cors';
 import { helmetConfig } from '#config/helmet';
 
-export async function initApp(app: Express): Promise<void> {
+export function initApp(app: Express): void {
   try {
     app.disable('x-powered-by');
 
@@ -23,7 +23,7 @@ export async function initApp(app: Express): Promise<void> {
 
     app.use(cors(corsOptions));
     app.use(timeoutMiddleware);
-  } catch (error) {
+  } catch (_) {
     assert('error! loading not complete.');
   }
 }
