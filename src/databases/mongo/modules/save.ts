@@ -7,7 +7,7 @@ import { mongo_ns } from '#ts/interfaces.js';
 export class ItemCreate {
   private readonly itemModel;
 
-  constructor(itemModel: mongoose.Model<mongo_ns.IItem>) {
+  public constructor(itemModel: mongoose.Model<mongo_ns.IItem>) {
     this.itemModel = itemModel;
   }
 

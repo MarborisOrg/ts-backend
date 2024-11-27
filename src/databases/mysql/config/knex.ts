@@ -28,7 +28,7 @@ const createKnexConfig = (database?: string): DatabaseConfig => ({
 
 export let mdb = knex(createKnexConfig());
 
-export function initializeMdb() {
+export function initializeMdb(): void {
   mdb = knex(createKnexConfig(config.database_name));
 }
 

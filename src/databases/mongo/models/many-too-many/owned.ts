@@ -5,7 +5,7 @@ import { mongo_ns } from '#ts/interfaces';
 class OwnershipModel {
   private readonly ownershipSchema: Schema;
 
-  constructor() {
+  public constructor() {
     this.ownershipSchema = new Schema({
       user: { type: Schema.Types.ObjectId, ref: 'User', required: false },
       item: { type: Schema.Types.ObjectId, ref: 'Item', required: true },
@@ -13,7 +13,7 @@ class OwnershipModel {
     });
   }
 
-  public getModel() {
+  public getModel(): mongoose.Model<mongo_ns.IOwnership> {
     return mongoose.model<mongo_ns.IOwnership>(
       'Ownership',
       this.ownershipSchema

@@ -5,7 +5,7 @@ import { mongo_ns } from '#ts/interfaces';
 export class ItemDelete {
   private readonly itemModel;
 
-  constructor(itemModel: mongoose.Model<mongo_ns.IItem>) {
+  public constructor(itemModel: mongoose.Model<mongo_ns.IItem>) {
     this.itemModel = itemModel;
   }
 

@@ -1,11 +1,11 @@
 export default class {
   private readonly uri: string;
 
-  constructor(uri: string) {
+  public constructor(uri: string) {
     this.uri = uri;
   }
 
-  public async connect() {
+  public async connect(): Promise<void> {
     try {
       await $.mongoose.connect(this.uri);
     } catch (error) {

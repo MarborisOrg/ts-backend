@@ -18,7 +18,7 @@ class Service {
   private readonly itemFind: ItemFind;
   private readonly itemDelete: ItemDelete;
 
-  constructor() {
+  public constructor() {
     this.itemModel = ItemModel.getModel();
     this.itemCreate = new ItemCreate(this.itemModel);
     this.itemFind = new ItemFind(this.itemModel);
@@ -29,30 +29,30 @@ class Service {
     title: string,
     description: string
   ): Promise<mongo_ns.IItem | string> {
-    return await this.itemCreate.createItem(title, description);
+    return this.itemCreate.createItem(title, description);
   }
 
   public async getItemByTitle(title: string): Promise<mongo_ns.IItem | string> {
-    return await this.itemFind.getItemByTitle(title);
+    return this.itemFind.getItemByTitle(title);
   }
 
   public async getAllItem(): Promise<mongo_ns.IItem[] | string> {
-    return await this.itemFind.getAllItems();
+    return this.itemFind.getAllItems();
   }
 
   public async deleteItem(title: string): Promise<string> {
-    return await this.itemDelete.deleteItem(title);
+    return this.itemDelete.deleteItem(title);
   }
 
   public async dropCollection(): Promise<string> {
-    return await this.itemDelete.dropCollection();
+    return this.itemDelete.dropCollection();
   }
 }
 
 const itemService = new Service();
 
 // put mongo on init
-export default async function () {
+export default async function (): Promise<void> {
   const db = new Database(config.mongo_url);
   await db.connect();
 }

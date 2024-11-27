@@ -5,7 +5,7 @@ import { mongo_ns } from '#ts/interfaces.js';
 export class ItemFind {
   private readonly itemModel: mongoose.Model<mongo_ns.IItem>;
 
-  constructor(itemModel: mongoose.Model<mongo_ns.IItem>) {
+  public constructor(itemModel: mongoose.Model<mongo_ns.IItem>) {
     this.itemModel = itemModel;
   }
 

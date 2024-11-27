@@ -5,7 +5,7 @@ import { mongo_ns } from '#ts/interfaces';
 class ItemModel {
   private readonly itemSchema: Schema;
 
-  constructor() {
+  public constructor() {
     this.itemSchema = new Schema({
       title: { type: String, required: true },
       description: { type: String, required: true },
@@ -13,7 +13,7 @@ class ItemModel {
     });
   }
 
-  public getModel() {
+  public getModel(): mongoose.Model<mongo_ns.IItem> {
     return mongoose.model<mongo_ns.IItem>('Item', this.itemSchema);
   }
 }
