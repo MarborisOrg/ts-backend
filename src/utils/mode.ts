@@ -1,21 +1,39 @@
 import { hideBin } from 'yargs/helpers';
+import yargs from 'yargs/yargs';
 
-type Args = {
-  readonly dev?: boolean;
+type Config = {
+  dev: boolean;
+  debug: boolean;
+  type: 'express' | 'rabbit' | 'database';
 };
 
-let mode = '';
+let config: Config | undefined;
 
-export function getMode(): string {
-  if (mode == '' || mode == null) {
-    const argv = $.yargs(hideBin(process.argv)).options({
+export function getConfig(): Config {
+  if (!config) {
+    const argv = yargs(hideBin(process.argv)).options({
       dev: { type: 'boolean', default: false },
-    }).argv as Args;
+      debug: { type: 'boolean', default: false },
+      type: {
+        type: 'string',
+        choices: ['express', 'rabbit', 'database'],
+        default: 'express',
+      },
+    }).argv as unknown as {
+      dev: boolean;
+      debug: boolean;
+      type: 'express' | 'rabbit' | 'database';
+    };
 
-    mode = argv.dev ? 'development' : 'production';
+    config = {
+      dev: argv.dev,
+      debug: argv.debug,
+      type: argv.type,
+    };
 
-    return mode;
-  } else {
-    return mode;
+    console.log(`Debug mode: ${config.debug}`);
+    console.log(`Type: ${config.type}`);
   }
+
+  return config;
 }

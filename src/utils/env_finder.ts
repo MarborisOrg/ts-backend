@@ -1,8 +1,8 @@
-import { getMode } from './mode.js';
+import { getConfig } from './mode.js';
 
 const findEnvFileInSubdirectories = (startDir: string): string | null => {
   const files = $.fs.readdirSync(startDir);
-  const envPath = getMode() === 'production' ? '.env' : '.env.dev';
+  const envPath = getConfig().dev ? '.env.dev' : '.env';
 
   if (files.includes(envPath)) {
     return $.path.join(startDir, envPath);

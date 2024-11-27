@@ -6,10 +6,10 @@ export default function (): void {
   /**
    * mode
    */
-  if ($.getMode() === 'production') {
-    void Forker(app);
-  } else {
+  if ($.getConfig()) {
     void app();
+  } else {
+    void Forker(app);
   }
 
   async function app(): Promise<void> {
