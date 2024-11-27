@@ -1,17 +1,17 @@
 import { config_ns } from '#ts/interfaces';
 
 class EnvConfig implements config_ns.IEnvConfig {
-  readonly PORT: number;
-  readonly mysql_sv: string;
-  readonly mysql_user: string;
-  readonly mysql_password: string;
-  readonly database_name: string;
-  readonly mysql_multipleStatements: boolean;
-  readonly mongo_url: string;
-  readonly tc_book_name: string;
-  readonly database_use: 'mongo' | 'mysql';
+  public readonly PORT: number;
+  public readonly mysql_sv: string;
+  public readonly mysql_user: string;
+  public readonly mysql_password: string;
+  public readonly database_name: string;
+  public readonly mysql_multipleStatements: boolean;
+  public readonly mongo_url: string;
+  public readonly tc_book_name: string;
+  public readonly database_use: 'mongo' | 'mysql';
 
-  constructor() {
+  public constructor() {
     this.PORT = 8080;
     this.mysql_sv = 'localhost';
     this.mysql_user = 'root';
@@ -25,13 +25,13 @@ class EnvConfig implements config_ns.IEnvConfig {
 }
 
 class Config implements config_ns.IConfig {
-  readonly env: config_ns.IEnvConfig;
+  public readonly env: config_ns.IEnvConfig;
 
-  constructor() {
+  public constructor() {
     this.env = new EnvConfig();
   }
 
-  getEnv(): config_ns.IEnvConfig {
+  public getEnv(): config_ns.IEnvConfig {
     return this.env;
   }
 }

@@ -2,7 +2,7 @@ import helmet from 'helmet';
 
 import { config } from '#config/env_get';
 
-const helmetConfig = () => {
+const helmetConfig = (): any => {
   return helmet({
     contentSecurityPolicy: {
       directives: {

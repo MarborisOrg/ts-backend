@@ -2,7 +2,7 @@ import { Express } from 'express';
 import swaggerJsdoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
 
-export default function (app: Express, port: string) {
+export default function (app: Express, port: string): void {
   const options = {
     swaggerDefinition: {
       swagger: '2.0', // api version (changed to 2.0)
@@ -25,7 +25,7 @@ export default function (app: Express, port: string) {
   };
 
   const swaggerSpec = swaggerJsdoc(options);
-  (function () {
+  void (function (): void {
     // Swagger Page
     app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
     // Documentation in JSON format

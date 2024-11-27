@@ -4,7 +4,7 @@
 import { freeCore } from '#core/free/index';
 
 process.on('exit', (_code) => {
-  freeCore();
+  void freeCore();
   console.log('App closed');
 });
 

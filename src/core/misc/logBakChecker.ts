@@ -7,7 +7,7 @@ const logFiles = {
   'error.log': 0.5 * 1024 * 1024, // 0.5MB
 };
 
-export async function checkAndRenameLogFiles() {
+export async function checkAndRenameLogFiles(): Promise<void> {
   try {
     const results = await Promise.allSettled(
       Object.entries(logFiles).map(async ([fileName, maxSize]) => {

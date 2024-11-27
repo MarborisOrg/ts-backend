@@ -15,40 +15,40 @@ export async function call(
     assert('[M40]: Row not found');
   }
 
-  if (true) {
-    try {
-      // check cache (!row.called)
-      const namedFunctions = rows.flatMap((row) =>
-        row.modules
-          .filter((f) => f.name === functionName)
-          .map((f) => ({ ...f, rowName: row.name }))
-      );
+  // if (true) {
+  try {
+    // check cache (!row.called)
+    const namedFunctions = rows.flatMap((row) =>
+      row.modules
+        .filter((f) => f.name === functionName)
+        .map((f) => ({ ...f, rowName: row.name }))
+    );
 
-      if (namedFunctions.length > 0) {
-        try {
-          const results = namedFunctions.map(async (namedFunction) => {
-            log.info(
-              `Calling ${namedFunction.name} from ${namedFunction.rowName}:`
-            );
-            return await namedFunction.func(...args);
-          });
-          return await Promise.all(results);
-        } catch (error) {
-          log.info(`error in call! -> ` + error);
-          return null;
-        }
-      } else {
-        assert(`Function ${functionName} not found in ${dbUse}.`);
+    if (namedFunctions.length > 0) {
+      try {
+        const results = namedFunctions.map(async (namedFunction) => {
+          log.info(
+            `Calling ${namedFunction.name} from ${namedFunction.rowName}:`
+          );
+          return namedFunction.func(...args);
+        });
+        return await Promise.all(results);
+      } catch (error) {
+        log.info(`error in call! -> ` + error);
+        return null;
       }
-    } finally {
-      // row.called = true; // put on cache
-      // or we can add defer, or lock (like guard lock (C++))
+    } else {
+      assert(`Function ${functionName} not found in ${dbUse}.`);
     }
-  } else {
-    // log.info(`${row.name} has already been called.`);
-    // already in cache
-    // work with times for spam!
+  } finally {
+    // row.called = true; // put on cache
+    // or we can add defer, or lock (like guard lock (C++))
   }
+  // } else {
+  //   // log.info(`${row.name} has already been called.`);
+  //   // already in cache
+  //   // work with times for spam!
+  // }
 }
 
 // async function main() {

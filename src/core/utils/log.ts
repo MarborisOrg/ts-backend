@@ -25,7 +25,7 @@ const LogLevels = {
 const createFileTransport = (
   level: keyof typeof LogLevels,
   filename: string
-) => {
+): winston.transports.FileTransportInstance => {
   return new $.winston.transports.File({
     filename: $.path.join(logDir, filename),
     level,
@@ -59,7 +59,7 @@ const customFormat = $.winston.format.printf(
   }
 );
 
-const formatTimestamp = () => {
+const formatTimestamp = (): string => {
   const date = new Date();
   return date.toISOString().replace('T', ' ').substring(0, 19);
 };
@@ -110,7 +110,7 @@ const logger = $.winston.createLogger({
 
 export const log: CustomLogger = logger as CustomLogger;
 
-log.core = (message: string | object | any) => {
+log.core = (message: string | object | any): void => {
   log.log('core', { message });
 };
 
