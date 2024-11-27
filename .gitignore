@@ -20,3 +20,5 @@ package-lock.json
 
 .env*
 !.env*.example
+
+yarn.lock
