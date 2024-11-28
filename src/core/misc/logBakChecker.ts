@@ -5,6 +5,7 @@ import { logDir } from '#core/utils/requirements';
 const logFiles = {
   'combined.log': 1 * 1024 * 1024, // 1MB
   'error.log': 0.5 * 1024 * 1024, // 0.5MB
+  'core.log': 0.5 * 1024 * 1024, // 0.5MB
 };
 
 export async function checkAndRenameLogFiles(): Promise<void> {
