@@ -6,7 +6,7 @@ const queues = {
   completed: 'status_completed',
 };
 
-export const sendMessage = async (message, retries = 3) => {
+export const sendMessage = async (/** @type {any} */ message, retries = 3) => {
   let connection;
   try {
     connection = await amqp.connect('amqp://localhost');
@@ -30,4 +30,3 @@ export const sendMessage = async (message, retries = 3) => {
     if (connection) await connection.close();
   }
 };
-

@@ -1,6 +1,6 @@
 import amqp from 'amqplib';
 
-export const connectToRabbitMQ = async (queue) => {
+export const connectToRabbitMQ = async (/** @type {string} */ queue) => {
   try {
     const connection = await amqp.connect('amqp://localhost');
     const channel = await connection.createChannel();
