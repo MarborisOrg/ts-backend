@@ -3,9 +3,10 @@
  * @author MRB
  */
 
-globalThis.$ = (await import('#lib/packages')) as any;
-
-globalThis.$ = { ...globalThis.$, ...(await import('#lib/modules')) };
+/**
+ * init global lib
+ */
+await import('#lib/index');
 
 /**
  * init file for index (current file)

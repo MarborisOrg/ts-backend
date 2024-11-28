@@ -6,6 +6,6 @@ export const logDir = $.path.join('log'); // or __dirname
 
 void (function (): void {
   if (!$.fs.existsSync(logDir)) {
-    $.fs.mkdirSync(logDir);
+    $.fs.mkdirSync(logDir, { recursive: true });
   }
 })();
