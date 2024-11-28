@@ -6,7 +6,7 @@ export default function (): void {
   /**
    * mode
    */
-  if ($.getConfig()) {
+  if ($.getConfig().dev) {
     void app();
   } else {
     void Forker(app);
