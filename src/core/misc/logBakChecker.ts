@@ -1,6 +1,6 @@
 // log file size checker
 
-import { logDir } from '#core/utils/requirements';
+import { logDir } from '#core/init/requirements';
 
 const logFiles = {
   'combined.log': 1 * 1024 * 1024, // 1MB

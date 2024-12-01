@@ -5,6 +5,9 @@
  *
  */
 
+import { InitCore } from '#core/init/index';
+import { InitLib } from '#lib/index';
+
 /**
  * اضافه کردن سورس های پایدار و ورژن بندی پایدار برای هسته
  * قابلیت اضافه کردن ماژول ها به هسته با قابلیت خطا پذیری برای هر ماژول
@@ -27,7 +30,7 @@ void ((): void => {
       /**
        * init global lib
        */
-      await import('#lib/index');
+      await new InitLib().init();
 
       await this.start();
     }
@@ -41,7 +44,7 @@ void ((): void => {
       /**
        * init file for index (current file)
        */
-      await import('#core/init/index');
+      await new InitCore().init();
       this.#run();
     }
   })();
