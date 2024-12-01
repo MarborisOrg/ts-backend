@@ -7,10 +7,14 @@ type Config = {
   type: 'express' | 'rabbit' | 'database';
 };
 
-let config: Config | undefined;
+export let config: Config;
 
-export function getConfig(): Config {
-  if (!config) {
+export class ConfigLoader {
+  protected constructor() {
+    this.loadConfig();
+  }
+
+  private loadConfig(): void {
     const argv = yargs(hideBin(process.argv)).options({
       dev: { type: 'boolean', default: false },
       debug: { type: 'boolean', default: false },
@@ -34,6 +38,4 @@ export function getConfig(): Config {
     console.log(`Debug mode: ${config.debug}`);
     console.log(`Type: ${config.type}`);
   }
-
-  return config;
 }

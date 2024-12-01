@@ -7,6 +7,7 @@
 
 import { InitCore } from '#core/init/index';
 import { InitLib } from '#lib/index';
+import { ConfigLoader } from '#utils/mode';
 
 /**
  * اضافه کردن سورس های پایدار و ورژن بندی پایدار برای هسته
@@ -19,8 +20,9 @@ import { InitLib } from '#lib/index';
 // init libs, init and start core
 // --------------------------------------------------------------
 void ((): void => {
-  new (class {
+  new (class extends ConfigLoader {
     public constructor() {
+      super();
       void this.initialize();
     }
 
