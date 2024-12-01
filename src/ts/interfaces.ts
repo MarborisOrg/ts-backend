@@ -50,6 +50,7 @@ export namespace mongo_ns {
     readonly title: string;
     readonly description: string;
     readonly owners: ReadonlyArray<string>;
+    id: number;
   } & Document;
 
   export type IOwnership = {
