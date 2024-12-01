@@ -1,13 +1,15 @@
+import { InitReq } from '#core/init/requirements';
+
 export class InitCore {
   public async init(): Promise<void> {
-    await this.loadRequirements();
+    this.loadRequirements();
     await this.loadGlobal();
     await this.checkLogFiles();
     this.setupExitHandler();
   }
 
-  private async loadRequirements(): Promise<void> {
-    await import('#core/init/requirements');
+  private loadRequirements(): void {
+    new InitReq().init();
   }
 
   private async loadGlobal(): Promise<void> {
