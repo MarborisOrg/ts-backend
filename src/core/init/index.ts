@@ -17,7 +17,7 @@ export class InitCore {
     try {
       new InitReq().init();
     } catch (error) {
-      console.error('Error loading requirements:', error);
+      echo('Error loading requirements:', error);
     }
   }
 
@@ -25,7 +25,7 @@ export class InitCore {
     try {
       void import('#core/global/index');
     } catch (error) {
-      console.error('Error loading global:', error);
+      echo('Error loading global:', error);
     }
   }
 
@@ -33,7 +33,7 @@ export class InitCore {
     try {
       new LogFileChecker();
     } catch (error) {
-      console.error('Error checking log files:', error);
+      echo('Error checking log files:', error);
     }
   }
 
@@ -41,7 +41,7 @@ export class InitCore {
     try {
       void import('#core/misc/onexit');
     } catch (error) {
-      console.error('Error setting up exit handler:', error);
+      echo('Error setting up exit handler:', error);
     }
   }
 }

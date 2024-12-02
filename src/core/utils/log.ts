@@ -10,6 +10,7 @@ class Logger {
   private logger: CustomLogger;
 
   public constructor() {
+    echo('Info: Load logger!');
     const LogLevels = {
       core: 0,
       error: 1,

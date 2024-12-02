@@ -7,7 +7,7 @@ export class InitEcho extends ConfigLoader {
     this.init();
   }
   private init(): void {
-    function echo(message: string): void {
+    function echo(message: string, ...args: any[]): void {
       if (config.debug) {
         let color: string = '\x1b[0m'; // Default color
         const lowerCaseMessage = message.toLowerCase();
@@ -26,9 +26,14 @@ export class InitEcho extends ConfigLoader {
           color = '\x1b[34m'; // Blue for debug messages
         } else if (lowerCaseMessage.includes('success')) {
           color = '\x1b[36m'; // Cyan for success messages
+        } else if (lowerCaseMessage.includes('core')) {
+          color = '\x1b[30;1m'; // Bold black for specific messages
         }
 
-        console.log(`${color}${message}\x1b[0m`);
+        const formattedMessage =
+          args.length > 0 ? `${message} ${args.join(' ')}` : message;
+
+        console.log(`${color}${formattedMessage}\x1b[0m`);
       }
     }
     globalThis.echo = echo;

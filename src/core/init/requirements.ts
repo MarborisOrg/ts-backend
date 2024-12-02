@@ -11,6 +11,7 @@ export class InitReq {
   public init(): void {
     if (!$.fs.existsSync(logDir)) {
       $.fs.mkdirSync(logDir, { recursive: true });
+      echo('Info: Make log dir!');
     }
   }
 }

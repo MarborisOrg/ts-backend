@@ -13,15 +13,8 @@ const sleep = (ms: number): void => {
 process.on('exit', (_code) => {
   void freeCore();
   sleep(3000); // useful for parallel free
-  console.log('App closed');
+  echo('core: App closed');
 });
 
-process.on('SIGINT', async () => {
-  await freeCore();
-  quit();
-});
-
-process.on('SIGTERM', async () => {
-  await freeCore();
-  quit();
-});
+process.on('SIGINT', (): void => quit());
+process.on('SIGTERM', (): void => quit());

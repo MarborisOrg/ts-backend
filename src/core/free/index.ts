@@ -4,6 +4,6 @@ export async function freeCore(): Promise<void> {
   try {
     await freeDatabases();
   } catch (error) {
-    console.log('[core] ERR when free connections: ' + error);
+    echo('error: [core] ERR when free connections: ' + error);
   }
 }

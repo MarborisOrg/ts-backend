@@ -3,7 +3,7 @@
 import { CustomLogger } from '#core/utils/log';
 
 declare global {
-  function echo(message: string): void;
+  function echo(message: string, ...args: any[]): void;
   /**
    * global imports ($ --> variable in Php)
    */

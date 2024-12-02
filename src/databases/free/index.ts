@@ -5,12 +5,16 @@ import { freeMysql } from '../mysql/free/index.js';
 let safeCleanBool = 0;
 
 export async function freeDatabases(): Promise<void> {
-  if (safeCleanBool === 1) return;
+  if (safeCleanBool === 1) {
+    echo('warn: Memory release failed.');
+    return;
+  }
   safeCleanBool = 1;
   try {
+    echo('warn: free databases connection!');
     void freeMysql();
     await freeMongo();
   } catch (error) {
-    console.log('[core] ERR when free connections: ' + error);
+    echo('error: [core] ERR when free connections: ' + error);
   }
 }
