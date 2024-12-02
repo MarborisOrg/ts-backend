@@ -1,31 +1,23 @@
 import Forker from './cluster/forker.js';
+import { InitApp } from './init/app.js';
 
-import App from '#app/server/index';
+import ExpressApp from '#app/server/index';
 
-export default function (): void {
-  /**
-   * mode
-   */
-  if ($.config.dev) {
-    void app();
-  } else {
-    void Forker(app);
-  }
+export default async function (): Promise<void> {
+  try {
+    /**
+     * init file for app (express app)
+     * repeated on fork (copy)
+     */
+    // Wait for the database connection to complete
+    await Forker(new InitApp().initialize, !$.config.dev, 2, 3);
 
-  async function app(): Promise<void> {
-    try {
-      /**
-       * init file for app (express app)
-       * repeated on fork (copy)
-       */
-      const { default: init } = await import('#core/init/app');
-      void init().then(function () {
-        // Wait for the database connection to complete
-        App(); // Now call core (expressApp)
-      });
-    } catch (error) {
-      log.error(`Error in worker ${process.pid}:`, error);
-      die();
+    // Now call core (expressApp)
+    if ($.config.type === 'express') {
+      void Forker(ExpressApp, !$.config.dev, 2, 2);
     }
+  } catch (error) {
+    log.error(`Error in worker ${process.pid}:`, error);
+    die();
   }
 }

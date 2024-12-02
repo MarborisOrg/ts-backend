@@ -36,6 +36,7 @@ export class ConfigLoader {
     };
 
     console.log(`Debug mode: ${config.debug}`);
+    console.log(`Developer mode: ${config.dev}`);
     console.log(`Type: ${config.type}`);
   }
 }

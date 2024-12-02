@@ -1,3 +1,4 @@
+import { InitGlobal } from '#core/global/index';
 import { InitReq } from '#core/init/requirements';
 import { LogFileChecker } from '#core/misc/logBakChecker';
 
@@ -23,7 +24,7 @@ export class InitCore {
 
   private loadGlobal(): void {
     try {
-      void import('#core/global/index');
+      new InitGlobal();
     } catch (error) {
       echo('Error loading global:', error);
     }

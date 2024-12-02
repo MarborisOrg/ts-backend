@@ -17,7 +17,7 @@ export async function initializeMysqlDatabase(): Promise<boolean> {
 
     await mdb.raw(`USE ??`, [config.database_name]);
 
-    initializeMdb();
+    initializeMdb(config.database_name);
 
     return true;
   } catch (error) {

@@ -5,6 +5,7 @@
  *
  */
 
+import { LoadEnv } from '#config/env_get';
 import { InitCore } from '#core/init/index';
 import { InitLib } from '#lib/index';
 import { InitEcho } from '#utils/echo';
@@ -43,7 +44,8 @@ void ((): void => {
 
     #run(): void {
       echo('info: Running the application...');
-      $.core();
+      new LoadEnv();
+      void $.core();
     }
 
     public start(): void {

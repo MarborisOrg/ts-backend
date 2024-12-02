@@ -12,24 +12,22 @@ export type DatabaseConfig = {
   };
 };
 
-const baseConnection = {
-  host: config.mysql_sv,
-  user: config.mysql_user,
-  password: config.mysql_password,
+const createKnexConfig = (database: string = ''): knex.Knex<any, unknown[]> => {
+  const dbConfig: DatabaseConfig = {
+    client: 'mysql2',
+    connection: {
+      host: config.mysql_sv,
+      user: config.mysql_user,
+      password: config.mysql_password,
+      database: database || undefined,
+    },
+  };
+
+  return knex(dbConfig);
 };
 
-const createKnexConfig = (database?: string): DatabaseConfig => ({
-  client: 'mysql2',
-  connection: {
-    ...baseConnection,
-    database,
-  },
-});
+export let mdb: knex.Knex<any, unknown[]>;
 
-export let mdb = knex(createKnexConfig());
-
-export function initializeMdb(): void {
-  mdb = knex(createKnexConfig(config.database_name));
+export function initializeMdb(databaseName: string = ''): void {
+  mdb = createKnexConfig(databaseName);
 }
-
-export default createKnexConfig();

@@ -6,7 +6,7 @@ export interface CustomLogger extends winston.Logger {
   core: (message: string | object) => void;
 }
 
-class Logger {
+export class Logger {
   private logger: CustomLogger;
 
   public constructor() {
@@ -113,9 +113,6 @@ class Logger {
     return this.logger;
   }
 }
-
-const loggerInstance = new Logger();
-export const log = loggerInstance.getLogger();
 
 // Example log messages
 // log.debug('This is a debug message');

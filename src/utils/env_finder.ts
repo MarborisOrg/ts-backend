@@ -1,6 +1,8 @@
 import { config } from './mode.js';
 
-const findEnvFileInSubdirectories = (startDir: string): string | null => {
+export const findEnvFileInSubdirectories = (
+  startDir: string
+): string | null => {
   const files = $.fs.readdirSync(startDir);
   const envPath = config.dev ? '.env.dev' : '.env';
 
@@ -23,5 +25,3 @@ const findEnvFileInSubdirectories = (startDir: string): string | null => {
 
   return foundPath;
 };
-
-export const envFilePath = findEnvFileInSubdirectories(process.cwd());

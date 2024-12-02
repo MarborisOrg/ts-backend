@@ -2,20 +2,20 @@ import { Document } from 'mongoose';
 
 export namespace config_ns {
   export type Settings = {
-    readonly PORT: number;
-    readonly mysql_sv: string;
-    readonly mysql_user: string;
-    readonly mysql_password: string;
-    readonly database_name: string;
-    readonly mysql_multipleStatements: boolean;
-    readonly SECRET_KEY: string;
-    readonly admin_user: string;
-    readonly admin_pass: string;
-    readonly scriptSrc: string;
-    readonly mongo_url: string;
-    readonly tc_book_name: string;
-    readonly database_use: string;
-    readonly ALLOWED_IPS: readonly string[];
+    PORT: number;
+    mysql_sv: string;
+    mysql_user: string;
+    mysql_password: string;
+    database_name: string;
+    mysql_multipleStatements: boolean;
+    SECRET_KEY: string;
+    admin_user: string;
+    admin_pass: string;
+    scriptSrc: string;
+    mongo_url: string;
+    tc_book_name: string;
+    database_use: string;
+    ALLOWED_IPS: string[];
   };
 
   export type IEnvConfig = {

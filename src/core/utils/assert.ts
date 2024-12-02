@@ -8,7 +8,6 @@ export function assert(
   doNotQuit?: boolean
 ): void {
   log.error(err);
-  echo('error: ', err);
   try {
     throw new Error(err);
   } finally {
