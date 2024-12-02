@@ -36,8 +36,11 @@ class Service {
     return this.itemFind.getItemByTitle(title);
   }
 
-  public async getAllItem(): Promise<mongo_ns.IItem[] | string> {
-    return this.itemFind.getAllItems();
+  public async getAllItem(
+    limit: number,
+    page: number
+  ): Promise<mongo_ns.IItem[] | string> {
+    return this.itemFind.getAllItems(limit, page);
   }
 
   public async deleteItem(title: string): Promise<string> {

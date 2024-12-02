@@ -25,14 +25,24 @@ export class ItemFind {
     }
   }
 
-  public async getAllItems(): Promise<any> {
+  public async getAllItems(limit: number = 10, page: number = 1): Promise<any> {
     try {
-      const items = await this.itemModel.find();
+      const query = this.itemModel.find();
+
+      if (limit > 0) {
+        query.limit(limit);
+      }
+
+      if (page > 0) {
+        query.skip((page - 1) * limit);
+      }
+
+      const items = await query.lean();
+
       return items;
     } catch (error) {
       assert(
-        `Error fetching item: ${error instanceof Error ? error.message : error}`,
-        true
+        `Error fetching items: ${error instanceof Error ? error.message : error}`
       );
     }
   }
