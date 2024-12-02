@@ -4,20 +4,23 @@ import { InitApp } from './init/app.js';
 import ExpressApp from '#app/server/index';
 
 export default async function (): Promise<void> {
-  try {
-    /**
-     * init file for app (express app)
-     * repeated on fork (copy)
-     */
-    // Wait for the database connection to complete
-    await Forker(new InitApp().initialize, !$.config.dev, 2, 3);
+  await Forker(app, !$.config.dev); // , 2, 2
+  async function app(): Promise<void> {
+    try {
+      /**
+       * init file for app (express app)
+       * repeated on fork (copy)
+       */
+      // Wait for the database connection to complete
+      await new InitApp().initialize();
 
-    // Now call core (expressApp)
-    if ($.config.type === 'express') {
-      void Forker(ExpressApp, !$.config.dev, 2, 2);
+      // Now call core (expressApp)
+      if ($.config.type === 'express') {
+        ExpressApp();
+      }
+    } catch (error) {
+      log.error(`Error in worker ${process.pid}:`, error);
+      die();
     }
-  } catch (error) {
-    log.error(`Error in worker ${process.pid}:`, error);
-    die();
   }
 }
