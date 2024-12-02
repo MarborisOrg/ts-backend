@@ -17,7 +17,7 @@
   },
   "type": "module",
   "scripts": {
-    "start": "node . --dev --debug",
+    "start": "node . --dev --debug --type express",
     "build": "rimraf build && tsc",
     "pretty": "prettier --write \"**/*.{ts,js,mjs,json,md}\"",
     "lint": "eslint ."
