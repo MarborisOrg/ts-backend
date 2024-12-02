@@ -34,7 +34,7 @@ export class ItemFind {
       }
 
       if (page > 0) {
-        query.skip((page - 1) * limit);
+        query.skip((page - 1) * (limit > 0 ? limit : 10));
       }
 
       const items = await query.lean();

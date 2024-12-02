@@ -22,7 +22,8 @@ const SELECT_ALL_BOOKS = (
   }
 
   if (page > 0) {
-    query.offset((page - 1) * limit);
+    const offset = (page - 1) * (limit > 0 ? limit : 10);
+    query.offset(offset);
   }
 
   return query;
