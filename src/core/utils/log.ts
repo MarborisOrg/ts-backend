@@ -36,6 +36,27 @@ class Logger {
       return formattedDate.replace(' ', 'T').replace('T', ' ').substring(0, 19);
     };
 
+    const customFormat = winston.format.printf(
+      ({ timestamp, level, message }) => {
+        let messageString: string;
+
+        if (typeof message === 'string') {
+          messageString = message;
+        } else {
+          messageString = JSON.stringify(message);
+        }
+
+        if (messageString.length > 250) {
+          messageString = messageString.substring(0, 250) + '...';
+        }
+
+        const msg = `${timestamp} ${level}: ${messageString}`;
+        echo(msg);
+
+        return msg;
+      }
+    );
+
     const createFileTransport = (
       level: keyof typeof LogLevels,
       filename: string
@@ -61,7 +82,8 @@ class Logger {
       exitOnError: false,
       format: winston.format.combine(
         winston.format.timestamp({ format: formatTimestamp }),
-        winston.format.json()
+        winston.format.json(),
+        customFormat
       ),
       transports: [
         createFileTransport('core', 'core.log'),
