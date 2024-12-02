@@ -7,25 +7,25 @@ export class InitEcho extends ConfigLoader {
     this.init();
   }
   private init(): void {
-    function echo(message: string | object): void {
+    function echo(message: string): void {
       if (config.debug) {
-        const messageString =
-          typeof message === 'string' ? message : JSON.stringify(message);
-        const level = typeof message === 'string' ? 'info' : 'debug';
+        let color: string = '\x1b[0m'; // Default color
 
-        let color: string;
-        switch (level) {
-          case 'info':
-            color = '\x1b[32m'; // Green
-            break;
-          case 'debug':
-            color = '\x1b[34m'; // Blue
-            break;
-          default:
-            color = '\x1b[0m'; // Default
+        if (
+          message.includes('err') ||
+          message.includes('error') ||
+          message.includes('throw')
+        ) {
+          color = '\x1b[31m'; // Red for errors
+        } else if (message.includes('info')) {
+          color = '\x1b[32m'; // Green for info
+        } else if (message.includes('warn')) {
+          color = '\x1b[33m'; // Yellow for warnings
+        } else if (message.includes('debug')) {
+          color = '\x1b[34m'; // Blue for debug messages
         }
 
-        console.log(`${color}${messageString}\x1b[0m`);
+        console.log(`${color}${message}\x1b[0m`); // چاپ پیام با رنگ مناسب
       }
     }
     globalThis.echo = echo;

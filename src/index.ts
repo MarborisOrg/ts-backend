@@ -27,7 +27,7 @@ void ((): void => {
     }
 
     public async initialize(): Promise<void> {
-      echo('Application is initializing...');
+      echo('info: Application is initializing...');
 
       /**
        * init global lib
@@ -38,7 +38,7 @@ void ((): void => {
     }
 
     #run(): void {
-      echo('Running the application...');
+      echo('info: Running the application...');
       $.core();
     }
 
