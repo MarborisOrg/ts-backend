@@ -58,7 +58,7 @@ class Logger {
     const createFileTransport = (
       level: keyof typeof LogLevels,
       filename: string
-    ) => {
+    ): winston.transports.FileTransportInstance => {
       return new winston.transports.File({
         filename: $.path.join(logDir, filename),
         level,
