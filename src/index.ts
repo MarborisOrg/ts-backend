@@ -34,7 +34,7 @@ void ((): void => {
        */
       await new InitLib().init();
 
-      await this.start();
+      void this.start();
     }
 
     #run(): void {
@@ -42,11 +42,11 @@ void ((): void => {
       $.core();
     }
 
-    public async start(): Promise<void> {
+    public start(): void {
       /**
        * init file for index (current file)
        */
-      await new InitCore().init();
+      new InitCore();
       this.#run();
     }
   })();

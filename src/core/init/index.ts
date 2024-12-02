@@ -1,10 +1,11 @@
 import { InitReq } from '#core/init/requirements';
+import { LogFileChecker } from '#core/misc/logBakChecker';
 
 export class InitCore {
-  public async init(): Promise<void> {
+  public constructor() {
     this.loadRequirements();
-    await this.loadGlobal();
-    await this.checkLogFiles();
+    this.loadGlobal();
+    this.checkLogFiles();
     this.setupExitHandler();
   }
 
@@ -12,13 +13,12 @@ export class InitCore {
     new InitReq().init();
   }
 
-  private async loadGlobal(): Promise<void> {
-    await import('#core/global/index');
+  private loadGlobal(): void {
+    void import('#core/global/index');
   }
 
-  private async checkLogFiles(): Promise<void> {
-    const { checkAndRenameLogFiles } = await import('#core/misc/logBakChecker');
-    await checkAndRenameLogFiles();
+  private checkLogFiles(): void {
+    new LogFileChecker();
   }
 
   private setupExitHandler(): void {
