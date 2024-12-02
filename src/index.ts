@@ -44,8 +44,12 @@ void ((): void => {
 
     #run(): void {
       echo('info: Running the application...');
-      new LoadEnv();
-      void $.core();
+      void new LoadEnv()
+        .init()
+        .then(function () {
+          void $.core();
+        })
+        .catch(function () {});
     }
 
     public start(): void {
