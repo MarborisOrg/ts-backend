@@ -32,9 +32,13 @@ void ((): void => {
       /**
        * init global lib
        */
-      await new InitLib().init();
+      try {
+        await new InitLib().init();
 
-      void this.start();
+        void this.start();
+      } catch (err) {
+        console.error(err);
+      }
     }
 
     #run(): void {

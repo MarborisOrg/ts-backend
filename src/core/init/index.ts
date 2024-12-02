@@ -3,25 +3,45 @@ import { LogFileChecker } from '#core/misc/logBakChecker';
 
 export class InitCore {
   public constructor() {
-    this.loadRequirements();
-    this.loadGlobal();
-    this.checkLogFiles();
-    this.setupExitHandler();
+    this.initialize();
+  }
+
+  private initialize(): void {
+    void this.loadRequirements();
+    void this.loadGlobal();
+    void this.checkLogFiles();
+    void this.setupExitHandler();
   }
 
   private loadRequirements(): void {
-    new InitReq().init();
+    try {
+      new InitReq().init();
+    } catch (error) {
+      console.error('Error loading requirements:', error);
+    }
   }
 
   private loadGlobal(): void {
-    void import('#core/global/index');
+    try {
+      void import('#core/global/index');
+    } catch (error) {
+      console.error('Error loading global:', error);
+    }
   }
 
   private checkLogFiles(): void {
-    new LogFileChecker();
+    try {
+      new LogFileChecker();
+    } catch (error) {
+      console.error('Error checking log files:', error);
+    }
   }
 
   private setupExitHandler(): void {
-    void import('#core/misc/onexit');
+    try {
+      void import('#core/misc/onexit');
+    } catch (error) {
+      console.error('Error setting up exit handler:', error);
+    }
   }
 }

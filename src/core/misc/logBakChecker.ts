@@ -13,9 +13,9 @@ export class LogFileChecker {
   };
 
   public constructor() {
-    setTimeout(() => {
+    setInterval(() => {
       void this.checkAndRenameLogFiles();
-    }, 2000);
+    }, 10000);
   }
 
   private async checkAndRenameLogFiles(): Promise<void> {
