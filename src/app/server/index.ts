@@ -32,9 +32,9 @@ export default function (): void {
 
           if ($.config.dev) {
             swaggerDocs(app, config.PORT.toString());
-          }
-          if ($.config.debug) {
-            void open(`https://127.0.0.1:${config.PORT}/docs`);
+            if ($.config.debug) {
+              void open(`https://127.0.0.1:${config.PORT}/docs`);
+            }
           }
         });
       })

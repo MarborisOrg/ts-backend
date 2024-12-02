@@ -34,9 +34,10 @@ export class ConfigLoader {
       debug: argv.debug,
       type: argv.type,
     };
-
+    console.log(`------------------------------------------`);
     console.log(`Debug mode: ${config.debug}`);
     console.log(`Developer mode: ${config.dev}`);
     console.log(`Type: ${config.type}`);
+    console.log(`------------------------------------------`);
   }
 }
