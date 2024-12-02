@@ -28,11 +28,14 @@ export default function (): void {
       .then(function () {
         $.https.createServer(options, app).listen(config.PORT, () => {
           // app.listen(config.PORT
-          log.info('Server is running on port: ' + config.PORT);
+          echo('Info: Server is running on port: ' + config.PORT);
 
-          swaggerDocs(app, config.PORT.toString());
-
-          void open(`https://127.0.0.1:${config.PORT}/docs`);
+          if ($.config.dev) {
+            swaggerDocs(app, config.PORT.toString());
+          }
+          if ($.config.debug) {
+            void open(`https://127.0.0.1:${config.PORT}/docs`);
+          }
         });
       })
       .catch(function () {
