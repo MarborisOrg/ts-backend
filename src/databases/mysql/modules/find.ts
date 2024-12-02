@@ -19,9 +19,12 @@ export function findBookById(id: number): Promise<Book | null> {
   });
 }
 
-export function findAllBooks(): Promise<readonly Book[]> {
+export function findAllBooks(
+  limit: number,
+  page: number
+): Promise<readonly Book[]> {
   return new Promise((resolve, reject) => {
-    SELECT_ALL_BOOKS()
+    SELECT_ALL_BOOKS(limit, page)
       .then((books) => {
         resolve(books);
       })
