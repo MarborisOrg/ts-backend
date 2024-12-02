@@ -7,7 +7,7 @@ export async function loadLibraries(libraries: Libraries): Promise<boolean> {
   const loadPromises = libraryKeys.map((key): any => {
     try {
       const library = libraries[key];
-      echo(`Loaded ${key}`);
+      echo(`Success: Loaded ${key}`);
       return library;
     } catch (error) {
       console.error(`Error loading ${key}:`, error);
@@ -17,7 +17,7 @@ export async function loadLibraries(libraries: Libraries): Promise<boolean> {
 
   try {
     await Promise.all(loadPromises);
-    echo('All libraries loaded successfully');
+    echo('Debug: All libraries loaded successfully');
     return true;
   } catch (error) {
     console.error(`Error loading:`, error);
