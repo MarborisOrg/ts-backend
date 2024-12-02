@@ -11,50 +11,30 @@ class Logger {
 
   public constructor() {
     echo('Info: Load logger!');
+
     const LogLevels = {
       core: 0,
       error: 1,
       warn: 2,
       debug: 3,
       info: 4,
-    } as const;
-
-    winston.addColors({
-      core: 'magenta',
-      error: 'red',
-      warn: 'yellow',
-      debug: 'blue',
-      info: 'green',
-    });
+    };
 
     const formatTimestamp = (): string => {
       const date = new Date();
-      return date.toISOString().replace('T', ' ').substring(0, 19);
+      const options: Intl.DateTimeFormatOptions = {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: false,
+      };
+
+      const formattedDate = date.toLocaleString('sv-SE', options);
+      return formattedDate.replace(' ', 'T').replace('T', ' ').substring(0, 19);
     };
-
-    const customFormat = winston.format.printf(
-      ({ timestamp, level, message }) => {
-        let messageString: string;
-
-        if (typeof message === 'string') {
-          messageString = message;
-        } else {
-          messageString = JSON.stringify(message);
-        }
-
-        if (messageString.length > 100) {
-          messageString = messageString.substring(0, 100) + '...';
-        }
-
-        return `${timestamp} ${level}: ${messageString}`;
-      }
-    );
-
-    const commonFormat = winston.format.combine(
-      winston.format.timestamp({ format: formatTimestamp }),
-      winston.format.json(),
-      customFormat
-    );
 
     const createFileTransport = (
       level: keyof typeof LogLevels,
@@ -84,12 +64,6 @@ class Logger {
         winston.format.json()
       ),
       transports: [
-        new winston.transports.Console({
-          format: winston.format.combine(
-            winston.format.colorize(),
-            commonFormat
-          ),
-        }),
         createFileTransport('core', 'core.log'),
         createFileTransport('error', 'error.log'),
         new winston.transports.File({

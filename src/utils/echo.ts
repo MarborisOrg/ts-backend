@@ -27,7 +27,7 @@ export class InitEcho extends ConfigLoader {
         } else if (lowerCaseMessage.includes('success')) {
           color = '\x1b[36m'; // Cyan for success messages
         } else if (lowerCaseMessage.includes('core')) {
-          color = '\x1b[30;1m'; // Bold black for specific messages
+          color = '\x1b[35m'; // Magenta for core messages
         }
 
         const formattedMessage =
