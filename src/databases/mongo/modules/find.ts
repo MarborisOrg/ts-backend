@@ -9,13 +9,13 @@ export class ItemFind {
     this.itemModel = itemModel;
   }
 
-  public async getItemByTitle(title: string): Promise<any> {
+  public async getItemByTitle(id: number): Promise<any> {
     try {
-      const item = await this.itemModel.findById(title);
+      const item = await this.itemModel.findById(id);
       if (item) {
         return item;
       } else {
-        return `No item found with the title "${title}".`;
+        return `No item found with the id "${id}".`;
       }
     } catch (error) {
       assert(

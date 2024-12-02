@@ -7,14 +7,14 @@ export const deleteBookController = async (
   req: Request,
   res: Response
 ): Promise<void> => {
-  const { title } = req.body;
+  const { id } = req.body;
 
-  const { error } = Joi.string().required().validate(title);
+  const { error } = Joi.number().required().validate(id);
   if (error) {
     res.status(400).json({ error: error.details[0].message });
   } else {
     try {
-      const result = await call('delete', title as string);
+      const result = await call('delete', id as number);
       res.send({ success: true, output: result });
     } catch (_) {
       res.status(500).send({ success: false, output: null });

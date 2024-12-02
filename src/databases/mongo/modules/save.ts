@@ -18,7 +18,7 @@ export class ItemCreate {
       return savedItem;
     } catch (error: any) {
       if (error.code === DUPLICATE_ITEM) {
-        assert(`Error: An item with the title "${title}" already exists.`);
+        assert(`Error: An item with the title "${title}" already exists.`); // replaced by id (no effect)
       } else {
         assert(
           `Error saving item: ${error instanceof Error ? error.message : error}`

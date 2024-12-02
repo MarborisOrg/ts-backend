@@ -1,7 +1,9 @@
 export { default as cluster } from 'cluster';
-export { default as express } from 'express';
+export { NextFunction, Request, Response, default as express } from 'express';
 export { default as fs } from 'fs';
 export { default as https } from 'https';
+export { default as Joi } from 'joi';
+export { default as jwt } from 'jsonwebtoken';
 export { default as mongoose } from 'mongoose';
 export { default as mysql } from 'mysql2';
 export { default as os } from 'os';

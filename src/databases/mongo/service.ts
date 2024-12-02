@@ -32,8 +32,8 @@ class Service {
     return this.itemCreate.createItem(title, description);
   }
 
-  public async getItemByTitle(title: string): Promise<mongo_ns.IItem | string> {
-    return this.itemFind.getItemByTitle(title);
+  public async getItemByTitle(id: number): Promise<mongo_ns.IItem | string> {
+    return this.itemFind.getItemByTitle(id);
   }
 
   public async getAllItem(
@@ -43,8 +43,8 @@ class Service {
     return this.itemFind.getAllItems(limit, page);
   }
 
-  public async deleteItem(title: string): Promise<string> {
-    return this.itemDelete.deleteItem(title);
+  public async deleteItem(id: number): Promise<string> {
+    return this.itemDelete.deleteItem(id);
   }
 
   public async dropCollection(): Promise<string> {

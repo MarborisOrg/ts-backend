@@ -53,9 +53,9 @@ router.post('/login', loginController);
  *     description: Returns a book response
  *     parameters:
  *       - in: query
- *         name: title
+ *         name: id
  *         required: true
- *         type: string
+ *         type: number
  *       - in: header
  *         name: Authorization
  *         required: true
@@ -65,7 +65,7 @@ router.post('/login', loginController);
  *       200:
  *         description: A book response
  *       400:
- *         description: Invalid title
+ *         description: Invalid id
  */
 router.get('/get', checkAdmin, getBookController);
 
@@ -140,10 +140,10 @@ router.post('/drop', checkAdmin, dropBookController);
  *         schema:
  *           type: object
  *           required:
- *             - title
+ *             - id
  *           properties:
- *             title:
- *               type: string
+ *             id:
+ *               type: number
  *     responses:
  *       200:
  *         description: A success response
@@ -164,6 +164,21 @@ router.post('/delete', checkAdmin, deleteBookController);
  *         required: true
  *         type: string
  *         description: Bearer access_token
+ *       - in: body
+ *         name: body
+ *         description: Request body for pagination
+ *         required: true
+ *         schema:
+ *           type: object
+ *           properties:
+ *             page:
+ *               type: number
+ *               description: The page number to retrieve
+ *               default: 0
+ *             limit:
+ *               type: number
+ *               description: The number of items per page
+ *               default: 10
  *     responses:
  *       200:
  *         description: A list of all books

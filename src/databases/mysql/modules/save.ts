@@ -14,7 +14,7 @@ export function saveBook(title: string, description: string): Promise<boolean> {
           // بررسی خطای تکراری
           console.error(
             'Duplicate entry error: A book with this title already exists.'
-          );
+          ); // no effect more (replaced by id)
           resolve(false);
         } else {
           console.error('Error inserting record: ', err);
