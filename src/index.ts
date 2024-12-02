@@ -7,7 +7,7 @@
 
 import { InitCore } from '#core/init/index';
 import { InitLib } from '#lib/index';
-import { ConfigLoader } from '#utils/mode';
+import { InitEcho } from '#utils/echo';
 
 /**
  * اضافه کردن سورس های پایدار و ورژن بندی پایدار برای هسته
@@ -20,14 +20,14 @@ import { ConfigLoader } from '#utils/mode';
 // init libs, init and start core
 // --------------------------------------------------------------
 void ((): void => {
-  new (class extends ConfigLoader {
+  new (class extends InitEcho {
     public constructor() {
       super();
       void this.initialize();
     }
 
     public async initialize(): Promise<void> {
-      console.log('Application is initializing...');
+      echo('Application is initializing...');
 
       /**
        * init global lib
@@ -38,7 +38,7 @@ void ((): void => {
     }
 
     #run(): void {
-      console.log('Running the application...');
+      echo('Running the application...');
       $.core();
     }
 
