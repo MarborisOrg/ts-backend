@@ -7,5 +7,4 @@ export { default as mysql } from 'mysql2';
 export { default as os } from 'os';
 export { default as path } from 'path';
 export { default as url } from 'url';
-export { default as winston } from 'winston';
 export { default as yargs } from 'yargs/yargs';
