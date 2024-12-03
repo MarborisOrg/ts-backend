@@ -1,8 +1,9 @@
 /**
  * @link https://github.com/S-MRB-S
- *
  * @author MRB
- *
+ * @license MIT
+ * @description Main entry point for initializing the application.
+ * This module sets up the core components and libraries required for the application to run.
  */
 
 import { LoadEnv } from '#config/env_get';
@@ -11,15 +12,12 @@ import { InitLib } from '#lib/index';
 import { InitEcho } from '#utils/echo';
 
 /**
- * اضافه کردن سورس های پایدار و ورژن بندی پایدار برای هسته
- * قابلیت اضافه کردن ماژول ها به هسته با قابلیت خطا پذیری برای هر ماژول
+ * Initializes the application by setting up libraries and core components.
+ * This includes error handling for module initialization and starting the application.
  *
- * اضافه کردن فورکر برای هر ورژن بندی بسته به تعداد و حداکثر
+ * @function
+ * @returns {void}
  */
-
-// --------------------------------------------------------------
-// init libs, init and start core
-// --------------------------------------------------------------
 void ((): void => {
   new (class extends InitEcho {
     public constructor() {
@@ -27,21 +25,35 @@ void ((): void => {
       void this.initialize();
     }
 
+    /**
+     * Initializes the application and its libraries.
+     * Logs the initialization process and handles any errors that occur during library setup.
+     *
+     * @async
+     * @returns {Promise<void>}
+     */
     public async initialize(): Promise<void> {
       echo('info: Application is initializing...');
 
       /**
-       * init global lib
+       * Initializes the global library.
+       * If successful, starts the application; otherwise, logs the error.
        */
       try {
         await new InitLib().init();
-
         void this.start();
       } catch (err) {
         console.error(err);
       }
     }
 
+    /**
+     * Runs the core application logic after environment loading.
+     * Logs the running status and initializes the core functionality.
+     *
+     * @private
+     * @returns {void}
+     */
     #run(): void {
       echo('info: Running the application...');
       void new LoadEnv()
@@ -54,9 +66,15 @@ void ((): void => {
         });
     }
 
+    /**
+     * Starts the application by initializing the core components.
+     * Calls the private run method to execute the main application logic.
+     *
+     * @returns {void}
+     */
     public start(): void {
       /**
-       * init file for index (current file)
+       * Initializes the core functionality for the current file.
        */
       new InitCore();
       this.#run();
