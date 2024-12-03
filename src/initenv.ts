@@ -9,7 +9,7 @@ export class InitEnv {
 ## If you changed this params, restart your app
 
 ## Server
-PORT=8585
+PORT=8686
 
 ## Mysql
 mysql_sv="localhost"
