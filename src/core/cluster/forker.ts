@@ -11,6 +11,7 @@
  * @param maxRetries - The maximum number of times to restart a worker if it exits with an error (default is 3).
  * @param numWorkers - The number of worker processes to spawn, based on the number of CPU cores (default is the number of CPU cores).
  * @returns A Promise that resolves when the application has finished running.
+ * @deprecated No longer support
  */
 export default async function (
   App: () => Promise<void> | void,
