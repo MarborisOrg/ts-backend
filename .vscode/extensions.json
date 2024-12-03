@@ -6,6 +6,8 @@
     "donjayamanne.githistory",
     "pkief.material-icon-theme",
     "editorconfig.editorconfig",
-    "ms-vscode.vscode-typescript-next"
+    "ms-vscode.vscode-typescript-next",
+    "johnpapa.winteriscoming",
+    "dbaeumer.vscode-eslint"
   ]
 }
