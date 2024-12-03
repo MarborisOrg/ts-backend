@@ -19,7 +19,7 @@ export default function (app: Express, port: string): void {
       },
       host: `127.0.0.1:${port}`, // host
       basePath: '/', // base path
-      schemes: ['https'], // supported schemes
+      schemes: ['https', 'http'], // supported schemes
     },
     apis: ['**/*.ts'], // ts files over .js file in build
   };
