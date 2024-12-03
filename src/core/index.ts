@@ -1,7 +1,7 @@
 import Forker from './cluster/forker.js';
 import { InitApp } from './init/app.js';
 
-// import RabbitApp from '#app/rabbit/index';
+import RabbitApp from '#app/rabbit/index';
 import ExpressApp from '#app/server/index';
 
 export default async function (): Promise<void> {
@@ -19,9 +19,9 @@ export default async function (): Promise<void> {
       if ($.config.type === 'express') {
         ExpressApp();
       }
-      // if ($.config.type === 'rabbit') {
-      //   RabbitApp();
-      // }
+      if ($.config.type === 'rabbit') {
+        RabbitApp();
+      }
     } catch (error) {
       log.error(`Error in worker ${process.pid}:`, error);
       die();
