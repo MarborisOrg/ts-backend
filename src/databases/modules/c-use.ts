@@ -7,8 +7,7 @@
  * It prioritizes the environment configuration and falls back to default settings if necessary.
  */
 
-import df_config from '#config/defaults'; // Import default configuration settings
-import { config } from '#config/env_get'; // Import environment configuration settings
+import { config, defaultConfig } from '#config/env_get'; // Import environment configuration settings
 import { DatabasesUseType } from '#ts/types'; // Import the type definition for database usage
 
 /**
@@ -22,6 +21,6 @@ export default function (): DatabasesUseType {
   if (config.database_use === 'mongo' || config.database_use === 'mysql') {
     return config.database_use; // Return the valid database type from the configuration
   } else {
-    return df_config.env.database_use; // Return the default database type if the configuration is invalid
+    return defaultConfig.env.database_use; // Return the default database type if the configuration is invalid
   }
 }

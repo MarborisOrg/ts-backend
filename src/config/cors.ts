@@ -4,7 +4,10 @@ import { config } from './env_get.js';
 
 export const corsOptions: CorsOptions = {
   origin: (origin, callback) => {
-    if (!origin || config.ALLOWED_IPS.some((ip) => origin.includes(ip))) {
+    if (
+      !origin ||
+      config.ALLOWED_IPS.some((ip: string) => origin.includes(ip))
+    ) {
       callback(null, true);
     } else {
       callback(new Error('Not Allowed'), false);
