@@ -1,3 +1,11 @@
+/**
+ * @link https://github.com/S-MRB-S
+ * @author MRB
+ * @license MIT
+ * @description This module loads environment variables from a .env file and validates them using Joi.
+ * It initializes the application configuration based on the loaded environment variables.
+ */
+
 import * as dotenv from 'dotenv';
 import Joi from 'joi';
 
@@ -6,22 +14,34 @@ import df_config from './defaults.js';
 import { config_ns } from '#ts/interfaces';
 import { findEnvFileInSubdirectories } from '#utils/env_finder';
 
+// Initialize an empty configuration object
 export const config: config_ns.Settings = {} as config_ns.Settings;
 
+/**
+ * Class responsible for loading environment variables and validating them.
+ */
 export class LoadEnv {
+  /**
+   * Initializes the loading of environment variables.
+   *
+   * @returns {Promise<void>} A promise that resolves when the environment variables are loaded and validated.
+   */
   public init(): Promise<void> {
     return new Promise((resolve, reject) => {
+      // Find the .env file in the current directory or its subdirectories
       const envFilePath = findEnvFileInSubdirectories(process.cwd());
 
       if (envFilePath) {
+        // Load the environment variables from the found .env file
         dotenv.config({ path: envFilePath });
       } else {
-        log.error('.env file not found in any subdirectories.');
-        quit();
-        reject();
+        log.error('.env file not found in any subdirectories.'); // Log error if .env file is not found
+        quit(); // Exit the application
+        reject(); // Reject the promise
         return;
       }
 
+      // Define the schema for validating environment variables
       const schema = Joi.object({
         PORT: Joi.number().default(df_config.env.PORT),
         mysql_sv: Joi.string().min(1).max(255).default(df_config.env.mysql_sv),
@@ -61,15 +81,17 @@ export class LoadEnv {
         database_use: Joi.string().valid('mongo', 'mysql').default('mongo'),
       }).unknown();
 
+      // Validate the loaded environment variables against the schema
       const { error, value } = schema.validate(process.env);
 
       if (error) {
-        log.error(`Configuration error: ${error.message}`);
-        quit();
-        reject();
+        log.error(`Configuration error: ${error.message}`); // Log validation error
+        quit(); // Exit the application
+        reject(); // Reject the promise
         return;
       }
 
+      // Assign validated values to the config object
       config.PORT = value.PORT;
       config.mysql_sv = value.mysql_sv;
       config.mysql_user = value.mysql_user;
@@ -85,9 +107,9 @@ export class LoadEnv {
       config.database_use = value.database_use;
       config.ALLOWED_IPS = value.ALLOWED_IPS
         ? value.ALLOWED_IPS.split(',')
-        : [];
+        : []; // Split allowed IPs into an array
 
-      resolve();
+      resolve(); // Resolve the promise when loading is complete
     });
   }
 }
