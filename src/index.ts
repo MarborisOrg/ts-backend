@@ -49,7 +49,9 @@ void ((): void => {
         .then(function () {
           void $.core();
         })
-        .catch(function () {});
+        .catch(function (err) {
+          console.error(err);
+        });
     }
 
     public start(): void {
