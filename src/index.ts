@@ -8,7 +8,7 @@
 
 import { LoadEnv } from '#config/env_get';
 import { InitCore } from '#core/init/index';
-import { InitEnv } from '#initenv';
+import { Init } from '#init';
 import { InitLib } from '#lib/index';
 import { InitEcho } from '#utils/echo';
 
@@ -73,12 +73,12 @@ void ((): void => {
      *
      * @returns {void}
      */
-    public start(): void {
+    public async start(): Promise<void> {
       /**
        * Initializes the core functionality for the current file.
        */
-      new InitEnv();
       new InitCore();
+      await new Init().init();
       this.#run();
     }
   })();

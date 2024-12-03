@@ -8,6 +8,7 @@
  */
 
 export let logDir: string; // Directory path for log files
+export let keysDir: string; // Directory path for keys files
 
 export class InitReq {
   /**
@@ -27,6 +28,11 @@ export class InitReq {
     if (!$.fs.existsSync(logDir)) {
       $.fs.mkdirSync(logDir, { recursive: true }); // Create the log directory recursively
       echo('Info: Make log dir!'); // Log information about the directory creation
+    }
+    keysDir = $.path.join('keys');
+    if (!$.fs.existsSync(keysDir)) {
+      $.fs.mkdirSync(keysDir, { recursive: true }); // Create the log directory recursively
+      echo('Info: Make keys dir!'); // Log information about the directory creation
     }
   }
 }
