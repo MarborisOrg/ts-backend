@@ -9,6 +9,7 @@
  */
 
 import { logDir } from '#core/init/requirements';
+import { createBackup } from '#utils/file_backup';
 
 const __1M__ = 1 * 1024 * 1024; // 1MB
 const __05M__ = 0.5 * 1024 * 1024; // 0.5MB
@@ -68,50 +69,15 @@ export class LogFileChecker {
   ): Promise<void> {
     const logFilePath = $.path.join(logDir, fileName);
 
-    if (!(await this.fileExists(logFilePath))) return; // Exit if the file does not exist
+    const cb = new createBackup();
+
+    if (!(await cb.fileExists(logFilePath))) return; // Exit if the file does not exist
 
     const stats = await $.fs.promises.stat(logFilePath);
 
     // Rename the file if it exceeds the maximum size
     if (stats.size > maxSize) {
-      const backupFilePath = await this.getUniqueBackupFilePath(logFilePath);
-      await $.fs.promises.rename(logFilePath, backupFilePath);
-    }
-  }
-
-  /**
-   * Generates a unique backup file path to avoid overwriting existing backups.
-   *
-   * @param basePath - The base path for the backup file.
-   * @param counter - A counter to create unique file names (default is 1).
-   * @returns A Promise that resolves to a unique backup file path.
-   */
-  private async getUniqueBackupFilePath(
-    basePath: string,
-    counter = 1
-  ): Promise<string> {
-    const backupFilePath =
-      counter === 1 ? `${basePath}.bak` : `${basePath}.${counter}.bak`;
-
-    if (await this.fileExists(backupFilePath)) {
-      return this.getUniqueBackupFilePath(basePath, counter + 1); // Recursively find a unique path
-    }
-
-    return backupFilePath;
-  }
-
-  /**
-   * Checks if a file exists at the specified path.
-   *
-   * @param filePath - The path of the file to check.
-   * @returns A Promise that resolves to true if the file exists, false otherwise.
-   */
-  private async fileExists(filePath: string): Promise<boolean> {
-    try {
-      await $.fs.promises.access(filePath);
-      return true; // File exists
-    } catch {
-      return false; // File does not exist
+      await cb.renameFileIfExists(logFilePath);
     }
   }
 }

@@ -26,7 +26,7 @@ export class createBackup {
    * @param filePath - The path of the file to check.
    * @returns A Promise that resolves to true if the file exists, false otherwise.
    */
-  private async fileExists(filePath: string): Promise<boolean> {
+  public async fileExists(filePath: string): Promise<boolean> {
     try {
       await $.fs.promises.access(filePath);
       return true; // File exists
