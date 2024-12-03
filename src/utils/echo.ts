@@ -1,41 +1,56 @@
 // need mode.ts
 import { config, ConfigLoader } from '#utils/mode';
 
+enum LogColor {
+  Default = '\x1b[0m',
+  Red = '\x1b[31m',
+  Green = '\x1b[32m',
+  Yellow = '\x1b[33m',
+  Blue = '\x1b[34m',
+  Cyan = '\x1b[36m',
+  Magenta = '\x1b[35m',
+}
+
 export class InitEcho extends ConfigLoader {
-  public constructor() {
+  protected constructor() {
     super();
     this.init();
   }
+
   private init(): void {
-    function echo(message: string, ...args: any[]): void {
+    globalThis.echo = this.createEchoFunction();
+  }
+
+  private createEchoFunction(): (message: string, ...args: any[]) => void {
+    return (message: string, ...args: any[]): void => {
       if (config.debug) {
-        let color: string = '\x1b[0m'; // Default color
-        const lowerCaseMessage = message.toLowerCase();
-
-        if (
-          lowerCaseMessage.includes('err') ||
-          lowerCaseMessage.includes('error') ||
-          lowerCaseMessage.includes('throw')
-        ) {
-          color = '\x1b[31m'; // Red for errors
-        } else if (lowerCaseMessage.includes('info')) {
-          color = '\x1b[32m'; // Green for info
-        } else if (lowerCaseMessage.includes('warn')) {
-          color = '\x1b[33m'; // Yellow for warnings
-        } else if (lowerCaseMessage.includes('debug')) {
-          color = '\x1b[34m'; // Blue for debug messages
-        } else if (lowerCaseMessage.includes('success')) {
-          color = '\x1b[36m'; // Cyan for success messages
-        } else if (lowerCaseMessage.includes('core')) {
-          color = '\x1b[35m'; // Magenta for core messages
-        }
-
-        const formattedMessage =
-          args.length > 0 ? `${message} ${args.join(' ')}` : message;
-
-        console.log(`${color}${formattedMessage}\x1b[0m`);
+        const color = this.getLogColor(message);
+        const formattedMessage = this.formatMessage(message, args);
+        console.log(`${color}${formattedMessage}${LogColor.Default}`);
       }
-    }
-    globalThis.echo = echo;
+    };
+  }
+
+  private getLogColor(message: string): string {
+    const lowerCaseMessage = message.toLowerCase();
+    return lowerCaseMessage.includes('err') ||
+      lowerCaseMessage.includes('error') ||
+      lowerCaseMessage.includes('throw')
+      ? LogColor.Red
+      : lowerCaseMessage.includes('info')
+        ? LogColor.Green
+        : lowerCaseMessage.includes('warn')
+          ? LogColor.Yellow
+          : lowerCaseMessage.includes('debug')
+            ? LogColor.Blue
+            : lowerCaseMessage.includes('success')
+              ? LogColor.Cyan
+              : lowerCaseMessage.includes('core')
+                ? LogColor.Magenta
+                : LogColor.Default; // Default color if no match
+  }
+
+  private formatMessage(message: string, args: any[]): string {
+    return args.length > 0 ? `${message} ${args.join(' ')}` : message;
   }
 }

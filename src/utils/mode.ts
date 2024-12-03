@@ -23,17 +23,18 @@ export class ConfigLoader {
         choices: ['express', 'rabbit', 'database'],
         default: 'express',
       },
-    }).argv as unknown as {
-      dev: boolean;
-      debug: boolean;
-      type: 'express' | 'rabbit' | 'database';
-    };
+    }).argv as Config;
 
     config = {
       dev: argv.dev,
       debug: argv.debug,
       type: argv.type,
     };
+
+    this.logConfig();
+  }
+
+  private logConfig(): void {
     console.log(`------------------------------------------`);
     console.log(`Debug mode: ${config.debug}`);
     console.log(`Developer mode: ${config.dev}`);
