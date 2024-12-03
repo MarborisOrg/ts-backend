@@ -14,6 +14,7 @@ type Config = {
   dev: boolean; // Indicates if the application is in developer mode
   debug: boolean; // Indicates if debug mode is enabled
   type: 'express' | 'rabbit' | 'database'; // Specifies the type of application
+  init: boolean;
 };
 
 // Export the configuration object
@@ -43,14 +44,36 @@ export class ConfigLoader {
         choices: ['express', 'rabbit', 'database'], // Allowed application types
         default: 'express', // Default application type
       },
-    }).argv as Config;
+      init: { type: 'boolean', default: false }, // Init flag
+    }).argv as Config; // Cast argv to Config type
 
-    // Assign parsed arguments to the config object
-    config = {
-      dev: argv.dev,
-      debug: argv.debug,
-      type: argv.type,
-    };
+    // Check if --init is used with any other flags
+    if (argv.init && (argv.dev || argv.debug || argv.type !== 'express')) {
+      throw new Error('The --init flag cannot be used with any other flags.');
+    }
+
+    // If --init is used, set config accordingly
+    if (argv.init) {
+      config = {
+        dev: false, // Default value for dev when init is used
+        debug: false, // Default value for debug when init is used
+        type: 'express', // Default type when init is used
+        init: true, // Set init to true
+      };
+    } else if (argv.dev || argv.debug || argv.type) {
+      // Assign parsed arguments to the config object if any other flag is used
+      config = {
+        dev: argv.dev,
+        debug: argv.debug,
+        type: argv.type,
+        init: false, // Set init to false
+      };
+    } else {
+      // If no flags are provided, throw an error and exit
+      throw new Error(
+        'You must use the --init flag or at least one of the other flags (dev, debug, type).'
+      );
+    }
 
     this.logConfig(); // Log the loaded configuration
   }
