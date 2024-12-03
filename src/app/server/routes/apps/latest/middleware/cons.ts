@@ -1,7 +1,9 @@
 import { NextFunction, Request, Response } from 'express';
 
-import { blockIpMsg } from '#config/defaults';
 import { config } from '#config/env_get';
+
+// Export a constant message for blocked IP access
+const blockIpMsg = 'permission denied';
 
 const checkIP = (req: Request, res: Response, next: NextFunction): void => {
   const clientIP = req.ip;

@@ -6,7 +6,7 @@
  * It implements the IEnvConfig and IConfig interfaces to provide structured access to configuration values.
  */
 
-import { config_ns } from '#ts/interfaces';
+import { config_ns } from './env_get.js';
 
 /**
  * Class representing the environment configuration.
@@ -65,6 +65,3 @@ class Config implements config_ns.IConfig {
 
 // Export a singleton instance of the Config class
 export default new Config();
-
-// Export a constant message for blocked IP access
-export const blockIpMsg = 'permission denied';
