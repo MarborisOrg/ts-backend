@@ -1,9 +1,7 @@
 // check and init database
-
 import cuse from './c-use.js';
 
 import MONGO from '#databases/mongo/service';
-// import { dropBooks } from '#databases/mysql/modules/drop';
 import ConnectToMysql from '#databases/mysql/use/index';
 
 export default async function (): Promise<void> {
