@@ -7,12 +7,12 @@ import { localhostMover } from '#app/server/routes/localhostMover';
 import { config } from '#config/env_get';
 import swaggerDocs from '#config/swaggerDocs';
 
-const options = {
-  key: $.fs.readFileSync('keys/private.key'),
-  cert: $.fs.readFileSync('keys/certificate.crt'),
-};
-
 export default function (): void {
+  const options = {
+    key: $.fs.readFileSync('keys/private.key'),
+    cert: $.fs.readFileSync('keys/certificate.crt'),
+  };
+
   // app (express)
   const app = $.express();
 
