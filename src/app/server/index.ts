@@ -21,13 +21,15 @@ export default function (): void {
   } finally {
     loadAllRouter(app)
       .then(function () {
-        function inlineApp(): void {
+        function inlineApp(https: boolean): void {
           echo('Info: Server is running on port: ' + config.PORT);
 
           if ($.config.dev) {
             swaggerDocs(app, config.PORT.toString());
             if ($.config.debug) {
-              void open(`https://127.0.0.1:${config.PORT}/docs`);
+              void open(
+                `${https ? 'https' : 'http'}://127.0.0.1:${config.PORT}/docs`
+              );
             }
           }
         }
@@ -37,11 +39,11 @@ export default function (): void {
             cert: $.fs.readFileSync('keys/certificate.crt'),
           };
           $.https.createServer(options, app).listen(config.PORT, () => {
-            inlineApp();
+            inlineApp(true);
           });
         } else {
           app.listen(config.PORT, () => {
-            inlineApp();
+            inlineApp(false);
           });
         }
       })

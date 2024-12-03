@@ -20,7 +20,13 @@
     "start": "node . --dev --debug --type express",
     "build": "rimraf build && tsc",
     "pretty": "prettier --write \"**/*.{ts,js,mjs,json,md}\"",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "start:pm2": "pm2 start build/index.js --name \"t1-app-service\" -i -1 -- --dev --debug --type express",
+    "start:pm2:server": "pm2 start build/index.js --name \"t1-app-service\" -i max -- --debug --type express",
+    "stop:pm2": "pm2 stop t1-app-service",
+    "restart:pm2": "pm2 restart t1-app-service",
+    "delete:pm2": "pm2 delete t1-app-service",
+    "list:pm2": "pm2 list"
   },
   "engines": {
     "node": ">=20"
@@ -70,6 +76,7 @@
     "eslint-plugin-prettier": "^5.2.1",
     "eslint-plugin-testing-library": "^7.0.0",
     "open-cli": "^8.0.0",
+    "pm2": "^5.4.3",
     "prettier": "^3.4.0",
     "prettier-plugin-organize-imports": "^4.1.0",
     "rimraf": "^6.0.1",
