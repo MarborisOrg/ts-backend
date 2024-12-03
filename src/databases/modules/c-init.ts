@@ -13,8 +13,5 @@ export default async function (): Promise<void> {
     await MONGO();
   } else if (dbUse === 'mysql') {
     await ConnectToMysql();
-    // dropBooks()
-  } else {
-    quit();
   }
 }

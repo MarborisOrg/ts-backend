@@ -6,9 +6,9 @@ import MTProtoApp from '#app/rabbit/mtproto/index';
 import ExpressApp from '#app/server/index';
 
 export default async function (): Promise<void> {
-  await Forker(app, !$.config.dev); // , 2, 2
-  async function app(): Promise<void> {
-    try {
+  try {
+    await Forker(app, !$.config.dev); // , 2, 2
+    async function app(): Promise<void> {
       /**
        * init file for app (express app)
        * repeated on fork (copy)
@@ -28,9 +28,9 @@ export default async function (): Promise<void> {
         //   RabbitApp();
         // })();
       }
-    } catch (error) {
-      log.error(`Error in worker ${process.pid}:`, error);
-      die();
     }
+  } catch (error) {
+    log.error(`Error in worker ${process.pid}:`, error);
+    die();
   }
 }
