@@ -15,6 +15,7 @@ type Config = {
   debug: boolean; // Indicates if debug mode is enabled
   type: 'express' | 'rabbit' | 'database'; // Specifies the type of application
   init: boolean;
+  https: boolean;
 };
 
 // Export the configuration object
@@ -45,6 +46,7 @@ export class ConfigLoader {
         default: 'express', // Default application type
       },
       init: { type: 'boolean', default: false }, // Init flag
+      https: { type: 'boolean', default: false },
     }).argv as Config; // Cast argv to Config type
 
     // Check if --init is used with any other flags
@@ -59,6 +61,7 @@ export class ConfigLoader {
         debug: false, // Default value for debug when init is used
         type: 'express', // Default type when init is used
         init: true, // Set init to true
+        https: false,
       };
     } else if (argv.dev || argv.debug || argv.type) {
       // Assign parsed arguments to the config object if any other flag is used
@@ -67,6 +70,7 @@ export class ConfigLoader {
         debug: argv.debug,
         type: argv.type,
         init: false, // Set init to false
+        https: argv.https,
       };
     } else {
       // If no flags are provided, throw an error and exit

@@ -8,11 +8,6 @@ import { config } from '#config/env_get';
 import swaggerDocs from '#config/swaggerDocs';
 
 export default function (): void {
-  const options = {
-    key: $.fs.readFileSync('keys/private.key'),
-    cert: $.fs.readFileSync('keys/certificate.crt'),
-  };
-
   // app (express)
   const app = $.express();
 
@@ -26,8 +21,7 @@ export default function (): void {
   } finally {
     loadAllRouter(app)
       .then(function () {
-        $.https.createServer(options, app).listen(config.PORT, () => {
-          // app.listen(config.PORT
+        function inlineApp(): void {
           echo('Info: Server is running on port: ' + config.PORT);
 
           if ($.config.dev) {
@@ -36,7 +30,20 @@ export default function (): void {
               void open(`https://127.0.0.1:${config.PORT}/docs`);
             }
           }
-        });
+        }
+        if ($.config.https) {
+          const options = {
+            key: $.fs.readFileSync('keys/private.key'),
+            cert: $.fs.readFileSync('keys/certificate.crt'),
+          };
+          $.https.createServer(options, app).listen(config.PORT, () => {
+            inlineApp();
+          });
+        } else {
+          app.listen(config.PORT, () => {
+            inlineApp();
+          });
+        }
       })
       .catch(function () {
         log.error('unknown error when init app');
