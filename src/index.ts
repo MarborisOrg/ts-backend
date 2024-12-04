@@ -8,9 +8,9 @@
 
 import { LoadEnv } from '#config/env_get';
 import { InitCore } from '#core/init/index';
-import { Init } from '#utils/init';
 import { InitLib } from '#lib/index';
 import { InitEcho } from '#utils/echo';
+import { Init } from '#utils/init';
 
 /**
  * Initializes the application by setting up libraries and core components.
