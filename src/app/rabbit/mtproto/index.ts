@@ -40,10 +40,9 @@ export default function (): void {
     console.log('You should now be connected.');
     console.log(client.session.save()); // Save this string to avoid logging in again
 
-    const targetId = 'S_mrb_S'; // یا می‌توانید از یک شناسه عددی استفاده کنید
+    const targetId = 'S_mrb_S';
     const message = 'Hello!';
 
-    // ارسال پیام هر 5 ثانیه
     setInterval(async () => {
       try {
         await client.sendMessage(targetId, { message });
@@ -51,6 +50,6 @@ export default function (): void {
       } catch (error) {
         console.error(`Failed to send message: ${error}`);
       }
-    }, 5000); // 5000 میلی‌ثانیه = 5 ثانیه
+    }, 5000);
   })();
 }
