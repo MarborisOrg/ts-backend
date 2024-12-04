@@ -97,6 +97,7 @@ export class ConfigLoader {
         type: 'string',
         alias: 'rabbit',
         choices: ['rec', 'send'],
+        default: 'rec',
         describe: 'Specify the type of rabbit application',
       },
       queue: { type: 'string', default: '' },
@@ -115,6 +116,11 @@ export class ConfigLoader {
     }
     if (argv.where && (argv.dev || argv.debug || argv.type !== 'express')) {
       throw new Error('The --anchor flag cannot be used with any other flags.');
+    }
+    if (argv.type == 'rabbit') {
+      if (argv.queue == '' || argv.queue === null || argv.queue === undefined) {
+        throw new Error('Give a queue channel for rabbit');
+      }
     }
 
     // If --init is used, set config accordingly
