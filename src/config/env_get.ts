@@ -32,6 +32,7 @@ export const defaultConfig: config_ns.IEnvConfig = {
   apiId: 27316802,
   apiHash: '00892a1c8cbd812a3bbbf916bcd861b4',
   tbot_token: '7598087160:AAH9-txmznB3ExxUlT0abZUoTu8y7z0aN2Y',
+  amqp: 'amqp://localhost',
 };
 
 export const config: config_ns.Settings = { ...defaultConfig };

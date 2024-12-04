@@ -19,6 +19,7 @@ type Config = {
   anchor: boolean;
   where: boolean;
   rcolor: boolean;
+  queue: string;
   // fast mode ?
 };
 
@@ -91,6 +92,7 @@ export class ConfigLoader {
         default: false,
         describe: 'Enable rcolor',
       },
+      queue: { type: 'string', default: '' },
     }).argv as unknown as Config;
 
     // Check if --init is used with any other flags
@@ -129,6 +131,7 @@ export class ConfigLoader {
       anchor: argv.anchor,
       where: argv.where,
       rcolor: argv.rcolor,
+      queue: argv.queue,
     };
     // } else {
     //   // If no flags are provided, throw an error and exit

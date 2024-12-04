@@ -1,8 +1,11 @@
 import { Telegraf } from 'telegraf';
 
+import { connectToRabbitMQ } from './rabbit_rec/index.js';
+
 import { config } from '#config/env_get';
 
 export default function (): void {
+  void connectToRabbitMQ($.config.queue);
   const bot = new Telegraf(config.tbot_token);
 
   bot.command('oldschool', (ctx) => ctx.reply('Hello'));
