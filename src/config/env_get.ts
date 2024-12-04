@@ -41,7 +41,7 @@ export const config: config_ns.Settings = { ...defaultConfig };
  */
 export class LoadEnv {
   public init(): Promise<void> {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
       const envFilePath = findEnvFileInSubdirectories(whereIsHere());
 
       if (envFilePath) {
