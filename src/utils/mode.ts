@@ -46,8 +46,14 @@ export class ConfigLoader {
         choices: ['express', 'rabbit', 'database'], // Allowed application types
         default: 'express', // Default application type
       },
+      /**
+       * @helpers init
+       */
       init: { type: 'boolean', default: false }, // Init flag
       https: { type: 'boolean', default: false },
+      /**
+       * @helpers anchor
+       */
       anchor: { type: 'boolean', default: false },
     }).argv as Config; // Cast argv to Config type
 

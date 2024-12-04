@@ -1,8 +1,8 @@
 import * as dotenv from 'dotenv';
 import Joi from 'joi';
 
+import { whereIsHere } from '#helpers/whereishere';
 import { findEnvFileInSubdirectories } from '#utils/env_finder';
-import { whereIsHere } from '#utils/whereishere';
 
 export namespace config_ns {
   export type Settings = {
