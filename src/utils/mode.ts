@@ -17,6 +17,7 @@ type Config = {
   init: boolean;
   https: boolean;
   anchor: boolean;
+  where: boolean;
 };
 
 // Export the configuration object
@@ -55,39 +56,51 @@ export class ConfigLoader {
        * @helpers anchor
        */
       anchor: { type: 'boolean', default: false },
+      where: { type: 'boolean', default: false },
     }).argv as Config; // Cast argv to Config type
 
     // Check if --init is used with any other flags
-    if (argv.init && (argv.dev || argv.debug || argv.type !== 'express')) {
+    if (
+      argv.init &&
+      (argv.dev ||
+        argv.debug ||
+        argv.type !== 'express' ||
+        argv.anchor ||
+        argv.where)
+    ) {
       throw new Error('The --init flag cannot be used with any other flags.');
+    }
+    if (argv.where && (argv.dev || argv.debug || argv.type !== 'express')) {
+      throw new Error('The --anchor flag cannot be used with any other flags.');
     }
 
     // If --init is used, set config accordingly
-    if (argv.init) {
-      config = {
-        dev: false, // Default value for dev when init is used
-        debug: false, // Default value for debug when init is used
-        type: 'express', // Default type when init is used
-        init: true, // Set init to true
-        https: false,
-        anchor: false,
-      };
-    } else if (argv.dev || argv.debug || argv.type) {
-      // Assign parsed arguments to the config object if any other flag is used
-      config = {
-        dev: argv.dev,
-        debug: argv.debug,
-        type: argv.type,
-        init: false, // Set init to false
-        https: argv.https,
-        anchor: argv.anchor,
-      };
-    } else {
-      // If no flags are provided, throw an error and exit
-      throw new Error(
-        'You must use the --init flag or at least one of the other flags (dev, debug, type).'
-      );
-    }
+    // if (argv.init) {
+    //   config = {
+    //     dev: false, // Default value for dev when init is used
+    //     debug: false, // Default value for debug when init is used
+    //     type: 'express', // Default type when init is used
+    //     init: true, // Set init to true
+    //     https: false,
+    //     anchor: false,
+    //   };
+    // } else if (argv.dev || argv.debug || argv.type) {
+    // Assign parsed arguments to the config object if any other flag is used
+    config = {
+      dev: argv.dev,
+      debug: argv.debug,
+      type: argv.type,
+      init: argv.init, // Set init to false
+      https: argv.https,
+      anchor: argv.anchor,
+      where: argv.where,
+    };
+    // } else {
+    //   // If no flags are provided, throw an error and exit
+    //   throw new Error(
+    //     'You must use the --init flag or at least one of the other flags (dev, debug, type).'
+    //   );
+    // }
 
     this.logConfig(); // Log the loaded configuration
   }
