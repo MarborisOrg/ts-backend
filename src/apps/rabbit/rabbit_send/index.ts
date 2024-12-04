@@ -3,7 +3,7 @@ import amqp from 'amqplib';
 export const sendMessage = async (
   message: object,
   queue: string,
-  delay: number = 0,
+  delayMs: number = 0,
   retries = 3
 ): Promise<void> => {
   let connection;
@@ -19,7 +19,7 @@ export const sendMessage = async (
       arguments: {
         'x-dead-letter-exchange': '',
         'x-dead-letter-routing-key': queue,
-        'x-message-ttl': delay,
+        'x-message-ttl': delayMs,
       },
     });
 
@@ -32,7 +32,7 @@ export const sendMessage = async (
     console.warn('Error sending message:', err);
     if (retries > 0) {
       console.log(`Retrying... (${3 - retries + 1})`);
-      await sendMessage(message, queue, delay, retries - 1);
+      await sendMessage(message, queue, delayMs, retries - 1);
     }
   } finally {
     if (connection) await connection.close();
