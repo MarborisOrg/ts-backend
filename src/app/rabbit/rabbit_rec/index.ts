@@ -16,7 +16,7 @@ export const connectToRabbitMQ = async (queue: string): Promise<void> => {
     await channel.prefetch(1);
     await channel.consume(
       queue,
-      async (message) => {
+      (message) => {
         if (message) {
           const msgContent = JSON.parse(message.content.toString());
           console.log(" [x] Received '%s' from queue '%s'", msgContent, queue);
