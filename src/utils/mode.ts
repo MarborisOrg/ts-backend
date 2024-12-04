@@ -18,6 +18,7 @@ type Config = {
   https: boolean;
   anchor: boolean;
   where: boolean;
+  // fast mode ?
 };
 
 // Export the configuration object
