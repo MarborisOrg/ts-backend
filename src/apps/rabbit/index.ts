@@ -16,7 +16,7 @@ export default function (): void {
       source: 'source_name',
       module: 'module_name',
     };
-    void sendMessage(text, $.config.queue).then(function () {
+    void sendMessage(text, $.config.queue, 3000).then(function () {
       process.exit();
     });
   }
