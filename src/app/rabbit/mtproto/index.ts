@@ -2,9 +2,9 @@ import readline from 'readline';
 import { TelegramClient } from 'telegram/index.js';
 import { StringSession } from 'telegram/sessions/index.js';
 
+import { config } from '#config/env_get';
+
 export default function (): void {
-  const apiId = 27316802;
-  const apiHash = '00892a1c8cbd812a3bbbf916bcd861b4';
   const stringSession = new StringSession(''); // fill this later with the value from session.save()
 
   const rl = readline.createInterface({
@@ -14,9 +14,14 @@ export default function (): void {
 
   void (async (): Promise<void> => {
     console.log('Loading interactive example...');
-    const client = new TelegramClient(stringSession, apiId, apiHash, {
-      connectionRetries: 5,
-    });
+    const client = new TelegramClient(
+      stringSession,
+      config.apiId,
+      config.apiHash,
+      {
+        connectionRetries: 5,
+      }
+    );
     await client.start({
       phoneNumber: async () =>
         new Promise((resolve) =>

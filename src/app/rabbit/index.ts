@@ -1,7 +1,9 @@
 import { Telegraf } from 'telegraf';
 
+import { config } from '#config/env_get';
+
 export default function (): void {
-  const bot = new Telegraf('7598087160:AAH9-txmznB3ExxUlT0abZUoTu8y7z0aN2Y');
+  const bot = new Telegraf(config.tbot_token);
 
   bot.command('oldschool', (ctx) => ctx.reply('Hello'));
   bot.command('hipster', Telegraf.reply('λ'));

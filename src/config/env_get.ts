@@ -29,6 +29,9 @@ export const defaultConfig: config_ns.IEnvConfig = {
   mongo_url: 'mongodb://localhost:27017/',
   tc_book_name: 'tc',
   database_use: 'mongo',
+  apiId: 27316802,
+  apiHash: '00892a1c8cbd812a3bbbf916bcd861b4',
+  tbot_token: '7598087160:AAH9-txmznB3ExxUlT0abZUoTu8y7z0aN2Y',
 };
 
 export const config: config_ns.Settings = { ...defaultConfig };
@@ -44,8 +47,7 @@ export class LoadEnv {
       if (envFilePath) {
         dotenv.config({ path: envFilePath });
       } else {
-        console.error('.env file not found.'); // Log error
-        reject();
+        assert('.env file not found.'); // Log error
         return;
       }
 
@@ -66,8 +68,7 @@ export class LoadEnv {
       const { error, value } = schema.validate(process.env);
 
       if (error) {
-        console.error(`Configuration error: ${error.message}`);
-        reject();
+        assert(`Configuration error: ${error.message}`);
         return;
       }
 

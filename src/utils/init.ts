@@ -43,6 +43,10 @@ database_name="mrb"
 
 ## Allowed Ips ( Just number address (no domain support yet))
 ALLOWED_IPS=127.0.0.1,localhost
+
+apiId=27316802
+apiHash="00892a1c8cbd812a3bbbf916bcd861b4"
+tbot_token="7598087160:AAH9-txmznB3ExxUlT0abZUoTu8y7z0aN2Y"
 `;
 
         const currentDir = process.cwd();
