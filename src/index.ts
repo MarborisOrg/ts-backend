@@ -9,6 +9,7 @@
 import { LoadEnv } from '#config/env_get';
 import { InitCore } from '#core/init/index';
 import { Init } from '#helpers/init';
+import { where } from '#helpers/where';
 import { InitLib } from '#lib/index';
 import { InitEcho } from '#utils/echo';
 
@@ -79,6 +80,7 @@ void ((): void => {
        */
       new InitCore();
       await new Init().init();
+      where();
       this.#run();
     }
   })();

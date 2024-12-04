@@ -9,3 +9,11 @@ export function whereIsHere(resolvePath: string = ''): string {
   }
   return dirName;
 }
+
+export function where(): void {
+  try {
+    console.log(whereIsHere());
+  } finally {
+    process.exit();
+  }
+}
