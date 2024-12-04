@@ -2,10 +2,9 @@ import { Express } from 'express';
 import swaggerJsdoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
 
-export default function (app: Express, port: string): void {
-  const __filename = $.url.fileURLToPath(import.meta.url);
-  const dirname = $.path.dirname(__filename);
+import { whereIsHere } from '../utils/whereishere.js';
 
+export default function (app: Express, port: string): void {
   const options = {
     swaggerDefinition: {
       swagger: '2.0', // api version (changed to 2.0)
@@ -25,7 +24,7 @@ export default function (app: Express, port: string): void {
       schemes: ['https', 'http'], // supported schemes
     },
     // apis: ['**/*.ts'], // ts files over .js file in build
-    apis: [$.path.resolve(dirname, '../../**/*.ts')],
+    apis: [whereIsHere('**/*.ts')],
   };
 
   const swaggerSpec = swaggerJsdoc(options);
