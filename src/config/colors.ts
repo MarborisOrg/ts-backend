@@ -54,18 +54,3 @@ export enum LogColor {
   BrightOrange = '\x1b[38;5;208m',
   BrightPink = '\x1b[38;5;201m',
 }
-
-// Example usage
-console.log(`${LogColor.LightPink}This is light pink text${LogColor.Default}`);
-console.log(
-  `${LogColor.LightOrange}This is light orange text${LogColor.Default}`
-);
-console.log(
-  `${LogColor.LightYellowGreen}This is light yellow-green text${LogColor.Default}`
-);
-console.log(
-  `${LogColor.LightSkyBlue}${LogColor.Bold}This is bold light sky blue text${LogColor.Default}`
-);
-console.log(
-  `${LogColor.LightTeal}${LogColor.Underline}This is underlined light teal text${LogColor.Default}`
-);
