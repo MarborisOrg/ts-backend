@@ -1,28 +1,31 @@
-import { Telegraf } from 'telegraf';
+// import { Telegraf } from 'telegraf';
 
 import { connectToRabbitMQ } from './rabbit_rec/index.js';
 
-import { config } from '#config/env_get';
+// import { config } from '#config/env_get';
 
 export default function (): void {
-  void connectToRabbitMQ($.config.queue);
-  const bot = new Telegraf(config.tbot_token);
+  if ($.config.rabbit == 'rec') {
+    void connectToRabbitMQ($.config.queue);
+  }
 
-  bot.command('oldschool', (ctx) => ctx.reply('Hello'));
-  bot.command('hipster', Telegraf.reply('λ'));
+  // const bot = new Telegraf(config.tbot_token);
 
-  const sendMessageToUser = (userId: number): void => {
-    setInterval(() => {
-      echo('Sended');
-      void bot.telegram.sendMessage(userId, 'Test');
-    }, 5000);
-  };
+  // bot.command('oldschool', (ctx) => ctx.reply('Hello'));
+  // bot.command('hipster', Telegraf.reply('λ'));
 
-  sendMessageToUser(7366772920);
+  // const sendMessageToUser = (userId: number): void => {
+  //   setInterval(() => {
+  //     echo('Sended');
+  //     void bot.telegram.sendMessage(userId, 'Test');
+  //   }, 5000);
+  // };
 
-  void bot.launch();
+  // sendMessageToUser(7366772920);
 
-  // Enable graceful stop
-  process.once('SIGINT', () => bot.stop('SIGINT'));
-  process.once('SIGTERM', () => bot.stop('SIGTERM'));
+  // void bot.launch();
+
+  // // Enable graceful stop
+  // process.once('SIGINT', () => bot.stop('SIGINT'));
+  // process.once('SIGTERM', () => bot.stop('SIGTERM'));
 }

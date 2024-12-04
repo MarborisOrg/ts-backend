@@ -19,6 +19,7 @@ type Config = {
   anchor: boolean;
   where: boolean;
   rcolor: boolean;
+  rabbit: 'send' | 'rec'; // Specifies the type of rabbit application
   queue: string;
   // fast mode ?
 };
@@ -92,6 +93,12 @@ export class ConfigLoader {
         default: false,
         describe: 'Enable rcolor',
       },
+      R: {
+        type: 'string',
+        alias: 'rabbit',
+        choices: ['rec', 'send'],
+        describe: 'Specify the type of rabbit application',
+      },
       queue: { type: 'string', default: '' },
     }).argv as unknown as Config;
 
@@ -132,6 +139,7 @@ export class ConfigLoader {
       where: argv.where,
       rcolor: argv.rcolor,
       queue: argv.queue,
+      rabbit: argv.rabbit,
     };
     // } else {
     //   // If no flags are provided, throw an error and exit
