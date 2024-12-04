@@ -7,6 +7,8 @@
  * It sets up the log directory and ensures that it exists before logging operations.
  */
 
+import { whereIsHere } from '#utils/whereishere';
+
 export let logDir: string; // Directory path for log files
 export let keysDir: string; // Directory path for keys files
 
@@ -16,8 +18,8 @@ export class InitReq {
    * Initializes the log directory path.
    */
   public constructor() {
-    logDir = $.path.join('log'); // Set the log directory to 'log'
-    keysDir = $.path.join('keys');
+    logDir = whereIsHere('log'); // Set the log directory to 'log'
+    keysDir = whereIsHere('keys'); // Set the keys directory to 'keys'
   }
 
   /**

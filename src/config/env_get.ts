@@ -2,6 +2,7 @@ import * as dotenv from 'dotenv';
 import Joi from 'joi';
 
 import { findEnvFileInSubdirectories } from '#utils/env_finder';
+import { whereIsHere } from '#utils/whereishere';
 
 export namespace config_ns {
   export type Settings = {
@@ -38,7 +39,7 @@ export const config: config_ns.Settings = { ...defaultConfig };
 export class LoadEnv {
   public init(): Promise<void> {
     return new Promise((resolve, reject) => {
-      const envFilePath = findEnvFileInSubdirectories(process.cwd());
+      const envFilePath = findEnvFileInSubdirectories(whereIsHere());
 
       if (envFilePath) {
         dotenv.config({ path: envFilePath });
