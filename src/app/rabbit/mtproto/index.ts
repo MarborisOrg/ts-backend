@@ -5,7 +5,7 @@ import { StringSession } from 'telegram/sessions/index.js';
 import { config } from '#config/env_get';
 
 export default function (): void {
-  const stringSession = new StringSession(''); // fill this later with the value from session.save()
+  const stringSession = new StringSession(config.MTSession); // fill this later with the value from session.save()
 
   const rl = readline.createInterface({
     input: process.stdin,

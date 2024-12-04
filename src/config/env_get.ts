@@ -54,7 +54,12 @@ export class LoadEnv {
       const schema = Joi.object({
         ...Object.keys(defaultConfig).reduce<Record<string, Joi.Schema>>(
           (acc, key) => {
-            acc[key] = Joi.any().default(defaultConfig[key]);
+            acc[key] = Joi.any().custom((value, _helpers) => {
+              if (value === undefined || value === '') {
+                return defaultConfig[key];
+              }
+              return value;
+            });
             return acc;
           },
           {}
