@@ -11,9 +11,8 @@ export function whereIsHere(resolvePath: string = ''): string {
 }
 
 export function where(): void {
-  try {
+  if ($.config.where) {
     console.log(whereIsHere());
-  } finally {
     process.exit();
   }
 }
