@@ -59,6 +59,34 @@ export enum LogColor {
   Bold = '\x1b[1m',
   Underline = '\x1b[4m',
   Inverse = '\x1b[7m',
+
+  // Dark colors
+  DarkRed = '\x1b[38;5;88m',
+  DarkGreen = '\x1b[38;5;22m',
+  DarkYellow = '\x1b[38;5;136m',
+  DarkBlue = '\x1b[38;5;24m',
+  DarkMagenta = '\x1b[38;5;125m',
+  DarkCyan = '\x1b[38;5;36m',
+  DarkWhite = '\x1b[38;5;250m',
+
+  // Additional bright colors
+  BrightOrange = '\x1b[38;5;208m',
+  BrightPink = '\x1b[38;5;201m',
+
+  // Additional background colors
+  BgDarkRed = '\x1b[48;5;88m',
+  BgDarkGreen = '\x1b[48;5;22m',
+  BgDarkYellow = '\x1b[48;5;136m',
+  BgDarkBlue = '\x1b[48;5;24m',
+  BgDarkMagenta = '\x1b[48;5;125m',
+  BgDarkCyan = '\x1b[48;5;36m',
+  BgDarkWhite = '\x1b[48;5;250m',
+
+  // Additional combined colors
+  LightSeaGreen = '\x1b[38;5;37m',
+  LightSlateGray = '\x1b[38;5;245m',
+  LightSalmon = '\x1b[38;5;210m',
+  LightSlateBlue = '\x1b[38;5;63m',
 }
 
 // Example usage
