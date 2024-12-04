@@ -10,8 +10,7 @@
 
 import { InitApp } from './init/app.js';
 
-// import RabbitApp from '#app/rabbit/index';
-import MTProtoApp from '#app/rabbit/mtproto/index';
+import RabbitApp from '#app/rabbit/index';
 import ExpressApp from '#app/server/index';
 
 /**
@@ -27,20 +26,17 @@ export default async function (): Promise<void> {
      * Init file for app (express app)
      * This function is repeated on fork (copy) for each worker process.
      */
-    // Wait for the database connection to complete
-    await new InitApp().initialize();
-
     // Now call core (expressApp)
     if ($.config.type === 'express') {
+      // Wait for the database connection to complete
+      await new InitApp().initialize();
       ExpressApp(); // Initialize the Express application
     }
+
     if ($.config.type === 'rabbit') {
       void (function (): void {
-        MTProtoApp(); // Initialize the MTProto application
+        RabbitApp(); // Uncomment to initialize the Rabbit application
       })();
-      // void (function (): void {
-      //   RabbitApp(); // Uncomment to initialize the Rabbit application
-      // })();
     }
   } catch (error) {
     log.error(`Error in worker ${process.pid}:`, error); // Log any errors that occur during initialization
