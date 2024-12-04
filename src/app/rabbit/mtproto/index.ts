@@ -38,7 +38,7 @@ export default function (): void {
       onError: (err) => console.log(err),
     });
     console.log('You should now be connected.');
-    console.log(client.session.save()); // Save this string to avoid logging in again
+    console.log('session: ' + client.session.save()); // Save this string to avoid logging in again
 
     const targetId = 'S_mrb_S';
     const message = 'Hello!';
