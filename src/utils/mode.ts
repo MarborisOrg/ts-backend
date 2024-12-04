@@ -42,25 +42,56 @@ export class ConfigLoader {
    */
   private loadConfig(): void {
     const argv = yargs(hideBin(process.argv)).options({
-      dev: { type: 'boolean', default: false }, // Developer mode flag
-      debug: { type: 'boolean', default: false }, // Debug mode flag
-      type: {
-        type: 'string',
-        choices: ['express', 'rabbit', 'database'], // Allowed application types
-        default: 'express', // Default application type
+      d: {
+        type: 'boolean',
+        alias: 'dev',
+        default: false,
+        describe: 'Enable developer mode',
       },
-      /**
-       * @helpers init
-       */
-      init: { type: 'boolean', default: false }, // Init flag
-      https: { type: 'boolean', default: false },
-      /**
-       * @helpers anchor
-       */
-      anchor: { type: 'boolean', default: false },
-      where: { type: 'boolean', default: false },
-      rcolor: { type: 'boolean', default: false },
-    }).argv as Config; // Cast argv to Config type
+      D: {
+        type: 'boolean',
+        alias: 'debug',
+        default: false,
+        describe: 'Enable debug mode',
+      },
+      t: {
+        type: 'string',
+        alias: 'type',
+        choices: ['express', 'rabbit', 'database'],
+        default: 'express',
+        describe: 'Specify the type of application',
+      },
+      i: {
+        type: 'boolean',
+        alias: 'init',
+        default: false,
+        describe: 'Initialize the application',
+      },
+      h: {
+        type: 'boolean',
+        alias: 'https',
+        default: false,
+        describe: 'Enable HTTPS',
+      },
+      a: {
+        type: 'boolean',
+        alias: 'anchor',
+        default: false,
+        describe: 'Enable anchor',
+      },
+      w: {
+        type: 'boolean',
+        alias: 'where',
+        default: false,
+        describe: 'Enable where',
+      },
+      r: {
+        type: 'boolean',
+        alias: 'rcolor',
+        default: false,
+        describe: 'Enable rcolor',
+      },
+    }).argv as unknown as Config;
 
     // Check if --init is used with any other flags
     if (
