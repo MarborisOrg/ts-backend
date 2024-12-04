@@ -24,25 +24,6 @@ export enum LogColor {
   BrightCyan = '\x1b[96m',
   BrightWhite = '\x1b[97m',
 
-  // Background colors
-  BgRed = '\x1b[41m',
-  BgGreen = '\x1b[42m',
-  BgYellow = '\x1b[43m',
-  BgBlue = '\x1b[44m',
-  BgMagenta = '\x1b[45m',
-  BgCyan = '\x1b[46m',
-  BgWhite = '\x1b[47m',
-  BgBlack = '\x1b[40m',
-
-  // Bright background colors
-  BgBrightRed = '\x1b[101m',
-  BgBrightGreen = '\x1b[102m',
-  BgBrightYellow = '\x1b[103m',
-  BgBrightBlue = '\x1b[104m',
-  BgBrightMagenta = '\x1b[105m',
-  BgBrightCyan = '\x1b[106m',
-  BgBrightWhite = '\x1b[107m',
-
   // Combined colors
   LightPink = '\x1b[38;5;200m',
   LightOrange = '\x1b[38;5;214m',
@@ -72,21 +53,6 @@ export enum LogColor {
   // Additional bright colors
   BrightOrange = '\x1b[38;5;208m',
   BrightPink = '\x1b[38;5;201m',
-
-  // Additional background colors
-  BgDarkRed = '\x1b[48;5;88m',
-  BgDarkGreen = '\x1b[48;5;22m',
-  BgDarkYellow = '\x1b[48;5;136m',
-  BgDarkBlue = '\x1b[48;5;24m',
-  BgDarkMagenta = '\x1b[48;5;125m',
-  BgDarkCyan = '\x1b[48;5;36m',
-  BgDarkWhite = '\x1b[48;5;250m',
-
-  // Additional combined colors
-  LightSeaGreen = '\x1b[38;5;37m',
-  LightSlateGray = '\x1b[38;5;245m',
-  LightSalmon = '\x1b[38;5;210m',
-  LightSlateBlue = '\x1b[38;5;63m',
 }
 
 // Example usage
@@ -96,9 +62,6 @@ console.log(
 );
 console.log(
   `${LogColor.LightYellowGreen}This is light yellow-green text${LogColor.Default}`
-);
-console.log(
-  `${LogColor.BgBrightBlue}${LogColor.White}This is white text on a bright blue background${LogColor.Default}`
 );
 console.log(
   `${LogColor.LightSkyBlue}${LogColor.Bold}This is bold light sky blue text${LogColor.Default}`

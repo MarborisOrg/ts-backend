@@ -18,6 +18,7 @@ type Config = {
   https: boolean;
   anchor: boolean;
   where: boolean;
+  rcolor: boolean;
   // fast mode ?
 };
 
@@ -58,6 +59,7 @@ export class ConfigLoader {
        */
       anchor: { type: 'boolean', default: false },
       where: { type: 'boolean', default: false },
+      rcolor: { type: 'boolean', default: false },
     }).argv as Config; // Cast argv to Config type
 
     // Check if --init is used with any other flags
@@ -95,6 +97,7 @@ export class ConfigLoader {
       https: argv.https,
       anchor: argv.anchor,
       where: argv.where,
+      rcolor: argv.rcolor,
     };
     // } else {
     //   // If no flags are provided, throw an error and exit
