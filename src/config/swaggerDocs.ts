@@ -2,7 +2,7 @@ import { Express } from 'express';
 import swaggerJsdoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
 
-import { whereIsHere } from '../helpers/whereishere.js';
+import { whereIsHere } from '../helpers/where.js';
 
 export default function (app: Express, port: string): void {
   const options = {

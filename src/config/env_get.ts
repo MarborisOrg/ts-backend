@@ -1,7 +1,7 @@
 import * as dotenv from 'dotenv';
 import Joi from 'joi';
 
-import { whereIsHere } from '#helpers/whereishere';
+import { whereIsHere } from '#helpers/where';
 import { findEnvFileInSubdirectories } from '#utils/env_finder';
 
 export namespace config_ns {

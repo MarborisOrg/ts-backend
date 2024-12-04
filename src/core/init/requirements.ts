@@ -7,7 +7,7 @@
  * It sets up the log directory and ensures that it exists before logging operations.
  */
 
-import { whereIsHere } from '#helpers/whereishere';
+import { whereIsHere } from '#helpers/where';
 
 export let logDir: string; // Directory path for log files
 export let keysDir: string; // Directory path for keys files
