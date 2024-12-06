@@ -18,4 +18,4 @@ export { default as cuse } from '#databases/modules/c-use';
 // Re-exporting the application configuration object
 export { config } from '#utils/mode';
 
-export { default as env } from '#config/env.service';
+export { default as env } from '#env.config.service';
