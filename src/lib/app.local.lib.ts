@@ -10,7 +10,7 @@
 export { HttpStatus } from '#apps/server/routes/config/status';
 
 // Re-exporting the core module for the main application functionality
-export { default as core } from '#core/index';
+export { default as core } from '#core/core';
 
 // Re-exporting the 'cuse' module for database interactions
 export { default as cuse } from '#databases/modules/c-use';

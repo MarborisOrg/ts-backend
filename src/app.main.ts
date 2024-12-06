@@ -8,7 +8,7 @@
 
 import { Init } from '#app.init';
 import { where } from '#app.where';
-import { InitCore } from '#core/init/index';
+import { InitCore } from '#core/core.init';
 import { InitLib } from '#lib/app.global.lib.module';
 import { InitEcho } from '#log.echo.module';
 

@@ -7,9 +7,9 @@
  * It loads requirements, sets up global utilities, checks log files, and configures exit handlers.
  */
 
+import { InitReq } from '#core/core.requirement';
 import { InitGlobal } from '#core/global/core.global.init';
-import { InitReq } from '#core/init/requirements';
-import { LogFileChecker } from '#core/misc/logBakChecker';
+import { LogFileChecker } from '#core/utils/core.log.util.check';
 
 export class InitCore {
   /**
@@ -73,7 +73,7 @@ export class InitCore {
    */
   private setupExitHandler(): void {
     try {
-      void import('#core/misc/onexit'); // Import exit handler module
+      void import('#core/core.process'); // Import exit handler module
     } catch (error) {
       echo('Error setting up exit handler:', error); // Log any errors encountered
     }

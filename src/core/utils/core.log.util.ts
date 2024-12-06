@@ -1,6 +1,6 @@
 import winston from 'winston';
 
-import { logDir } from '#core/init/requirements';
+import { logDir } from '#core/core.requirement';
 
 export interface CustomLogger extends winston.Logger {
   core: (message: string | object) => void;

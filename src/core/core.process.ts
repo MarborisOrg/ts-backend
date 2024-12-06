@@ -7,7 +7,7 @@
  * It listens for exit signals and performs necessary cleanup tasks before the application closes.
  */
 
-import { freeCore } from '#core/free/core.free';
+import { freeCore } from '#core/core.free';
 
 /**
  * Pauses execution for a specified number of milliseconds.

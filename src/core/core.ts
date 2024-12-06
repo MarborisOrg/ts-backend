@@ -8,7 +8,7 @@
  * It supports different application types, including Express and Rabbit.
  */
 
-import { InitApp } from './init/app.js';
+import { InitApp } from './core.main.init.js';
 
 import RabbitApp from '#apps/rabbit/index';
 import ExpressApp from '#apps/server/index';

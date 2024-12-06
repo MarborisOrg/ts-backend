@@ -8,7 +8,7 @@
  * The class checks the log files at regular intervals.
  */
 
-import { logDir } from '#core/init/requirements';
+import { logDir } from '#core/core.requirement';
 import { createBackup } from '#file.backup';
 
 const __1M__ = 1 * 1024 * 1024; // 1MB
