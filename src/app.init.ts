@@ -2,7 +2,7 @@ import { exec } from 'child_process';
 import { createInterface } from 'readline';
 
 import { keysDir } from '#core/init/requirements';
-import { createBackup } from '#utils/file_backup';
+import { createBackup } from '#file.backup';
 
 export class Init {
   public async init(): Promise<void> {

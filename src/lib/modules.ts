@@ -16,6 +16,6 @@ export { default as core } from '#core/index';
 export { default as cuse } from '#databases/modules/c-use';
 
 // Re-exporting the application configuration object
-export { config } from '#utils/mode';
+export { config } from '#app.main.arg';
 
 export { default as env } from '#env.config.service';

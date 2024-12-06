@@ -9,7 +9,7 @@
  */
 
 import { logDir } from '#core/init/requirements';
-import { createBackup } from '#utils/file_backup';
+import { createBackup } from '#file.backup';
 
 const __1M__ = 1 * 1024 * 1024; // 1MB
 const __05M__ = 0.5 * 1024 * 1024; // 0.5MB

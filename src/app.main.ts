@@ -6,9 +6,9 @@
  * This module sets up the core components and libraries required for the application to run.
  */
 
+import { Init } from '#app.init';
+import { where } from '#app.where';
 import { InitCore } from '#core/init/index';
-import { Init } from '#helpers/init';
-import { where } from '#helpers/where';
 import { InitLib } from '#lib/index';
 import { InitEcho } from '#log.echo.module';
 

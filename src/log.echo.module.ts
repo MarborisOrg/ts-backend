@@ -7,8 +7,8 @@
  */
 
 // Importing necessary utilities for configuration loading
+import { config, ConfigLoader } from '#app.main.arg';
 import { LogColor } from '#log.color.enum';
-import { config, ConfigLoader } from '#utils/mode';
 
 /**
  * Class responsible for initializing the echo functionality for logging.
