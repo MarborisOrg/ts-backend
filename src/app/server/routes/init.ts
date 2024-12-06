@@ -7,8 +7,8 @@ import express, { Express } from 'express';
 import { logMiddleware } from '#app/server/routes/apps/latest/middleware/log';
 import { responseSentMiddleware } from '#app/server/routes/apps/latest/middleware/race/resSentRace';
 import { timeoutMiddleware } from '#app/server/routes/apps/latest/middleware/race/timeRace';
-import { corsOptions } from '#config/cors';
-import { helmetConfig } from '#config/helmet';
+import { corsOptions } from '#app/server/server.cors.config';
+import { helmetConfig } from '#app/server/server.helmet.config';
 
 export function initApp(app: Express): void {
   try {

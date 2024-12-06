@@ -9,7 +9,7 @@
 
 import mongoose from 'mongoose';
 
-import { mongo_ns } from '#database.mongo.collection.type';
+import { mongo_ns } from '#databases/database.mongo.collection.type';
 
 export class ItemDelete {
   private readonly itemModel;
