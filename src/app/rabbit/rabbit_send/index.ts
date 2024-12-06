@@ -1,7 +1,5 @@
 import amqp from 'amqplib';
 
-import { env_config } from '#config/env.service';
-
 export const sendMessage = async (
   message: object,
   queue: string,
@@ -9,7 +7,7 @@ export const sendMessage = async (
 ): Promise<void> => {
   let connection;
   try {
-    connection = await amqp.connect(env_config.amqp);
+    connection = await amqp.connect($.env.config.amqp);
     const channel = await connection.createChannel();
 
     await channel.assertQueue(queue, { durable: true });

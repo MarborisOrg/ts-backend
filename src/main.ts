@@ -6,7 +6,6 @@
  * This module sets up the core components and libraries required for the application to run.
  */
 
-import { LoadEnv } from '#config/env.service';
 import { InitCore } from '#core/init/index';
 import { Init } from '#helpers/init';
 import { where } from '#helpers/where';
@@ -58,7 +57,7 @@ void ((): void => {
      */
     #run(): void {
       echo('info: Running the application...');
-      void new LoadEnv()
+      $.env
         .init()
         .then(function () {
           void $.core();

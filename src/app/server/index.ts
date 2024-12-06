@@ -4,7 +4,7 @@ import open from 'open';
 import loadAllRouter from '#app/server/routes/index';
 import { initApp } from '#app/server/routes/init';
 import { localhostMover } from '#app/server/routes/localhostMover';
-import { env_config } from '#config/env.service';
+
 import swaggerDocs from '#config/swaggerDocs';
 
 export default function (): void {
@@ -22,13 +22,13 @@ export default function (): void {
     loadAllRouter(app)
       .then(function () {
         function inlineApp(https: boolean): void {
-          echo('Info: Server is running on port: ' + env_config.PORT);
+          echo('Info: Server is running on port: ' + $.env.config.PORT);
 
           if ($.config.dev) {
-            swaggerDocs(app, env_config.PORT.toString());
+            swaggerDocs(app, $.env.config.PORT.toString());
             if ($.config.debug) {
               void open(
-                `${https ? 'https' : 'http'}://127.0.0.1:${env_config.PORT}/docs`
+                `${https ? 'https' : 'http'}://127.0.0.1:${$.env.config.PORT}/docs`
               );
             }
           }
@@ -38,11 +38,11 @@ export default function (): void {
             key: $.fs.readFileSync('keys/private.key'),
             cert: $.fs.readFileSync('keys/certificate.crt'),
           };
-          $.https.createServer(options, app).listen(env_config.PORT, () => {
+          $.https.createServer(options, app).listen($.env.config.PORT, () => {
             inlineApp(true);
           });
         } else {
-          app.listen(env_config.PORT, () => {
+          app.listen($.env.config.PORT, () => {
             inlineApp(false);
           });
         }

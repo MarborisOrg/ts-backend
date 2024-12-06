@@ -1,10 +1,8 @@
 import amqp from 'amqplib';
 
-import { env_config } from '#config/env.service';
-
 export const connectToRabbitMQ = async (queue: string): Promise<void> => {
   try {
-    const connection = await amqp.connect(env_config.amqp);
+    const connection = await amqp.connect($.env.config.amqp);
     const channel = await connection.createChannel();
     await channel.assertQueue(queue, { durable: true });
 

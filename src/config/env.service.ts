@@ -2,7 +2,7 @@ import * as dotenv from 'dotenv';
 import Joi from 'joi';
 
 import { whereIsHere } from '#helpers/where';
-import { findEnvFileInSubdirectories } from '#utils/env_finder';
+import { config } from '#utils/mode';
 
 namespace config_ns {
   export type Settings = {
@@ -19,30 +19,30 @@ namespace config_ns {
   };
 }
 
-export const defaultConfig: config_ns.IEnvConfig = {
-  PORT: 8080,
-  mysql_sv: 'localhost',
-  mysql_user: 'root',
-  mysql_password: '',
-  database_name: 'sp',
-  mongo_url: 'mongodb://localhost:27017/',
-  tc_book_name: 'tc',
-  database_use: 'mongo',
-  apiId: 27316802,
-  apiHash: '00892a1c8cbd812a3bbbf916bcd861b4',
-  tbot_token: '7598087160:AAH9-txmznB3ExxUlT0abZUoTu8y7z0aN2Y',
-  amqp: 'amqp://localhost',
-};
-
-export const env_config: config_ns.Settings = { ...defaultConfig };
-
 /**
  * Class responsible for loading environment variables and validating them.
  */
-export class LoadEnv {
+export class EnvService {
+  public defaults: config_ns.IEnvConfig = {
+    PORT: 8080,
+    mysql_sv: 'localhost',
+    mysql_user: 'root',
+    mysql_password: '',
+    database_name: 'sp',
+    mongo_url: 'mongodb://localhost:27017/',
+    tc_book_name: 'tc',
+    database_use: 'mongo',
+    apiId: 27316802,
+    apiHash: '00892a1c8cbd812a3bbbf916bcd861b4',
+    tbot_token: '7598087160:AAH9-txmznB3ExxUlT0abZUoTu8y7z0aN2Y',
+    amqp: 'amqp://localhost',
+  };
+
+  public config: config_ns.Settings = { ...this.defaults };
+
   public init(): Promise<void> {
     return new Promise((resolve) => {
-      const envFilePath = findEnvFileInSubdirectories(whereIsHere());
+      const envFilePath = this.findEnvFileInSubdirectories(whereIsHere());
 
       if (envFilePath) {
         dotenv.config({ path: envFilePath });
@@ -52,11 +52,11 @@ export class LoadEnv {
       }
 
       const schema = Joi.object({
-        ...Object.keys(defaultConfig).reduce<Record<string, Joi.Schema>>(
+        ...Object.keys(this.defaults).reduce<Record<string, Joi.Schema>>(
           (acc, key) => {
             acc[key] = Joi.any().custom((value, _helpers) => {
               if (value === undefined || value === '') {
-                return defaultConfig[key];
+                return this.defaults[key];
               }
               return value;
             });
@@ -77,13 +77,47 @@ export class LoadEnv {
         return;
       }
 
-      Object.assign(env_config, value);
-      env_config.ALLOWED_IPS = value.ALLOWED_IPS.split(',').filter(Boolean); // Split allowed IPs into an array
+      Object.assign(this.config, value);
+      this.config.ALLOWED_IPS = value.ALLOWED_IPS.split(',').filter(Boolean); // Split allowed IPs into an array
 
       resolve();
     });
   }
+
+  /**
+   * Searches for a .env file in the specified directory and its subdirectories.
+   * The filename is determined based on the development mode.
+   *
+   * @param {string} startDir - The directory to start the search from.
+   * @returns {string | null} - The path to the found .env file or null if not found.
+   */
+  private findEnvFileInSubdirectories = (startDir: string): string | null => {
+    const files = $.fs.readdirSync(startDir); // Read the contents of the directory
+    const envPath = config.dev ? '.env.dev' : '.env'; // Determine the .env file name based on the environment
+
+    // Check if the .env file exists in the current directory
+    if (files.includes(envPath)) {
+      return $.path.join(startDir, envPath); // Return the full path if found
+    }
+
+    // Use reduce to search through files for a directory containing the .env file
+    const foundPath = files.reduce<string | null>((acc, file) => {
+      if (acc) return acc; // If a path has already been found, return it
+
+      const fullPath = $.path.join(startDir, file); // Get the full path of the file
+      const stat = $.fs.statSync(fullPath); // Get the file statistics
+
+      // If the file is a directory, recursively search in that directory
+      if (stat.isDirectory()) {
+        return this.findEnvFileInSubdirectories(fullPath);
+      }
+
+      return null; // Return null if the file is not a directory
+    }, null);
+
+    return foundPath; // Return the found path or null if not found
+  };
 }
 
-// Export a singleton instance of the LoadEnv class
-export default new LoadEnv();
+// Export a singleton instance of the EnvService class
+export default new EnvService();

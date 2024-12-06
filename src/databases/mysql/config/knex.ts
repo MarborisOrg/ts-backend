@@ -7,8 +7,6 @@
 
 import knex from 'knex';
 
-import { env_config } from '#config/env.service';
-
 /**
  * @typedef {Object} DatabaseConfig
  * @property {string} client - The database client (e.g., 'mysql2').
@@ -38,9 +36,9 @@ const createKnexConfig = (database: string = ''): knex.Knex<any, unknown[]> => {
   const dbConfig: DatabaseConfig = {
     client: 'mysql2', // Using the mysql2 client for better MySQL compatibility.
     connection: {
-      host: env_config.mysql_sv, // MySQL server host from environment config.
-      user: env_config.mysql_user, // MySQL username from environment config.
-      password: env_config.mysql_password, // MySQL password from environment config.
+      host: $.env.config.mysql_sv, // MySQL server host from environment config.
+      user: $.env.config.mysql_user, // MySQL username from environment config.
+      password: $.env.config.mysql_password, // MySQL password from environment config.
       database: database || undefined, // Optional database name.
     },
   };

@@ -2,10 +2,8 @@ import readline from 'readline';
 import { TelegramClient } from 'telegram/index.js';
 import { StringSession } from 'telegram/sessions/index.js';
 
-import { env_config } from '#config/env.service';
-
 export default function (): void {
-  const stringSession = new StringSession(env_config.MTSession); // fill this later with the value from session.save()
+  const stringSession = new StringSession($.env.config.MTSession); // fill this later with the value from session.save()
 
   const rl = readline.createInterface({
     input: process.stdin,
@@ -16,8 +14,8 @@ export default function (): void {
     console.log('Loading interactive example...');
     const client = new TelegramClient(
       stringSession,
-      env_config.apiId,
-      env_config.apiHash,
+      $.env.config.apiId,
+      $.env.config.apiHash,
       {
         connectionRetries: 5,
       }
