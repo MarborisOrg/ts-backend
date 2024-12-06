@@ -2,7 +2,7 @@
   "compilerOptions": {
     "incremental": false,
     "target": "ESNext",
-    "outDir": "build",
+    "outDir": "dist",
     "rootDir": "src",
     "moduleResolution": "node",
     "module": "ESNext",
@@ -56,6 +56,6 @@
     // "skipLibCheck": true
   },
   "include": ["src/**/*.ts", "src/**/*.js"],
-  "exclude": ["node_modules/**", "build/**", "log/**", "doc/**"],
+  "exclude": ["node_modules/**", "dist/**", "log/**", "doc/**"],
   "compileOnSave": false
 }

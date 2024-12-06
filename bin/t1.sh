@@ -1,2 +1,2 @@
 #!/bin/bash
-node "$(dirname "$0")/../build/index.js" "$@"
+node "$(dirname "$0")/../dist/index.js" "$@"
