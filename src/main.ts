@@ -6,7 +6,7 @@
  * This module sets up the core components and libraries required for the application to run.
  */
 
-import { LoadEnv } from '#config/env_get';
+import { LoadEnv } from '#config/env.service';
 import { InitCore } from '#core/init/index';
 import { Init } from '#helpers/init';
 import { where } from '#helpers/where';

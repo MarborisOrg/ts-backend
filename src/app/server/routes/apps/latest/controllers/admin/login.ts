@@ -1,12 +1,15 @@
 import { Request, Response } from 'express';
 
 import { signJWT } from '#app/server/routes/modules/jwt/ref-acc-token';
-import { config } from '#config/env_get';
+import { env_config } from '#config/env.service';
 
 export const loginController = (req: Request, res: Response): void => {
   const { username, password } = req.body;
 
-  if (username === config.admin_user && password === config.admin_pass) {
+  if (
+    username === env_config.admin_user &&
+    password === env_config.admin_pass
+  ) {
     res.json(signJWT());
   }
 

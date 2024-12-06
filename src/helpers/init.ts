@@ -18,7 +18,6 @@ PORT=8686
 mysql_sv="localhost"
 mysql_user="root"
 mysql_password=""
-mysql_multipleStatements=false
 
 #Mongodb
 mongo_url="mongodb://localhost:27017/example"

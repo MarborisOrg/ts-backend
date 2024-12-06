@@ -1,12 +1,12 @@
 import { CorsOptions } from 'cors';
 
-import { config } from './env_get.js';
+import { env_config } from './env.service.js';
 
 export const corsOptions: CorsOptions = {
   origin: (origin, callback) => {
     if (
       !origin ||
-      config.ALLOWED_IPS.some((ip: string) => origin.includes(ip))
+      env_config.ALLOWED_IPS.some((ip: string) => origin.includes(ip))
     ) {
       callback(null, true);
     } else {

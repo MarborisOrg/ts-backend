@@ -7,7 +7,7 @@
  * It prioritizes the environment configuration and falls back to default settings if necessary.
  */
 
-import { config, defaultConfig } from '#config/env_get'; // Import environment configuration settings
+import { defaultConfig, env_config } from '#config/env.service'; // Import environment configuration settings
 import { DatabasesUseType } from '#ts.types'; // Import the type definition for database usage
 
 /**
@@ -18,8 +18,11 @@ import { DatabasesUseType } from '#ts.types'; // Import the type definition for 
  */
 export default function (): DatabasesUseType {
   // Check if the configured database type is valid
-  if (config.database_use === 'mongo' || config.database_use === 'mysql') {
-    return config.database_use; // Return the valid database type from the configuration
+  if (
+    env_config.database_use === 'mongo' ||
+    env_config.database_use === 'mysql'
+  ) {
+    return env_config.database_use; // Return the valid database type from the configuration
   } else {
     return defaultConfig.env.database_use; // Return the default database type if the configuration is invalid
   }

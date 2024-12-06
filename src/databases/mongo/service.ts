@@ -7,7 +7,7 @@ import { ItemFind } from './modules/find.js';
 import { ItemCreate } from './modules/save.js';
 import Database from './use/index.js';
 
-import { config } from '#config/env_get';
+import { env_config } from '#config/env.service.js';
 import { MongoModuleNames } from '#ts.enums.js';
 import { mongo_ns } from '#ts.interfaces.js';
 import { DatabasesType } from '#ts.types.js';
@@ -56,7 +56,7 @@ const itemService = new Service();
 
 // put mongo on init
 export default async function (): Promise<void> {
-  const db = new Database(config.mongo_url);
+  const db = new Database(env_config.mongo_url);
   await db.connect();
 }
 

@@ -1,13 +1,13 @@
 import helmet from 'helmet';
 
-import { config } from '#config/env_get';
+import { env_config } from '#config/env.service';
 
 const helmetConfig = (): any => {
   return helmet({
     contentSecurityPolicy: {
       directives: {
         defaultSrc: ["'self'"],
-        scriptSrc: ["'self'", config.scriptSrc],
+        scriptSrc: ["'self'", env_config.scriptSrc],
         objectSrc: ["'none'"],
         upgradeInsecureRequests: [],
       },

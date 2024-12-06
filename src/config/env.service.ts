@@ -4,7 +4,7 @@ import Joi from 'joi';
 import { whereIsHere } from '#helpers/where';
 import { findEnvFileInSubdirectories } from '#utils/env_finder';
 
-export namespace config_ns {
+namespace config_ns {
   export type Settings = {
     [key: string]: any; // Allow any key-value pairs
   };
@@ -25,7 +25,6 @@ export const defaultConfig: config_ns.IEnvConfig = {
   mysql_user: 'root',
   mysql_password: '',
   database_name: 'sp',
-  mysql_multipleStatements: false,
   mongo_url: 'mongodb://localhost:27017/',
   tc_book_name: 'tc',
   database_use: 'mongo',
@@ -35,7 +34,7 @@ export const defaultConfig: config_ns.IEnvConfig = {
   amqp: 'amqp://localhost',
 };
 
-export const config: config_ns.Settings = { ...defaultConfig };
+export const env_config: config_ns.Settings = { ...defaultConfig };
 
 /**
  * Class responsible for loading environment variables and validating them.
@@ -78,8 +77,8 @@ export class LoadEnv {
         return;
       }
 
-      Object.assign(config, value);
-      config.ALLOWED_IPS = value.ALLOWED_IPS.split(',').filter(Boolean); // Split allowed IPs into an array
+      Object.assign(env_config, value);
+      env_config.ALLOWED_IPS = value.ALLOWED_IPS.split(',').filter(Boolean); // Split allowed IPs into an array
 
       resolve();
     });
