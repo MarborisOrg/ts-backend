@@ -1,7 +1,7 @@
 /* eslint-disable import/order */
 /**
  * @author MRB
- * @license MIT
+ * @license UNLICENSED
  * @link https://github.com/S-MRB-S
  *
  * This module defines a `Counter` model to manage unique sequential IDs for items

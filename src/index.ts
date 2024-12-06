@@ -1,7 +1,7 @@
 /**
  * @link https://github.com/S-MRB-S
  * @author MRB
- * @license MIT
+ * @license UNLICENSED
  * @description Main entry point for initializing the application.
  * This module sets up the core components and libraries required for the application to run.
  */

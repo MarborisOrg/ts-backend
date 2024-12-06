@@ -1,7 +1,7 @@
 /**
  * @link https://github.com/S-MRB-S
  * @author MRB
- * @license MIT
+ * @license UNLICENSED
  * @description This module is responsible for loading and managing application configuration.
  * It utilizes the yargs library to parse command-line arguments and provides a structured configuration object.
  */

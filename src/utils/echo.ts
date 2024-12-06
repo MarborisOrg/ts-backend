@@ -1,7 +1,7 @@
 /**
  * @link https://github.com/S-MRB-S
  * @author MRB
- * @license MIT
+ * @license UNLICENSED
  * @description This module initializes the echo functionality for logging messages to the console.
  * It provides color-coded logging based on the content of the messages and utilizes configuration settings.
  */

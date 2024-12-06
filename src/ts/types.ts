@@ -1,7 +1,7 @@
 /**
  * @link https://github.com/S-MRB-S
  * @author MRB
- * @license MIT
+ * @license UNLICENSED
  * @description This module defines TypeScript types for database usage and named modules.
  * It includes types for specifying database types, module data, and module functions.
  */

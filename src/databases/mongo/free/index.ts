@@ -1,6 +1,6 @@
 /**
  * @author MRB
- * @license MIT
+ * @license UNLICENSED
  * @link https://github.com/S-MRB-S
  *
  * This module provides a function to free the MongoDB connection by disconnecting from the database.

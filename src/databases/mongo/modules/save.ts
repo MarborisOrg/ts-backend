@@ -1,6 +1,6 @@
 /**
  * @author MRB
- * @license MIT
+ * @license UNLICENSED
  * @link https://github.com/S-MRB-S
  *
  * This module handles the creation of items in a MongoDB database using Mongoose.

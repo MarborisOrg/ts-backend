@@ -1,6 +1,6 @@
 /**
  * @author MRB
- * @license MIT
+ * @license UNLICENSED
  * @link https://github.com/S-MRB-S
  *
  * This module provides a LogFileChecker class that monitors log files for size limits.

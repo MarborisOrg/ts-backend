@@ -1,7 +1,7 @@
 /**
  * @link https://github.com/S-MRB-S
  * @author MRB
- * @license MIT
+ * @license UNLICENSED
  * @description This module provides a function to load multiple libraries asynchronously.
  * It handles success and error logging for each library load attempt.
  */

@@ -1,6 +1,6 @@
 /**
  * @author MRB
- * @license MIT
+ * @license UNLICENSED
  * @link https://github.com/S-MRB-S
  *
  * This module provides functionality to manage and delete items in a MongoDB database

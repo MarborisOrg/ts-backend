@@ -1,6 +1,6 @@
 /**
  * @author MRB
- * @license MIT
+ * @license UNLICENSED
  * @link https://github.com/S-MRB-S
  *
  * This module provides a function to call database-specific functions based on the current database context.

@@ -1,7 +1,7 @@
 /**
  * @link https://github.com/S-MRB-S
  * @author MRB
- * @license MIT
+ * @license UNLICENSED
  * @description This module initializes libraries by loading packages and modules.
  * It provides a method to load and merge these libraries into a global object for easy access.
  */

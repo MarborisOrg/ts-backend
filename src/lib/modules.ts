@@ -1,7 +1,7 @@
 /**
  * @link https://github.com/S-MRB-S
  * @author MRB
- * @license MIT
+ * @license UNLICENSED
  * @description This module re-exports specific components and configurations from various parts of the application.
  * It provides a centralized access point for commonly used elements, improving code organization and readability.
  */

@@ -1,7 +1,7 @@
 /**
  * @link https://github.com/S-MRB-S
  * @author MRB
- * @license MIT
+ * @license UNLICENSED
  * @description This module provides a function to search for a .env file in the specified directory and its subdirectories.
  * It returns the path to the found .env file or null if not found.
  */

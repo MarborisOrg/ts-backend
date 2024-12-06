@@ -1,7 +1,7 @@
 /**
  * @link https://github.com/S-MRB-S
  * @author MRB
- * @license MIT
+ * @license UNLICENSED
  * @description This module defines TypeScript namespaces for application configuration and MongoDB document types.
  * It includes types for application settings, environment configuration, and MongoDB user and item documents.
  */

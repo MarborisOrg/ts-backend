@@ -1,7 +1,7 @@
 /**
  * @link https://github.com/S-MRB-S
  * @author MRB
- * @license MIT
+ * @license UNLICENSED
  * @description This module re-exports commonly used Node.js and third-party libraries.
  * It simplifies imports throughout the application by providing a single access point for these libraries.
  */
