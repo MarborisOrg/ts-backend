@@ -2,8 +2,8 @@ import { deleteBookById, dropBooks } from './drop.js';
 import { findAllBooks, findBookById } from './find.js';
 import { saveBook } from './save.js';
 
-import { MysqlModuleNames } from '#ts/ts.enums';
-import { DatabasesType } from '#ts/ts.types';
+import { MysqlModuleNames } from '#ts.enums.js';
+import { DatabasesType } from '#ts.types.js';
 
 export const mysqlModules: DatabasesType = {
   name: 'mysql',

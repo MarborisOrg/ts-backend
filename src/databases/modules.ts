@@ -3,7 +3,7 @@
 import { mongoModules } from './mongo/service.js';
 import { mysqlModules } from './mysql/modules/index.js';
 
-import { DatabasesType } from '#ts/ts.types';
+import { DatabasesType } from '#ts.types.js';
 
 export const databasesArray: readonly DatabasesType[] = [
   // modules on same databases

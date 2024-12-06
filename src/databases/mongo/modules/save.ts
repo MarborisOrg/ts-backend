@@ -11,7 +11,7 @@ import mongoose from 'mongoose';
 
 import { DUPLICATE_ITEM } from '../codes.js';
 
-import { mongo_ns } from '#ts/ts.interfaces';
+import { mongo_ns } from '#ts.interfaces.js';
 
 export class ItemCreate {
   private readonly itemModel;

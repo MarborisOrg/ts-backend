@@ -8,7 +8,7 @@
  */
 
 import { databasesArray } from '#databases/modules';
-import { MongoModuleNames, MysqlModuleNames } from '#ts/ts.enums';
+import { MongoModuleNames, MysqlModuleNames } from '#ts.enums';
 
 const dbUse = $.cuse(); // Get the current database context
 

@@ -1,6 +1,6 @@
 import mongoose, { Schema } from 'mongoose';
 
-import { mongo_ns } from '#ts/ts.interfaces';
+import { mongo_ns } from '#ts.interfaces';
 
 class OwnershipModel {
   private readonly ownershipSchema: Schema;
