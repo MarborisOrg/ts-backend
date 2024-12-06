@@ -21,14 +21,14 @@ export class InitLib {
    */
   public async init(): Promise<void> {
     // Dynamically import the packages from the specified path
-    const packages = await import('#lib/app.package.lib.js');
+    const packages = await import('#lib/app.package.lib');
     // Load the libraries defined in the packages
     await loadLibraries(packages);
     // Assign the loaded packages to the global object
     globalThis.$ = packages as any;
 
     // Dynamically import the modules from the specified path
-    const modules = await import('#lib/app.local.lib.js');
+    const modules = await import('#lib/app.local.lib');
     // Load the libraries defined in the modules
     await loadLibraries(modules);
     // Merge the loaded modules with the existing global object

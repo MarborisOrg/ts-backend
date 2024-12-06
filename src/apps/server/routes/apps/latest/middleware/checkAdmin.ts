@@ -3,7 +3,7 @@ import { NextFunction, Request, Response } from 'express';
 import Joi from 'joi';
 import jwt from 'jsonwebtoken';
 
-import { accessPass } from '#app/server/routes/config/config';
+import { accessPass } from '#apps/server/routes/config/config';
 
 const tokenSchema = Joi.object({
   token: Joi.string().required(),

@@ -24,7 +24,7 @@ export default function (app: Express, port: string): void {
       schemes: ['https', 'http'], // supported schemes
     },
     // apis: ['**/*.ts'], // ts files over .js file in build
-    apis: [whereIsHere('src/app/server/**/*.ts')],
+    apis: [whereIsHere('src/apps/server/**/*.ts')],
   };
 
   const swaggerSpec = swaggerJsdoc(options);

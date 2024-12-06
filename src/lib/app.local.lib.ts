@@ -7,7 +7,7 @@
  */
 
 // Re-exporting the HttpStatus object for standardized HTTP status codes
-export { HttpStatus } from '#app/server/routes/config/status';
+export { HttpStatus } from '#apps/server/routes/config/status';
 
 // Re-exporting the core module for the main application functionality
 export { default as core } from '#core/index';
