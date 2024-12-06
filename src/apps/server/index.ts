@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import open from 'open';
 
+import { whereIsHere } from '#app.where';
 import loadAllRouter from '#apps/server/routes/index';
 import { initApp } from '#apps/server/routes/init';
 import { localhostMover } from '#apps/server/routes/localhostMover';
@@ -11,6 +12,11 @@ export default function (): void {
   const app = $.express();
 
   localhostMover(app);
+
+  app.use($.express.static(whereIsHere('public')));
+  app.get('/', (_req: Request, res: Response) => {
+    res.sendFile($.path.join(whereIsHere('public'), 'index.html'));
+  });
 
   try {
     initApp(app);
