@@ -6,7 +6,7 @@
  * It provides a method to load and merge these libraries into a global object for easy access.
  */
 
-import { loadLibraries } from './check.js';
+import { loadLibraries } from './app.check.lib.module.check.js';
 
 /**
  * Class responsible for initializing libraries in the application.
@@ -21,14 +21,14 @@ export class InitLib {
    */
   public async init(): Promise<void> {
     // Dynamically import the packages from the specified path
-    const packages = await import('#lib/packages');
+    const packages = await import('#lib/app.package.lib.js');
     // Load the libraries defined in the packages
     await loadLibraries(packages);
     // Assign the loaded packages to the global object
     globalThis.$ = packages as any;
 
     // Dynamically import the modules from the specified path
-    const modules = await import('#lib/modules');
+    const modules = await import('#lib/app.local.lib.js');
     // Load the libraries defined in the modules
     await loadLibraries(modules);
     // Merge the loaded modules with the existing global object
