@@ -7,9 +7,9 @@ import { ItemFind } from './modules/find.js';
 import { ItemCreate } from './modules/save.js';
 import Database from './use/index.js';
 
-import { MongoModuleNames } from '#ts.enums';
-import { mongo_ns } from '#ts.interfaces';
-import { DatabasesType } from '#ts.types';
+import { MongoModuleNames } from '#database.enum.module';
+import { mongo_ns } from '#database.mongo.collection.type';
+import { DatabasesType } from '#database.types';
 
 class Service {
   private readonly itemModel: mongoose.Model<mongo_ns.IItem>;

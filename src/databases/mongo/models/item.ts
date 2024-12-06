@@ -9,7 +9,7 @@
  * for managing `Item` entities in MongoDB.
  */
 
-import { mongo_ns } from '#ts.interfaces';
+import { mongo_ns } from '#database.mongo.collection.type';
 import mongoose, { Document, Schema } from 'mongoose';
 
 /**

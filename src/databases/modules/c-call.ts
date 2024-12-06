@@ -7,8 +7,8 @@
  * It supports both MongoDB and MySQL functions and handles the invocation of these functions with the provided arguments.
  */
 
+import { MongoModuleNames, MysqlModuleNames } from '#database.enum.module';
 import { databasesArray } from '#databases/modules';
-import { MongoModuleNames, MysqlModuleNames } from '#ts.enums';
 
 const dbUse = $.cuse(); // Get the current database context
 
