@@ -21,7 +21,7 @@ export default function (app: Express, port: string): void {
       },
       host: `127.0.0.1:${port}`, // host
       basePath: '/', // base path
-      schemes: ['https', 'http'], // supported schemes
+      schemes: ['http', 'https'], // supported schemes
     },
     apis: [whereIsHere('src/apps/server/**/*.ts')],
   };
