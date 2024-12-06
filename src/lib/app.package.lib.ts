@@ -6,9 +6,6 @@
  * It simplifies imports throughout the application by providing a single access point for these libraries.
  */
 
-// Re-exporting the 'cluster' module for managing Node.js worker threads
-export { default as cluster } from 'cluster';
-
 // Re-exporting 'express' and its types for handling HTTP requests and responses
 export { NextFunction, Request, Response, default as express } from 'express';
 
