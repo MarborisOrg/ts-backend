@@ -9,7 +9,7 @@
 
 import mongoose from 'mongoose';
 
-import { mongo_ns } from '#ts/interfaces.js';
+import { mongo_ns } from '#ts/ts.interfaces';
 
 export class ItemFind {
   private readonly itemModel: mongoose.Model<mongo_ns.IItem>;

@@ -8,7 +8,7 @@
  */
 
 import { config, defaultConfig } from '#config/env_get'; // Import environment configuration settings
-import { DatabasesUseType } from '#ts/types'; // Import the type definition for database usage
+import { DatabasesUseType } from '#ts/ts.types'; // Import the type definition for database usage
 
 /**
  * Checks the current database configuration and returns the database type to be used.

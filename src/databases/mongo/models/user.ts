@@ -1,6 +1,6 @@
 import mongoose, { Schema } from 'mongoose';
 
-import { mongo_ns } from '#ts/interfaces';
+import { mongo_ns } from '#ts/ts.interfaces';
 
 class UserModel {
   private readonly userSchema: Schema;

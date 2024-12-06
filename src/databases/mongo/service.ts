@@ -8,9 +8,9 @@ import { ItemCreate } from './modules/save.js';
 import Database from './use/index.js';
 
 import { config } from '#config/env_get';
-import { MongoModuleNames } from '#ts/enums';
-import { mongo_ns } from '#ts/interfaces.js';
-import { DatabasesType } from '#ts/types';
+import { MongoModuleNames } from '#ts/ts.enums';
+import { mongo_ns } from '#ts/ts.interfaces';
+import { DatabasesType } from '#ts/ts.types';
 
 class Service {
   private readonly itemModel: mongoose.Model<mongo_ns.IItem>;

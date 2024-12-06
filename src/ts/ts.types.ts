@@ -6,7 +6,7 @@
  * It includes types for specifying database types, module data, and module functions.
  */
 
-import { MongoModuleNames, MysqlModuleNames } from './enums.js';
+import { MongoModuleNames, MysqlModuleNames } from './ts.enums.js';
 
 /**
  * Type definition for the databases that can be used in the application.
