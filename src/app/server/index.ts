@@ -4,8 +4,7 @@ import open from 'open';
 import loadAllRouter from '#app/server/routes/index';
 import { initApp } from '#app/server/routes/init';
 import { localhostMover } from '#app/server/routes/localhostMover';
-
-import swaggerDocs from '#config/swaggerDocs';
+import swaggerDocs from '#app/server/server.swagger';
 
 export default function (): void {
   // app (express)

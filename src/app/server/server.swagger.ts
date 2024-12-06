@@ -2,7 +2,7 @@ import { Express } from 'express';
 import swaggerJsdoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
 
-import { whereIsHere } from '../helpers/where.js';
+import { whereIsHere } from '../../helpers/where.js';
 
 export default function (app: Express, port: string): void {
   const options = {
@@ -24,7 +24,7 @@ export default function (app: Express, port: string): void {
       schemes: ['https', 'http'], // supported schemes
     },
     // apis: ['**/*.ts'], // ts files over .js file in build
-    apis: [whereIsHere('**/*.ts')],
+    apis: [whereIsHere('src/app/server/**/*.ts')],
   };
 
   const swaggerSpec = swaggerJsdoc(options);
