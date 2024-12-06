@@ -17,7 +17,7 @@
   "type": "module",
   "scripts": {
     "start:node": "node . --dev --debug --type express",
-    "build": "rimraf build && tsc",
+    "build": "rimraf dist && tsc",
     "pretty": "prettier --write \"**/*.{ts,js,mjs,json,md}\"",
     "lint": "eslint .",
     "start:pm2:fork": "pm2 start dist/app.main.js --name \"t1-app-service\" -i -1 -- --dev --debug --type express",

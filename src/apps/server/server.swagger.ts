@@ -23,7 +23,6 @@ export default function (app: Express, port: string): void {
       basePath: '/', // base path
       schemes: ['https', 'http'], // supported schemes
     },
-    // apis: ['**/*.ts'], // ts files over .js file in build
     apis: [whereIsHere('src/apps/server/**/*.ts')],
   };
 
