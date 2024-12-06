@@ -7,7 +7,7 @@
  * It prioritizes the environment configuration and falls back to default settings if necessary.
  */
 
-import { DatabasesUseType } from '#database.types'; // Import the type definition for database usage
+import { DatabasesUseType } from '#database.type'; // Import the type definition for database usage
 
 /**
  * Checks the current database configuration and returns the database type to be used.

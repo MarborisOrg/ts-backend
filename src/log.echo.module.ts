@@ -7,7 +7,7 @@
  */
 
 // Importing necessary utilities for configuration loading
-import { LogColor } from '#config/colors';
+import { LogColor } from '#log.color.enum';
 import { config, ConfigLoader } from '#utils/mode';
 
 /**

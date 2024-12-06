@@ -10,7 +10,7 @@ import { InitCore } from '#core/init/index';
 import { Init } from '#helpers/init';
 import { where } from '#helpers/where';
 import { InitLib } from '#lib/index';
-import { InitEcho } from '#utils/echo';
+import { InitEcho } from '#log.echo.module';
 
 /**
  * Initializes the application by setting up libraries and core components.
