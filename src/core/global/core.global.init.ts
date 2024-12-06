@@ -7,10 +7,10 @@
  * It sets up a logger instance and attaches various utility functions to the global scope.
  */
 
-import { assert } from '#core/utils/assert';
-import { die } from '#core/utils/die';
-import { Logger } from '#core/utils/log';
-import { quit } from '#core/utils/quit';
+import { assert } from '#core/utils/core.assert.util';
+import { die } from '#core/utils/core.die.util';
+import { Logger } from '#core/utils/core.log.util';
+import { quit } from '#core/utils/core.quit.util';
 
 export class InitGlobal {
   /**

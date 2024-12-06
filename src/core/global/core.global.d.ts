@@ -1,6 +1,6 @@
 /* eslint-disable no-var */
 // global.d.ts
-import { CustomLogger } from '#core/utils/log';
+import { CustomLogger } from '#core/utils/core.log.util';
 
 declare global {
   function echo(message: string, ...args: any[]): void;

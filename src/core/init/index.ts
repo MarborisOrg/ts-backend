@@ -7,7 +7,7 @@
  * It loads requirements, sets up global utilities, checks log files, and configures exit handlers.
  */
 
-import { InitGlobal } from '#core/global/index';
+import { InitGlobal } from '#core/global/core.global.init';
 import { InitReq } from '#core/init/requirements';
 import { LogFileChecker } from '#core/misc/logBakChecker';
 
