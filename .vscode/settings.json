@@ -1,4 +1,5 @@
 {
+  "workbench.colorTheme": "Default Dark Modern",
   "files.autoSave": "afterDelay",
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -14,5 +15,6 @@
   "typescript.tsdk": "node_modules/typescript/lib",
   "typescript.enablePromptUseWorkspaceTsdk": true,
   "git.autofetch": true,
-  "git.enableSmartCommit": true
+  "git.enableSmartCommit": true,
+  "git.confirmSync": false,
 }
