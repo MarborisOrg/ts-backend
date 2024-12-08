@@ -13,7 +13,7 @@ import yargs from 'yargs/yargs';
 type Config = {
   dev: boolean; // Indicates if the application is in developer mode
   debug: boolean; // Indicates if debug mode is enabled
-  type: 'express' | 'rabbit' | 'database'; // Specifies the type of application
+  type: 'server' | 'rabbit' | 'database'; // Specifies the type of application
   init: boolean;
   https: boolean;
   anchor: boolean;
@@ -59,8 +59,8 @@ export class ConfigLoader {
       t: {
         type: 'string',
         alias: 'type',
-        choices: ['express', 'rabbit', 'database'],
-        default: 'express',
+        choices: ['server', 'rabbit', 'database'],
+        default: 'server',
         describe: 'Specify the type of application',
       },
       i: {
@@ -108,13 +108,13 @@ export class ConfigLoader {
       argv.init &&
       (argv.dev ||
         argv.debug ||
-        argv.type !== 'express' ||
+        argv.type !== 'server' ||
         argv.anchor ||
         argv.where)
     ) {
       throw new Error('The --init flag cannot be used with any other flags.');
     }
-    if (argv.where && (argv.dev || argv.debug || argv.type !== 'express')) {
+    if (argv.where && (argv.dev || argv.debug || argv.type !== 'server')) {
       throw new Error('The --anchor flag cannot be used with any other flags.');
     }
     if (argv.type == 'rabbit') {
@@ -123,23 +123,11 @@ export class ConfigLoader {
       }
     }
 
-    // If --init is used, set config accordingly
-    // if (argv.init) {
-    //   config = {
-    //     dev: false, // Default value for dev when init is used
-    //     debug: false, // Default value for debug when init is used
-    //     type: 'express', // Default type when init is used
-    //     init: true, // Set init to true
-    //     https: false,
-    //     anchor: false,
-    //   };
-    // } else if (argv.dev || argv.debug || argv.type) {
-    // Assign parsed arguments to the config object if any other flag is used
     config = {
       dev: argv.dev,
       debug: argv.debug,
       type: argv.type,
-      init: argv.init, // Set init to false
+      init: argv.init,
       https: argv.https,
       anchor: argv.anchor,
       where: argv.where,
@@ -147,12 +135,6 @@ export class ConfigLoader {
       queue: argv.queue,
       rabbit: argv.rabbit,
     };
-    // } else {
-    //   // If no flags are provided, throw an error and exit
-    //   throw new Error(
-    //     'You must use the --init flag or at least one of the other flags (dev, debug, type).'
-    //   );
-    // }
 
     this.logConfig(); // Log the loaded configuration
   }

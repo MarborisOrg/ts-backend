@@ -27,7 +27,7 @@ export default async function (): Promise<void> {
      * This function is repeated on fork (copy) for each worker process.
      */
     // Now call core (expressApp)
-    if ($.config.type === 'express') {
+    if ($.config.type === 'server') {
       // Wait for the database connection to complete
       await new InitApp().initialize();
       ExpressApp(); // Initialize the Express application

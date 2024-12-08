@@ -8,7 +8,6 @@ import { localhostMover } from '#apps/server/routes/localhostMover';
 import swaggerDocs from '#apps/server/server.swagger';
 
 export default function (): void {
-  // app (express)
   const app = $.express();
 
   localhostMover(app);
