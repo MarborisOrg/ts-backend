@@ -4,7 +4,7 @@
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "workbench.iconTheme": "material-icon-theme",
+  "workbench.iconTheme": "vscode-icons",
   "javascript.updateImportsOnFileMove.enabled": "always",
   "typescript.updateImportsOnFileMove.enabled": "always",
   "editor.cursorStyle": "underline-thin",
@@ -16,5 +16,6 @@
   "typescript.enablePromptUseWorkspaceTsdk": true,
   "git.autofetch": true,
   "git.enableSmartCommit": true,
-  "git.confirmSync": false
+  "git.confirmSync": false,
+  "prettier.endOfLine": "lf",
 }
