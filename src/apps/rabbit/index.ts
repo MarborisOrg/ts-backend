@@ -1,5 +1,5 @@
-import { connectToRabbitMQ } from './rabbit_rec/index.js';
-import { sendMessage } from './rabbit_send/index.js';
+import { connectToRabbitMQ } from './rabbit_rec/rabbit.receive.service.js';
+import { sendMessage } from './rabbit_send/rabbit.send.service.js';
 
 export default function (): void {
   if ($.config.rabbit == 'rec') {
