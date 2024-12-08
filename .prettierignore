@@ -3,11 +3,6 @@ diff
 .nyc_output
 dist
 node_modules
-test
-src/**.js
-coverage
-*.log
-package-lock.json
 
 **/*.log
 **/*.bak
@@ -15,7 +10,12 @@ package-lock.json
 **/*.key
 **/*.csr
 **/*.crt
+public
+
+.env*
+
+yarn.lock
+package-lock.json
 
 # package.json is formatted by package managers, so we ignore it here
 package.json
-public

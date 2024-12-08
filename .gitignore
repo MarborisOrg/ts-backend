@@ -3,11 +3,7 @@ diff
 .nyc_output
 dist
 node_modules
-test
-src/**.js
 coverage
-*.log
-package-lock.json
 
 **/*.log
 **/*.bak
@@ -16,9 +12,7 @@ package-lock.json
 **/*.csr
 **/*.crt
 
-!keys/example/*
-
 .env*
-!.env*.example
 
 yarn.lock
+package-lock.json
