@@ -10,8 +10,8 @@
 
 import { InitApp } from './core.main.init.js';
 
-import RabbitApp from '#apps/rabbit/index';
-import ExpressApp from '#apps/server/index';
+import RabbitApp from '#apps/rabbit/rabbit';
+import ExpressApp from '#apps/server/server';
 
 /**
  * Main entry point for the application.
