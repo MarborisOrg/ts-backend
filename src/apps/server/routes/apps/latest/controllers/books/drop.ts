@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 
-import { call } from '#databases/modules/database.call.module';
+import { call } from '#databases/database.call.module';
 
 export const dropBookController = async (
   _req: Request,

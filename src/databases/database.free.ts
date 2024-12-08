@@ -7,8 +7,8 @@
  * It ensures that memory is released properly and prevents multiple calls to the cleanup process.
  */
 
-import { freeMongo } from '../mongo/free/index.js';
-import { freeMysql } from '../mysql/free/index.js';
+import { freeMongo } from './mongo/free/index.js';
+import { freeMysql } from './mysql/free/index.js';
 
 let safeCleanBool = 0; // Flag to prevent multiple cleanup calls
 

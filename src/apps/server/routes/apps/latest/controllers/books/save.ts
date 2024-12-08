@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import Joi from 'joi';
 
-import { call } from '#databases/modules/database.call.module';
+import { call } from '#databases/database.call.module';
 
 const bookSchema = Joi.object({
   title: Joi.string().required(),

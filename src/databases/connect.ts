@@ -1,4 +1,4 @@
-import ConnectDatabase from '#databases/modules/database.init.service';
+import ConnectDatabase from '#databases/database.init.service';
 
 export default async function connectDatabase(): Promise<void> {
   try {

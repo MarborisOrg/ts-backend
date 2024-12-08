@@ -1,4 +1,4 @@
-import { freeDatabases } from '#databases/free/index';
+import { freeDatabases } from '#databases/database.free';
 
 export async function freeCore(): Promise<void> {
   try {
