@@ -1,2 +1,2 @@
 @echo off
-node %~dp0../dist/index.js %*
+node %~dp0../dist/app.main.js %*

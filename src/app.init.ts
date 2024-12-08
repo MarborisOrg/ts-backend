@@ -11,28 +11,28 @@ export class Init {
         const defaultEnvContent = `
 ## If you changed this params, restart your app
 
-## Server
+# Server
 PORT=8686
+SECRET_KEY="Aa123456789" ## auth (JWT)
+## admin auth
+admin_user="admin"
+admin_pass="password"
+## security
+scriptSrc="https://forvest.io"
+## Allowed Ips ( Just number address (no domain support yet))
+ALLOWED_IPS=127.0.0.1,localhost
+
+# Database
 
 ## Mysql
 mysql_sv="localhost"
 mysql_user="root"
 mysql_password=""
 
-#Mongodb
+## Mongodb
 mongo_url="mongodb://localhost:27017/example"
 
 database_use="mysql" ## mongo/mysql
-
-## auth
-SECRET_KEY="Aa123456789"
-
-## admin auth
-admin_user="admin"
-admin_pass="password"
-
-## security
-scriptSrc="https://forvest.io"
 
 ## [book] table/collection name
 tc_book_name="books"
@@ -40,17 +40,28 @@ tc_book_name="books"
 ## Mysql/Mongo database name
 database_name="mrb"
 
-## Allowed Ips ( Just number address (no domain support yet))
-ALLOWED_IPS=127.0.0.1,localhost
+# Telegram
 
-# number
+## Midline
 apiId=
-# hash
 apiHash=""
-# telegram api bot token
-tbot_token=""
 # your first login session in MTProto
 MTSession=""
+## api bot token
+tbot_token=""
+
+# SMTP (Mail setting)
+host="" # آدرس SMTP سرور
+port=587 # SMTP Port
+# true برای پورت 465 و false برای پورت 587
+secure=false
+auth_user=""
+auth_pass=""
+
+# SID account (SMS)
+accountSid=""
+authToken=""
+
 `;
 
         const currentDir = process.cwd();
