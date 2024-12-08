@@ -13,7 +13,7 @@ export { HttpStatus } from '#apps/server/routes/config/status';
 export { default as core } from '#core/core';
 
 // Re-exporting the 'cuse' module for database interactions
-export { default as cuse } from '#databases/modules/c-use';
+export { default as cuse } from '#databases/modules/database.use';
 
 // Re-exporting the application configuration object
 export { config } from '#app.main.arg';

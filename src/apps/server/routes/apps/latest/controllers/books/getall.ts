@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import Joi from 'joi';
 
-import { call } from '#databases/modules/c-call';
+import { call } from '#databases/modules/database.call.module';
 
 const bookSchema = Joi.object({
   page: Joi.number().default(0),

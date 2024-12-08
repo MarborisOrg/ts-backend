@@ -7,7 +7,7 @@
  * It supports both MongoDB and MySQL connections based on the current configuration.
  */
 
-import cuse from './c-use.js'; // Import the function to get the current database context
+import cuse from './database.use.js'; // Import the function to get the current database context
 
 import MONGO from '#databases/mongo/service'; // Import the MongoDB service
 import ConnectToMysql from '#databases/mysql/use/index'; // Import the MySQL connection service
