@@ -16,5 +16,5 @@
   "typescript.enablePromptUseWorkspaceTsdk": true,
   "git.autofetch": true,
   "git.enableSmartCommit": true,
-  "git.confirmSync": false,
+  "git.confirmSync": false
 }
