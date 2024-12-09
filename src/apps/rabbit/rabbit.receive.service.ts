@@ -1,5 +1,7 @@
 import amqp from 'amqplib';
 
+import { alertCaller } from './rabbit.receive.c.module.js';
+
 export const connectToRabbitMQ = async (queue: string): Promise<void> => {
   try {
     const connection = await amqp.connect($.env.config.amqp);
@@ -18,7 +20,8 @@ export const connectToRabbitMQ = async (queue: string): Promise<void> => {
         if (message) {
           const msgContent = JSON.parse(message.content.toString());
           console.log(" [x] Received '%s' from queue '%s'", msgContent, queue);
-          // channel.ack(message);
+          void alertCaller(msgContent);
+          channel.ack(message);
         }
       },
       { noAck: false }

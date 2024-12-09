@@ -12,7 +12,7 @@ export default function (): void {
       source: 'source_name',
       module: 'module_name',
     };
-    void RabbitMQService.sendMessage(text, $.config.queue, 3000).then(
+    void RabbitMQService.sendMessage(text, $.config.queue, 40000).then(
       async function () {
         await RabbitMQService.closeConnection();
         process.exit();
