@@ -1,5 +1,5 @@
 import { connectToRabbitMQ } from './rabbit.receive.service.js';
-import { sendMessage } from './rabbit.send.service.js';
+import RabbitMQService from './rabbit.send.service.js';
 
 export default function (): void {
   if ($.config.rabbit == 'rec') {
@@ -12,8 +12,10 @@ export default function (): void {
       source: 'source_name',
       module: 'module_name',
     };
-    void sendMessage(text, $.config.queue, 3000).then(function () {
-      process.exit();
-    });
+    void RabbitMQService.sendMessage(text, $.config.queue, 3000).then(
+      function () {
+        process.exit();
+      }
+    );
   }
 }
