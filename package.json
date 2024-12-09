@@ -1,6 +1,6 @@
 {
   "name": "@marboris/coreutils",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "save && get books",
   "main": "dist/app.main.js",
   "module": "dist/app.main.js",
