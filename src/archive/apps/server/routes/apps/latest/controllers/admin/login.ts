@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 
-import { signJWT } from '#apps/server/routes/modules/jwt/ref-acc-token';
+import { signJWT } from '#archive/apps/server/routes/modules/jwt/ref-acc-token';
 
 export const loginController = (req: Request, res: Response): void => {
   const { username, password } = req.body;

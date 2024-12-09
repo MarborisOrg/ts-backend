@@ -2,10 +2,10 @@ import { Request, Response } from 'express';
 import open from 'open';
 
 import { whereIsHere } from '#app.where';
-import loadAllRouter from '#apps/server/routes/index';
-import { initApp } from '#apps/server/routes/init';
-import { localhostMover } from '#apps/server/routes/localhostMover';
-import swaggerDocs from '#apps/server/server.swagger';
+import loadAllRouter from '#archive/apps/server/routes/index';
+import { initApp } from '#archive/apps/server/routes/init';
+import { localhostMover } from '#archive/apps/server/routes/localhostMover';
+import swaggerDocs from '#archive/apps/server/server.swagger';
 
 export default function (): void {
   const app = $.express();

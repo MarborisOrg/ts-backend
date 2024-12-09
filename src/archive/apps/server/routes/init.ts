@@ -4,11 +4,11 @@
 import cors from 'cors';
 import express, { Express } from 'express';
 
-import { logMiddleware } from '#apps/server/routes/apps/latest/middleware/log';
-import { responseSentMiddleware } from '#apps/server/routes/apps/latest/middleware/race/resSentRace';
-import { timeoutMiddleware } from '#apps/server/routes/apps/latest/middleware/race/timeRace';
-import { corsOptions } from '#apps/server/server.cors.config';
-import { helmetConfig } from '#apps/server/server.helmet.config';
+import { logMiddleware } from '#archive/apps/server/routes/apps/latest/middleware/log';
+import { responseSentMiddleware } from '#archive/apps/server/routes/apps/latest/middleware/race/resSentRace';
+import { timeoutMiddleware } from '#archive/apps/server/routes/apps/latest/middleware/race/timeRace';
+import { corsOptions } from '#archive/apps/server/server.cors.config';
+import { helmetConfig } from '#archive/apps/server/server.helmet.config';
 
 export function initApp(app: Express): void {
   try {
