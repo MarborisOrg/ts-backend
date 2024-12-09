@@ -1,11 +1,14 @@
 {
-  "name": "t1",
-  "version": "7.0.0",
+  "name": "@marboris/coreutils",
+  "version": "1.0.0",
   "description": "save && get books",
   "main": "dist/app.main.js",
   "module": "dist/app.main.js",
   "private": false,
-  "repository": "https://github.com/S-mrb-S/t1",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MarborisOrg/ts-backend.git"
+  },
   "license": "UNLICENSED",
   "keywords": [
     "nodejs"
