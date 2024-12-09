@@ -22,7 +22,7 @@ class RabbitMQService {
     await this.channel.assertExchange(EXCHANGE_NAME, 'x-delayed-message', {
       durable: true,
       arguments: {
-        'x-delayed-type': { type: 'string', value: 'direct' },
+        'x-delayed-type': 'direct',
       },
     });
 
