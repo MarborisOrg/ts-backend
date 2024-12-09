@@ -4,7 +4,7 @@
   "description": "save && get books",
   "main": "dist/app.main.js",
   "module": "dist/app.main.js",
-  "private": true,
+  "private": false,
   "repository": "https://github.com/S-mrb-S/t1",
   "license": "UNLICENSED",
   "keywords": [
@@ -90,7 +90,6 @@
   "files": [
     "dist",
     "!**/*.json",
-    "LICENSE",
     "README"
   ]
 }
