@@ -1,5 +1,7 @@
 import amqp, { Channel, Connection } from 'amqplib';
 
+const EXCHANGE_NAME = 'delayed_exchange';
+
 class RabbitMQService {
   private connection: Connection | null = null;
   private channel: Channel | null = null;
@@ -12,22 +14,20 @@ class RabbitMQService {
     }
   }
 
-  private async assertQueues(queue: string, delayMs: number): Promise<void> {
+  private async assertQueues(queue: string): Promise<void> {
     if (!this.channel) {
       throw new Error('Channel is not initialized.');
     }
 
-    await this.channel.assertQueue(queue, { durable: true });
-
-    const delayQueue = `${queue}_delay`;
-    await this.channel.assertQueue(delayQueue, {
+    await this.channel.assertExchange(EXCHANGE_NAME, 'x-delayed-message', {
       durable: true,
       arguments: {
-        'x-dead-letter-exchange': '',
-        'x-dead-letter-routing-key': queue,
-        'x-message-ttl': delayMs,
+        'x-delayed-type': { type: 'string', value: 'direct' },
       },
     });
+
+    await this.channel.assertQueue(queue, { durable: true });
+    await this.channel.bindQueue(queue, EXCHANGE_NAME, '');
   }
 
   public async sendMessage(
@@ -38,17 +38,20 @@ class RabbitMQService {
   ): Promise<void> {
     try {
       await this.initRabbitMQ();
-      await this.assertQueues(queue, delayMs);
+      await this.assertQueues(queue);
 
       if (!this.channel) {
         throw new Error('Channel is not initialized.');
       }
 
-      this.channel.sendToQueue(
-        `${queue}_delay`,
+      this.channel.publish(
+        EXCHANGE_NAME,
+        '',
         Buffer.from(JSON.stringify(message)),
         {
-          persistent: true,
+          headers: {
+            'x-delay': delayMs,
+          },
         }
       );
       console.log(

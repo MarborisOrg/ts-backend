@@ -1,0 +1,14 @@
+
+    برای ویندوز: C:\Program Files\RabbitMQ Server\rabbitmq_server-x.x.x\plugins
+    برای لینوکس: /usr/lib/rabbitmq/plugins
+
+cmd:
+    rabbitmq-plugins enable rabbitmq_delayed_message_exchange
+
+linux:
+    sudo systemctl stop rabbitmq-server
+    sudo systemctl start rabbitmq-server
+
+windows:
+    net stop RabbitMQ
+    net start RabbitMQ
