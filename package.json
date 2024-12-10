@@ -2,8 +2,8 @@
   "name": "@marboris/coreutils",
   "version": "1.0.1",
   "description": "coreutils is suitable for all projects that require database interactions and specific configurations.",
-  "main": "dist/main.js",
-  "module": "dist/main.js",
+  "main": "dist/core.js",
+  "module": "dist/core.js",
   "private": false,
   "repository": {
     "type": "git",
