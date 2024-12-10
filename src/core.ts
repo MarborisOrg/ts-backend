@@ -18,9 +18,8 @@ export default abstract class {
   private log: CustomLogger;
   private logDir: string;
 
-  protected __1M__ = 1 * 1024 * 1024; // 1MB
-  protected __05M__ = 0.5 * 1024 * 1024; // 0.5MB
-
+  protected __1M__ = 1 * 1024 * 1024;
+  protected __05M__ = 0.5 * 1024 * 1024;
   protected logFiles: Record<string, number> = {
     'combined.log': this.__1M__,
     'error.log': this.__05M__,
@@ -238,7 +237,6 @@ export default abstract class {
     enum LogColor {
       Default = '\x1b[0m',
 
-      // Basic colors
       Red = '\x1b[31m',
       Green = '\x1b[32m',
       Yellow = '\x1b[33m',
@@ -248,7 +246,6 @@ export default abstract class {
       White = '\x1b[37m',
       Black = '\x1b[30m',
 
-      // Bright colors
       BrightRed = '\x1b[91m',
       BrightGreen = '\x1b[92m',
       BrightYellow = '\x1b[93m',
@@ -257,7 +254,6 @@ export default abstract class {
       BrightCyan = '\x1b[96m',
       BrightWhite = '\x1b[97m',
 
-      // Combined colors
       LightPink = '\x1b[38;5;200m',
       LightOrange = '\x1b[38;5;214m',
       LightYellowGreen = '\x1b[38;5;190m',
@@ -269,12 +265,10 @@ export default abstract class {
       LightMint = '\x1b[38;5;82m',
       LightGold = '\x1b[38;5;220m',
 
-      // Bold and Underline
       Bold = '\x1b[1m',
       Underline = '\x1b[4m',
       Inverse = '\x1b[7m',
 
-      // Dark colors
       DarkRed = '\x1b[38;5;88m',
       DarkGreen = '\x1b[38;5;22m',
       DarkYellow = '\x1b[38;5;136m',
@@ -283,7 +277,6 @@ export default abstract class {
       DarkCyan = '\x1b[38;5;36m',
       DarkWhite = '\x1b[38;5;250m',
 
-      // Additional bright colors
       BrightOrange = '\x1b[38;5;208m',
       BrightPink = '\x1b[38;5;201m',
     }
@@ -348,15 +341,15 @@ export default abstract class {
       if (!doNotQuit) {
         setTimeout(() => {
           this.quit();
-        }, 1300); // 1.3s
+        }, 1300);
       }
     }
   }
 
   protected make(name: string): void {
     if (!fs.existsSync(name)) {
-      fs.mkdirSync(name, { recursive: true }); // Create the log directory recursively
-      this.echo(`Info: Make ${name} dir!`); // Log information about the directory creation
+      fs.mkdirSync(name, { recursive: true });
+      this.echo(`Info: Make ${name} dir!`);
     }
   }
 
@@ -378,20 +371,14 @@ export default abstract class {
       }
     };
 
-    // Event listener for the 'exit' event.
-    // This is triggered when the process is about to exit.
     process.on('exit', (_code) => {
-      void this.free(); // Call the freeCore function to perform cleanup
-      sleep(3000); // Wait for 3 seconds to allow for parallel cleanup tasks
-      this.echo('core: App closed'); // Log a message indicating that the application has closed
+      void this.free();
+      sleep(3000);
+      this.echo('core: App closed');
     });
 
-    // Event listener for the 'SIGINT' signal (e.g., Ctrl+C).
-    // This allows for graceful termination of the application.
     process.on('SIGINT', (): void => this.quit());
 
-    // Event listener for the 'SIGTERM' signal (termination request).
-    // This allows for graceful termination of the application.
     process.on('SIGTERM', (): void => this.quit());
   }
 
@@ -413,24 +400,15 @@ export default abstract class {
     }
   }
 
-  /**
-   * Checks the size of a specific log file and renames it if it exceeds the maximum size.
-   *
-   * @param fileName - The name of the log file to check.
-   * @param maxSize - The maximum allowed size for the log file.
-   * @returns A Promise that resolves when the check and potential rename is complete.
-   */
   private async checkAndRenameFile(
     fileName: string,
     maxSize: number
   ): Promise<void> {
     const logFilePath = path.join(this.logDir, fileName);
 
-    if (!(await this.fileExists(logFilePath))) return; // Exit if the file does not exist
-
+    if (!(await this.fileExists(logFilePath))) return;
     const stats = await fs.promises.stat(logFilePath);
 
-    // Rename the file if it exceeds the maximum size
     if (stats.size > maxSize) {
       await this.renameFileIfExists(logFilePath);
     }
@@ -444,35 +422,23 @@ export default abstract class {
       counter === 1 ? `${basePath}.bak` : `${basePath}.${counter}.bak`;
 
     if (await this.fileExists(backupFilePath)) {
-      return this.getUniqueBackupFilePath(basePath, counter + 1); // Recursively find a unique path
+      return this.getUniqueBackupFilePath(basePath, counter + 1);
     }
 
     return backupFilePath;
   }
 
-  /**
-   * Checks if a file exists at the specified path.
-   *
-   * @param filePath - The path of the file to check.
-   * @returns A Promise that resolves to true if the file exists, false otherwise.
-   */
   protected async fileExists(filePath: string): Promise<boolean> {
     try {
       await fs.promises.access(filePath);
-      return true; // File exists
+      return true;
     } catch {
-      return false; // File does not exist
+      return false;
     }
   }
 
   protected abstract free(): Promise<void> | void;
 
-  /**
-   * Renames a file to a unique name if it already exists.
-   *
-   * @param filePath - The path of the file to rename.
-   * @returns A Promise that resolves to the new unique file path.
-   */
   protected async renameFileIfExists(filePath: string): Promise<void> {
     if (await this.fileExists(filePath)) {
       const uniqueFilePath = await this.getUniqueBackupFilePath(filePath);
