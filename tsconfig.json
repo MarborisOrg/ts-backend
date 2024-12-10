@@ -1,22 +1,24 @@
 {
   "compilerOptions": {
     "incremental": false,
-    "target": "ESNext",
+    "target": "es2022",
     "outDir": "dist",
     "rootDir": "src",
     "moduleResolution": "node",
-    "module": "ESNext",
+    "module": "es2022",
     "baseUrl": "./",
     "paths": {
       "#*": ["src/*"]
     },
 
-    "allowJs": false,
+    "allowJs": true,
     "checkJs": false,
 
-    "removeComments": true,
+    "removeComments": false,
     "noEmitOnError": true,
-    // "forceConsistentCasingInFileNames": true,
+    "forceConsistentCasingInFileNames": true,
+
+    "isolatedModules": true,
 
     "declaration": false,
     "inlineSourceMap": false,
@@ -27,9 +29,9 @@
 
     /* Strict Type-Checking Options */
     // "noImplicitAny": true /* Raise error on expressions and declarations with an implied 'any' type. */,
-    // "strictNullChecks": true /* Enable strict null checks. */,
-    // "strictFunctionTypes": true /* Enable strict checking of function types. */,
-    // "strictPropertyInitialization": true /* Enable strict checking of property initialization in classes. */,
+    "strictNullChecks": true /* Enable strict null checks. */,
+    "strictFunctionTypes": true /* Enable strict checking of function types. */,
+    "strictPropertyInitialization": true /* Enable strict checking of property initialization in classes. */,
     // "noImplicitThis": true /* Raise error on 'this' expressions with an implied 'any' type. */,
     // "alwaysStrict": true /* Parse in strict mode and emit "use strict" for each source file. */,
 
@@ -49,7 +51,7 @@
     "experimentalDecorators": true /* Enables experimental support for ES7 decorators. */,
     "emitDecoratorMetadata": true /* Enables experimental support for emitting type metadata for decorators. */,
 
-    "lib": ["es2017"],
+    "lib": ["es2022"],
     "types": ["node"],
     "typeRoots": ["node_modules/@types"]
 
