@@ -18,7 +18,7 @@ This project is developed in TypeScript and is designed to operate exclusively w
 To install the package, use the following command:
 
 ```bash
-npm install your-package-name
+npm install @marboris/coreutils
 ```
 
 ## Contributing
