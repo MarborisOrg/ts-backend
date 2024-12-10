@@ -477,7 +477,7 @@ export default abstract class {
     if (await this.fileExists(filePath)) {
       const uniqueFilePath = await this.getUniqueBackupFilePath(filePath);
       await fs.promises.rename(filePath, uniqueFilePath);
-      console.log(`File renamed to: ${uniqueFilePath}`);
+      this.echo(`File renamed to: ${uniqueFilePath}`);
     }
   }
 }
