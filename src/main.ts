@@ -1,34 +1,9 @@
-/**
- * @link https://github.com/S-MRB-S
- * @author MRB
- * @license UNLICENSED
- * @description Main entry point for initializing the application.
- * This module sets up the core components and libraries required for the application to run.
- */
 
-import { Init } from '#app.init';
-import { where } from '#app.where';
-import { InitCore } from '#core/core.init';
-import { InitLib } from '#lib/app.global.lib.module';
-import { InitEcho } from '#log.echo.module';
-
-/**
- * Initializes the application by setting up libraries and core components.
- * This includes error handling for module initialization and starting the application.
- */
-new (class extends InitEcho {
+export default class {
   public constructor() {
-    super();
     void this.initialize();
   }
 
-  /**
-   * Initializes the application and its libraries.
-   * Logs the initialization process and handles any errors that occur during library setup.
-   *
-   * @async
-   * @returns {Promise<void>}
-   */
   public async initialize(): Promise<void> {
     echo('info: Application is initializing...');
 
@@ -78,4 +53,4 @@ new (class extends InitEcho {
     where();
     this.#run();
   }
-})();
+}
