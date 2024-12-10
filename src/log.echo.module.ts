@@ -7,37 +7,21 @@
  */
 
 // Importing necessary utilities for configuration loading
-import { config, ConfigLoader } from '#app.main.arg';
+import { config } from '#app.main.arg';
 import { LogColor } from '#log.color.enum';
 
 /**
  * Class responsible for initializing the echo functionality for logging.
  * Extends the ConfigLoader to utilize configuration settings.
  */
-export class InitEcho extends ConfigLoader {
-  protected constructor() {
-    super();
-    this.init();
-  }
-
-  /**
-   * Initializes the echo function globally.
-   * This function will be used for logging messages to the console.
-   *
-   * @private
-   * @returns {void}
-   */
-  private init(): void {
-    globalThis.echo = this.createEchoFunction();
-  }
-
+export class InitEcho {
   /**
    * Creates a logging function that formats and colors messages based on their content.
    *
    * @private
    * @returns {(message: string, ...args: any[]) => void} The echo function.
    */
-  private createEchoFunction(): (message: string, ...args: any[]) => void {
+  public createEchoFunction(): (message: string, ...args: any[]) => void {
     return (message: string, ...args: any[]): void => {
       if (config.debug) {
         const color = this.getLogColor(message);
