@@ -1,5 +1,7 @@
 import * as dotenv from 'dotenv';
+import fs from 'fs';
 import Joi from 'joi';
+import path from 'path';
 
 import { config } from '#app.main.arg';
 import { whereIsHere } from '#app.where';
@@ -92,20 +94,20 @@ export class EnvService {
    * @returns {string | null} - The path to the found .env file or null if not found.
    */
   private findEnvFileInSubdirectories = (startDir: string): string | null => {
-    const files = $.fs.readdirSync(startDir); // Read the contents of the directory
+    const files = fs.readdirSync(startDir); // Read the contents of the directory
     const envPath = config.dev ? '.env.dev' : '.env'; // Determine the .env file name based on the environment
 
     // Check if the .env file exists in the current directory
     if (files.includes(envPath)) {
-      return $.path.join(startDir, envPath); // Return the full path if found
+      return path.join(startDir, envPath); // Return the full path if found
     }
 
     // Use reduce to search through files for a directory containing the .env file
     const foundPath = files.reduce<string | null>((acc, file) => {
       if (acc) return acc; // If a path has already been found, return it
 
-      const fullPath = $.path.join(startDir, file); // Get the full path of the file
-      const stat = $.fs.statSync(fullPath); // Get the file statistics
+      const fullPath = path.join(startDir, file); // Get the full path of the file
+      const stat = fs.statSync(fullPath); // Get the file statistics
 
       // If the file is a directory, recursively search in that directory
       if (stat.isDirectory()) {

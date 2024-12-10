@@ -9,7 +9,7 @@
 
 import { InitReq } from '#core/core.requirement';
 import { InitGlobal } from '#core/global/core.global.init';
-import { LogFileChecker } from '#core/utils/core.log.util.check';
+import { LogFileChecker } from '#core.log.util.check';
 
 export class InitCore {
   /**
