@@ -1,3 +1,4 @@
+import { connect } from 'amqplib';
 import dotenv from 'dotenv';
 import fs from 'fs';
 import path from 'path';
@@ -498,4 +499,20 @@ export abstract class core {
 
     return foundPath; // Return the found path or null if not found
   };
+
+  protected connectionAmqp: any;
+  protected channelAmqp: any;
+
+  protected async connectAmqp(amqp: string): Promise<void> {
+    this.connectionAmqp = await connect(amqp);
+    await this.createChannelAmqp();
+  }
+  private async createChannelAmqp(): Promise<void> {
+    this.channelAmqp = await this.connectionAmqp.createChannel();
+  }
+
+  protected async closeAmqp(): Promise<void> {
+    if (this.channelAmqp) await this.channelAmqp.close();
+    if (this.connectionAmqp) await this.connectionAmqp.close();
+  }
 }
