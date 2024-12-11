@@ -16,11 +16,11 @@ type Config = {
 
 namespace config_ns {
   export type Settings = {
-    [key: string]: any; // Allow any key-value pairs
+    [key: string]: any;
   };
 
   export type IEnvConfig = {
-    readonly [key: string]: any; // Allow any key-value pairs
+    readonly [key: string]: any;
   };
 
   export type IConfig = {
@@ -242,14 +242,14 @@ export abstract class core {
     if (envFilePath) {
       dotenv.config({ path: envFilePath });
     }
-    // Directly assign process.env to config
+
     this.env_config = { ...process.env };
   }
 
   protected whereIsHere(resolvePath: string = ''): string {
     let dirName: string;
     if (this.args.anchor) {
-      const appDir = path.resolve(path.dirname(__filename), '../../'); // TODO()
+      const appDir = path.resolve(path.dirname(__filename), '../../');
       dirName = path.resolve(appDir, resolvePath);
     } else {
       dirName = path.resolve(process.cwd(), resolvePath);
@@ -473,30 +473,27 @@ export abstract class core {
   }
 
   private findEnvFileInSubdirectories = (startDir: string): string | null => {
-    const files = fs.readdirSync(startDir); // Read the contents of the directory
-    const envPath = this.args.dev ? '.env.dev' : '.env'; // Determine the .env file name based on the environment
+    const files = fs.readdirSync(startDir);
+    const envPath = this.args.dev ? '.env.dev' : '.env';
 
-    // Check if the .env file exists in the current directory
     if (files.includes(envPath)) {
-      return path.join(startDir, envPath); // Return the full path if found
+      return path.join(startDir, envPath);
     }
 
-    // Use reduce to search through files for a directory containing the .env file
     const foundPath = files.reduce<string | null>((acc, file) => {
-      if (acc) return acc; // If a path has already been found, return it
+      if (acc) return acc;
 
-      const fullPath = path.join(startDir, file); // Get the full path of the file
-      const stat = fs.statSync(fullPath); // Get the file statistics
+      const fullPath = path.join(startDir, file);
+      const stat = fs.statSync(fullPath);
 
-      // If the file is a directory, recursively search in that directory
       if (stat.isDirectory()) {
         return this.findEnvFileInSubdirectories(fullPath);
       }
 
-      return null; // Return null if the file is not a directory
+      return null;
     }, null);
 
-    return foundPath; // Return the found path or null if not found
+    return foundPath;
   };
 
   protected connectionAmqp: any;
