@@ -28,7 +28,7 @@ namespace config_ns {
   };
 }
 
-export default abstract class {
+export abstract class core {
   protected args: Config;
   private log: CustomLogger;
   private logDir: string;
