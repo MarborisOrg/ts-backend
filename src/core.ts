@@ -44,7 +44,7 @@ export abstract class core {
 
   public env_config: config_ns.Settings = {};
 
-  protected abstract free(): Promise<void> | void;
+  protected abstract free(): void;
 
   public constructor() {
     try {
