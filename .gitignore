@@ -8,10 +8,6 @@ coverage
 **/*.log
 **/*.bak
 
-**/*.key
-**/*.csr
-**/*.crt
-
 .env*
 
 yarn.lock
