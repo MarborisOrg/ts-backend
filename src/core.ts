@@ -171,10 +171,6 @@ export abstract class core {
             messageString = JSON.stringify(message);
           }
 
-          if (messageString.length > 250) {
-            messageString = messageString.substring(0, 250) + '...';
-          }
-
           const msg = `${timestamp} ${level}: ${messageString}`;
           this.echo(msg);
 
@@ -353,7 +349,10 @@ export abstract class core {
 
     if (this.args.debug) {
       const color = getLogColor(message);
-      const formattedMessage = formatMessage(message, args);
+      let formattedMessage = formatMessage(message, args);
+      if (formattedMessage.length > 250) {
+        formattedMessage = formattedMessage.substring(0, 250) + '...';
+      }
       console.log(`${color}${formattedMessage}${LogColor.Default}`);
     }
   }
