@@ -1,7 +1,6 @@
 import dotenv from 'dotenv';
 import fs from 'fs';
 import path from 'path';
-import url from 'url';
 import winston from 'winston';
 import { hideBin } from 'yargs/helpers';
 import yargs from 'yargs/yargs';
