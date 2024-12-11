@@ -216,16 +216,11 @@ export abstract class Core {
 }
 
 // Test
-class MyApplication extends Core {
+(class extends Core {
   public async Main(): Promise<void> {
     console.log(
       '[__info__] H Fuck error fuckerror FuckError Application is starting...'
     );
     this.logger.info('SSS');
   }
-}
-
-const app = new MyApplication();
-app.Main().catch((error) => {
-  console.error('Error occurred while running the application:', error);
-});
+})
