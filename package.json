@@ -1,6 +1,6 @@
 {
   "name": "@marboris/coreutils",
-  "version": "2.5.0",
+  "version": "2.5.1",
   "description": "coreutils is suitable for all projects that require database interactions and specific configurations.",
   "main": "dist/core.js",
   "types": "dist/core.d.ts",

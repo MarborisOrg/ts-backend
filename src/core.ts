@@ -1,7 +1,7 @@
 import '#console.log';
 import { Channel, connect, Connection } from 'amqplib';
 import dotenv from 'dotenv';
-import fs, { promises as fsPromises } from 'fs';
+import fs from 'fs';
 import path from 'path';
 import winston from 'winston';
 import { hideBin } from 'yargs/helpers';
@@ -15,7 +15,9 @@ interface CustomLogger extends winston.Logger {
 type Config = Record<string, any>;
 
 // Utility Decorators
-export function Singleton<T extends { new (...args: any[]): any }>(constructor: T) {
+export function Singleton<T extends { new (...args: any[]): any }>(
+  constructor: T
+) {
   let instance: T | null = null;
   return class extends constructor {
     // @ts-expect-error
@@ -70,26 +72,27 @@ class ConfigManager {
       .parseSync() as Config;
   }
 
-  private async loadEnvFile(): Promise<void> {
-    const envFilePath = await this.findEnvFile();
+  private loadEnvFile(): void {
+    const envFilePath = this.findEnvFile();
     if (envFilePath) dotenv.config({ path: envFilePath });
     this.envConfig = { ...process.env };
   }
 
-  private async findEnvFile(): Promise<string | null> {
+  private findEnvFile(): string | null {
     const envFileName = this.args.dev ? '.env.dev' : '.env';
     let currentDir = process.cwd();
 
     while (currentDir) {
       const possiblePath = path.join(currentDir, envFileName);
       try {
-        await fsPromises.access(possiblePath);
-        return possiblePath;
-      } catch {
-        const parentDir = path.dirname(currentDir);
-        if (parentDir === currentDir) break;
-        currentDir = parentDir;
-      }
+        if (fs.existsSync(possiblePath)) {
+          return possiblePath;
+        }
+      } catch {}
+
+      const parentDir = path.dirname(currentDir);
+      if (parentDir === currentDir) break;
+      currentDir = parentDir;
     }
 
     return null;
@@ -128,8 +131,8 @@ class LoggerManager {
     const customTimestampFormat = winston.format.printf(
       ({ timestamp, level, message }) => {
         const customTimeMsg = `[${timestamp}] ${level}: '${message}'`;
-        if(debug){
-          console.log(customTimeMsg)
+        if (debug) {
+          console.log(customTimeMsg);
         }
         return customTimeMsg;
       }
@@ -189,7 +192,10 @@ export abstract class Core {
 
   constructor() {
     this.config = new ConfigManager();
-    this.logger = new LoggerManager(this.getLogDir(), this.config.Args.debug).getLogger();
+    this.logger = new LoggerManager(
+      this.getLogDir(),
+      this.config.Args.debug
+    ).getLogger();
     this.amqpManager = new AmqpManager();
   }
 
@@ -212,8 +218,10 @@ export abstract class Core {
 // Test
 class MyApplication extends Core {
   public async Main(): Promise<void> {
-    console.log('[__info__] H Fuck error fuckerror FuckError Application is starting...');
-    this.logger.info("SSS")
+    console.log(
+      '[__info__] H Fuck error fuckerror FuckError Application is starting...'
+    );
+    this.logger.info('SSS');
   }
 }
 
