@@ -43,6 +43,8 @@ export abstract class core {
 
   public env_config: config_ns.Settings = {};
 
+  protected abstract free(): Promise<void> | void;
+
   public constructor() {
     try {
       const argv = yargs(hideBin(process.argv)).options({
@@ -398,7 +400,7 @@ export abstract class core {
 
     process.on('exit', (_code) => {
       void this.free();
-      sleep(3000);
+      sleep(5000);
       this.echo('core: App closed');
     });
 
@@ -461,8 +463,6 @@ export abstract class core {
       return false;
     }
   }
-
-  protected abstract free(): Promise<void> | void;
 
   protected async renameFileIfExists(filePath: string): Promise<void> {
     if (await this.fileExists(filePath)) {
