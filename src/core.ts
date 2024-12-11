@@ -212,7 +212,7 @@ export abstract class Core {
 // Test
 class MyApplication extends Core {
   public async Main(): Promise<void> {
-    console.log('[info] Application is starting...');
+    console.log('[__info__] H Fuck error fuckerror FuckError Application is starting...');
     this.logger.info("SSS")
   }
 }
