@@ -1,9 +1,10 @@
 {
   "name": "@marboris/coreutils",
-  "version": "2.2.2",
+  "version": "2.2.3",
   "description": "coreutils is suitable for all projects that require database interactions and specific configurations.",
   "main": "dist/core.js",
   "module": "dist/core.js",
+  "types": "dist/core.d.ts",
   "private": false,
   "repository": {
     "type": "git",
@@ -83,7 +84,7 @@
     "typescript-eslint": "^8.16.0"
   },
   "files": [
-    "dist",
+    "dist/**/*",
     "!**/*.json",
     "README"
   ]
