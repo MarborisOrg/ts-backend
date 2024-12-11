@@ -1,3 +1,4 @@
+import dotenv from 'dotenv';
 import fs from 'fs';
 import path from 'path';
 import url from 'url';
@@ -13,6 +14,21 @@ type Config = {
   [key: string]: any;
 };
 
+namespace config_ns {
+  export type Settings = {
+    [key: string]: any; // Allow any key-value pairs
+  };
+
+  export type IEnvConfig = {
+    readonly [key: string]: any; // Allow any key-value pairs
+  };
+
+  export type IConfig = {
+    readonly env: IEnvConfig;
+    readonly getEnv: () => IEnvConfig;
+  };
+}
+
 export default abstract class {
   protected args: Config;
   private log: CustomLogger;
@@ -25,6 +41,8 @@ export default abstract class {
     'error.log': this.__05M__,
     'core.log': this.__05M__,
   };
+
+  public env_config: config_ns.Settings = {};
 
   public constructor() {
     try {
@@ -110,6 +128,7 @@ export default abstract class {
       console.log(`------------------------------------------`);
 
       this.logDir = this.whereIsHere('log');
+      this.make(this.logDir);
 
       this.echo('Info: Load logger!');
 
@@ -219,6 +238,14 @@ export default abstract class {
     } finally {
       this.process();
     }
+
+    const envFilePath = this.findEnvFileInSubdirectories(this.whereIsHere());
+
+    if (envFilePath) {
+      dotenv.config({ path: envFilePath });
+    }
+    // Directly assign process.env to config
+    this.env_config = { ...process.env };
   }
 
   protected whereIsHere(resolvePath: string = ''): string {
@@ -446,4 +473,31 @@ export default abstract class {
       this.echo(`File renamed to: ${uniqueFilePath}`);
     }
   }
+
+  private findEnvFileInSubdirectories = (startDir: string): string | null => {
+    const files = fs.readdirSync(startDir); // Read the contents of the directory
+    const envPath = this.args.dev ? '.env.dev' : '.env'; // Determine the .env file name based on the environment
+
+    // Check if the .env file exists in the current directory
+    if (files.includes(envPath)) {
+      return path.join(startDir, envPath); // Return the full path if found
+    }
+
+    // Use reduce to search through files for a directory containing the .env file
+    const foundPath = files.reduce<string | null>((acc, file) => {
+      if (acc) return acc; // If a path has already been found, return it
+
+      const fullPath = path.join(startDir, file); // Get the full path of the file
+      const stat = fs.statSync(fullPath); // Get the file statistics
+
+      // If the file is a directory, recursively search in that directory
+      if (stat.isDirectory()) {
+        return this.findEnvFileInSubdirectories(fullPath);
+      }
+
+      return null; // Return null if the file is not a directory
+    }, null);
+
+    return foundPath; // Return the found path or null if not found
+  };
 }
