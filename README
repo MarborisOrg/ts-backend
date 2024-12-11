@@ -20,6 +20,10 @@ To install the package, use the following command:
 ```bash
 npm install @marboris/coreutils
 ```
+or
+```bash
+yarn add @marboris/coreutils
+```
 
 ## Contributing
 
