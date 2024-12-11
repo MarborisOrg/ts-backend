@@ -251,8 +251,7 @@ export default abstract class {
   protected whereIsHere(resolvePath: string = ''): string {
     let dirName: string;
     if (this.args.anchor) {
-      const __filename = url.fileURLToPath(import.meta.url);
-      const appDir = path.resolve(path.dirname(__filename), '../../');
+      const appDir = path.resolve(path.dirname(__filename), '../../'); // TODO()
       dirName = path.resolve(appDir, resolvePath);
     } else {
       dirName = path.resolve(process.cwd(), resolvePath);
