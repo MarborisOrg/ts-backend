@@ -53,9 +53,8 @@
 
     "lib": ["es2022"],
     "types": ["node"],
-    "typeRoots": ["node_modules/@types"]
-
-    // "skipLibCheck": true
+    "typeRoots": ["node_modules/@types"],
+    "skipLibCheck": true
   },
   "include": ["src/**/*.ts"],
   "exclude": ["node_modules/**", "dist/**", "log/**", "doc/**", "src/databases/**"],
