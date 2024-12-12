@@ -4,7 +4,7 @@ import path from 'path';
 import { hideBin } from 'yargs/helpers';
 import yargs from 'yargs/yargs';
 
-import { Singleton } from '#core';
+import { Singleton } from './core';
 
 type Config = Record<string, any>;
 

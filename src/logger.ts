@@ -1,7 +1,7 @@
 import path from 'path';
 import winston from 'winston';
 
-import { Singleton } from '#core';
+import { Singleton } from './core';
 
 // Type Definitions
 export interface CustomLogger extends winston.Logger {

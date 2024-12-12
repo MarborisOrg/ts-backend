@@ -1,8 +1,8 @@
 // import { exec } from 'child_process';
 // import { createInterface } from 'readline';
 
-// import { keysDir } from '#core/core.requirement';
-// import { createBackup } from '#file.backup';
+// import { keysDir } from './core/core.requirement';
+// import { createBackup } from './file.backup';
 
 // export class Init {
 //   public async init(): Promise<void> {

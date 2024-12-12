@@ -1,5 +1,5 @@
 // get book
-import { SELECT_ALL_BOOKS, SELECT_BOOKS } from '#databases/mysql/sql/book';
+import { SELECT_ALL_BOOKS, SELECT_BOOKS } from './databases/mysql/sql/book';
 
 export type Book = {
   readonly id: number;

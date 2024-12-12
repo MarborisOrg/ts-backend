@@ -9,8 +9,8 @@
  * for managing `Item` entities in MongoDB.
  */
 
-import { mongo_ns } from '#databases/database.mongo.collection.type';
 import mongoose, { Document, Schema } from 'mongoose';
+import { mongo_ns } from './databases/database.mongo.collection.type';
 
 /**
  * Interface representing a Counter document in MongoDB.

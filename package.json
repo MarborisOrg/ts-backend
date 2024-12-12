@@ -1,32 +1,33 @@
 {
   "name": "@marboris/coreutils",
-  "version": "2.6.0",
+  "version": "2.7.0",
   "description": "coreutils is suitable for all projects that require database interactions and specific configurations.",
-  "main": "dist/core.js",
-  "types": "dist/core.d.ts",
-  "type": "module",
   "private": false,
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/MarborisOrg/ts-backend.git"
   },
   "license": "UNLICENSED",
   "keywords": [
-    "nodejs"
+    "nodejs",
+    "core",
+    "utils",
+    "coreutils"
   ],
   "author": "MRB",
-  "imports": {
-    "#*": "./dist/*.js"
-  },
+  "main": "./dist/cjs/core.js",
+  "module": "./dist/mjs/core.js",
+  "types": "./dist/types/core.d.ts",
   "exports": {
-    ".": {
-      "require": "./dist/core.js",
-      "import": "./dist/core.js"
-    }
+    "require": "./dist/cjs/core.js",
+    "import": "./dist/mjs/core.js"
   },
   "scripts": {
+    "build:mjs": "tsc --project tsconfig.mjs.json",
+    "build:cjs": "tsc --project tsconfig.cjs.json",
+    "build": "rimraf dist && npm run build:mjs && npm run build:cjs",
     "pub": "rimraf dist && tsc && npm publish",
-    "build": "rimraf dist && tsc",
     "pretty": "prettier --write \"src/**/*.{ts,js}\"",
     "lint": "eslint ."
   },

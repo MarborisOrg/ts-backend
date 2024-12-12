@@ -1,10 +1,11 @@
 import fs from 'fs';
 import path from 'path';
 
-import { AmqpManager } from '#amqp';
-import { ConfigManager } from '#config';
-import '#console.log';
-import { CustomLogger, LoggerManager } from '#logger';
+import { AmqpManager } from './amqp';
+import { ConfigManager } from './config';
+import './console.log';
+import { cwd as CWD } from './cwd';
+import { CustomLogger, LoggerManager } from './logger';
 
 // Utility Decorators
 export function Singleton<T extends { new (...args: any[]): any }>(
@@ -48,6 +49,12 @@ export abstract class Core {
   protected amqpManager: AmqpManager;
 
   public constructor() {
+    if (new.target === Core) {
+      throw new Error(
+        'Core cannot be instantiated directly. Please extend it.'
+      );
+    }
+    globalThis.cwd = CWD;
     this.config = new ConfigManager();
     this.logger = new LoggerManager(
       this.getLogDir(),

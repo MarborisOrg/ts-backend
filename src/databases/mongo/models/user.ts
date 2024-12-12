@@ -1,6 +1,6 @@
 import mongoose, { Schema } from 'mongoose';
 
-import { mongo_ns } from '#databases/database.mongo.collection.type';
+import { mongo_ns } from './databases/database.mongo.collection.type';
 
 class UserModel {
   private readonly userSchema: Schema;

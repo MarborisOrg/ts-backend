@@ -3,7 +3,7 @@ import {
   DELETE_BOOK,
   DROP_BOOKS_TABLE,
   SELECT_BOOKS,
-} from '#databases/mysql/sql/book';
+} from './databases/mysql/sql/book';
 
 export function dropBooks(): Promise<boolean> {
   return new Promise((resolve, reject) => {

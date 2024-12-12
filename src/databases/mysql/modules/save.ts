@@ -1,5 +1,5 @@
-import { DUPLICATE_TABLE } from '#databases/mysql/codes';
-import { INSERT_BOOKS } from '#databases/mysql/sql/book';
+import { DUPLICATE_TABLE } from './databases/mysql/codes';
+import { INSERT_BOOKS } from './databases/mysql/sql/book';
 
 export function saveBook(title: string, description: string): Promise<boolean> {
   return new Promise((resolve, reject) => {

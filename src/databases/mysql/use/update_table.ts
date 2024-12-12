@@ -2,7 +2,7 @@
 
 // import { createTable } from './create_tables.js';
 
-// import { config } from '#config/env_get';
+// import { config } from './config/env_get';
 
 // export const updateTable = async () => {
 //   try {

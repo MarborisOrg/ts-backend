@@ -1,6 +1,6 @@
 import { Channel, connect, Connection } from 'amqplib';
 
-import { CatchErrors } from '#core';
+import { CatchErrors } from './core';
 
 // AMQP Manager
 export class AmqpManager {

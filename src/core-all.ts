@@ -1,4 +1,3 @@
-import '#console.log';
 import { Channel, connect, Connection } from 'amqplib';
 import dotenv from 'dotenv';
 import fs from 'fs';
@@ -6,6 +5,7 @@ import path from 'path';
 import winston from 'winston';
 import { hideBin } from 'yargs/helpers';
 import yargs from 'yargs/yargs';
+import './console.log';
 
 // Type Definitions
 interface CustomLogger extends winston.Logger {
@@ -15,9 +15,7 @@ interface CustomLogger extends winston.Logger {
 type Config = Record<string, any>;
 
 // Utility Decorators
-function Singleton<T extends { new (...args: any[]): any }>(
-  constructor: T
-) {
+function Singleton<T extends { new (...args: any[]): any }>(constructor: T) {
   let instance: T | null = null;
   return class extends constructor {
     // @ts-expect-error
@@ -223,4 +221,4 @@ abstract class Core {
     );
     this.logger.info('SSS');
   }
-})
+});
