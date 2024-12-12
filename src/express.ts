@@ -8,6 +8,7 @@ import express, {
 import fs from 'fs'
 import https from 'https'
 import open from 'open'
+import path from 'path'
 import swaggerJsdoc from 'swagger-jsdoc'
 import swaggerUi from 'swagger-ui-express'
 
@@ -18,16 +19,26 @@ export class ExpressManager {
   private https: boolean
 
   public constructor() {
-    this.port = configs.EnvConfig.PORT
+    this.port = configs.EnvConfig.PORT || configs.Args.port
     this.https = configs.Args.https
+
+    console.log('debug: port: ' + configs.Args.port)
 
     this.app = express()
 
     this.localhostMover(this.app)
 
-    this.app.use(express.static(cwd('public')))
+    const publicDir = cwd('public')
+
+    this.app.use(express.static(publicDir))
     this.app.get('/', (_req: Request, res: Response) => {
-      res.sendFile(cwd('public', 'index.html'))
+      const indexPath = path.join(publicDir, 'index.html')
+
+      if (fs.existsSync(indexPath)) {
+        res.sendFile(indexPath)
+      } else {
+        res.status(404).send('404 Not Found')
+      }
     })
 
     // Default middleware
@@ -73,12 +84,8 @@ export class ExpressManager {
         }
       }
       if (configs.Args.https) {
-        const options = {
-          key: fs.readFileSync(cwd('keys', 'private.key')),
-          cert: fs.readFileSync(cwd('keys', 'certificate.crt')),
-        }
         https
-          .createServer(options, this.app)
+          .createServer(this.findKeyFiles(), this.app)
           .listen(this.port, () => {
             inlineApp(true)
           })
@@ -91,6 +98,52 @@ export class ExpressManager {
           .on('error', reject)
       }
     })
+  }
+
+  private findKeyFiles(): { key: string; cert: string } {
+    const keyFileName = 'private.key'
+    const certFileName = 'certificate.crt'
+    let currentDir = cwd()
+
+    let keyFilePath = ''
+    let certFilePath = ''
+
+    while (currentDir) {
+      const possibleKeyPath = path.join(currentDir, 'keys', keyFileName)
+      const possibleCertPath = path.join(currentDir, 'keys', certFileName)
+
+      console.log('debug key: ' + possibleKeyPath)
+      console.log('debug cert: ' + possibleCertPath)
+
+      try {
+        if (fs.existsSync(possibleKeyPath)) {
+          keyFilePath = possibleKeyPath
+        }
+        if (fs.existsSync(possibleCertPath)) {
+          certFilePath = possibleCertPath
+        }
+
+        if (keyFilePath && certFilePath) {
+          break
+        }
+      } catch (err: any) {
+        throw new Error('Error while checking files: ' + err.message)
+      }
+
+      const parentDir = path.dirname(currentDir)
+      if (parentDir === currentDir) break
+      currentDir = parentDir
+    }
+
+    if (!keyFilePath) {
+      throw new Error('Private key file (private.key) is missing.')
+    }
+
+    if (!certFilePath) {
+      throw new Error('Certificate file (certificate.crt) is missing.')
+    }
+
+    return { key: keyFilePath, cert: certFilePath }
   }
 
   private localhostMover(app: Application): void {
