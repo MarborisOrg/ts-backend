@@ -32,7 +32,7 @@ export abstract class Core {
 // eslint-disable-next-line @typescript-eslint/no-unused-expressions
 ;(class extends Core {
   public Main(): void {
-    console.log('[__info__] H Fuck error FuckError Application is starting...')
-    this.logger.info('SSS')
+    console.log('[__info__] Application is starting...')
+    this.logger.info('Debug mode')
   }
 })
