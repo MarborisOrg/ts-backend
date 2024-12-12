@@ -1,3 +1,4 @@
+import fs from 'fs'
 import path from 'path'
 import winston from 'winston'
 
@@ -13,11 +14,13 @@ export interface CustomLogger extends winston.Logger {
 export class LoggerManager {
   private logger: CustomLogger
 
-  public constructor(logDir: string, debug: boolean) {
-    if (!logDir || typeof logDir !== 'string') {
-      throw new TypeError('Invalid log directory provided.')
-    }
+  private getLogDir(): string {
+    const logDir = cwd('log')
+    if (!fs.existsSync(logDir)) fs.mkdirSync(logDir, { recursive: true })
+    return logDir
+  }
 
+  public constructor() {
     const logLevels = { core: 0, error: 1, warn: 2, debug: 3, info: 4 }
 
     const createFileTransport = (
@@ -25,14 +28,14 @@ export class LoggerManager {
       fileName: string
     ): winston.transports.FileTransportInstance =>
       new winston.transports.File({
-        filename: path.join(logDir, fileName),
+        filename: path.join(this.getLogDir(), fileName),
         level,
       })
 
     const customTimestampFormat = winston.format.printf(
       ({ timestamp, level, message }) => {
         const customTimeMsg = `[${timestamp}] ${level}: '${message}'`
-        if (debug) {
+        if (configs.Args.debug) {
           console.log(customTimeMsg)
         }
         return customTimeMsg

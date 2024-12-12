@@ -1,7 +1,5 @@
 import './console.log.js'
 
-import fs from 'fs'
-
 import { AmqpManager } from './amqp.js'
 import { ConfigManager } from './config.js'
 import { cwd as CWD } from './cwd.js'
@@ -19,10 +17,7 @@ export abstract class Core {
     }
     globalThis.cwd = CWD
     this.config = new ConfigManager()
-    this.logger = new LoggerManager(
-      this.getLogDir(),
-      this.config.Args.debug
-    ).getLogger()
+    this.logger = new LoggerManager().getLogger()
     globalThis.log = this.logger
     globalThis.configs = this.config
     this.amqpManager = new AmqpManager()
@@ -30,20 +25,14 @@ export abstract class Core {
     this.Main()
   }
 
-  private getLogDir(): string {
-    const logDir = cwd('log')
-    if (!fs.existsSync(logDir)) fs.mkdirSync(logDir, { recursive: true })
-    return logDir
-  }
-
   protected abstract Main(): void
 }
 
 // Test
 // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-new (class extends Core {
+;(class extends Core {
   public Main(): void {
     console.log('[__info__] H Fuck error FuckError Application is starting...')
     this.logger.info('SSS')
   }
-})()
+})
