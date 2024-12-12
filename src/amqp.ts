@@ -9,6 +9,9 @@ export class AmqpManager {
 
   @CatchErrors
   public async connect(amqpUrl: string): Promise<void> {
+    if (!amqpUrl) {
+      throw new Error('Queue cannot be null.')
+    }
     this.connection = await connect(amqpUrl)
     this.channel = await this.connection.createChannel()
   }
