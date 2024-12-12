@@ -1,9 +1,0 @@
-## Unix
-
-chmod +x t1.sh
-alias t1='bash path/t1/bin/t1.sh'
-t1 --help
-
-# Windows
-create new PATH:
-path\t1\bin
