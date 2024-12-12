@@ -15,7 +15,7 @@ interface CustomLogger extends winston.Logger {
 type Config = Record<string, any>;
 
 // Utility Decorators
-export function Singleton<T extends { new (...args: any[]): any }>(
+function Singleton<T extends { new (...args: any[]): any }>(
   constructor: T
 ) {
   let instance: T | null = null;
@@ -30,7 +30,7 @@ export function Singleton<T extends { new (...args: any[]): any }>(
   };
 }
 
-export function CatchErrors(
+function CatchErrors(
   _target: any,
   propertyKey: string,
   descriptor: PropertyDescriptor
@@ -185,7 +185,7 @@ class AmqpManager {
 }
 
 // Core Application
-export abstract class Core {
+abstract class Core {
   protected config: ConfigManager;
   protected logger: CustomLogger;
   protected amqpManager: AmqpManager;

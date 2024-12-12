@@ -1,18 +1,5 @@
 # CoreUtils
 
-## Overview
-
-This project is developed in TypeScript and is designed to operate exclusively within ESM (ECMAScript Module) environments. It leverages modern JavaScript features and provides a clean, modular approach to building applications.
-
-## Features
-
-- Written in TypeScript for enhanced type safety and developer experience.
-- Optimized for ESM, ensuring compatibility with modern JavaScript environments.
-- **Easy Connection to Databases**: Seamlessly connect to both MySQL and MongoDB databases in a modular fashion.
-- **Configurable Settings**: Easily manage flags, algorithms, and environment variables using a `.env` file.
-- **Secure Logging**: Implement secure logging mechanisms to ensure data integrity and confidentiality.
-- **Safe Resource Management**: Ensure secure memory deallocation and efficient resource cleanup to prevent memory leaks.
-
 ## Installation
 
 To install the package, use the following command:
@@ -20,13 +7,5 @@ To install the package, use the following command:
 ```bash
 npm install @marboris/coreutils
 ```
-or
-```bash
-yarn add @marboris/coreutils
-```
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit a pull request or open an issue for any suggestions or improvements.
 
 ### Make it easy/simple and usefull
