@@ -27,7 +27,7 @@
     "build:mjs": "tsc --project tsconfig.mjs.json",
     "build:cjs": "tsc --project tsconfig.cjs.json",
     "build": "rimraf dist && npm run build:mjs && npm run build:cjs",
-    "pub": "rimraf dist && tsc && npm publish",
+    "pub": "npm run build && npm publish",
     "pretty": "prettier --write \"src/**/*.{ts,js}\"",
     "lint": "eslint ."
   },
