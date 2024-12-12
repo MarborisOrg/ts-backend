@@ -1,62 +1,62 @@
 // all service classes
-import mongoose from 'mongoose';
+import mongoose from 'mongoose'
 
-import ItemModel from './models/item.js';
-import { ItemDelete } from './modules/drop.js';
-import { ItemFind } from './modules/find.js';
-import { ItemCreate } from './modules/save.js';
-import Database from './use/index.js';
+import ItemModel from './models/item.js'
+import { ItemDelete } from './modules/drop.js'
+import { ItemFind } from './modules/find.js'
+import { ItemCreate } from './modules/save.js'
+import Database from './use/index.js'
 
-import { MongoModuleNames } from './databases/database.enum';
-import { mongo_ns } from './databases/database.mongo.collection.type';
-import { DatabasesType } from './databases/database.type';
+import { MongoModuleNames } from './databases/database.enum'
+import { mongo_ns } from './databases/database.mongo.collection.type'
+import { DatabasesType } from './databases/database.type'
 
 class Service {
-  private readonly itemModel: mongoose.Model<mongo_ns.IItem>;
-  private readonly itemCreate: ItemCreate;
-  private readonly itemFind: ItemFind;
-  private readonly itemDelete: ItemDelete;
+  private readonly itemModel: mongoose.Model<mongo_ns.IItem>
+  private readonly itemCreate: ItemCreate
+  private readonly itemFind: ItemFind
+  private readonly itemDelete: ItemDelete
 
   public constructor() {
-    this.itemModel = ItemModel.getModel();
-    this.itemCreate = new ItemCreate(this.itemModel);
-    this.itemFind = new ItemFind(this.itemModel);
-    this.itemDelete = new ItemDelete(this.itemModel);
+    this.itemModel = ItemModel.getModel()
+    this.itemCreate = new ItemCreate(this.itemModel)
+    this.itemFind = new ItemFind(this.itemModel)
+    this.itemDelete = new ItemDelete(this.itemModel)
   }
 
   public async createItem(
     title: string,
     description: string
   ): Promise<mongo_ns.IItem | string> {
-    return this.itemCreate.createItem(title, description);
+    return this.itemCreate.createItem(title, description)
   }
 
   public async getItemByTitle(id: number): Promise<mongo_ns.IItem | string> {
-    return this.itemFind.getItemByTitle(id);
+    return this.itemFind.getItemByTitle(id)
   }
 
   public async getAllItem(
     limit: number,
     page: number
   ): Promise<mongo_ns.IItem[] | string> {
-    return this.itemFind.getAllItems(limit, page);
+    return this.itemFind.getAllItems(limit, page)
   }
 
   public async deleteItem(id: number): Promise<string> {
-    return this.itemDelete.deleteItem(id);
+    return this.itemDelete.deleteItem(id)
   }
 
   public async dropCollection(): Promise<string> {
-    return this.itemDelete.dropCollection();
+    return this.itemDelete.dropCollection()
   }
 }
 
-const itemService = new Service();
+const itemService = new Service()
 
 // put mongo on init
 export default async function (): Promise<void> {
-  const db = new Database($.env.config.mongo_url);
-  await db.connect();
+  const db = new Database($.env.config.mongo_url)
+  await db.connect()
 }
 
 export const mongoModules: DatabasesType = {
@@ -89,4 +89,4 @@ export const mongoModules: DatabasesType = {
       func: itemService.getAllItem.bind(itemService),
     },
   ],
-};
+}

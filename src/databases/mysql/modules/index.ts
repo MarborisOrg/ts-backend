@@ -1,9 +1,9 @@
-import { deleteBookById, dropBooks } from './drop.js';
-import { findAllBooks, findBookById } from './find.js';
-import { saveBook } from './save.js';
+import { deleteBookById, dropBooks } from './drop.js'
+import { findAllBooks, findBookById } from './find.js'
+import { saveBook } from './save.js'
 
-import { MysqlModuleNames } from './databases/database.enum';
-import { DatabasesType } from './databases/database.type';
+import { MysqlModuleNames } from './databases/database.enum'
+import { DatabasesType } from './databases/database.type'
 
 export const mysqlModules: DatabasesType = {
   name: 'mysql',
@@ -29,4 +29,4 @@ export const mysqlModules: DatabasesType = {
       func: findAllBooks,
     },
   ],
-};
+}

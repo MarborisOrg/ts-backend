@@ -5,7 +5,7 @@
  * It provides flexibility to connect to a specific database or use the default configuration.
  */
 
-import knex from 'knex';
+import knex from 'knex'
 
 /**
  * @typedef {Object} DatabaseConfig
@@ -17,14 +17,14 @@ import knex from 'knex';
  * @property {string} [connection.database] - The optional name of the database to connect to.
  */
 export type DatabaseConfig = {
-  readonly client: string;
+  readonly client: string
   readonly connection: {
-    readonly host: string;
-    readonly user: string;
-    readonly password: string;
-    readonly database?: string;
-  };
-};
+    readonly host: string
+    readonly user: string
+    readonly password: string
+    readonly database?: string
+  }
+}
 
 /**
  * Creates a Knex.js configuration object for MySQL connections.
@@ -41,16 +41,16 @@ const createKnexConfig = (database: string = ''): knex.Knex<any, unknown[]> => {
       password: $.env.config.mysql_password, // MySQL password from environment config.
       database: database || undefined, // Optional database name.
     },
-  };
+  }
 
-  return knex(dbConfig);
-};
+  return knex(dbConfig)
+}
 
 /**
  * @var {knex.Knex} mdb
  * Holds the initialized Knex instance for database queries.
  */
-export let mdb: knex.Knex<any, unknown[]>;
+export let mdb: knex.Knex<any, unknown[]>
 
 /**
  * Initializes the `mdb` variable with a Knex instance.
@@ -58,5 +58,5 @@ export let mdb: knex.Knex<any, unknown[]>;
  * @param {string} [databaseName=''] - The name of the database to connect to. Defaults to no database.
  */
 export function initializeMdb(databaseName: string = ''): void {
-  mdb = createKnexConfig(databaseName);
+  mdb = createKnexConfig(databaseName)
 }

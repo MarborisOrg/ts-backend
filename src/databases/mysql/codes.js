@@ -1,5 +1,5 @@
 // error
 
-const DUPLICATE_TABLE = 'ER_DUP_ENTRY';
+const DUPLICATE_TABLE = 'ER_DUP_ENTRY'
 
-export { DUPLICATE_TABLE };
+export { DUPLICATE_TABLE }

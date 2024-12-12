@@ -26,72 +26,72 @@ const colorMapping: Record<any, LogColor> = {
   critical: LogColor.BrightRed,
   app: LogColor.Green,
   start: LogColor.BrightGreen,
-};
-
-function colorizeTag(tag: string): string {
-  const normalizedTag = tag.replace(/[^a-zA-Z]/g, '').toLowerCase();
-  const color = colorMapping[normalizedTag];
-  return color ? `${color}[${tag}]${LogColor.Default}` : `[${tag}]`;
 }
 
-function colorizeWord(word: string): string {
-  const lowerCaseWord = word.toLowerCase();
+const colorizeTag = (tag: string): string => {
+  const normalizedTag = tag.replace(/[^a-zA-Z]/g, '').toLowerCase()
+  const color = colorMapping[normalizedTag]
+  return color ? `${color}[${tag}]${LogColor.Default}` : `[${tag}]`
+}
+
+const colorizeWord = (word: string): string => {
+  const lowerCaseWord = word.toLowerCase()
   for (const [key, color] of Object.entries(colorMapping)) {
     if (lowerCaseWord.includes(key)) {
-      return `${color}${word}${LogColor.Default}`;
+      return `${color}${word}${LogColor.Default}`
     }
   }
-  return word;
+  return word
 }
 
-function colorizeMessage(message: string): string {
+const colorizeMessage = (message: string): string => {
   return message
     .replace(/\[([^\]]+)\]/g, (_match, p1) => colorizeTag(p1))
     .split(' ')
     .map(colorizeWord)
-    .join(' ');
+    .join(' ')
 }
 
-const originalConsoleLog = console.log;
+const originalConsoleLog = console.log
 
 class LRUCache<K, V> {
-  private capacity: number;
-  private map: Map<K, V>;
+  private capacity: number
+  private map: Map<K, V>
 
   public constructor(capacity: number) {
-    this.capacity = capacity;
-    this.map = new Map();
+    this.capacity = capacity
+    this.map = new Map()
   }
 
   public get(key: K): V | undefined {
-    if (!this.map.has(key)) return undefined;
-    const value = this.map.get(key)!;
-    this.map.delete(key);
-    this.map.set(key, value);
-    return value;
+    if (!this.map.has(key)) return undefined
+    const value = this.map.get(key)!
+    this.map.delete(key)
+    this.map.set(key, value)
+    return value
   }
 
   public set(key: K, value: V): void {
     if (this.map.has(key)) {
-      this.map.delete(key);
+      this.map.delete(key)
     } else if (this.map.size >= this.capacity) {
-      const firstKey = this.map.keys().next().value;
+      const firstKey = this.map.keys().next().value
       if (firstKey !== undefined) {
-        this.map.delete(firstKey);
+        this.map.delete(firstKey)
       }
     }
-    this.map.set(key, value);
+    this.map.set(key, value)
   }
 }
 
-const cache = new LRUCache<string, string>(250);
+const cache = new LRUCache<string, string>(250)
 
 console.log = (...args: any[]): void => {
   const coloredArgs = args.map((arg) => {
     if (typeof arg === 'string') {
-      const cachedMessage = cache.get(arg);
+      const cachedMessage = cache.get(arg)
       if (cachedMessage) {
-        return cachedMessage;
+        return cachedMessage
       }
 
       if (
@@ -99,15 +99,15 @@ console.log = (...args: any[]): void => {
           arg
         )
       ) {
-        return arg;
+        return arg
       }
 
-      const processed = colorizeMessage(arg);
-      cache.set(arg, processed);
-      return processed;
+      const processed = colorizeMessage(arg)
+      cache.set(arg, processed)
+      return processed
     }
-    return arg;
-  });
+    return arg
+  })
 
-  originalConsoleLog.apply(console, coloredArgs);
-};
+  originalConsoleLog.apply(console, coloredArgs)
+}

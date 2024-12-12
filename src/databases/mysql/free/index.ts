@@ -4,7 +4,7 @@
  * This module provides a function to release the MySQL connection managed by Knex.js.
  */
 
-import { mdb } from '../config/knex.js';
+import { mdb } from '../config/knex.js'
 
 /**
  * Frees the MySQL connection by destroying the Knex.js instance.
@@ -17,7 +17,7 @@ import { mdb } from '../config/knex.js';
  */
 export async function freeMysql(): Promise<void> {
   if (mdb != undefined) {
-    await mdb.destroy(); // Properly destroy the Knex instance.
+    await mdb.destroy() // Properly destroy the Knex instance.
   }
-  echo('Success: Mysql now free'); // Log a success message.
+  echo('Success: Mysql now free') // Log a success message.
 }

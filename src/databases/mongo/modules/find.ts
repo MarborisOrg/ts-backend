@@ -7,12 +7,12 @@
  * It includes functionalities to retrieve a single item by its ID and to fetch a paginated list of items.
  */
 
-import mongoose from 'mongoose';
+import mongoose from 'mongoose'
 
-import { mongo_ns } from './databases/database.mongo.collection.type';
+import { mongo_ns } from './databases/database.mongo.collection.type'
 
 export class ItemFind {
-  private readonly itemModel: mongoose.Model<mongo_ns.IItem>;
+  private readonly itemModel: mongoose.Model<mongo_ns.IItem>
 
   /**
    * @constructor
@@ -20,7 +20,7 @@ export class ItemFind {
    * @param {mongoose.Model<mongo_ns.IItem>} itemModel - The Mongoose model for the items collection.
    */
   public constructor(itemModel: mongoose.Model<mongo_ns.IItem>) {
-    this.itemModel = itemModel;
+    this.itemModel = itemModel
   }
 
   /**
@@ -32,17 +32,17 @@ export class ItemFind {
    */
   public async getItemByTitle(id: number): Promise<any> {
     try {
-      const item = await this.itemModel.findById(id); // Finds the item by its ID.
+      const item = await this.itemModel.findById(id) // Finds the item by its ID.
       if (item) {
-        return item; // Returns the item if found.
+        return item // Returns the item if found.
       } else {
-        return `No item found with the id "${id}".`; // Message if no item is found.
+        return `No item found with the id "${id}".` // Message if no item is found.
       }
     } catch (error) {
       assert(
         `Error fetching item: ${error instanceof Error ? error.message : error}`,
         true // Handles errors during the fetch process.
-      );
+      )
     }
   }
 
@@ -56,24 +56,24 @@ export class ItemFind {
    */
   public async getAllItems(limit: number = 10, page: number = 1): Promise<any> {
     try {
-      const query = this.itemModel.find(); // Base query to fetch items.
+      const query = this.itemModel.find() // Base query to fetch items.
 
       if (limit > 0) {
-        query.limit(limit); // Limits the number of items if a valid limit is provided.
+        query.limit(limit) // Limits the number of items if a valid limit is provided.
       }
 
       if (page > 0) {
-        query.skip((page - 1) * (limit > 0 ? limit : 10)); // Skips items for pagination.
+        query.skip((page - 1) * (limit > 0 ? limit : 10)) // Skips items for pagination.
       }
 
-      const items = await query.lean(); // Fetches items as plain JavaScript objects.
+      const items = await query.lean() // Fetches items as plain JavaScript objects.
 
-      return items; // Returns the list of items.
+      return items // Returns the list of items.
     } catch (error) {
       assert(
         `Error fetching items: ${error instanceof Error ? error.message : error}`,
         true // Handles errors during the fetch process.
-      );
+      )
     }
   }
 }

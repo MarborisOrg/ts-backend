@@ -1,9 +1,9 @@
 // import { mongoModules_v5 } from './apps/v5/mongo/service.js';
 // import { mysqlModules_v5 } from './apps/v5/mysql/modules/index.js';
-import { mongoModules } from './mongo/service.js';
-import { mysqlModules } from './mysql/modules/index.js';
+import { mongoModules } from './mongo/service.js'
+import { mysqlModules } from './mysql/modules/index.js'
 
-import { DatabasesType } from './databases/database.type';
+import { DatabasesType } from './databases/database.type'
 
 export const databasesArray: readonly DatabasesType[] = [
   // modules on same databases
@@ -13,4 +13,4 @@ export const databasesArray: readonly DatabasesType[] = [
   // v5
   // mongoModules_v5,
   // mysqlModules_v5,
-];
+]

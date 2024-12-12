@@ -1,22 +1,22 @@
-import { fixupConfigRules, fixupPluginRules } from '@eslint/compat';
-import { FlatCompat } from '@eslint/eslintrc';
-import js from '@eslint/js';
-import typescriptEslint from '@typescript-eslint/eslint-plugin';
-import tsParser from '@typescript-eslint/parser';
-import importPlugin from 'eslint-plugin-import';
-import prettier from 'eslint-plugin-prettier';
-import testingLibrary from 'eslint-plugin-testing-library';
-import globals from 'globals';
-import path from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { fixupConfigRules, fixupPluginRules } from '@eslint/compat'
+import { FlatCompat } from '@eslint/eslintrc'
+import js from '@eslint/js'
+import typescriptEslint from '@typescript-eslint/eslint-plugin'
+import tsParser from '@typescript-eslint/parser'
+import importPlugin from 'eslint-plugin-import'
+import prettier from 'eslint-plugin-prettier'
+import testingLibrary from 'eslint-plugin-testing-library'
+import globals from 'globals'
+import path from 'node:path'
+import { fileURLToPath } from 'node:url'
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
 const compat = new FlatCompat({
   baseDirectory: __dirname,
   recommendedConfig: js.configs.recommended,
   allConfig: js.configs.all,
-});
+})
 
 export default [
   {
@@ -95,7 +95,21 @@ export default [
       'global-require': 'error',
 
       // prettier
-      'prettier/prettier': 'error',
+      'prettier/prettier': [
+        'error',
+        {
+          trailingComma: 'es5',
+          tabWidth: 2,
+          semi: false,
+          singleQuote: true,
+          printWidth: 80,
+          arrowParens: 'always',
+          bracketSpacing: true,
+          requirePragma: false,
+          proseWrap: 'preserve',
+          endOfLine: 'lf',
+        },
+      ],
       '@typescript-eslint/no-empty-object-type': 'off',
       '@typescript-eslint/no-explicit-any': 'off',
       '@typescript-eslint/no-var-requires': 'off',
@@ -119,6 +133,17 @@ export default [
       '@typescript-eslint/await-thenable': 'warn',
       '@typescript-eslint/no-floating-promises': 'warn',
       '@typescript-eslint/require-await': 'warn',
+
+      // enforce arrow functions
+      'prefer-arrow-callback': ['error', { allowNamedFunctions: false }],
+      'func-style': ['error', 'expression', { allowArrowFunctions: true }],
+      'no-restricted-syntax': [
+        'error',
+        {
+          selector: 'FunctionDeclaration',
+          message: 'Use arrow functions instead of function declarations.',
+        },
+      ],
     },
   },
   {
@@ -155,4 +180,4 @@ export default [
       sourceType: 'commonjs',
     },
   },
-];
+]

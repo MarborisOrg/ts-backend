@@ -16,7 +16,7 @@
     "coreutils"
   ],
   "author": "MRB",
-  "main": "./dist/cjs/core.js",
+  "main": "./dist/mjs/core.js",
   "module": "./dist/mjs/core.js",
   "types": "./dist/types/core.d.ts",
   "exports": {

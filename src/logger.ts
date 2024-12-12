@@ -1,24 +1,24 @@
-import path from 'path';
-import winston from 'winston';
+import path from 'path'
+import winston from 'winston'
 
-import { Singleton } from './core';
+import { Singleton } from './decorators.js'
 
 // Type Definitions
 export interface CustomLogger extends winston.Logger {
-  core: (message: string | object) => void;
+  core: (message: string | object) => void
 }
 
 // Logger Manager
 @Singleton
 export class LoggerManager {
-  private logger: CustomLogger;
+  private logger: CustomLogger
 
   public constructor(logDir: string, debug: boolean) {
     if (!logDir || typeof logDir !== 'string') {
-      throw new TypeError('Invalid log directory provided.');
+      throw new TypeError('Invalid log directory provided.')
     }
 
-    const logLevels = { core: 0, error: 1, warn: 2, debug: 3, info: 4 };
+    const logLevels = { core: 0, error: 1, warn: 2, debug: 3, info: 4 }
 
     const createFileTransport = (
       level: keyof typeof logLevels,
@@ -27,17 +27,17 @@ export class LoggerManager {
       new winston.transports.File({
         filename: path.join(logDir, fileName),
         level,
-      });
+      })
 
     const customTimestampFormat = winston.format.printf(
       ({ timestamp, level, message }) => {
-        const customTimeMsg = `[${timestamp}] ${level}: '${message}'`;
+        const customTimeMsg = `[${timestamp}] ${level}: '${message}'`
         if (debug) {
-          console.log(customTimeMsg);
+          console.log(customTimeMsg)
         }
-        return customTimeMsg;
+        return customTimeMsg
       }
-    );
+    )
 
     this.logger = winston.createLogger({
       levels: logLevels,
@@ -52,13 +52,13 @@ export class LoggerManager {
         createFileTransport('error', 'error.log'),
         createFileTransport('info', 'combined.log'),
       ],
-    }) as CustomLogger;
+    }) as CustomLogger
 
     this.logger.core = (message: string | object): string | object =>
-      this.logger.log('core', message);
+      this.logger.log('core', message)
   }
 
   public getLogger(): CustomLogger {
-    return this.logger;
+    return this.logger
   }
 }

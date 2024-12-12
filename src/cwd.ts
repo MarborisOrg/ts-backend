@@ -1,5 +1,5 @@
-import path from 'path';
+import path from 'path'
 
-export function cwd(resolvePath = ''): string {
-  return path.resolve(process.cwd(), resolvePath);
+export const cwd = (resolvePath = ''): string => {
+  return path.resolve(process.cwd(), resolvePath)
 }

@@ -7,12 +7,12 @@
  * using the Mongoose library. It includes methods to delete specific items and drop the entire collection.
  */
 
-import mongoose from 'mongoose';
+import mongoose from 'mongoose'
 
-import { mongo_ns } from './databases/database.mongo.collection.type';
+import { mongo_ns } from './databases/database.mongo.collection.type'
 
 export class ItemDelete {
-  private readonly itemModel;
+  private readonly itemModel
 
   /**
    * @constructor
@@ -20,7 +20,7 @@ export class ItemDelete {
    * @param {mongoose.Model<mongo_ns.IItem>} itemModel - The Mongoose model for the items collection.
    */
   public constructor(itemModel: mongoose.Model<mongo_ns.IItem>) {
-    this.itemModel = itemModel;
+    this.itemModel = itemModel
   }
 
   /**
@@ -32,20 +32,20 @@ export class ItemDelete {
    */
   public async deleteItem(id: number): Promise<any> {
     if (!this.itemModel) {
-      assert('Item model is not set.', true); // Ensures the item model is defined.
+      assert('Item model is not set.', true) // Ensures the item model is defined.
     }
 
     try {
-      const result = await this.itemModel.deleteOne({ id });
+      const result = await this.itemModel.deleteOne({ id })
       if (result.deletedCount === 0) {
-        assert(`No item found with the id "${id}".`, true); // Throws an error if no matching item is found.
+        assert(`No item found with the id "${id}".`, true) // Throws an error if no matching item is found.
       }
-      return `Item with the id "${id}" has been deleted.`; // Returns success message.
+      return `Item with the id "${id}" has been deleted.` // Returns success message.
     } catch (error) {
       assert(
         `Error deleting item: ${error instanceof Error ? error.message : error}`,
         true // Handles any errors during the deletion process.
-      );
+      )
     }
   }
 
@@ -57,17 +57,17 @@ export class ItemDelete {
    */
   public async dropCollection(): Promise<any> {
     if (!this.itemModel) {
-      assert('Item model is not set.', true); // Ensures the item model is defined.
+      assert('Item model is not set.', true) // Ensures the item model is defined.
     }
 
     try {
-      await this.itemModel.collection.drop(); // Drops the MongoDB collection.
-      return 'Collection dropped successfully.'; // Returns success message.
+      await this.itemModel.collection.drop() // Drops the MongoDB collection.
+      return 'Collection dropped successfully.' // Returns success message.
     } catch (error) {
       assert(
         `Error dropping collection: ${error instanceof Error ? error.message : error}`,
         true // Handles any errors during the dropping process.
-      );
+      )
     }
   }
 }

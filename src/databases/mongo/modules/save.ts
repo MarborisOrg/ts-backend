@@ -7,14 +7,14 @@
  * It includes functionality to create new items while managing potential duplicate entries.
  */
 
-import mongoose from 'mongoose';
+import mongoose from 'mongoose'
 
-import { DUPLICATE_ITEM } from '../codes.js';
+import { DUPLICATE_ITEM } from '../codes.js'
 
-import { mongo_ns } from './databases/database.mongo.collection.type';
+import { mongo_ns } from './databases/database.mongo.collection.type'
 
 export class ItemCreate {
-  private readonly itemModel;
+  private readonly itemModel
 
   /**
    * @constructor
@@ -22,7 +22,7 @@ export class ItemCreate {
    * @param {mongoose.Model<mongo_ns.IItem>} itemModel - The Mongoose model for the items collection.
    */
   public constructor(itemModel: mongoose.Model<mongo_ns.IItem>) {
-    this.itemModel = itemModel;
+    this.itemModel = itemModel
   }
 
   /**
@@ -35,20 +35,20 @@ export class ItemCreate {
    */
   public async createItem(title: string, description: string): Promise<any> {
     // Creates a new instance of the item with provided title and description.
-    const newItem: mongo_ns.IItem = new this.itemModel({ title, description });
+    const newItem: mongo_ns.IItem = new this.itemModel({ title, description })
 
     try {
       // Saves the new item to the database.
-      const savedItem = await newItem.save();
-      return savedItem; // Returns the saved item object.
+      const savedItem = await newItem.save()
+      return savedItem // Returns the saved item object.
     } catch (error: any) {
       if (error.code === DUPLICATE_ITEM) {
-        assert(`Error: An item with the title "${title}" already exists.`); // Handles duplicate title errors.
+        assert(`Error: An item with the title "${title}" already exists.`) // Handles duplicate title errors.
       } else {
         assert(
           `Error saving item: ${error instanceof Error ? error.message : error}`,
           true // Handles general errors during the save process.
-        );
+        )
       }
     }
   }

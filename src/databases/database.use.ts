@@ -7,7 +7,7 @@
  * It prioritizes the environment configuration and falls back to default settings if necessary.
  */
 
-import { DatabasesUseType } from './databases/database.type'; // Import the type definition for database usage
+import { DatabasesUseType } from './databases/database.type' // Import the type definition for database usage
 
 /**
  * Checks the current database configuration and returns the database type to be used.
@@ -21,8 +21,8 @@ export default function (): DatabasesUseType {
     $.env.config.database_use === 'mongo' ||
     $.env.config.database_use === 'mysql'
   ) {
-    return $.env.config.database_use; // Return the valid database type from the configuration
+    return $.env.config.database_use // Return the valid database type from the configuration
   } else {
-    return $.env.defaults.env.database_use; // Return the default database type if the configuration is invalid
+    return $.env.defaults.env.database_use // Return the default database type if the configuration is invalid
   }
 }

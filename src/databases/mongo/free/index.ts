@@ -7,7 +7,7 @@
  * It ensures that the connection is properly closed and logs a success message upon completion.
  */
 
-import mongoose from 'mongoose'; // Import the mongoose library for MongoDB interactions
+import mongoose from 'mongoose' // Import the mongoose library for MongoDB interactions
 
 /**
  * Frees the MongoDB connection by disconnecting from the database.
@@ -15,6 +15,6 @@ import mongoose from 'mongoose'; // Import the mongoose library for MongoDB inte
  * @returns A Promise that resolves when the disconnection is complete.
  */
 export async function freeMongo(): Promise<void> {
-  await mongoose.disconnect(); // Disconnect from the MongoDB database
-  echo('Success: Mongo now free'); // Log a success message indicating the connection is freed
+  await mongoose.disconnect() // Disconnect from the MongoDB database
+  echo('Success: Mongo now free') // Log a success message indicating the connection is freed
 }
