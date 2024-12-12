@@ -8,7 +8,6 @@ import express, {
 import fs from 'fs'
 import https from 'https'
 import open from 'open'
-import path from 'path'
 import swaggerJsdoc from 'swagger-jsdoc'
 import swaggerUi from 'swagger-ui-express'
 
@@ -26,11 +25,9 @@ export class ExpressManager {
 
     this.localhostMover(this.app)
 
-    const publicDir = cwd('public')
-
-    this.app.use(express.static(publicDir))
+    this.app.use(express.static(cwd('public')))
     this.app.get('/', (_req: Request, res: Response) => {
-      res.sendFile(path.join(publicDir, 'index.html'))
+      res.sendFile(cwd('public', 'index.html'))
     })
 
     // Default middleware
@@ -77,8 +74,8 @@ export class ExpressManager {
       }
       if (configs.Args.https) {
         const options = {
-          key: fs.readFileSync('keys/private.key'),
-          cert: fs.readFileSync('keys/certificate.crt'),
+          key: fs.readFileSync(cwd('keys', 'private.key')),
+          cert: fs.readFileSync(cwd('keys', 'certificate.crt')),
         }
         https
           .createServer(options, this.app)

@@ -5,7 +5,7 @@ import { CustomLogger } from './logger.js'
 declare global {
   var log: CustomLogger
   var configs: ConfigManager
-  function cwd(resolvePath = ''): string
+  function cwd(resolvePath?: string, join?: string): string
 }
 
 export {}
