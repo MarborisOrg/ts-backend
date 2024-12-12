@@ -58,12 +58,12 @@ class LRUCache<K, V> {
   private capacity: number;
   private map: Map<K, V>;
 
-  constructor(capacity: number) {
+  public constructor(capacity: number) {
     this.capacity = capacity;
     this.map = new Map();
   }
 
-  get(key: K): V | undefined {
+  public get(key: K): V | undefined {
     if (!this.map.has(key)) return undefined;
     const value = this.map.get(key)!;
     this.map.delete(key);
@@ -71,7 +71,7 @@ class LRUCache<K, V> {
     return value;
   }
 
-  set(key: K, value: V): void {
+  public set(key: K, value: V): void {
     if (this.map.has(key)) {
       this.map.delete(key);
     } else if (this.map.size >= this.capacity) {
@@ -86,7 +86,7 @@ class LRUCache<K, V> {
 
 const cache = new LRUCache<string, string>(250);
 
-console.log = (...args: any[]) => {
+console.log = (...args: any[]): void => {
   const coloredArgs = args.map((arg) => {
     if (typeof arg === 'string') {
       const cachedMessage = cache.get(arg);

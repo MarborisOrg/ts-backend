@@ -1,6 +1,7 @@
-import { Singleton } from "#core";
-import winston from 'winston';
 import path from 'path';
+import winston from 'winston';
+
+import { Singleton } from '#core';
 
 // Type Definitions
 export interface CustomLogger extends winston.Logger {
@@ -12,7 +13,7 @@ export interface CustomLogger extends winston.Logger {
 export class LoggerManager {
   private logger: CustomLogger;
 
-  constructor(logDir: string, debug: boolean) {
+  public constructor(logDir: string, debug: boolean) {
     if (!logDir || typeof logDir !== 'string') {
       throw new TypeError('Invalid log directory provided.');
     }
@@ -22,7 +23,7 @@ export class LoggerManager {
     const createFileTransport = (
       level: keyof typeof logLevels,
       fileName: string
-    ) =>
+    ): winston.transports.FileTransportInstance =>
       new winston.transports.File({
         filename: path.join(logDir, fileName),
         level,
@@ -53,7 +54,7 @@ export class LoggerManager {
       ],
     }) as CustomLogger;
 
-    this.logger.core = (message: string | object) =>
+    this.logger.core = (message: string | object): string | object =>
       this.logger.log('core', message);
   }
 

@@ -57,6 +57,6 @@
     "skipLibCheck": true
   },
   "include": ["src/**/*.ts"],
-  "exclude": ["node_modules/**", "dist/**", "log/**", "doc/**", "src/databases/**"],
+  "exclude": ["node_modules/**", "dist/**", "log/**", "doc/**", "src/databases/**", "src/core-all.ts"],
   "compileOnSave": false
 }

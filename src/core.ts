@@ -1,9 +1,10 @@
+import fs from 'fs';
+import path from 'path';
+
 import { AmqpManager } from '#amqp';
 import { ConfigManager } from '#config';
 import '#console.log';
 import { CustomLogger, LoggerManager } from '#logger';
-import fs from 'fs';
-import path from 'path';
 
 // Utility Decorators
 export function Singleton<T extends { new (...args: any[]): any }>(
@@ -11,7 +12,8 @@ export function Singleton<T extends { new (...args: any[]): any }>(
 ) {
   let instance: T | null = null;
   return class extends constructor {
-    // @ts-expect-error
+    // @ts-expect-error no super needed!
+    // eslint-disable-next-line @typescript-eslint/explicit-member-accessibility
     constructor(...args: any[]) {
       if (!instance) {
         instance = new constructor(...args);
@@ -45,12 +47,14 @@ export abstract class Core {
   protected logger: CustomLogger;
   protected amqpManager: AmqpManager;
 
-  constructor() {
+  public constructor() {
     this.config = new ConfigManager();
     this.logger = new LoggerManager(
       this.getLogDir(),
       this.config.Args.debug
     ).getLogger();
+    globalThis.log = this.logger;
+    globalThis.configs = this.config;
     this.amqpManager = new AmqpManager();
   }
 
@@ -60,22 +64,14 @@ export abstract class Core {
     return logDir;
   }
 
-  protected abstract Main(): Promise<void>;
-
-  protected exitGracefully(): void {
-    process.on('SIGINT', () => {
-      this.logger.info('Shutting down gracefully.');
-      process.exit(0);
-    });
-  }
+  protected abstract Main(): void;
 }
 
 // Test
+// eslint-disable-next-line @typescript-eslint/no-unused-expressions
 (class extends Core {
-  public async Main(): Promise<void> {
-    console.log(
-      '[__info__] H Fuck error FuckError Application is starting...'
-    );
+  public Main(): void {
+    console.log('[__info__] H Fuck error FuckError Application is starting...');
     this.logger.info('SSS');
   }
-})
+});

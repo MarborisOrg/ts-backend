@@ -1,9 +1,10 @@
-import { Singleton } from "#core";
-import { hideBin } from 'yargs/helpers';
-import yargs from 'yargs/yargs';
 import dotenv from 'dotenv';
 import fs from 'fs';
 import path from 'path';
+import { hideBin } from 'yargs/helpers';
+import yargs from 'yargs/yargs';
+
+import { Singleton } from '#core';
 
 type Config = Record<string, any>;
 
@@ -13,7 +14,7 @@ export class ConfigManager {
   private args: Config;
   private envConfig: Record<string, any> = {};
 
-  constructor() {
+  public constructor() {
     this.args = this.parseArgs();
     this.loadEnvFile();
   }
@@ -47,7 +48,9 @@ export class ConfigManager {
         if (fs.existsSync(possiblePath)) {
           return possiblePath;
         }
-      } catch {}
+      } catch {
+        /* empty */
+      }
 
       const parentDir = path.dirname(currentDir);
       if (parentDir === currentDir) break;
