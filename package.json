@@ -1,6 +1,6 @@
 {
   "name": "@marboris/coreutils",
-  "version": "2.7.0",
+  "version": "2.7.1",
   "description": "coreutils is suitable for all projects that require database interactions and specific configurations.",
   "private": false,
   "type": "module",

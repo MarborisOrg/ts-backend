@@ -1,8 +1,9 @@
+import './console.log.js'
+
 import fs from 'fs'
 
 import { AmqpManager } from './amqp.js'
 import { ConfigManager } from './config.js'
-import './console.log.js'
 import { cwd as CWD } from './cwd.js'
 import { CustomLogger, LoggerManager } from './logger.js'
 
