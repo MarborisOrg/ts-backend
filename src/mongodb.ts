@@ -38,3 +38,17 @@ const sampleData = {
 saveData(sampleData)
   .then(() => console.log('Process complete.'))
   .catch((err) => console.error('Error:', err))
+
+  /*
+  async function fetchData() {
+  try {
+    const documents = await DynamicModel.find();
+    console.log('Fetched data:', documents);
+  } catch (error) {
+    console.error('Error fetching data:', error);
+  }
+}
+
+fetchData();
+
+*/
