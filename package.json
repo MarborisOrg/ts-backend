@@ -1,6 +1,6 @@
 {
   "name": "@marboris/coreutils",
-  "version": "2.8.4",
+  "version": "2.8.5",
   "description": "coreutils is suitable for all projects that require database interactions and specific configurations.",
   "private": false,
   "type": "module",
@@ -18,7 +18,6 @@
   "author": "MRB",
   "main": "./dist/mjs/core.js",
   "module": "./dist/mjs/core.js",
-  "types": "./dist/types/core.d.ts",
   "exports": {
     "require": "./dist/cjs/core.js",
     "import": "./dist/mjs/core.js"
