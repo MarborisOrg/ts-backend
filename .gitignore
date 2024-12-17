@@ -12,4 +12,3 @@ coverage
 
 yarn.lock
 package-lock.json
-@types/**.d.ts
