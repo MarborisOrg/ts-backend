@@ -34,7 +34,9 @@ export class LoggerManager {
 
     const customTimestampFormat = winston.format.printf(
       ({ timestamp, level, message }) => {
-        const customTimeMsg = `[${timestamp}] ${level}: '${message}'`
+        const formattedMessage =
+          typeof message === 'object' ? JSON.stringify(message) : message
+        const customTimeMsg = `[${timestamp}] ${level}: '${formattedMessage}'`
         if (configs.Args.debug) {
           console.log(customTimeMsg)
         }
