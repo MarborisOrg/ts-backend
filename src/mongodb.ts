@@ -34,16 +34,16 @@ export class DbManager {
   public async connect(): Promise<void> {
     if (!this.connection) {
       const dbName: string = configs.EnvConfig.db || 'db'
-      console.log('dbName: ' + dbName)
+      console.log('Connecting to database:', dbName)
       this.connection = await mongoose.connect(
-        'mongodb://localhost:27017/' + dbName
+        `mongodb://localhost:27017/${dbName}`
+      )
+      this.dynamicSchema = new mongoose.Schema({}, { strict: false })
+      this.dynamicModel = mongoose.model<DynamicData>(
+        'DynamicCollection',
+        this.dynamicSchema
       )
     }
-    this.dynamicSchema = new mongoose.Schema({}, { strict: false })
-    this.dynamicModel = mongoose.model<DynamicData>(
-      'DynamicCollection',
-      this.dynamicSchema
-    )
   }
 
   @CatchErrors
@@ -51,6 +51,7 @@ export class DbManager {
     if (this.connection) {
       await this.connection.disconnect()
       this.connection = null
+      console.log('Database connection closed.')
     }
   }
 
@@ -59,12 +60,16 @@ export class DbManager {
   public async saveData(data: DynamicData | unknown): Promise<void> {
     const document = new this.dynamicModel!(data)
     await document.save()
+    console.log('Data saved:', document)
   }
 
   @CatchErrors
   @CheckDynamicModel
-  public async fetchData(query: Partial<DynamicData> = {}): Promise<void> {
+  public async fetchData(
+    query: Partial<DynamicData> = {}
+  ): Promise<DynamicData[]> {
     const documents: DynamicData[] = await this.dynamicModel!.find(query as any)
     console.log('Fetched data:', documents)
+    return documents
   }
 }
