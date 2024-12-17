@@ -20,7 +20,7 @@ export class ExpressManager {
     this.port = configs.EnvConfig.PORT || configs.Args.port || 3000
     this.https = configs.Args.https
 
-    console.log('debug: port: ' + configs.Args.port)
+    console.log('debug: port: ' + this.port)
 
     this.app = express()
 
