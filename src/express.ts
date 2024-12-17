@@ -173,7 +173,7 @@ export class ExpressManager {
         basePath: '/', // base path
         schemes: ['http', 'https'], // supported schemes
       },
-      apis: [cwd('**/*.ts'), cwd('**/*.js')],
+      apis: [cwd('**/*.ts')],
     }
 
     const swaggerSpec = swaggerJsdoc(options)
