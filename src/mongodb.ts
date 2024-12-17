@@ -1,11 +1,34 @@
-import mongoose from 'mongoose'
+import mongoose, { Document, Model } from 'mongoose'
 
 import { CatchErrors } from './decorators.js'
 
+interface DynamicData extends Document {
+  [key: string]: any
+}
+
+const CheckDynamicModel = (
+  _target: any,
+  _propertyKey: string,
+  descriptor: PropertyDescriptor
+  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+) => {
+  const originalMethod = descriptor.value
+
+  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type, @typescript-eslint/require-await
+  descriptor.value = async function (this: DbManager, ...args: any[]) {
+    if (!this.dynamicModel) {
+      throw new Error('Dynamic model is not initialized.')
+    }
+    return originalMethod.apply(this, args)
+  }
+
+  return descriptor
+}
+
 export class DbManager {
   private connection: mongoose.Mongoose | null = null
-  private dynamicSchema: any | null = null
-  private dynamicModel: any | null = null
+  private dynamicSchema: mongoose.Schema | null = null
+  public dynamicModel: Model<DynamicData> | null = null
 
   @CatchErrors
   public async connect(): Promise<void> {
@@ -17,33 +40,31 @@ export class DbManager {
       )
     }
     this.dynamicSchema = new mongoose.Schema({}, { strict: false })
-    this.dynamicModel = mongoose.model('DynamicCollection', this.dynamicSchema)
+    this.dynamicModel = mongoose.model<DynamicData>(
+      'DynamicCollection',
+      this.dynamicSchema
+    )
   }
 
   @CatchErrors
   public async close(): Promise<void> {
-    if (this.connection) await this.connection.disconnect()
+    if (this.connection) {
+      await this.connection.disconnect()
+      this.connection = null
+    }
   }
 
   @CatchErrors
-  public async saveData(data: any): Promise<void> {
-    const document = new this.dynamicModel(data)
+  @CheckDynamicModel
+  public async saveData(data: DynamicData | unknown): Promise<void> {
+    const document = new this.dynamicModel!(data)
     await document.save()
-    /*
-    const sampleData = {
-        name: 'John',
-        age: 30,
-        address: {
-          city: 'NYC',
-          zip: '10001',
-        },
-      }
-    */
   }
 
   @CatchErrors
+  @CheckDynamicModel
   public async fetchData(): Promise<void> {
-    const documents = await this.dynamicModel.find()
+    const documents: DynamicData[] = await this.dynamicModel!.find()
     console.log('Fetched data:', documents)
   }
 }
