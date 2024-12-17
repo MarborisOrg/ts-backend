@@ -62,6 +62,6 @@
     "skipLibCheck": true
   },
   "include": ["src/**/*.ts"],
-  "exclude": ["node_modules/**", "dist/**", "src/archive/**", "src/core-all.ts"],
+  "exclude": ["node_modules/**", "dist/**"],
   "compileOnSave": false
 }
