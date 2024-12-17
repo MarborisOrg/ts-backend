@@ -38,7 +38,7 @@ export abstract class Core {
 
 // Test
 // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-new (class extends Core {
+;(class extends Core {
   public Main(): void {
     console.log('[__info__] Application is starting...')
     this.logger.info('Debug mode')
@@ -69,4 +69,4 @@ new (class extends Core {
       // await this.dbManager.fetchData()
     })()
   }
-})()
+})
