@@ -50,6 +50,8 @@ new (class extends Core {
       }
 
       await this.dbManager.saveData(sampleData)
+
+      await this.dbManager.fetchData()
     })()
   }
 })()

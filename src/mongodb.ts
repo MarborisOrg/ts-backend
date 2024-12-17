@@ -10,8 +10,10 @@ export class DbManager {
   @CatchErrors
   public async connect(): Promise<void> {
     if (!this.connection) {
+      const dbName: string = configs.EnvConfig.db || 'db'
+      console.log('dbName: ' + dbName)
       this.connection = await mongoose.connect(
-        'mongodb://localhost:27017/dynamic_db'
+        'mongodb://localhost:27017/' + dbName
       )
     }
     this.dynamicSchema = new mongoose.Schema({}, { strict: false })
@@ -27,6 +29,16 @@ export class DbManager {
   public async saveData(data: any): Promise<void> {
     const document = new this.dynamicModel(data)
     await document.save()
+    /*
+    const sampleData = {
+        name: 'John',
+        age: 30,
+        address: {
+          city: 'NYC',
+          zip: '10001',
+        },
+      }
+    */
   }
 
   @CatchErrors
