@@ -11,5 +11,7 @@ import path from 'path'
 export const cwd = (resolvePath?: string, join?: string): string => {
   // Ensure parameters are strings or default to empty strings
   const resolvedPath = path.resolve(process.cwd(), resolvePath || '')
-  return path.join(resolvedPath, join || '')
+
+  // Only join if join is provided
+  return join ? path.join(resolvedPath, join) : resolvedPath
 }

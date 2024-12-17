@@ -1,10 +1,5 @@
-import express, {
-  Application,
-  NextFunction,
-  Request,
-  Response,
-  Router,
-} from 'express'
+import type { Application } from 'express'
+import express, { NextFunction, Request, Response, Router } from 'express'
 import fs from 'fs'
 import https from 'https'
 import open from 'open'
@@ -12,7 +7,7 @@ import path from 'path'
 import swaggerJsdoc from 'swagger-jsdoc'
 import swaggerUi from 'swagger-ui-express'
 
-import { CatchErrors, Singleton } from './decorators'
+import { CatchErrors, Singleton } from './decorators.js'
 
 // Express Manager
 @Singleton
