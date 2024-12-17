@@ -1,5 +1,3 @@
-import { CustomLogger } from './logger.js'
-
 // Utility Decorators
 export const Singleton = <T extends { new (...args: any[]): any }>(
   constructor: T
@@ -28,10 +26,7 @@ export const CatchErrors = (
     try {
       return await originalMethod.apply(this, args)
     } catch (error) {
-      ;(this as { log: CustomLogger }).log.error(
-        `${propertyKey} failed:`,
-        error
-      )
+      log.error(`${propertyKey} failed:`, error)
     }
   }
 }
