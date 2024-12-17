@@ -63,8 +63,8 @@ export class DbManager {
 
   @CatchErrors
   @CheckDynamicModel
-  public async fetchData(): Promise<void> {
-    const documents: DynamicData[] = await this.dynamicModel!.find()
+  public async fetchData(query: Partial<DynamicData> = {}): Promise<void> {
+    const documents: DynamicData[] = await this.dynamicModel!.find(query as any)
     console.log('Fetched data:', documents)
   }
 }
