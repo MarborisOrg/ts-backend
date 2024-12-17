@@ -24,7 +24,7 @@ export class ExpressManager {
 
     this.app = express()
 
-    this.localhostMover(this.app)
+    this.localhostMover()
 
     const publicDir = cwd('public')
 
@@ -73,7 +73,7 @@ export class ExpressManager {
         resolve()
 
         if (configs.Args.dev) {
-          this.initSwagger(this.app, this.port)
+          this.initSwagger()
           if (configs.Args.debug) {
             void open(
               `${https ? 'https' : 'http'}://127.0.0.1:${this.port}/docs`
@@ -144,8 +144,8 @@ export class ExpressManager {
     return { key: keyFilePath, cert: certFilePath }
   }
 
-  private localhostMover(app: Application): void {
-    app.use((req: Request, res: Response, next: NextFunction) => {
+  private localhostMover(): void {
+    this.app.use((req: Request, res: Response, next: NextFunction) => {
       if (req.hostname === 'localhost') {
         const newUrl = `${this.https ? 'https' : 'http'}://127.0.0.1:${this.port}${req.originalUrl}`
         return res.redirect(301, newUrl) // 301: Moved Permanently
@@ -155,7 +155,7 @@ export class ExpressManager {
   }
 
   @CatchErrors
-  private initSwagger(app: Application, port: number): void {
+  private initSwagger(): void {
     const options = {
       swaggerDefinition: {
         swagger: '2.0', // api version (changed to 2.0)
@@ -169,7 +169,7 @@ export class ExpressManager {
           },
           version: '0.0.0', // app version (can change this)
         },
-        host: `127.0.0.1:${port}`, // host
+        host: `127.0.0.1:${this.port}`, // host
         basePath: '/', // base path
         schemes: ['http', 'https'], // supported schemes
       },
@@ -178,9 +178,9 @@ export class ExpressManager {
 
     const swaggerSpec = swaggerJsdoc(options)
     // Swagger Page
-    app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec))
+    this.app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec))
     // Documentation in JSON format
-    app.get('/docs.json', (_req, res) => {
+    this.app.get('/docs.json', (_req, res) => {
       res.setHeader('Content-Type', 'application/json')
       res.send(swaggerSpec)
     })

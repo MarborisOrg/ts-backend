@@ -1,5 +1,7 @@
 import './console.log.js'
 
+import { Request, Response, Router } from 'express'
+
 import { AmqpManager } from './amqp.js'
 import { ConfigManager } from './config.js'
 import { cwd as CWD } from './cwd.js'
@@ -45,18 +47,26 @@ new (class extends Core {
 
       await this.expressManager.start()
 
-      const sampleData = {
-        name: 'John',
-        age: 30,
-        address: {
-          city: 'NYC',
-          zip: '10001',
-        },
-      }
+      const router = Router()
 
-      await this.dbManager.saveData(sampleData)
+      router.get('/test', (_req: Request, res: Response) => {
+        res.status(200).send('hi')
+      })
 
-      await this.dbManager.fetchData()
+      void this.expressManager.addRoute('/', router)
+
+      // const sampleData = {
+      //   name: 'John',
+      //   age: 30,
+      //   address: {
+      //     city: 'NYC',
+      //     zip: '10001',
+      //   },
+      // }
+
+      // await this.dbManager.saveData(sampleData)
+
+      // await this.dbManager.fetchData()
     })()
   }
 })()
