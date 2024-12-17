@@ -43,6 +43,8 @@ new (class extends Core {
     void (async (): Promise<void> => {
       await this.dbManager.connect()
 
+      await this.expressManager.start()
+
       const sampleData = {
         name: 'John',
         age: 30,

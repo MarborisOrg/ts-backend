@@ -22,7 +22,7 @@ export class ExpressManager {
   private https: boolean
 
   public constructor() {
-    this.port = configs.EnvConfig.PORT || configs.Args.port
+    this.port = configs.EnvConfig.PORT || configs.Args.port || 3000
     this.https = configs.Args.https
 
     console.log('debug: port: ' + configs.Args.port)
@@ -86,7 +86,7 @@ export class ExpressManager {
           }
         }
       }
-      if (configs.Args.https) {
+      if (this.https) {
         https
           .createServer(this.findKeyFiles(), this.app)
           .listen(this.port, () => {
