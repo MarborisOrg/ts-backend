@@ -3,6 +3,7 @@ import './console.log.js'
 import { AmqpManager } from './amqp.js'
 import { ConfigManager } from './config.js'
 import { cwd as CWD } from './cwd.js'
+import { ExpressManager } from './express.js'
 import { CustomLogger, LoggerManager } from './logger.js'
 import { DbManager } from './mongodb.js'
 
@@ -12,6 +13,7 @@ export abstract class Core {
   protected logger: CustomLogger
   protected amqpManager: AmqpManager
   protected dbManager: DbManager
+  protected expressManager: ExpressManager
 
   public constructor() {
     if (new.target === Core) {
@@ -24,6 +26,7 @@ export abstract class Core {
     globalThis.configs = this.config
     this.amqpManager = new AmqpManager()
     this.dbManager = new DbManager()
+    this.expressManager = new ExpressManager()
 
     this.Main()
   }

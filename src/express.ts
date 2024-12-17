@@ -12,7 +12,10 @@ import path from 'path'
 import swaggerJsdoc from 'swagger-jsdoc'
 import swaggerUi from 'swagger-ui-express'
 
+import { CatchErrors, Singleton } from './decorators'
+
 // Express Manager
+@Singleton
 export class ExpressManager {
   private app: Application
   private port: number
@@ -156,6 +159,7 @@ export class ExpressManager {
     })
   }
 
+  @CatchErrors
   private initSwagger(app: Application, port: number): void {
     const options = {
       swaggerDefinition: {
