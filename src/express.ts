@@ -62,6 +62,10 @@ export class ExpressManager {
     )
   }
 
+  public getRouter(): Router {
+    return Router()
+  }
+
   public addRoute(path: string, router: Router): void {
     this.app.use(path, router)
   }
