@@ -24,10 +24,6 @@ export class ConfigManager {
       .options({
         dev: { type: 'boolean', alias: 'd', describe: 'Enable developer mode' },
         debug: { type: 'boolean', alias: 'D', describe: 'Enable debug mode' },
-        queue: {
-          type: 'string',
-          describe: 'Specify the queue channel for rabbit',
-        },
       })
       .parseSync() as Config
   }
