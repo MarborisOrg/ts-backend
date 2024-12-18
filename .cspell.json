@@ -28,7 +28,6 @@
     "cuse",
     "knex",
     "knexfile",
-    "coreutils",
     "marboris"
   ],
   "flagWords": [],

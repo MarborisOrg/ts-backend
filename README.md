@@ -5,7 +5,7 @@
 To install the package, use the following command:
 
 ```bash
-npm install @marboris/coreutils@latest
+npm install @marboris/core@latest
 ```
 
 ## Examples
