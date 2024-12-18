@@ -26,7 +26,7 @@
     "build:cjs": "tsc --project tsconfig.cjs.json",
     "build": "rimraf dist && npm run build:mjs && npm run build:cjs",
     "pub": "npm run build && npm publish",
-    "pretty": "prettier --write \"src/**/*.{ts,js}\"",
+    "pretty": "prettier --write \"**/*.{ts,js,json}\"",
     "lint": "eslint ."
   },
   "engines": {
@@ -35,6 +35,7 @@
   "dependencies": {
     "amqplib": "^0.10.4",
     "cors": "^2.8.5",
+    "csv-parser": "^3.0.0",
     "dotenv": "^16.4.5",
     "express": "^4.21.1",
     "helmet": "^8.0.0",
@@ -45,6 +46,7 @@
     "mongoose": "^8.8.2",
     "mysql2": "^3.11.3",
     "nodemailer": "^6.9.16",
+    "open-cli": "^8.0.0",
     "readline": "^1.3.0",
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^5.0.1",
@@ -52,8 +54,7 @@
     "telegram": "^2.26.8",
     "twilio": "^5.3.7",
     "winston": "^3.17.0",
-    "yargs": "^17.7.2",
-    "open-cli": "^8.0.0"
+    "yargs": "^17.7.2"
   },
   "devDependencies": {
     "@eslint/compat": "^1.2.3",

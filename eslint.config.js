@@ -100,7 +100,7 @@ export default [
         {
           trailingComma: 'es5',
           tabWidth: 2,
-          semi: false,
+          semi: true,
           singleQuote: true,
           printWidth: 80,
           arrowParens: 'always',
@@ -135,10 +135,10 @@ export default [
       '@typescript-eslint/require-await': 'warn',
 
       // enforce arrow functions
-      'prefer-arrow-callback': ['error', { allowNamedFunctions: false }],
-      'func-style': ['error', 'expression', { allowArrowFunctions: true }],
+      'prefer-arrow-callback': ['warn', { allowNamedFunctions: false }],
+      'func-style': ['warn', 'expression', { allowArrowFunctions: true }],
       'no-restricted-syntax': [
-        'error',
+        'warn',
         {
           selector: 'FunctionDeclaration',
           message: 'Use arrow functions instead of function declarations.',
