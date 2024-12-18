@@ -1,4 +1,4 @@
-# CoreUtils
+# The Core
 
 ## Installation
 
@@ -16,5 +16,3 @@ npm install @marboris/coreutils@latest
 ## Author
 link: [S-MRB-S](https://github.com/S-MRB-S)
 E-mail: mehrabshafae@gmail.com
-
-### Make it easy/simple and useful
