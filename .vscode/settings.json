@@ -20,5 +20,5 @@
   "git.autofetch": true,
   "git.enableSmartCommit": true,
   "git.confirmSync": false,
-  "prettier.endOfLine": "lf",
+  "prettier.endOfLine": "lf"
 }

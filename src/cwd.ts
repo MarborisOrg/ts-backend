@@ -1,4 +1,4 @@
-import path from 'path'
+import path from 'path';
 
 /**
  * Generates an absolute path by resolving the current working directory
@@ -10,8 +10,8 @@ import path from 'path'
  */
 export const cwd = (resolvePath?: string, join?: string): string => {
   // Ensure parameters are strings or default to empty strings
-  const resolvedPath = path.resolve(process.cwd(), resolvePath || '')
+  const resolvedPath = path.resolve(process.cwd(), resolvePath || '');
 
   // Only join if join is provided
-  return join ? path.join(resolvedPath, join) : resolvedPath
-}
+  return join ? path.join(resolvedPath, join) : resolvedPath;
+};
