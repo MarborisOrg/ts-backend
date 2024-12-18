@@ -4,7 +4,6 @@
     "target": "es2022",
     "rootDir": "src",
     "moduleResolution": "node",
-    "module": "CommonJS",
     "baseUrl": "./",
     "paths": {
       // "#*": ["src/*"]
